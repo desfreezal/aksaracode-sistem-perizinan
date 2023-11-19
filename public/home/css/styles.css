@@ -1,0 +1,256 @@
+* {
+  padding: 0px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* NAVBAR INDEX */
+nav {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  gap: 30px;
+}
+
+nav div img {
+  width: 210px;
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: black;
+  font-weight: 700;
+  transition: color 0.3s; /* Efek transisi warna teks saat dihover */
+}
+
+nav ul li a:hover {
+  color: #9d3c39; /* Warna teks saat dihover */
+}
+
+hr {
+  border: none;
+  border-top: 2px solid #9d3c39;
+}
+
+/* NAVBAR INDEX */
+
+/* Gambar Awal */
+.tampilan-awal {
+  display: flex;
+  text-align: center;
+  justify-content: right;
+  align-items: center;
+  padding-top: 15px;
+}
+
+.gambar-awal img {
+  width: 100%;
+  height: auto;
+}
+
+.tagline {
+  position: absolute;
+  text-align: right;
+  padding-right: 100px;
+  padding-bottom: 60px;
+  width: 13ch;
+  font-size: 3rem;
+  font-weight: 500;
+}
+
+/* Gambar Awal*/
+/* Panduan Perizinan */
+.container-panduan-perizinan {
+  text-align: center; /* Membuat teks menjadi ditengah */
+  padding-top: 100px;
+  font-weight: bold;
+}
+
+.panduan-perizinan {
+  display: inline-block; /* Menjadikan teks menjadi elemen block */
+  position: relative; /* Mengatur posisi relatif */
+  font-size: 30px; /* Mengatur ukuran teks */
+}
+
+.panduan-perizinan:after {
+  content: "";
+  position: absolute; /* Mengatur posisi absolut */
+  bottom: -5px; /* Jarak dari teks */
+  left: 50%; /* Posisi horizontal di tengah */
+  width: 325px; /* Panjang garis */
+  border-bottom: 4px solid #b7605d; /* Warna garis dan ketebalan */
+  border-radius: 10px;
+  transform: translateX(-50%); /* Mentranslasi agar garis berada di tengah */
+}
+
+.teks-panduan-perizinan {
+  text-align: center;
+  width: 82ch;
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 0px;
+  line-height: 1.5;
+  font-weight: bold;
+}
+
+.container-kotak-cokelat {
+  display: flex;
+  justify-content: space-around; /* Atur jarak di antara elemen-elemen */
+  padding-top: 5px;
+}
+
+.kotak-cokelat,
+.kotak-cokelat-1,
+.kotak-cokelat-2 {
+  width: 325px; /* Lebar kotak */
+  height: 500px; /* Tinggi kotak */
+  background-color: #9d3c39; /* Warna coklat */
+  border-radius: 10px; /* Mengatur sudut kotak menjadi bulat */
+  display: flex;
+  align-items: center; /* Membuat konten berada di tengah */
+  padding: 20px; /* Ruang di dalam kotak */
+  margin: 10px; /* Memberikan jarak antara kotak-cokelat */
+  flex-direction: column;
+}
+
+.daftar-ulang,
+.izin-pendirian,
+.izin-operasional {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 30px;
+}
+
+.gambar-bulat {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: white;
+  border: 10px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 150px; /* Jarak antara gambar dan tombol */
+}
+
+.gambar-bulat img {
+  width: 100px;
+}
+
+.tombol-putih {
+  padding: 20px 5px;
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  width: 90%; /* Tombol memenuhi lebar kontainer */
+  text-align: center;
+  font-weight: 20px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.tombol-putih a {
+  text-decoration: none;
+  color: black;
+}
+
+.tombol-putih:hover {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+/* Panduan Perizinan */
+/* Alur Perizinan */
+.container-alur-perizinan {
+  text-align: center; /* Membuat teks menjadi ditengah */
+  padding-top: 100px;
+  font-weight: bold;
+}
+
+.alur-perizinan {
+  display: inline-block; /* Menjadikan teks menjadi elemen block */
+  position: relative; /* Mengatur posisi relatif */
+  font-size: 30px; /* Mengatur ukuran teks */
+}
+
+.alur-perizinan:after {
+  content: "";
+  position: absolute; /* Mengatur posisi absolut */
+  bottom: -5px; /* Jarak dari teks */
+  left: 50%; /* Posisi horizontal di tengah */
+  width: 250px; /* Panjang garis */
+  border-bottom: 4px solid #b7605d; /* Warna garis dan ketebalan */
+  border-radius: 10px;
+  transform: translateX(-50%); /* Mentranslasi agar garis berada di tengah */
+}
+
+.gambar-alur-perizinan img {
+  width: 1050px;
+  align-items: center;
+  padding: 50px;
+}
+
+/* Data Statistik */
+.container-data-statistik {
+  text-align: center; /* Membuat teks menjadi ditengah */
+  padding-top: 100px;
+  font-weight: bold;
+}
+
+.data-statistik {
+  display: inline-block; /* Menjadikan teks menjadi elemen block */
+  position: relative; /* Mengatur posisi relatif */
+  font-size: 30px; /* Mengatur ukuran teks */
+}
+
+.data-statistik:after {
+  content: "";
+  position: absolute; /* Mengatur posisi absolut */
+  bottom: -5px; /* Jarak dari teks */
+  left: 50%; /* Posisi horizontal di tengah */
+  width: 250px; /* Panjang garis */
+  border-bottom: 4px solid #b7605d; /* Warna garis dan ketebalan */
+  border-radius: 10px;
+  transform: translateX(-50%); /* Mentranslasi agar garis berada di tengah */
+}
+
+.tombol-data-statistik {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-top: 50px; /* Sesuaikan dengan kebutuhan jarak dari atas halaman */
+}
+
+.tombol-data-statistik a {
+  display: inline-block;
+  padding: 15px 30px;
+  text-decoration: none;
+  color: #ffffff; /* Warna teks */
+  background-color: #9d3c39; /* Warna latar belakang */
+  border: 2px solid #ffffff; /* Warna border */
+  border-radius: 5px; /* Sudut bulat pada border */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.tombol-data-statistik a:hover {
+  background-color: #ffffff; /* Warna latar belakang saat dihover */
+  color: #9d3c39; /* Warna teks saat dihover */
+}
+
+/* Footer */
+.footer {
+  padding: 5px;
+  padding-top: 150px;
+  font-weight: bold;
+}

@@ -21,5 +21,10 @@ Route::get('/landing-pages', function () {
     return view('landing-pages');
 });
 
+Route::get('/dashboard-pemohon', function () {
+    return view('pemohon.dashboard');
+});
 
-
+Route::get('/test', function () {
+    return view('test');
+});

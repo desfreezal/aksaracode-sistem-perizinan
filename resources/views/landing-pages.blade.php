@@ -31,6 +31,7 @@
     </nav>
     <hr />
     <!-- NAVBAR INDEX -->
+    @yield('navbar')
     <!-- Gambar Awal -->
     <div class="tampilan-awal">
       <div class="gambar-awal">

@@ -16,33 +16,33 @@
   </style>
 
   <body>
-    <!-- NAVBAR Dashboard -->
-    <nav>
+     <!-- NAVBAR Dashboard -->
+     <nav>
       <div class="">
-        <img src="{{asset('home/img/EduLicense fix 3.png')}}" alt="Logo EduLicense" />
+        <img src="{{('pemohon/img/EduLicense fix 3.png')}}" alt="Logo EduLicense" />
       </div>
       <ul>
         <li>
-          <div class="parent">
-            <a href="#">
-            Home 
-            <img
-            class="images"
-              src="{{asset('home/img/Home Logo.png')}}"
-              alt="Notif Logo"
-              style="width: 25px"
-            ></a>
-          </div>
-          
+          <a href="#">Beranda</a>
+        </li>
+        <li>
+          <a href="#">Status Permohonan</a>
         </li>
         <li>
           <a href="#"
-            >Profile<img
-              src="{{asset('home/img/Profil User Logo.png')}}"
+            ><img
+              src="{{('pemohon/img/Notif Logo.png')}}"
+              alt="Notif Logo"
+              style="width: 25px"
+          /></a>
+        </li>
+        <li>
+          <a href="#"
+            ><img
+              src="{{('pemohon/img/Profil Logo.png')}}"
               alt="Logo Profil"
               style="width: 25px"
-            /></a
-          >
+          /></a>
         </li>
       </ul>
     </nav>

@@ -105,11 +105,11 @@
       <div class="data-statistik">Data Statistik</div>
     </div>
     <div class="tombol-data-statistik">
-      <a href="data-statistik-daftar-ulang.html"
+      <a href="/data-statistik-daftarulang"
         >Daftar Ulang Izin Operasional</a
       >
-      <a href="data-statistik-izin-pendirian.html">Izin Pendirian</a>
-      <a href="data-statistik-izin-operasional.html">Izin Operasional</a>
+      <a href="/data-statistik-izinpendirian">Izin Pendirian</a>
+      <a href="/data-statistik-izinoperasional">Izin Operasional</a>
     </div>
 
     <!-- Data Statistik -->

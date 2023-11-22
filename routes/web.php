@@ -25,6 +25,18 @@ Route::get('/dashboard-pemohon', function () {
     return view('pemohon.dashboard');
 });
 
-Route::get('/test', function () {
-    return view('test');
+Route::get('/dashboard-operator', function () {
+    return view('operator.dashboard');
+});
+
+Route::get('/data-statistik-daftarulang', function () {
+    return view('data-statistik-daftarulang');
+});
+
+Route::get('/data-statistik-izinoperasional', function () {
+    return view('data-statistik-izinoperasional');
+});
+
+Route::get('/data-statistik-izinpendirian', function () {
+    return view('data-statistik-izinpendirian');
 });

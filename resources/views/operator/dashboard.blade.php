@@ -50,35 +50,35 @@
         <a href="#">
           <img src="{{asset('operator/img/icon pengajuan permohonan.png')}}" alt="pengajuan permohonan" /></a>
       </div>
-      <div class="teks-judul"><a href="#"><p>Pengajuan<br>Permohonan</div>
+      <div class="teks-judul"><a href="#"><p>Pengajuan Permohonan</div>
     </div>
     <div class="kotak-putih">
       <div class="kotak-coklat">
         <a href="#">
           <img src="{{asset('operator/img/icon status permohonan.png')}}" alt="pengajuan permohonan" /></a>
       </div>
-      <div class="teks-judul"><a href="#"><p>Status<br>Permohonan</div>
+      <div class="teks-judul"><a href="#"><p>Status Permohonan</div>
     </div>   
     <div class="kotak-putih">
       <div class="kotak-coklat">
         <a href="#">
           <img src="{{asset('operator/img/icon kelengkapan data.png')}}" alt="pengajuan permohonan" /></a>
       </div>
-      <div class="teks-judul"><a href="#"><p>Kelengkapan<br>Data</div>
+      <div class="teks-judul"><a href="#"><p>Kelengkapan Data</div>
     </div>
     <div class="kotak-putih">
       <div class="kotak-coklat">
         <a href="#">
           <img src="{{asset('operator/img/icon panduan perizinan.png')}}" alt="pengajuan permohonan" /></a>
       </div>
-      <div class="teks-judul"><a href="#"><p>Panduan<br>Perizinan</div>
+      <div class="teks-judul"><a href="#"><p>Panduan Perizinan</div>
     </div>
     <div class="kotak-putih">
       <div class="kotak-coklat">
         <a href="#">
           <img src="{{asset('operator/img/icon dashboard statistik.png')}}" alt="pengajuan permohonan" /></a>
       </div>
-      <div class="teks-judul"><a href="#"><p>Dashboard<br>Statistik</div>
+      <div class="teks-judul"><a href="#"><p>Dashboard Statistik</div>
     </div>
   </div>
 

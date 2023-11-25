@@ -97,6 +97,8 @@ hr {
     text-align: center;
     font: 600 20px "Poppins-SemiBold", sans-serif;
     position: relative;
+    word-wrap: break-word; /* Memaksa kata untuk pindah ke baris baru jika tidak muat */
+    max-width: 150px; /* Menetapkan lebar maksimum untuk baris kata */
 }
 
 /* Footer */

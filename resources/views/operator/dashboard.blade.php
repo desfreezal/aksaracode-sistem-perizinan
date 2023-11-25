@@ -19,7 +19,7 @@
             <a href="#">
             <img
             class="images"
-              src="{{('home/img/Notif Logo.png')}}"
+              src="{{asset('operator/img/Notif Logo.png')}}"
               alt="Notif Logo"
               style="width: 25px"
             ></a>
@@ -44,10 +44,43 @@
     </nav>
     <hr />
     <!-- Navbar Dashboard -->
-    <div class="rectangle-493">
-      <img src="{{('home/operator/img/icon pengajuan permohonan.png')}}" alt="pengajuan permohonan" />
-      <p>Pengajuan Permohonan</p>
+    <div class="dashboard">
+    <div class="kotak-putih">
+      <div class="kotak-coklat">
+        <a href="#">
+          <img src="{{asset('operator/img/icon pengajuan permohonan.png')}}" alt="pengajuan permohonan" /></a>
+      </div>
+      <div class="teks-judul"><a href="#"><p>Pengajuan Permohonan</div>
     </div>
+    <div class="kotak-putih">
+      <div class="kotak-coklat">
+        <a href="#">
+          <img src="{{asset('operator/img/icon pengajuan permohonan.png')}}" alt="pengajuan permohonan" /></a>
+      </div>
+      <div class="teks-judul"><a href="#"><p>Pengajuan Permohonan</div>
+    </div>   
+    <div class="kotak-putih">
+      <div class="kotak-coklat">
+        <a href="#">
+          <img src="{{asset('operator/img/icon pengajuan permohonan.png')}}" alt="pengajuan permohonan" /></a>
+      </div>
+      <div class="teks-judul"><a href="#"><p>Pengajuan Permohonan</div>
+    </div>
+    <div class="kotak-putih">
+      <div class="kotak-coklat">
+        <a href="#">
+          <img src="{{asset('operator/img/icon pengajuan permohonan.png')}}" alt="pengajuan permohonan" /></a>
+      </div>
+      <div class="teks-judul"><a href="#"><p>Pengajuan Permohonan</div>
+    </div>
+    <div class="kotak-putih">
+      <div class="kotak-coklat">
+        <a href="#">
+          <img src="{{asset('operator/img/icon pengajuan permohonan.png')}}" alt="pengajuan permohonan" /></a>
+      </div>
+      <div class="teks-judul"><a href="#"><p>Pengajuan Permohonan</div>
+    </div>
+  </div>
 
     <!-- Footer -->
     <div class="footer" style="padding-top: 0px">

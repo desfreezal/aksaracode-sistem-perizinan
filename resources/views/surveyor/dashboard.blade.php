@@ -96,6 +96,13 @@
         </div>
         <div class="teks-judul"><a href="#"><p>Pengajuan Permohonan</div>
       </div>
+      <div class="kotak-putih">
+        <div class="kotak-coklat">
+          <a href="#">
+            <img src="{{asset('surveyor/img/icon pengajuan permohonan.png')}}" alt="pengajuan permohonan" /></a>
+        </div>
+        <div class="teks-judul"><a href="#"><p>Pengajuan Permohonan</div>
+      </div>
   </div>
   <div class="dashboard-baris-3">
     <div class="kotak-putih">

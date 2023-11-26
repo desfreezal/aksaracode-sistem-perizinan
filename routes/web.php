@@ -29,6 +29,10 @@ Route::get('/dashboard-operator', function () {
     return view('operator.dashboard');
 });
 
+Route::get('/dashboard-surveyor', function () {
+    return view('surveyor.dashboard');
+});
+
 Route::get('/data-statistik-daftarulang', function () {
     return view('data-statistik-daftarulang');
 });

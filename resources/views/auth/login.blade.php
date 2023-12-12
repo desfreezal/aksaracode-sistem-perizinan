@@ -24,7 +24,7 @@
                                 <input type="password" placeholder="Kata Sandi"
                                     class="border border-black px-8 py-1 rounded-xl">
                                 <button type="submit"
-                                    class="bg-primary py-2 rounded-3xl font-bold text-[20px] text-white">Masuk</button>
+                                    class="bg-primary py-1 rounded-3xl font-bold text-[20px] text-white">Masuk</button>
 
                                 <a href="" class="text-center text-[15px] opacity-[35%]">Lupa Kata Sandi ?</a>
                             </form>

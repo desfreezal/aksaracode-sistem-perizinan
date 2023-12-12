@@ -44,3 +44,7 @@ Route::get('/data-statistik-izinoperasional', function () {
 Route::get('/data-statistik-izinpendirian', function () {
     return view('data-statistik-izinpendirian');
 });
+
+Route::get('/login', function () {
+    return view('auth.login');
+});

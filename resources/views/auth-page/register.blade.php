@@ -1,6 +1,6 @@
 @extends('auth-page.layout')
 
-@section('title', 'Login')
+@section('title', 'Register')
 
 @section('content')
     <div class="w-full m-auto">

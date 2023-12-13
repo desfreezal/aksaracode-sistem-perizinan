@@ -52,3 +52,7 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('auth-page.register');
 });
+
+Route::get('/daftar-ulang', function () {
+    return view(('landing-page.daftar-ulang.daftar'));
+});

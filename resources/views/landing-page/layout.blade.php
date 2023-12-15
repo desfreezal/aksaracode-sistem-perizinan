@@ -25,13 +25,13 @@
                 <a href="/landing-pages">Beranda</a>
             </li>
             <li class="my-6">
-                <a href="/landing-page#panduan">Panduan Permohonan</a>
+                <a href="/landing-pages#panduan">Panduan Permohonan</a>
             </li>
             <li class="my-6">
-                <a href="#">Statistik</a>
+                <a href="/landing-pages#statistik">Statistik</a>
             </li>
             <li class="my-6">
-                <a href="#">Masuk</a>
+                <a href="/login">Masuk</a>
             </li>
         </ul>
     </nav>

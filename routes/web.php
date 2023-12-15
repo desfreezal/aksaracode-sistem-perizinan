@@ -68,3 +68,7 @@ Route::get('/izin-operasional', function () {
 Route::get('/lacak-permohonan', function () {
     return view('pemohon.lacak-permohonan');
 });
+
+Route::get('/status-permohonan', function () {
+    return view('pemohon.status-permohonan');
+});

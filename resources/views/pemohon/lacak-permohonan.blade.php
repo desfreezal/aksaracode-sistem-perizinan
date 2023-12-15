@@ -89,7 +89,7 @@
                 <input type="text" name="idpendaftaran" class="px-5 py-1 rounded-md border-opacity-70" id="id">
             </div>
 
-            <a href="" class="mx-auto px-7 py-3 rounded-xl bg-primary text-white font-bold text-xl hover:bg-primary-light">Cari
+            <a href="/status-permohonan" class="mx-auto px-7 py-3 rounded-xl bg-primary text-white font-bold text-xl hover:bg-primary-light">Cari
                 Permohonan</a>
         </div>
     </div>

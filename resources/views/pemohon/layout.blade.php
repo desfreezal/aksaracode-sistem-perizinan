@@ -83,7 +83,7 @@
     <hr />
     <!-- Navbar Dashboard -->
 
-    <main class="my-20 mx-[50px]">
+    <main class="my-8 mx-[50px]">
         @yield('content')
     </main>
 
@@ -92,10 +92,6 @@
     <div class="footer" style="padding-top: 0px">
         <div class="edu-license-2023">EduLicense 2023</div>
     </div>
-
-    <script>
-
-    </script>
 
     @stack('scripts')
 

@@ -22,7 +22,7 @@
         </div>
         <ul>
             <li>
-                <a href="#">Beranda</a>
+                <a href="/dashboard-pemohon">Beranda</a>
             </li>
             <li>
                 <a href="/lacak-permohonan">Status Permohonan</a>
@@ -32,19 +32,13 @@
                     <img src="{{ 'pemohon/img/Notif Logo.png' }}" alt="Notif Logo" style="width: 25px" />
                 </a>
 
-                {{-- EMPTY NOTIFICATION --}}
+                {{-- NOTIFICATION CONTAINER --}}
                 <div id="notifDropDown"
                     class="z-10 hidden bg-white rounded-lg dark:bg-gray-700 shadow-lg drop-shadow-xl border box-border">
-                    <button class="float-right m-5" id="closeNotif">X</button>
-                    <div class="w-60 text-center flex justify-center items-center flex-col m-16">
-                        <img src="{{ asset('pemohon/img/Illustration.png') }}"
-                            class="aspect-square object-fill w-40 mb-7" alt="">
-                        <p>Kami akan memberi tahu Anda setelah kami melakukan
-                            sesuatu untukmu</p>
-                    </div>
+                    @yield('notif-container')
                 </div>
             </li>
-            <li>
+            <li class="flex items-center">
                 <button href="#" id="profileDropDownButton" data-dropdown-toggle="profileDropDown"><img
                         src="{{ 'pemohon/img/Profil Logo.png' }}" alt="Logo Profil" style="width: 25px" /></button>
 

@@ -1,5 +1,14 @@
 @extends('pemohon.layout')
 
+@section('notif-container')
+    <button class="float-right m-5" id="closeNotif">X</button>
+    <div class="w-60 text-center flex justify-center items-center flex-col m-16">
+        <img src="{{ asset('pemohon/img/Illustration.png') }}" class="aspect-square object-fill w-40 mb-7" alt="">
+        <p>Kami akan memberi tahu Anda setelah kami melakukan
+            sesuatu untukmu</p>
+    </div>
+@endsection
+
 @section('content')
     <div class="container-kotak-cokelat" style="gap: 10px; margin: 80px 50px">
         <div class="kotak-cokelat">
@@ -34,4 +43,3 @@
         </div>
     </div>
 @endsection
-

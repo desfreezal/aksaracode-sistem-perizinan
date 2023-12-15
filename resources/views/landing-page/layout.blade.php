@@ -22,10 +22,10 @@
         </div>
         <ul class="mr-6">
             <li class="my-6">
-                <a href="#">Beranda</a>
+                <a href="/landing-pages">Beranda</a>
             </li>
             <li class="my-6">
-                <a href="#">Panduan Permohonan</a>
+                <a href="/landing-page#panduan">Panduan Permohonan</a>
             </li>
             <li class="my-6">
                 <a href="#">Statistik</a>

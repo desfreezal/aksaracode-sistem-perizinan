@@ -10,7 +10,7 @@
         {{-- header --}}
         <header class="bg-primary px-11 flex items-center gap-x-11 py-2 rounded-md mb-[21px]">
             <img src="{{ asset('home/img/Folder.png') }}" class="w-11" alt="">
-            <h1 class="font-medium text-3xl text-white">Daftar Ulang Izin Operasional Satuan Pendidikan</h1>
+            <h1 class="font-medium text-3xl text-white">Izin Operasional Satuan Pendidikan</h1>
         </header>
 
         {{-- select --}}
@@ -27,23 +27,20 @@
             <button @click="toggle" :class="(open) && 'ring-blue-600'"
                 class="flex w-full items-center justify-between rounded bg-white p-2 ring-1 ring-gray-300">
                 <span
-                    x-text="@if (request('peruntukan') === 'tk') 'Daftar Ulang Izin Operasional Satuan Pendidikan TK'
+                    x-text="@if (request('peruntukan') === 'tk') 'Izin Operasional Satuan Pendidikan TK'
                 @elseif(request('peruntukan') === 'sd')
-                'Daftar Ulang Izin Operasional Satuan Pendidikan SD'
+                'Izin Operasional Satuan Pendidikan SD'
                 @elseif (request('peruntukan') === 'smp')
-                'Daftar Ulang Izin Operasional Satuan Pendidikan SMP'
+                'Izin Operasional Satuan Pendidikan SMP'
                 @else
                 'Pilih Peruntukan' @endif"></span>
                 <i class="fas fa-chevron-down text-xl"></i>
             </button>
 
             <ul class="z-50 absolute mt-1 w-full rounded bg-gray-50 ring-1 ring-gray-300" x-show="open">
-                <li class="cursor-pointer select-none p-2 hover:bg-gray-200" @click="setPeruntukan('tk')">Daftar Ulang Izin
-                    Operasional Satuan Pendidikan TK</li>
-                <li class="cursor-pointer select-none p-2 hover:bg-gray-200" @click="setPeruntukan('sd')">Daftar Ulang Izin
-                    Operasional Satuan Pendidikan SD</li>
-                <li class="cursor-pointer select-none p-2 hover:bg-gray-200" @click="setPeruntukan('smp')">Daftar Ulang Izin
-                    Operasional Satuan Pendidikan SMP</li>
+                <li class="cursor-pointer select-none p-2 hover:bg-gray-200" @click="setPeruntukan('tk')">Daftar Ulang Izin Operasional Satuan Pendidikan TK</li>
+                <li class="cursor-pointer select-none p-2 hover:bg-gray-200" @click="setPeruntukan('sd')">Daftar Ulang Izin Operasional Satuan Pendidikan SD</li>
+                <li class="cursor-pointer select-none p-2 hover:bg-gray-200" @click="setPeruntukan('smp')">Daftar Ulang Izin Operasional Satuan Pendidikan SMP</li>
             </ul>
         </div>
     </div>
@@ -63,15 +60,15 @@
 
     @if (request('peruntukan') === 'tk')
         <div class="relative overflow-x-auto shadow-md">
-            @include('landing-page.daftar-ulang.table-tk')
+            @include('landing-page.izin-operasional.table-tk')
         </div>
     @elseif(request('peruntukan') === 'sd')
         <div class="relative overflow-x-auto shadow-md">
-            @include('landing-page.daftar-ulang.table-sd')
+            @include('landing-page.izin-operasional.table-sd')
         </div>
     @elseif(request('peruntukan') === 'smp')
         <div class="relative overflow-x-auto shadow-md">
-            @include('landing-page.daftar-ulang.table-smp')
+            @include('landing-page.izin-operasional.table-smp')
         </div>
     @endif
 @endsection

@@ -56,7 +56,7 @@
       </p>
     </div>
 
-    <div class="container-kotak-cokelat">
+    <div class="container-kotak-cokelat" id="#panduan">
       <div class="kotak-cokelat">
         <div class="daftar-ulang">
           <div class="gambar-bulat">

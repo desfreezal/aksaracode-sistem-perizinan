@@ -56,3 +56,11 @@ Route::get('/register', function () {
 Route::get('/daftar-ulang', function () {
     return view(('landing-page.daftar-ulang.daftar'));
 });
+
+Route::get('/izin-pendirian', function () {
+    return view(('landing-page.izin-pendirian.izin'));
+});
+
+Route::get('/izin-operasional', function () {
+    return view('landing-page.izin-operasional.operasional');
+});

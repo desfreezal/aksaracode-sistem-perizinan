@@ -25,7 +25,7 @@
                 <a href="#">Beranda</a>
             </li>
             <li>
-                <a href="#">Status Permohonan</a>
+                <a href="/lacak-permohonan">Status Permohonan</a>
             </li>
             <li>
                 <a href="#" id="notifDropDownButton" data-dropdown-toggle="notifDropDown">
@@ -100,7 +100,7 @@
     </div>
 
     <script>
-        
+
     </script>
 
     @stack('scripts')

@@ -64,3 +64,7 @@ Route::get('/izin-pendirian', function () {
 Route::get('/izin-operasional', function () {
     return view('landing-page.izin-operasional.operasional');
 });
+
+Route::get('/lacak-permohonan', function () {
+    return view('pemohon.lacak-permohonan');
+});

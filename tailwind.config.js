@@ -10,6 +10,7 @@ export default {
         extend: {
             colors: {
                 primary: "#9D3C39",
+                "primary-light": "#a64f4c",
                 "edu-bg": "#F6F6F6",
                 "edu-black": "1A1A1A",
             },

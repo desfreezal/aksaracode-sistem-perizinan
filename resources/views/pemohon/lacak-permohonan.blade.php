@@ -23,13 +23,14 @@
                 </div>
             </div>
         </div>
+
         <div class="flex gap-x-4 items-center px-4 py-4 bg-primary rounded-xl mb-3 text-white">
             <div class="w-12 h-12 rounded-lg bg-white flex justify-center items-center">
-                <img src="{{ asset('pemohon/img/document.png') }}" alt="" class="aspect-square w-8 h-8">
+                <img src="{{ asset('pemohon/img/documents check.png') }}" alt="" class="aspect-square w-8 h-8">
             </div>
 
             <div>
-                <p>Telah sukses membuat permohonan</p>
+                <p>Berkas sedang di verifikasi</p>
                 <div class="flex items-center gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                         class="w-6 h-6 text-white">
@@ -42,13 +43,14 @@
                 </div>
             </div>
         </div>
+
         <div class="flex gap-x-4 items-center px-4 py-4 bg-primary rounded-xl mb-3 text-white">
             <div class="w-12 h-12 rounded-lg bg-white flex justify-center items-center">
-                <img src="{{ asset('pemohon/img/document.png') }}" alt="" class="aspect-square w-8 h-8">
+                <img src="{{ asset('pemohon/img/survey.png') }}" alt="" class="aspect-square w-8 h-8">
             </div>
 
             <div>
-                <p>Telah sukses membuat permohonan</p>
+                <p>Permohonan sedang di survey</p>
                 <div class="flex items-center gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                         class="w-6 h-6 text-white">
@@ -87,7 +89,7 @@
                 <input type="text" name="idpendaftaran" class="px-5 py-1 rounded-md border-opacity-70" id="id">
             </div>
 
-            <a href="" class="mx-auto px-7 py-3 rounded-xl bg-primary text-white font-bold text-xl">Cari
+            <a href="" class="mx-auto px-7 py-3 rounded-xl bg-primary text-white font-bold text-xl hover:bg-primary-light">Cari
                 Permohonan</a>
         </div>
     </div>

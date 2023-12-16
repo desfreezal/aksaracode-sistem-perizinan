@@ -1,4 +1,4 @@
-<div class="w-80 h-full bg-edu-bg space-y-3 py-2">
+<div class="w-80 h-full bg-edu-bg space-y-3 py-2" id="sidebar">
     <a href="/dashboard-pemohon/profile"
         class="cursor-pointer flex items-center pl-11 w-full  {{ Request::is('dashboard-pemohon/profile') ? 'bg-white shadow' : '' }} hover:bg-white gap-x-3 py-2">
         <img src="{{ asset('pemohon/img/Project.png') }}" class="object-contain" alt="1">

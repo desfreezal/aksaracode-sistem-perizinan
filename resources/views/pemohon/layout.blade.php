@@ -25,7 +25,7 @@
                 <a href="/dashboard-pemohon">Beranda</a>
             </li>
             <li>
-                <a href="/lacak-permohonan">Status Permohonan</a>
+                <a href="/dashboard-pemohon/lacak-permohonan">Status Permohonan</a>
             </li>
             <li>
                 <a href="#" id="notifDropDownButton" data-dropdown-toggle="notifDropDown">

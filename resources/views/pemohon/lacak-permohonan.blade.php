@@ -63,7 +63,7 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 @endsection
 
@@ -83,15 +83,20 @@
             </div>
         </div>
 
-        <div class="mt-16 mb-40 pt-20 pb-24 shadow-2xl rounded flex flex-col">
-            <div class="flex gap-8 items-center justify-center mb-14">
-                <label for="id" class="text-base">Masukkan ID Pendaftaran</label>
-                <input type="text" name="idpendaftaran" class="px-5 py-1 rounded-md border-opacity-70" id="id">
-            </div>
+        <form action="{{ url('/dashboard-pemohon/status-permohonan', []) }}" method="get">
+            <div class="mt-16 mb-40 pt-20 pb-24 shadow-2xl rounded flex flex-col">
 
-            <a href="/status-permohonan" class="mx-auto px-7 py-3 rounded-xl bg-primary text-white font-bold text-xl hover:bg-primary-light">Cari
-                Permohonan</a>
-        </div>
+                <div class="flex gap-8 items-center justify-center mb-14">
+                    <label for="id" class="text-base">Masukkan ID Pendaftaran</label>
+                    <input type="text" name="idpendaftaran" class="px-5 py-1 rounded-md border-opacity-70"
+                        id="id">
+                </div>
+
+                <button type="submit"
+                    class="mx-auto px-7 py-3 rounded-xl bg-primary text-white font-bold text-xl hover:bg-primary-light">Cari
+                    Permohonan</button>
+            </div>
+        </form>
     </div>
 
     <div class="absolute bottom-5 cursor-pointer right-10 p-2 rounded-full bg-primary">

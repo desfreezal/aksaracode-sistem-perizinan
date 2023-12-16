@@ -77,3 +77,7 @@ Route::get('/dashboard-pemohon/profile', function () {
     return view('pemohon.profile');
 });
 
+Route::get('/dashboard-pemohon/riwayat', function () {
+    return view('pemohon.riwayat-permohonan');
+});
+

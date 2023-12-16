@@ -12,6 +12,8 @@
         display: flex;
     }
 </style>
+<link href="{{ asset('pemohon/DataTables/datatables.min.css') }}" rel="stylesheet">
+<script src="{{ asset('pemohon/js/jquery-3.7.1.min.js') }}"></script>
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 <body>
@@ -40,7 +42,8 @@
             </li>
             <li class="flex items-center">
                 <button href="#" id="profileDropDownButton" data-dropdown-toggle="profileDropDown"><img
-                        src="{{ asset('pemohon/img/Profil Logo.png') }}" alt="Logo Profil" style="width: 25px" /></button>
+                        src="{{ asset('pemohon/img/Profil Logo.png') }}" alt="Logo Profil"
+                        style="width: 25px" /></button>
 
                 <div id="profileDropDown"
                     class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 max-w-[292px]">
@@ -52,12 +55,12 @@
                                 Pengguna</a>
                         </li>
                         <li>
-                            <a href="#"
+                            <a href="/dashboard-pemohon/riwayat"
                                 class="block text-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Riwayat
                                 Permohonan</a>
                         </li>
                         <li>
-                            <a href="#"
+                            <a href="#" data-modal-target="logout-modal" data-modal-toggle="logout-modal"
                                 class="block text-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Keluar</a>
                         </li>
                     </ul>
@@ -87,11 +90,54 @@
         @yield('content')
     </main>
 
+    {{-- MODAL --}}
+    <div id="logout-modal" tabindex="-1" aria-hidden="true"
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-2xl max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <!-- Modal header -->
+                <div class="flex items-center justify-between p-4 md:p-5 rounded-t ">
+                    <button type="button"
+                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        data-modal-hide="logout-modal">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="p-4 md:p-5 space-y-4">
+                    <div class="flex flex-col justify-center items-center space-x-4">
+
+                        <h1 class="font-bold text-3xl text-primary mb-3">Keluar</h1>
+
+                        <p class="font-thin text-edu-black">Anda Yakin Ingin Keluar?</p>
+                    </div>
+                </div>
+                <!-- Modal footer -->
+                <div class="flex gap-x-11 items-center justify-center p-4 md:p-5 rounded-b dark:border-gray-600">
+                    <button data-modal-hide="logout-modal" type="button" id="closeModal"
+                        class="py-1 px-12 rounded-3xl border border-edu-black text-primary hover:bg-abu-abu ">Kembali</button>
+
+                    <form action="{{ url('/landing-pages', []) }}" method="get">
+                        <button type="submit" data-modal-hide="logout-modal" type="button" id="closeModal"
+                            class="py-1 px-12 rounded-3xl bg-primary hover:bg-primary-light text-white ">Keluar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Footer -->
     <div class="footer" style="padding-top: 0px">
         <div class="edu-license-2023">EduLicense 2023</div>
     </div>
+    <script src="{{ asset('pemohon/DataTables/datatables.min.js') }}"></script>
 
     @stack('scripts')
 

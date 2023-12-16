@@ -18,11 +18,14 @@
 
                         <div class="rounded-2xl pt-5 mx-7 flex flex-col items-center border border-black" id="login-form">
                             <h1 class="font-bold text-primary text-4xl">Masuk</h1>
-                            <form class="flex flex-col gap-y-5 my-5 px-3 w-full">
-                                <input type="text" placeholder="Masukkan Username Anda"
+                            <form class="flex flex-col gap-y-5 my-5 px-3 w-full"
+                                action="{{ url('/dashboard-pemohon', []) }}" method="GET">
+                                @csrf
+                                <input type="text" placeholder="Masukkan Username Anda" required
                                     class="border border-black px-8 py-1 rounded-xl">
-                                <input type="password" placeholder="Kata Sandi"
+                                <input type="password" placeholder="Kata Sandi" required
                                     class="border border-black px-8 py-1 rounded-xl">
+
                                 <button type="submit"
                                     class="bg-primary py-1 rounded-3xl font-bold text-[20px] text-white">Masuk</button>
 

@@ -65,10 +65,15 @@ Route::get('/izin-operasional', function () {
     return view('landing-page.izin-operasional.operasional');
 });
 
-Route::get('/lacak-permohonan', function () {
+Route::get('/dashboard-pemohon/lacak-permohonan', function () {
     return view('pemohon.lacak-permohonan');
 });
 
-Route::get('/status-permohonan', function () {
+Route::get('/dashboard-pemohon/status-permohonan', function () {
     return view('pemohon.status-permohonan');
 });
+
+Route::get('/dashboard-pemohon/profile', function () {
+    return view('pemohon.profile');
+});
+

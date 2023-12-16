@@ -18,7 +18,7 @@
     <!-- NAVBAR Dashboard -->
     <nav>
         <div class="">
-            <img src="{{ 'pemohon/img/EduLicense fix 3.png' }}" alt="Logo EduLicense" />
+            <img src="{{ asset('pemohon/img/EduLicense fix 3.png') }}" alt="Logo EduLicense" />
         </div>
         <ul>
             <li>
@@ -29,7 +29,7 @@
             </li>
             <li>
                 <a href="#" id="notifDropDownButton" data-dropdown-toggle="notifDropDown">
-                    <img src="{{ 'pemohon/img/Notif Logo.png' }}" alt="Notif Logo" style="width: 25px" />
+                    <img src="{{ asset('pemohon/img/Notif Logo.png') }}" alt="Notif Logo" style="width: 25px" />
                 </a>
 
                 {{-- NOTIFICATION CONTAINER --}}
@@ -40,14 +40,14 @@
             </li>
             <li class="flex items-center">
                 <button href="#" id="profileDropDownButton" data-dropdown-toggle="profileDropDown"><img
-                        src="{{ 'pemohon/img/Profil Logo.png' }}" alt="Logo Profil" style="width: 25px" /></button>
+                        src="{{ asset('pemohon/img/Profil Logo.png') }}" alt="Logo Profil" style="width: 25px" /></button>
 
                 <div id="profileDropDown"
                     class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 max-w-[292px]">
                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200 block"
                         aria-labelledby="profileDropDownButton">
                         <li>
-                            <a href="#"
+                            <a href="/dashboard-pemohon/profile"
                                 class="block text-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profil
                                 Pengguna</a>
                         </li>
@@ -83,7 +83,7 @@
     <hr />
     <!-- Navbar Dashboard -->
 
-    <main class="my-8 mx-[50px]">
+    <main class="">
         @yield('content')
     </main>
 

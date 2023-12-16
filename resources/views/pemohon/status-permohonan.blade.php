@@ -70,7 +70,7 @@
 
 
 @section('content')
-    <div class="text-edu-black">
+    <div class="text-edu-black my-8 mx-[50px]">
 
         <div class="py-3 pl-11 mb-5 bg-primary rounded-md">
             <h1 class="text-white font-medium text-3xl">Status Permohonan Saya</h1>

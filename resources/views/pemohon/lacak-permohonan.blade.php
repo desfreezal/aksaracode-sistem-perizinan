@@ -68,7 +68,7 @@
 @endsection
 
 @section('content')
-    <div class="text-edu-black">
+    <div class="text-edu-black my-8 mx-[50px]">
 
         <div class="py-3 pl-11 bg-primary rounded-md">
             <h1 class="text-white font-medium text-3xl">Lacak Permohonan Saya</h1>

@@ -85,3 +85,7 @@ Route::get('/dashboard-pemohon/notifikasi', function () {
     return view('pemohon.notifikasi');
 });
 
+Route::get('/dashboard-pemohon/chatting', function () {
+    return view('pemohon.chatting');
+});
+

@@ -14,7 +14,7 @@
         </h1>
     </a>
     <a href="#"
-        class="cursor-pointer flex items-center pl-11 w-full hover:bg-white {{ Request::is('/dashboard-pemohon/daftar-ulang/upload') ? 'bg-white shadow' : '' }}  hover:shadow gap-x-3 py-2">
+        class="cursor-pointer flex items-center pl-11 w-full hover:bg-white {{ Route::currentRouteName() === 'berkas' ? 'bg-white shadow' : '' }}  hover:shadow gap-x-3 py-2">
         <img src="{{ asset('pemohon/img/Open Pane.png') }}" class="object-contain" alt="1">
         <h1 class="text-base font-normal">
             Upload Persyaratan

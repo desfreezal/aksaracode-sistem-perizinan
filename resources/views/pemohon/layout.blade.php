@@ -16,6 +16,8 @@
 <script src="{{ asset('pemohon/js/jquery-3.7.1.min.js') }}"></script>
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+<script defer src="{{ asset('home/js/alpine.min.js') }}"></script>
+
 <body>
     <!-- NAVBAR Dashboard -->
     <nav>

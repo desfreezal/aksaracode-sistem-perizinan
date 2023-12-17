@@ -99,4 +99,4 @@ Route::get('/dashboard-pemohon/daftar-ulang/data', function () {
 
 Route::get('/dashboard-pemohon/daftar-ulang/detail', function () {
     return view('pemohon.daftar-ulang.detail');
-});
+})->name('detail');

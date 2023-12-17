@@ -55,11 +55,11 @@
                     </div>
                     <div class="flex items-center">
                         <label for="kabupaten" class="w-72">Kabupaten</label>
-                        <input id="kabupaten" type="text" class="flex-grow text-edu-black border-abu-abu rounded">
+                        <input id="kabupaten" type="text" class="flex-grow text-edu-black border-abu-abu rounded" name="kabupaten">
                     </div>
                     <div class="flex items-center">
                         <label for="jenkel" class="w-72">Jenis Kelamin</label>
-                        <input id="jenkel" type="text" class="flex-grow text-edu-black border-abu-abu rounded">
+                        <input id="jenkel" type="text" class="flex-grow text-edu-black border-abu-abu rounded" name="jenkel">
                     </div>
                     <div class="flex items-center">
                         <label for="kecamatan" class="w-72">Kecamatan</label>
@@ -245,6 +245,12 @@
 
         simpanBtn.addEventListener('click', (event) => {
             event.preventDefault()
+
+            const peruntukanValue = document.getElementById('peruntukan').value
+            if(peruntukanValue === '') {
+                alert('Pilih Sub Perizinan')
+                return
+            }
 
             // closemodal onclick or modal hidden send form
             const closeModal = document.getElementById('closeModal')

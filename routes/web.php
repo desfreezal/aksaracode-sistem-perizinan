@@ -81,3 +81,7 @@ Route::get('/dashboard-pemohon/riwayat', function () {
     return view('pemohon.riwayat-permohonan');
 });
 
+Route::get('/dashboard-pemohon/notifikasi', function () {
+    return view('pemohon.notifikasi');
+});
+

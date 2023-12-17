@@ -4,7 +4,7 @@
     <button class="p-5 flex justify-end w-full" id="closeNotif">X</button>
     <div class="overflow-y-auto mx-5">
 
-        <div class="flex gap-x-4 items-center px-4 py-4 bg-primary rounded-xl mb-3 text-white">
+        <div onclick="window.location.href = '/dashboard-pemohon/notifikasi'" class="cursor-pointer flex gap-x-4 items-center px-4 py-4 bg-primary hover:bg-primary-light rounded-xl mb-3 text-white">
             <div class="w-12 h-12 rounded-lg bg-white flex justify-center items-center">
                 <img src="{{ asset('pemohon/img/document.png') }}" alt="" class="aspect-square w-8 h-8">
             </div>
@@ -24,7 +24,7 @@
             </div>
         </div>
 
-        <div class="flex gap-x-4 items-center px-4 py-4 bg-primary rounded-xl mb-3 text-white">
+        <div onclick="window.location.href = '/dashboard-pemohon/notifikasi'" class="flex gap-x-4 items-center px-4 py-4 bg-primary rounded-xl mb-3 text-white hover:bg-primary-light cursor-pointer">
             <div class="w-12 h-12 rounded-lg bg-white flex justify-center items-center">
                 <img src="{{ asset('pemohon/img/documents check.png') }}" alt="" class="aspect-square w-8 h-8">
             </div>
@@ -44,7 +44,7 @@
             </div>
         </div>
 
-        <div class="flex gap-x-4 items-center px-4 py-4 bg-primary rounded-xl mb-3 text-white">
+        <div onclick="window.location.href = '/dashboard-pemohon/notifikasi'" class="flex gap-x-4 items-center px-4 py-4 bg-primary rounded-xl mb-3 text-white hover:bg-primary-light cursor-pointer">
             <div class="w-12 h-12 rounded-lg bg-white flex justify-center items-center">
                 <img src="{{ asset('pemohon/img/survey.png') }}" alt="" class="aspect-square w-8 h-8">
             </div>

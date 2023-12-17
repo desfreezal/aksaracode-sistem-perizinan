@@ -89,3 +89,7 @@ Route::get('/dashboard-pemohon/chatting', function () {
     return view('pemohon.chatting');
 });
 
+Route::get('/dashboard-pemohon/chatting/{id_user}', function ($id_user) {
+    return view('pemohon.chatting');
+});
+

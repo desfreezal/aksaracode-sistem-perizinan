@@ -1,143 +1,166 @@
 @extends('pemohon.layout')
 
 @section('content')
-    <div class="min-h-screen h-full">
+    <div class=" h-full min-h-[calc(100vh-200px)]">
 
-        <div class="flex">
+        <div class="flex min-h-[calc(100vh-200px)]">
             {{-- SIDEBAR --}}
-            @include('pemohon.sidebar')
-
-            <div class="flex-grow h-full pl-[34px] pr-[88px] py-7 box-border mb-10" id="content">
-                {{-- CONTENT --}}
-
-                <form action="{{ url('/dashboard-pemohon/profile') }}" method="GET" class="w-full space-y-6">
-                    <div class="flex items-center">
-                        <label for="jenid" class="w-72">Jenis Identitas</label>
-                        <input readonly id="jenid" type="text"
-                            class="flex-grow text-edu-black border-abu-abu rounded">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="noid" class="w-72">Nomor Identitas (NIK/PASSPORT)</label>
-                        <input readonly id="noid" type="number"
-                            class="flex-grow text-edu-black border-abu-abu rounded">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="username" class="w-72">Username</label>
-                        <input readonly id="username" type="text"
-                            class="flex-grow text-edu-black border-abu-abu rounded">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="email" class="w-72">Alamat Email</label>
-                        <input readonly id="email" type="text"
-                            class="flex-grow text-edu-black border-abu-abu rounded">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="nama" class="w-72">Nama Lengkap</label>
-                        <input readonly id="nama" type="text"
-                            class="flex-grow text-edu-black border-abu-abu rounded">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="jenkel" class="w-72">Jenis Kelamin</label>
-                        <input readonly id="jenkel" type="text"
-                            class="flex-grow text-edu-black border-abu-abu rounded">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="tempatlahir" class="w-72">Tempat Lahir</label>
-                        <input readonly id="tempatlahir" type="text"
-                            class="flex-grow text-edu-black border-abu-abu rounded">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="tanggallahir" class="w-72">Tanggal Lahir</label>
-                        <input readonly id="tanggallahir" type="text"
-                            class="flex-grow text-edu-black border-abu-abu rounded">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="provinsi" class="w-72">Provinsi</label>
-                        <input readonly id="provinsi" type="text"
-                            class="flex-grow text-edu-black border-abu-abu rounded">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="kabkota" class="w-72">Kabupaten/ Kota</label>
-                        <input readonly id="kabkota" type="text"
-                            class="flex-grow text-edu-black border-abu-abu rounded">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="kecamatan" class="w-72">Kecamatan</label>
-                        <input readonly id="kecamatan" type="text"
-                            class="flex-grow text-edu-black border-abu-abu rounded">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="kelurahan" class="w-72">Kelurahan</label>
-                        <input readonly id="kelurahan" type="text"
-                            class="flex-grow text-edu-black border-abu-abu rounded">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="alamat" class="w-72">Alamat</label>
-                        <input readonly id="alamat" type="text"
-                            class="flex-grow text-edu-black border-abu-abu rounded">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="nohp" class="w-72">No HP Aktif</label>
-                        <input readonly id="nohp" type="text"
-                            class="flex-grow text-edu-black border-abu-abu rounded">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="pekerjaan" class="w-72">Pekerjaan</label>
-                        <input readonly id="pekerjaan" type="text"
-                            class="flex-grow text-edu-black border-abu-abu rounded">
-                    </div>
-
-                    <div class="flex gap-x-12 justify-end items-center">
-                        <button id="edit"
-                            class="px-12 py-[5px] rounded-3xl border border-edu-black font-semibold text-xl text-primary hover:bg-primary hover:text-white hover:border-0">
-                            Edit Data
-                        </button>
-                        <button id="simpan" data-modal-target="default-modal" data-modal-toggle="default-modal"
-                            class="px-12 py-[5px] rounded-3xl font-semibold text-xl  hover:bg-primary-light bg-primary text-white">
-                            Simpan Data
-                        </button>
-                    </div>
-                </form>
-
-                {{-- MODAL --}}
-                <div id="default-modal" tabindex="-1" aria-hidden="true"
-                    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                    <div class="relative p-4 w-full max-w-2xl max-h-full">
-                        <!-- Modal content -->
-                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                            <!-- Modal header -->
-                            <div class="flex items-center justify-between p-4 md:p-5 rounded-t ">
-                                <button type="button"
-                                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                    data-modal-hide="default-modal">
-                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                        fill="none" viewBox="0 0 14 14">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                                    </svg>
-                                    <span class="sr-only">Close modal</span>
-                                </button>
-                            </div>
-                            <!-- Modal body -->
-                            <div class="p-4 md:p-5 space-y-4">
-                                <div class="flex flex-col justify-center items-center space-x-4">
-                                    <img src="{{ asset('pemohon/img/Check.png') }}" alt="check" class="w-20 mb-6">
-
-                                    <h1 class="font-bold text-3xl text-edu-black">Berhasil Menyimpan Data</h1>
-
-                                    <p class="font-thin text-edu-black">Data yang dimasukkan berhasil disimpan</p>
-                                </div>
-                            </div>
-                            <!-- Modal footer -->
-                            <div class="flex items-center justify-center p-4 md:p-5 rounded-b dark:border-gray-600">
-                                <button data-modal-hide="default-modal" type="button" id="closeModal"
-                                    class="py-1 px-12 rounded-3xl bg-primary hover:bg-primary-light text-white ">OK</button>
-                            </div>
-                        </div>
-                    </div>
+            <div class="w-80 py-2 border-edu-black border-r-2" id="sidebar">
+                <div class="py-[10px] border-b-2 border-edu-black">
+                    <h1 class="pl-[50px] font-semibold text-[32px]">Pesan</h1>
                 </div>
 
+                <div class="mt-3 space-y-3">
+                    {{-- PILIH BUBBLE CHAT --}}
+                    <a href="/dashboard-pemohon/chatting/1">
+                        <div
+                            class="pl-12 mb-4 pr-3 flex items-center gap-x-4 {{ request()->route()->parameter('id_user') == 1? 'bg-abu-abu shadow': '' }} hover:bg-abu-abu">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                class="w-20 h-20">
+                                <path fill-rule="evenodd"
+                                    d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <div class="space-y-1">
+                                <h1 class="font-semibold text-xl">Operator</h1>
+                                <p class="">Permohonan anda sedang diproses</p>
+                            </div>
+                        </div>
 
+                    </a>
+                    <a href="/dashboard-pemohon/chatting/2">
+                        <div
+                            class="pl-12 mb-4 pr-3 flex items-center gap-x-4 {{ request()->route()->parameter('id_user') == 2? 'bg-abu-abu shadow': '' }} hover:bg-abu-abu">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                class="w-20 h-20">
+                                <path fill-rule="evenodd"
+                                    d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <div class="space-y-1">
+                                <h1 class="font-semibold text-xl">Verifikator</h1>
+                                <p class="">Permohonan anda sedang diproses</p>
+                            </div>
+                        </div>
+
+                    </a>
+                    <a href="/dashboard-pemohon/chatting/3">
+                        <div
+                            class="pl-12 mb-4 pr-3 flex items-center gap-x-4 {{ request()->route()->parameter('id_user') == 3? 'bg-abu-abu shadow': '' }} hover:bg-abu-abu">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                class="w-20 h-20">
+                                <path fill-rule="evenodd"
+                                    d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <div class="space-y-1">
+                                <h1 class="font-semibold text-xl">Admin Dinas</h1>
+                                <p class="">Permohonan anda sedang diproses</p>
+                            </div>
+                        </div>
+
+                    </a>
+
+                </div>
+            </div>
+            {{-- END OF SIDEBAR --}}
+
+            <div class="flex-grow h-full pt-7 box-border" id="content">
+                {{-- CONTENT --}}
+
+                @if (request()->route()->parameter('id_user'))
+                    <div class="h-[calc(100vh-200px)] overflow-scroll flex flex-col justify-end">
+
+                        {{-- SEND PANEL --}}
+                        <div class=" bg-abu-abu-second bottom-1 fixed w-[calc(100%-400px)] rounded ">
+                            <div class="px-2 flex items-center gap-x-5">
+                                <button>
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </button>
+
+                                <input type="text" class="flex-grow rounded-3xl my-1">
+
+                                <button>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                                    </svg>
+                                </button>
+
+                            </div>
+                        </div>
+                        {{-- END SEND PANEL --}}
+
+                        {{-- RIWAYAT CHAT AMBIL DARI DATABASE --}}
+                        <div class="pl-[34px] pr-[88px] overflow-y-scroll space-y-5">
+                            {{-- receive --}}
+                            <div class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                    class="w-10 h-10">
+                                    <path fill-rule="evenodd"
+                                        d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+                                        clip-rule="evenodd" />
+                                </svg>
+
+                                <div id="isi-pesan" class="max-w-[calc(100vw-500px)] bg-edu-bg p-2 rounded">
+                                    Dear [Nama Pemohon],
+                                    <br>
+                                    Halo! Kami berterima kasih atas pengajuan permohonan Anda untuk [jenis permohonan] di
+                                    EduLicense. Kami ingin memberitahu Anda bahwa tim admin sedang aktif memproses
+                                    permohonan Anda dengan seksama.
+                                    <br><br>
+
+                                    Mohon bersabar, karena kami berkomitmen untuk menyelesaikan verifikasi ini dengan cermat
+                                    agar proses pendaftaran Anda berjalan lancar. Kami menyadari betapa pentingnya langkah
+                                    ini dalam mewujudkan visi pendidikan Anda.
+                                    <br><br>
+
+                                    Jika diperlukan informasi tambahan atau ada pertanyaan lebih lanjut, jangan ragu untuk
+                                    menghubungi tim dukungan kami. Kami siap membantu Anda.
+                                    <br><br>
+
+                                    Harap perhatikan juga kotak masuk email Anda secara berkala, karena kami akan memberikan
+                                    pembaruan dan informasi lebih lanjut melalui email.
+                                    <br><br>
+
+                                    Terima kasih atas kesabaran dan kerjasamanya. Kami sangat menghargai antusiasme Anda
+                                    dalam menjalani proses ini. Semoga segera bisa memberikan kabar baik kepada Anda.
+                                    <br><br>
+
+                                    Terima kasih, Tim EduLicense
+                                </div>
+                            </div>
+
+                            {{-- sending --}}
+                            <div class="flex justify-start items-start flex-row-reverse">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                    class="w-10 h-10">
+                                    <path fill-rule="evenodd"
+                                        d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+                                        clip-rule="evenodd" />
+                                </svg>
+
+                                <div id="isi-pesan" class="max-w-[calc(100vw-500px)] bg-edu-bg p-2 rounded">
+                                    Baik, terima kasih atas pesannya!
+                                </div>
+                            </div>
+
+                        </div>
+                        {{-- END OF RIWAYAT CHAT --}}
+
+                    </div>
+                @else
+                    <div class="flex h-full justify-center items-center font-bold text-3xl">
+                        SILAKAN PILIH CHAT TERLEBIH DAHULU
+                    </div>
+                @endif
+
+                {{-- END OF CONTENT --}}
             </div>
         </div>
     </div>
@@ -145,47 +168,5 @@
 
 
 @push('scripts')
-    <script>
-        const formHeight = document.getElementById('content').offsetHeight; // Mendapatkan tinggi form
-        const sidebar = document.getElementById('sidebar'); // Ganti 'sidebar' dengan id yang sesuai
-        sidebar.style.height = formHeight + 'px';
-        // PENTING DI ATAS, JANGAN DI HAPUS
-
-        const editBtn = document.getElementById('edit')
-
-        editBtn.addEventListener('click', (event) => {
-            event.preventDefault()
-            const inputs = document.querySelectorAll('input')
-            inputs.forEach(input => {
-                input.removeAttribute('readonly')
-            })
-            editBtn.style.display = 'none'
-            document.getElementById('simpan').style.display = 'block'
-        })
-
-        const simpanBtn = document.getElementById('simpan')
-
-        simpanBtn.addEventListener('click', (event) => {
-            event.preventDefault()
-            const inputs = document.querySelectorAll('input')
-            inputs.forEach(input => {
-                input.setAttribute('readonly', '')
-            })
-            document.getElementById('edit').style.display = 'block'
-
-            // closemodal onclick or modal hidden send form
-            const closeModal = document.getElementById('closeModal')
-            // send form
-            const form = document.querySelector('form')
-            closeModal.addEventListener('click', () => {
-                form.submit()
-            })
-
-            const modal = document.getElementById('default-modal')
-            // detect when modal hidden
-            modal.addEventListener('click', () => {
-                form.submit()
-            })
-        })
-    </script>
+    <script></script>
 @endpush

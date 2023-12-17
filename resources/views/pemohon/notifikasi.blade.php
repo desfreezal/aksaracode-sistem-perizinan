@@ -1,7 +1,7 @@
 @extends('pemohon.layout')
 
 @section('content')
-    <div class="text-edu-black my-8 mx-[50px] ">
+    <div class="text-edu-black my-8 mx-[50px] min-h-[calc(100vh-200px)] ">
 
         <div class="flex gap-x-4 items-center px-4 py-4 bg-primary rounded-xl mb-3 text-white w-[394px]">
             <div class="w-12 h-12 rounded-lg bg-white flex justify-center items-center">

@@ -136,7 +136,7 @@
                     </div>
 
                     <div class="flex gap-x-12 justify-end items-center">
-                        <button id="simpan" data-modal-target="default-modal" data-modal-toggle="default-modal"
+                        <button id="simpan" data-modal-target="error-modal" data-modal-toggle="error-modal"
                             class="px-12 py-[5px] rounded-3xl font-semibold text-xl  hover:bg-primary-light bg-primary text-white">
                             Simpan Data
                         </button>
@@ -279,11 +279,11 @@
         simpanBtn.addEventListener('click', (event) => {
             event.preventDefault()
 
-            // const peruntukanValue = document.getElementById('peruntukan').value
-            // if (peruntukanValue === '') {
-            //     alert('Pilih Sub Perizinan')
-            //     return
-            // }
+            const peruntukanValue = document.getElementById('peruntukan').value
+            if (peruntukanValue === '') {
+                alert('Pilih Sub Perizinan')
+                return
+            }
 
             // closemodal onclick or modal hidden send form
             const closeModal = document.getElementById('closeModal')

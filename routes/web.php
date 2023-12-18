@@ -117,4 +117,8 @@ Route::prefix('/dashboard-pemohon')->group(function () {
     Route::get('/izin-pendirian/detail-yayasan', function () {
         return view('pemohon.izin-pendirian.detail-yayasan');
     })->name('detail-yayasan');
+    
+    Route::get('/izin-pendirian/detail-pendirian', function () {
+        return view('pemohon.izin-pendirian.detail-pendirian');
+    })->name('detail-pendirian');
 });

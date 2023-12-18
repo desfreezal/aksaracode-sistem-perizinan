@@ -14,7 +14,25 @@
                     </h1>
                 </div>
 
-                @include('pemohon.daftar-ulang.berkas-daftar-ulang.table-sd')
+                <form action="{{ url('/dashboard-pemohon/daftar-ulang/berkas') }}" method="GET" class="w-full space-y-6">
+                    @if (request('peruntukan') === 'tk')
+                        @include('pemohon.daftar-ulang.berkas-daftar-ulang.table-tk')
+                    @elseif (request('peruntukan') === 'sd')
+                        @include('pemohon.daftar-ulang.berkas-daftar-ulang.table-sd')
+                    @elseif (request('peruntukan') === 'smp')
+                        @include('pemohon.daftar-ulang.berkas-daftar-ulang.table-smp')
+                    @else
+                        Berkas Sudah di submit
+                    @endif
+
+                    <div class="flex gap-x-12 justify-end items-center">
+                        <button id="simpan" data-modal-target="error-modal" data-modal-toggle="error-modal"
+                            class="px-12 py-[5px] rounded-3xl font-semibold text-xl  hover:bg-primary-light bg-primary text-white">
+                            Simpan Data
+                        </button>
+                    </div>
+                </form>
+
 
 
                 {{-- MODAL --}}

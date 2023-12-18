@@ -17,7 +17,7 @@
                     <img src="{{ asset('home/img/Folder.png') }}" alt="LogoDaftarUlang" />
                 </div>
                 <div class="tombol-putih">
-                    <a href="#">Daftar Ulang Izin Operasional Satuan Pendidikan</a>
+                    <a href="/dashboard-pemohon/daftar-ulang/data">Daftar Ulang Izin Operasional Satuan Pendidikan</a>
                 </div>
             </div>
         </div>

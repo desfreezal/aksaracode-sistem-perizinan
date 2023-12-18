@@ -38,7 +38,7 @@
                             </ul>
                         </div>
                     </div>
-                    <input type="text" id="peruntukan" name="peruntukan" hidden>
+                    <input type="text" id="peruntukan" name="peruntukan" hidden value="{{ request('peruntukan') }}">
                     <div class="flex items-center">
                         <label for="alamatsekolah" class="w-72">Alamat Sekolah</label>
                         <input id="alamatsekolah" type="number" class="flex-grow text-edu-black border-abu-abu rounded"
@@ -86,18 +86,18 @@
                     </div>
                     <div class="flex items-center">
                         <label for="noizinoperasional" class="w-72">No Izin Operasional</label>
-                        <input id="noizinoperasional" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="noizinoperasional">
+                        <input id="noizinoperasional" type="text"
+                            class="flex-grow text-edu-black border-abu-abu rounded" name="noizinoperasional">
                     </div>
                     <div class="flex items-center">
                         <label for="tanggaloperasional" class="w-72">Tanggal Operasional</label>
-                        <input id="tanggaloperasional" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="tanggaloperasional">
+                        <input id="tanggaloperasional" type="text"
+                            class="flex-grow text-edu-black border-abu-abu rounded" name="tanggaloperasional">
                     </div>
                     <div class="flex items-center">
                         <label for="jenisoperasional" class="w-72">Jenis Operasional</label>
-                        <input id="jenisoperasional" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="jenisoperasional">
+                        <input id="jenisoperasional" type="text"
+                            class="flex-grow text-edu-black border-abu-abu rounded" name="jenisoperasional">
                     </div>
                     <div class="flex items-center">
                         <label for="nosuratpemohon" class="w-72">No Surat Pemohon</label>
@@ -107,8 +107,8 @@
 
                     <div class="flex items-center">
                         <label for="tglsuratpemohon" class="w-72">Tanggal Surat Pemohon</label>
-                        <input id="tglsuratpemohon" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="tglsuratpemohon">
+                        <input id="tglsuratpemohon" type="text"
+                            class="flex-grow text-edu-black border-abu-abu rounded" name="tglsuratpemohon">
                     </div>
 
                     <div class="flex items-center">

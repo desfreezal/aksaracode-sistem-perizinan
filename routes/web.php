@@ -93,6 +93,10 @@ Route::get('/dashboard-pemohon/chatting/{id_user}', function ($id_user) {
     return view('pemohon.chatting');
 });
 
+Route::get('/dashboard-pemohon/daftar-ulang/', function () {
+    return view('pemohon.daftar-ulang.daftar');
+});
+
 Route::get('/dashboard-pemohon/daftar-ulang/data', function () {
     return view('pemohon.daftar-ulang.daftar');
 });
@@ -104,3 +108,5 @@ Route::get('/dashboard-pemohon/daftar-ulang/detail', function () {
 Route::get('/dashboard-pemohon/daftar-ulang/berkas', function () {
     return view('pemohon.daftar-ulang.berkas');
 })->name('berkas');
+
+

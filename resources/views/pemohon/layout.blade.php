@@ -21,10 +21,10 @@
 <body>
     <!-- NAVBAR Dashboard -->
     <nav>
-        <div class="">
+        <div class="flex items-center">
             <img src="{{ asset('pemohon/img/EduLicense fix 3.png') }}" alt="Logo EduLicense" />
         </div>
-        <ul>
+        <ul class="py-6 pr-6">
             <li>
                 <a href="/dashboard-pemohon">Beranda</a>
             </li>

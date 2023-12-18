@@ -1,4 +1,4 @@
-<div class="w-80 min-h-screen bg-edu-bg space-y-3 py-2" id="sidebar">
+<div class="w-80 min-h-screen relative bg-edu-bg space-y-3 py-2" id="sidebar">
     <a href="/dashboard-pemohon/daftar-ulang/data"
         class="cursor-pointer flex items-center pl-11 w-full  {{ Request::is('dashboard-pemohon/daftar-ulang/data') ? 'bg-white shadow' : '' }} hover:bg-white gap-x-3 py-2">
         <img src="{{ asset('pemohon/img/Project.png') }}" class="object-contain" alt="1">
@@ -20,4 +20,8 @@
             Upload Persyaratan
         </h1>
     </a>
+</div>
+
+<div class="fixed w-12 h-12 bottom-28 rounded-full left-8 bg-primary">
+    <img src="{{ asset('pemohon/img/chat.png') }}" class="w-full p-3" alt="">
 </div>

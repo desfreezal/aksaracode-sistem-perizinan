@@ -110,7 +110,11 @@ Route::prefix('/dashboard-pemohon')->group(function () {
         return view('pemohon.daftar-ulang.berkas');
     })->name('berkas');
 
-    Route::get('/izin-pendaftaran', function () {
+    Route::get('/izin-pendirian', function () {
         return view('pemohon.izin-pendirian.data-pemohon');
-    })->name('izin-pendaftaran');
+    })->name('izin-pendirian');
+
+    Route::get('/izin-pendirian/detail-yayasan', function () {
+        return view('pemohon.izin-pendirian.detail-yayasan');
+    })->name('detail-yayasan');
 });

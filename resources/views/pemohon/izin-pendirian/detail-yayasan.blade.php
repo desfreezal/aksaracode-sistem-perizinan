@@ -14,96 +14,129 @@
                     </h1>
                 </div>
 
-                <form action="{{ url('/dashboard-pemohon/izin-pendirian/detail-yayasan') }}" method="GET" class="w-full space-y-6">
-                    <div class="flex items-center">
-                        <label for="jenid" class="w-72">Sub Perizinan</label>
-                        <div x-data="select" class="relative flex-grow" @click.outside="open = false">
-                            <button type="button" @click="toggle" :class="(open) && 'ring-blue-600'"
-                                class="flex w-full items-center justify-between rounded bg-white p-2 ring-1 ring-gray-300">
-                                <span x-text="detail || 'Pilih Peruntukan'"></span>
-                                <i class="fas fa-chevron-down text-xl"></i>
-                            </button>
+                <form action="{{ url('/dashboard-pemohon/izin-pendirian/detail-yayasan') }}" method="GET"
+                    class="w-full space-y-6">
 
-                            <ul class="z-50 absolute mt-1 w-full rounded bg-gray-50 ring-1 ring-gray-300" x-show="open">
-                                <li class="cursor-pointer select-none p-2 hover:bg-gray-200" @click="setPeruntukan('tk')">
-                                    Daftar Ulang Izin
-                                    Operasional Satuan Pendidikan TK</li>
-                                <li class="cursor-pointer select-none p-2 hover:bg-gray-200" @click="setPeruntukan('sd')">
-                                    Daftar Ulang Izin
-                                    Operasional Satuan Pendidikan SD</li>
-                                <li class="cursor-pointer select-none p-2 hover:bg-gray-200" @click="setPeruntukan('smp')">
-                                    Daftar Ulang Izin
-                                    Operasional Satuan Pendidikan SMP</li>
-                            </ul>
+                    <div class="flex items-center">
+                        <label for="namayayasan" class="w-72">Nama Yayasan / CV/ PT/ Perorangan</label>
+                        <input id="namayayasan" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="namayayasan">
+                    </div>
+                    <div class="flex items-center">
+                        <label for="alamatyayasan" class="w-72">Alamat Yayasan</label>
+                        <input id="alamatyayasan" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="alamatyayasan">
+                    </div>
+                    <div class="flex items-center">
+                        <label for="tlpyayasan" class="w-72">Telepon Yayasan</label>
+                        <input id="tlpyayasan" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="tlpyayasan">
+                    </div>
+                    <div class="flex items-center">
+                        <label for="emailyayasan" class="w-72">Email Yayasan</label>
+                        <input id="emailyayasan" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="emailyayasan">
+                    </div>
+                    <div class="flex items-center">
+                        <label for="jenbadhuk" class="w-72">Jenis Badan Hukum</label>
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3">
+                                <input type="radio" name="jenbadhuk" id="yayasan" value="yayasan"
+                                    class="w-5 h-5 border-abu-abu">
+                                <label for="yayasan">Yayasan</label>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <input type="radio" name="jenbadhuk" id="pt" value="pt"
+                                    class="w-5 h-5 border-abu-abu">
+                                <label for="pt">PT</label>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <input type="radio" name="jenbadhuk" id="cv" value="cv"
+                                    class="w-5 h-5 border-abu-abu">
+                                <label for="cv">CV</label>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <input type="radio" name="jenbadhuk" id="lainnya" class="w-5 h-5 border-abu-abu"
+                                    value="lainnya">
+                                <label for="lainnya">lainnya</label>
+                            </div>
                         </div>
-                    </div>
-                    <input type="text" id="peruntukan" name="peruntukan" hidden>
-                    <div class="flex items-center">
-                        <label for="nik" class="w-72">NIK Pemohon</label>
-                        <input id="nik" type="number" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="nik">
+
                     </div>
                     <div class="flex items-center">
-                        <label for="nama" class="w-72">Nama Pemohon</label>
-                        <input id="nama" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="nama">
+                        <label for="rwsekolah" class="w-72">RW Sekolah</label>
+                        <input id="rwsekolah" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="rwsekolah">
                     </div>
                     <div class="flex items-center">
-                        <label for="jenkel" class="w-72">Jenis Kelamin</label>
-                        <input id="jenkel" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="jenkel">
+                        <label for="thnberdiri" class="w-72">Tahun Berdiri</label>
+                        <input id="thnberdiri" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="thnberdiri">
                     </div>
                     <div class="flex items-center">
-                        <label for="kabupaten" class="w-72">Kabupaten</label>
-                        <input id="kabupaten" type="text" class="flex-grow text-edu-black border-abu-abu rounded" name="kabupaten">
+                        <label for="tglsk" class="w-72">Tanggal SK Menkumham</label>
+                        <input id="tglsk" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="tglsk">
+                    </div>
+
+                    <div class="flex items-center">
+                        <label for="nosk" class="w-72">No SK Menkumham RI</label>
+                        <input id="nosk" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="nosk">
                     </div>
                     <div class="flex items-center">
-                        <label for="jenkel" class="w-72">Jenis Kelamin</label>
-                        <input id="jenkel" type="text" class="flex-grow text-edu-black border-abu-abu rounded" name="jenkel">
+                        <label for="nopengnotaris" class="w-72">No Pengesahan Notaris</label>
+                        <input id="nopengnotaris" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="nopengnotaris">
                     </div>
                     <div class="flex items-center">
-                        <label for="kecamatan" class="w-72">Kecamatan</label>
-                        <input id="kecamatan" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="kecamatan">
+                        <label for="tglaktanotaris" class="w-72">Tanggal Akta Notaris</label>
+                        <input id="tglaktanotaris" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="tglaktanotaris">
                     </div>
                     <div class="flex items-center">
-                        <label for="kelurahan" class="w-72">Kelurahan</label>
-                        <input id="kelurahan" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="kelurahan">
+                        <label for="namanotaris" class="w-72">Nama Notaris</label>
+                        <input id="namanotaris" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="namanotaris">
                     </div>
                     <div class="flex items-center">
-                        <label for="alamat" class="w-72">Alamat Pemohon</label>
-                        <input id="alamat" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="alamat">
+                        <label for="alamatnotaris" class="w-72">Alamat Notaris</label>
+                        <input id="alamatnotaris" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="alamatnotaris">
                     </div>
                     <div class="flex items-center">
-                        <label for="alamatdomisili" class="w-72">Alamat Domisili Pemohon</label>
-                        <input id="alamatdomisili" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="alamatdomisili">
+                        <label for="namapemilik" class="w-72">Nama Pemilik / Ketua Yayasan</label>
+                        <input id="namapemilik" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="namapemilik">
                     </div>
                     <div class="flex items-center">
-                        <label for="tempatlahir" class="w-72">Tempat Lahir Pemohon</label>
-                        <input id="tempatlahir" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="tempatlahir">
+                        <label for="nikpemilik" class="w-72">NIK Pemilik / Ketua Yayasan</label>
+                        <input id="nikpemilik" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="nikpemilik">
                     </div>
                     <div class="flex items-center">
-                        <label for="tanggallahir" class="w-72">Tanggal Lahir Pemohon</label>
-                        <input id="tanggallahir" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="tanggallahir">
+                        <label for="agamapemilik" class="w-72">Agama Pemilik</label>
+                        <input id="agamapemilik" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="agamapemilik">
                     </div>
                     <div class="flex items-center">
-                        <label for="nohp" class="w-72">No. Handphone Pemohon</label>
-                        <input id="nohp" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="nohp">
+                        <label for="askot" class="w-72">Asal Kota</label>
+                        <input id="askot" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="askot">
                     </div>
                     <div class="flex items-center">
-                        <label for="pekerjaan" class="w-72">Pekerjaan Pemohon</label>
-                        <input id="pekerjaan" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="pekerjaan">
+                        <label for="tlppemilik" class="w-72">Telepon Pemilik</label>
+                        <input id="tlppemilik" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="tlppemilik">
+                    </div>
+                    <div class="flex items-center">
+                        <label for="kewargapemilik" class="w-72">Kewarganegaraan Pemilik</label>
+                        <input id="kewargapemilik" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="kewargapemilik">
                     </div>
 
                     <div class="flex gap-x-12 justify-end items-center">
-                        <button id="simpan" data-modal-target="default-modal" data-modal-toggle="default-modal"
+                        <button id="simpan" data-modal-target="error-modal" data-modal-toggle="error-modal"
                             class="px-12 py-[5px] rounded-3xl font-semibold text-xl  hover:bg-primary-light bg-primary text-white">
                             Simpan Data
                         </button>
@@ -247,7 +280,7 @@
             event.preventDefault()
 
             const peruntukanValue = document.getElementById('peruntukan').value
-            if(peruntukanValue === '') {
+            if (peruntukanValue === '') {
                 alert('Pilih Sub Perizinan')
                 return
             }

@@ -7,78 +7,25 @@
             {{-- SIDEBAR --}}
             @include('pemohon.izin-pendirian.sidebar')
 
-            <div class="flex-grow h-full pl-[34px] pr-[88px] py-7 box-border mb-10" id="content">
+            <div class="flex-grow h-full pl-[34px] pr-[88px] py-7 box-border mb-10 w-full" id="content">
                 {{-- CONTENT --}}
-                <div class="py-3 pl-11 border border-primary rounded-md mb-9">
-                    <h1 class="text-primary font-medium text-2xl">Mohon untuk memasukkan data sesuai dengan data terupdate
+                <div class="py-3 pl-11 bg-primary rounded-md mb-9">
+                    <h1 class="text-white font-medium text-2xl">Pastikan data yang di upload sesuai dengan persyaratan
                     </h1>
                 </div>
 
                 <form action="{{ url('/dashboard-pemohon/izin-pendirian/upload-berkas') }}" method="GET"
                     class="w-full space-y-6">
+                    @if (request('peruntukan') === 'tk')
+                        @include('pemohon.izin-pendirian.berkas-izin-pendirian.table-tk')
+                    @elseif (request('peruntukan') === 'sd')
+                        @include('pemohon.izin-pendirian.berkas-izin-pendirian.table-sd')
+                    @elseif (request('peruntukan') === 'smp')
+                        @include('pemohon.izin-pendirian.berkas-izin-pendirian.table-smp')
+                    @else
+                        @include('pemohon.izin-pendirian.berkas-izin-pendirian.table-sd')
+                    @endif
 
-                    <div class="flex items-center">
-                        <label for="namasekolah" class="w-72">Nama Sekolah</label>
-                        <input id="namasekolah" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="namasekolah">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="namakepsek" class="w-72">Nama Kepala Sekolah</label>
-                        <input id="namakepsek" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="namakepsek">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="modalusaha" class="w-72">Modal Usaha</label>
-                        <input id="modalusaha" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="modalusaha">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="alamat" class="w-72">Alamat</label>
-                        <input id="alamat" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="alamat">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="rt" class="w-72">RT</label>
-                        <input id="rt" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="rt">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="rw" class="w-72">RW</label>
-                        <input id="rw" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="rw">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="kecamatan" class="w-72">Kecamatan</label>
-                        <input id="kecamatan" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="kecamatan">
-                    </div>
-
-                    <div class="flex items-center">
-                        <label for="kelurahan" class="w-72">Kelurahan</label>
-                        <input id="kelurahan" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="kelurahan">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="jmltki" class="w-72">Jumlah Tenaga Kerja Berkewargaan Indonesia</label>
-                        <input id="jmltki" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="jmltki">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="jmltka" class="w-72">Jumlah Tenaga Asing</label>
-                        <input id="jmltka" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="jmltka">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="nosuratpemohon" class="w-72">No Surat Pemohon</label>
-                        <input id="nosuratpemohon" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="nosuratpemohon">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="tglsuratpemohon" class="w-72">Tanggal Surat Pemohon</label>
-                        <input id="tglsuratpemohon" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="tglsuratpemohon">
-                    </div>
-                   
 
                     <div class="flex gap-x-12 justify-end items-center">
                         <button id="simpan" data-modal-target="default-modal" data-modal-toggle="default-modal"

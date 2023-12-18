@@ -65,48 +65,52 @@ Route::get('/izin-operasional', function () {
     return view('landing-page.izin-operasional.operasional');
 });
 
-Route::get('/dashboard-pemohon/lacak-permohonan', function () {
-    return view('pemohon.lacak-permohonan');
+Route::prefix('/dashboard-pemohon')->group(function () {
+    Route::get('/lacak-permohonan', function () {
+        return view('pemohon.lacak-permohonan');
+    });
+
+    Route::get('/status-permohonan', function () {
+        return view('pemohon.status-permohonan');
+    });
+
+    Route::get('/profile', function () {
+        return view('pemohon.profile');
+    });
+
+    Route::get('/riwayat', function () {
+        return view('pemohon.riwayat-permohonan');
+    });
+
+    Route::get('/notifikasi', function () {
+        return view('pemohon.notifikasi');
+    });
+
+    Route::get('/chatting', function () {
+        return view('pemohon.chatting');
+    });
+
+    Route::get('/chatting/{id_user}', function ($id_user) {
+        return view('pemohon.chatting');
+    });
+
+    Route::get('/daftar-ulang/', function () {
+        return view('pemohon.daftar-ulang.daftar');
+    });
+
+    Route::get('/daftar-ulang/data', function () {
+        return view('pemohon.daftar-ulang.daftar');
+    });
+
+    Route::get('/daftar-ulang/detail', function () {
+        return view('pemohon.daftar-ulang.detail');
+    })->name('detail');
+
+    Route::get('/daftar-ulang/berkas', function () {
+        return view('pemohon.daftar-ulang.berkas');
+    })->name('berkas');
+
+    Route::get('/izin-pendaftaran', function () {
+        return view('pemohon.izin-pendirian.data-pemohon');
+    })->name('izin-pendaftaran');
 });
-
-Route::get('/dashboard-pemohon/status-permohonan', function () {
-    return view('pemohon.status-permohonan');
-});
-
-Route::get('/dashboard-pemohon/profile', function () {
-    return view('pemohon.profile');
-});
-
-Route::get('/dashboard-pemohon/riwayat', function () {
-    return view('pemohon.riwayat-permohonan');
-});
-
-Route::get('/dashboard-pemohon/notifikasi', function () {
-    return view('pemohon.notifikasi');
-});
-
-Route::get('/dashboard-pemohon/chatting', function () {
-    return view('pemohon.chatting');
-});
-
-Route::get('/dashboard-pemohon/chatting/{id_user}', function ($id_user) {
-    return view('pemohon.chatting');
-});
-
-Route::get('/dashboard-pemohon/daftar-ulang/', function () {
-    return view('pemohon.daftar-ulang.daftar');
-});
-
-Route::get('/dashboard-pemohon/daftar-ulang/data', function () {
-    return view('pemohon.daftar-ulang.daftar');
-});
-
-Route::get('/dashboard-pemohon/daftar-ulang/detail', function () {
-    return view('pemohon.daftar-ulang.detail');
-})->name('detail');
-
-Route::get('/dashboard-pemohon/daftar-ulang/berkas', function () {
-    return view('pemohon.daftar-ulang.berkas');
-})->name('berkas');
-
-

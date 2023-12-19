@@ -20,7 +20,7 @@
         </div>
         <div class="kotak-putih cursor-pointer group">
             <div class="kotak-coklat group-hover:bg-primary-light">
-                <a href="#">
+                <a href="{{ route('operator-lengkap-data') }}">
                     <img src="{{ asset('operator/img/icon kelengkapan data.png') }}" alt="pengajuan permohonan" /></a>
             </div>
             <div class="teks-judul"><a href="#">

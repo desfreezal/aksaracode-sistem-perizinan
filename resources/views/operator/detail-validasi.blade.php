@@ -1,22 +1,5 @@
 @extends('operator.layout')
 
-@php
-    $data = [
-        [
-            'Nama Pemohon' => 'Oksana Khoirunnida',
-            'No Daftar' => '123456',
-            'Tanggal Daftar' => '08/11/2023 - 16:59:10',
-            'Nama Perizinan' => 'Daftar Ulang Izin Operasional Satuan Pendidikan SD',
-        ],
-        [
-            'Nama Pemohon' => 'Jauza Audy Safitri',
-            'No Daftar' => '123457',
-            'Tanggal Daftar' => '21/11/2023 - 16:18:05',
-            'Nama Perizinan' => 'Izin Pendirian Satuan Pendidikan SD',
-        ],
-    ];
-@endphp
-
 @section('content')
     <div class="min-h-screen h-full">
 
@@ -36,7 +19,7 @@
                     </a>
 
                     {{-- CARD --}}
-                    <div class="w-[413px] max-h-[181px]  box-content rounded-lg shadow-xl ml-[27px] p-6">
+                    <div class="w-[413px] max-h-[181px]  box-content rounded-lg shadow-xl ml-[27px] p-6 py-10">
                         <h1 class="mb-4 font-semibold text-xl">Identitas Pemohon</h1>
 
                         <table>

@@ -42,7 +42,7 @@
                         <table>
                             <tbody>
                                 <tr>
-                                    <td class="pb-2 font-medium">Nama kont</td>
+                                    <td class="pb-2 font-medium">Nama</td>
                                     <td class="pb-2 px-4">:</td>
                                     <td class="pb-2 font-normal">Oksana Khoirunnida</td>
                                 </tr>
@@ -82,7 +82,9 @@
                 {{-- END HEADER --}}
 
                 {{-- START KONTEN --}}
-                
+                <div class="mt-7 ml-16">
+                    @include('operator.berkas-daftar-ulang.table-sd')
+                </div>
                 {{-- END KONTEN --}}
             </div>
         </div>

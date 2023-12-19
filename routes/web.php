@@ -141,8 +141,12 @@ Route::prefix('/dashboard-pemohon')->group(function () {
 });
 
 // OPERATOR
-Route::prefix('/dashboard-operator')->group(function() {
-    Route::get('/kelengkapan-data', function() {
+Route::prefix('/dashboard-operator')->group(function () {
+    Route::get('/kelengkapan-data', function () {
         return view('operator.kelengkapan-data');
     })->name('operator-lengkap-data');
+
+    Route::get('/validasi-data', function () {
+        return view('operator.validasi-data');
+    })->name('operator-validasi-data');
 });

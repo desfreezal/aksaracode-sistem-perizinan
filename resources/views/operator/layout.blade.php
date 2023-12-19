@@ -5,6 +5,8 @@
 <head>
     <title>Index EduLicense</title>
     <link rel="stylesheet" href="{{ asset('operator/css/styles.css') }}" />
+    <script defer src="{{ asset('home/js/alpine.min.js') }}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('styles')
 </head>

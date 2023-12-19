@@ -11,10 +11,10 @@
     </a>
     <a href="#"
         class="cursor-pointer flex items-center pl-11 mx-5 rounded-xl hover:bg-primary hover:text-white hover:shadow gap-x-3 py-2 group
-        {{ Route::currentRouteName() === 'operator-lengkap-data' ? 'bg-primary shadow text-white hover:bg-primary-light' : '' }} 
+        {{ in_array(Route::currentRouteName(), ['operator-lengkap-data', 'operator-validasi-data']) ? 'bg-primary shadow text-white hover:bg-primary-light' : '' }}
         ">
         <img src="{{ asset('operator/img/sidebar/permohonan.png') }}"
-            class="object-contain group-hover:filter-gray-to-white  {{ Route::currentRouteName() === 'operator-lengkap-data' ? 'filter-gray-to-white' : '' }}"
+            class="object-contain group-hover:filter-gray-to-white  {{ in_array(Route::currentRouteName(), ['operator-lengkap-data', 'operator-validasi-data']) ? 'filter-gray-to-white' : '' }}"
             alt="1">
         <h1 class="text-base font-normal">
             Permohonan

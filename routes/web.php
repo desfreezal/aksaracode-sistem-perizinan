@@ -88,15 +88,15 @@ Route::prefix('/dashboard-pemohon')->group(function () {
 
     Route::get('/chatting', function () {
         return view('pemohon.chatting');
-    });
+    })->name('pemohon-chatting');
 
     Route::get('/chatting/{id_user}', function ($id_user) {
         return view('pemohon.chatting');
     });
 
-    Route::get('/daftar-ulang/', function () {
+    Route::get('/daftar-ulang', function () {
         return view('pemohon.daftar-ulang.daftar');
-    });
+    })->name('pemohon-daftar-ulang');
 
     Route::get('/daftar-ulang/data', function () {
         return view('pemohon.daftar-ulang.daftar');

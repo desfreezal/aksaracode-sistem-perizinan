@@ -23,5 +23,7 @@
 </div>
 
 <div class="fixed w-12 h-12 bottom-28 rounded-full left-8 bg-primary">
-    <img src="{{ asset('pemohon/img/chat.png') }}" class="w-full p-3" alt="">
+    <a href="{{ route('pemohon-chatting') }}">
+        <img src="{{ asset('pemohon/img/chat.png') }}" class="w-full p-3" alt="">
+    </a>
 </div>

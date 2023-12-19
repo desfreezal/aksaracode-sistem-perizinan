@@ -32,7 +32,9 @@
         </form>
     </div>
 
-    <div class="absolute bottom-5 cursor-pointer right-10 p-2 rounded-full bg-primary">
-        <img src="{{ asset('pemohon/img/chat.png') }}" alt="chat">
+    <div class="fixed w-12 h-12 bottom-28 rounded-full right-10 bg-primary">
+        <a href="{{ route('pemohon-chatting') }}">
+            <img src="{{ asset('pemohon/img/chat.png') }}" class="w-full p-3" alt="">
+        </a>
     </div>
 @endsection

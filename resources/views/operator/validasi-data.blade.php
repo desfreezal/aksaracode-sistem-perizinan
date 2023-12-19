@@ -3,12 +3,14 @@
 @php
     $data = [
         [
+            'id' => 1,
             'Nama Pemohon' => 'Oksana Khoirunnida',
             'No Daftar' => '123456',
             'Tanggal Daftar' => '08/11/2023 - 16:59:10',
             'Nama Perizinan' => 'Daftar Ulang Izin Operasional Satuan Pendidikan SD',
         ],
         [
+            'id' => 2,
             'Nama Pemohon' => 'Jauza Audy Safitri',
             'No Daftar' => '123457',
             'Tanggal Daftar' => '21/11/2023 - 16:18:05',
@@ -107,7 +109,7 @@
                             @foreach ($data as $key => $value)
                                 <tr class="bg-white hover:bg-gray-50">
                                     <td class="px-6 py-4">
-                                        {{ $key+1 }}
+                                        {{ $key + 1 }}
                                     </td>
                                     <td class="px-6 py-4">
                                         {{ $value['Nama Pemohon'] }}
@@ -119,7 +121,7 @@
                                         {{ $value['Tanggal Daftar'] }}
                                     </td>
                                     <td class="px-6 py-4 text-center">
-                                        <a href="#"
+                                        <a href="{{ route('operator-detail-validasi', ['id' => $value['id']]) }}"
                                             class="py-1 px-6 bg-primary hover:bg-primary-light rounded-3xl text-white">Detail</a>
                                     </td>
                                 </tr>

@@ -149,4 +149,8 @@ Route::prefix('/dashboard-operator')->group(function () {
     Route::get('/validasi-data', function () {
         return view('operator.validasi-data');
     })->name('operator-validasi-data');
+
+    Route::get('/detail-validasi/{id}', function ($id) {
+        return view('operator.detail-validasi');
+    })->name('operator-detail-validasi');
 });

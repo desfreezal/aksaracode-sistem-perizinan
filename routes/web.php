@@ -65,6 +65,7 @@ Route::get('/izin-operasional', function () {
     return view('landing-page.izin-operasional.operasional');
 });
 
+// PEMOHON
 Route::prefix('/dashboard-pemohon')->group(function () {
     Route::get('/lacak-permohonan', function () {
         return view('pemohon.lacak-permohonan');
@@ -137,6 +138,11 @@ Route::prefix('/dashboard-pemohon')->group(function () {
     Route::get('/izin-operasional/berkas', function () {
         return view('pemohon.izin-operasional.upload-berkas');
     })->name('pemohon-berkas-operasional');
+});
 
-
+// OPERATOR
+Route::prefix('/dashboard-operator')->group(function() {
+    Route::get('/kelengkapan-data', function() {
+        return view('operator.kelengkapan-data');
+    })->name('operator-lengkap-data');
 });

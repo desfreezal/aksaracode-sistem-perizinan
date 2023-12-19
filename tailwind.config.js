@@ -14,7 +14,9 @@ export default {
                 "edu-bg": "#F6F6F6",
                 "edu-black": "#1A1A1A",
                 'abu-abu': '#D9D9D9',
-                'abu-abu-second' : '#F0F0F0'
+                'abu-abu-second' : '#F0F0F0',
+                'putih-dasar': '#FFFFFF',
+                'for-icon': '#868E96'
             },
         },
     },

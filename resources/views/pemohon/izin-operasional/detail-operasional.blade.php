@@ -5,7 +5,7 @@
 
         <div class="flex">
             {{-- SIDEBAR --}}
-            @include('pemohon.daftar-ulang.sidebar')
+            @include('pemohon.izin-operasional.sidebar')
 
             <div class="flex-grow h-full pl-[34px] pr-[88px] py-7 box-border mb-10" id="content">
                 {{-- CONTENT --}}
@@ -14,14 +14,13 @@
                     </h1>
                 </div>
 
-                <form action="{{ url('/dashboard-pemohon/daftar-ulang/berkas') }}" method="GET" class="w-full space-y-6">
+                <form action="{{ route('pemohon-berkas-operasional') }}" method="GET" class="w-full space-y-6">
                     <div class="flex items-center">
-                        <label for="jenid" class="w-72">Satuan Pendidikan</label>
+                        <label for="jenid" class="w-72">Sub Perizinan</label>
                         <div x-data="select" class="relative flex-grow" @click.outside="open = false">
                             <button type="button" @click="toggle" :class="(open) && 'ring-blue-600'"
                                 class="flex w-full items-center justify-between rounded bg-white p-2 ring-1 ring-gray-300">
-                                <span
-                                    x-text="detail !== '' ? detail : 'Daftar Ulang Izin Operasional Satuan Pendidikan {{ Str::upper(request('peruntukan')) }}'"></span>
+                                <span x-text="detail || 'Pilih Peruntukan'"></span>
                                 <i class="fas fa-chevron-down text-xl"></i>
                             </button>
 
@@ -38,16 +37,16 @@
                             </ul>
                         </div>
                     </div>
-                    <input type="text" id="peruntukan" name="peruntukan" hidden value="{{ request('peruntukan') }}">
+                    <input type="text" id="peruntukan" name="peruntukan" hidden>
                     <div class="flex items-center">
                         <label for="alamatsekolah" class="w-72">Alamat Sekolah</label>
                         <input id="alamatsekolah" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
                             name="alamatsekolah">
                     </div>
                     <div class="flex items-center">
-                        <label for="kecamatansekolah" class="w-72">Kecamatan Sekolah</label>
-                        <input id="kecamatansekolah" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="kecamatansekolah">
+                        <label for="kecsekolah" class="w-72">Kecamatan Sekolah</label>
+                        <input id="kecsekolah" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="kecsekolah">
                     </div>
                     <div class="flex items-center">
                         <label for="kelurahansekolah" class="w-72">Kelurahan Sekolah</label>
@@ -64,81 +63,90 @@
                         <input id="rwsekolah" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
                             name="rwsekolah">
                     </div>
+                    
                     <div class="flex items-center">
-                        <label for="namayayasan" class="w-72">Nama Yayasan</label>
-                        <input id="namayayasan" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="namayayasan">
+                        <label for="namayysn" class="w-72">Nama Yayasan</label>
+                        <input id="namayysn" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="namayysn">
                     </div>
                     <div class="flex items-center">
-                        <label for="alamatyayasan" class="w-72">Alamat Yayasan</label>
-                        <input id="alamatyayasan" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="alamatyayasan">
+                        <label for="alamatyysn" class="w-72">Alamat Yayasan</label>
+                        <input id="alamatyysn" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="alamatyysn">
                     </div>
                     <div class="flex items-center">
-                        <label for="ketuayayasan" class="w-72">Ketua Yayasan</label>
-                        <input id="ketuayayasan" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="ketuayayasan">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="izinoperasional" class="w-72">Izin Operasional dikeluarkan Oleh</label>
-                        <input id="izinoperasional" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="izinoperasional">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="noizinoperasional" class="w-72">No Izin Operasional</label>
-                        <input id="noizinoperasional" type="text"
-                            class="flex-grow text-edu-black border-abu-abu rounded" name="noizinoperasional">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="tanggaloperasional" class="w-72">Tanggal Operasional</label>
-                        <input id="tanggaloperasional" type="text"
-                            class="flex-grow text-edu-black border-abu-abu rounded" name="tanggaloperasional">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="jenisoperasional" class="w-72">Jenis Operasional</label>
-                        <input id="jenisoperasional" type="text"
-                            class="flex-grow text-edu-black border-abu-abu rounded" name="jenisoperasional">
+                        <label for="ketuayysn" class="w-72">Ketua Yayasan</label>
+                        <input id="ketuayysn" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="ketuayysn">
                     </div>
                     <div class="flex items-center">
                         <label for="nosuratpemohon" class="w-72">No Surat Pemohon</label>
                         <input id="nosuratpemohon" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
                             name="nosuratpemohon">
                     </div>
-
                     <div class="flex items-center">
                         <label for="tglsuratpemohon" class="w-72">Tanggal Surat Pemohon</label>
-                        <input id="tglsuratpemohon" type="text"
-                            class="flex-grow text-edu-black border-abu-abu rounded" name="tglsuratpemohon">
+                        <input id="tglsuratpemohon" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="tglsuratpemohon">
                     </div>
-
+                    <div class="flex items-center">
+                        <label for="skpendirianby" class="w-72">SK Pendirian Dikeluarkan Oleh</label>
+                        <input id="skpendirianby" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="skpendirianby">
+                    </div>
+                    <div class="flex items-center">
+                        <label for="noskpendirian" class="w-72">No SK Pendirian</label>
+                        <input id="noskpendirian" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="noskpendirian">
+                    </div>
+                    <div class="flex items-center">
+                        <label for="tglizinpendirian" class="w-72">Tanggal Penetapan Izin Pendirian</label>
+                        <input id="tglizinpendirian" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="tglizinpendirian">
+                    </div>
+                    <div class="flex items-center">
+                        <label for="tglmulaiskpendirian" class="w-72">Tanggal Mulai Berlaku SK <br> Pendirian</label>
+                        <input id="tglmulaiskpendirian" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="tglmulaiskpendirian">
+                    </div>
+                    <div class="flex items-center">
+                        <label for="no_operasional_lama" class="w-72">No Izin Operasional Lama</label>
+                        <input id="no_operasional_lama" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="no_operasional_lama">
+                    </div>
+                    <div class="flex items-center">
+                        <label for="tglmulaioperasional_lama" class="w-72">Tanggal Mulai Izin Operasional <br> Lama</label>
+                        <input id="tglmulaioperasional_lama" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="tglmulaioperasional_lama">
+                    </div>
+                    <div class="flex items-center">
+                        <label for="tglakhiroperasional_lama" class="w-72">Tanggal Berakhir Izin Operasional <br> Lama</label>
+                        <input id="tglakhiroperasional_lama" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="tglakhiroperasional_lama">
+                    </div>
                     <div class="flex items-center">
                         <label for="tglakreditasi" class="w-72">Tanggal Akreditasi</label>
                         <input id="tglakreditasi" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
                             name="tglakreditasi">
                     </div>
-
                     <div class="flex items-center">
                         <label for="noakreditasi" class="w-72">No Akreditasi</label>
                         <input id="noakreditasi" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
                             name="noakreditasi">
                     </div>
-
                     <div class="flex items-center">
                         <label for="akreditasi" class="w-72">Akreditasi</label>
                         <input id="akreditasi" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
                             name="akreditasi">
                     </div>
-
                     <div class="flex items-center">
-                        <label for="jensekolah" class="w-72">Jenis Sekolah</label>
-                        <input id="jensekolah" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="jensekolah">
+                        <label for="jns_sekolah" class="w-72">Jenis Sekolah</label>
+                        <input id="jns_sekolah" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="jns_sekolah">
                     </div>
 
-
-
                     <div class="flex gap-x-12 justify-end items-center">
-                        <button id="simpan" data-modal-target="error-modal" data-modal-toggle="error-modal"
+                        <button id="simpan" data-modal-target="default-modal" data-modal-toggle="default-modal"
                             class="px-12 py-[5px] rounded-3xl font-semibold text-xl  hover:bg-primary-light bg-primary text-white">
                             Simpan Data
                         </button>
@@ -281,13 +289,17 @@
         simpanBtn.addEventListener('click', (event) => {
             event.preventDefault()
 
-            const inputs = document.querySelectorAll('input')
+            // PERUNTUKAN HARUS ISI
+            const peruntukanValue = document.getElementById('peruntukan').value
+            if(peruntukanValue === '') {
+                alert('Pilih Sub Perizinan')
+                return
+            }
 
             // closemodal onclick or modal hidden send form
             const closeModal = document.getElementById('closeModal')
             // send form
             const form = document.querySelector('form')
-            // check jika form ada yang kosong
             closeModal.addEventListener('click', () => {
                 form.submit()
             })

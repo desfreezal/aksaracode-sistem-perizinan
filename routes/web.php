@@ -104,25 +104,39 @@ Route::prefix('/dashboard-pemohon')->group(function () {
 
     Route::get('/daftar-ulang/detail', function () {
         return view('pemohon.daftar-ulang.detail');
-    })->name('detail');
+    })->name('pemohon-detail');
 
     Route::get('/daftar-ulang/berkas', function () {
         return view('pemohon.daftar-ulang.berkas');
-    })->name('berkas');
+    })->name('pemohon-berkas');
 
     Route::get('/izin-pendirian', function () {
         return view('pemohon.izin-pendirian.data-pemohon');
-    })->name('izin-pendirian');
+    })->name('pemohon-izin-pendirian');
 
     Route::get('/izin-pendirian/detail-yayasan', function () {
         return view('pemohon.izin-pendirian.detail-yayasan');
-    })->name('detail-yayasan');
+    })->name('pemohon-detail-yayasan');
 
     Route::get('/izin-pendirian/detail-pendirian', function () {
         return view('pemohon.izin-pendirian.detail-pendirian');
-    })->name('detail-pendirian');
+    })->name('pemohon-detail-pendirian');
     // upload berkas
     Route::get('/izin-pendirian/upload-berkas', function () {
         return view('pemohon.izin-pendirian.upload-berkas');
-    })->name('upload-berkas');
+    })->name('pemohon-upload-berkas');
+
+    Route::get('/izin-operasional', function () {
+        return view('pemohon.izin-operasional.data-pemohon');
+    })->name('pemohon-izin-operasional');
+
+    Route::get('/izin-operasional/detail', function () {
+        return view('pemohon.izin-operasional.detail-operasional');
+    })->name('pemohon-detail-operasional');
+
+    Route::get('/izin-operasional/berkas', function () {
+        return view('pemohon.izin-operasional.upload-berkas');
+    })->name('pemohon-berkas-operasional');
+
+
 });

@@ -27,7 +27,7 @@
                     <img src="{{ asset('home/img/School.png') }}" alt="LogoIzinPendirian" />
                 </div>
                 <div class="tombol-putih">
-                    <a href="#">Izin Pendirian Satuan Pendidikan</a>
+                    <a href="/dashboard-pemohon/izin-pendirian">Izin Pendirian Satuan Pendidikan</a>
                 </div>
             </div>
         </div>
@@ -37,7 +37,7 @@
                     <img src="{{ asset('home/img/Compliant.png') }}" alt="LogoIzinOperasional" />
                 </div>
                 <div class="tombol-putih">
-                    <a href="#">Izin Operasional Satuan Pendidikan</a>
+                    <a href="/dashboard-pemohon/izin-operasional">Izin Operasional Satuan Pendidikan</a>
                 </div>
             </div>
         </div>

@@ -14,16 +14,16 @@
                     </h1>
                 </div>
 
-                <form action="{{ url('/dashboard-pemohon/izin-pendirian/upload-berkas') }}" method="GET"
+                <form action="{{ route('pemohon-berkas-operasional') }}" method="GET"
                     class="w-full space-y-6">
                     @if (request('peruntukan') === 'tk')
-                        @include('pemohon.izin-pendirian.berkas-izin-pendirian.table-tk')
+                        @include('pemohon.izin-operasional.berkas-izin-operasional.table-tk')
                     @elseif (request('peruntukan') === 'sd')
-                        @include('pemohon.izin-pendirian.berkas-izin-pendirian.table-sd')
+                        @include('pemohon.izin-operasional.berkas-izin-operasional.table-sd')
                     @elseif (request('peruntukan') === 'smp')
-                        @include('pemohon.izin-pendirian.berkas-izin-pendirian.table-smp')
+                        @include('pemohon.izin-operasional.berkas-izin-operasional.table-smp')
                     @else
-                        @include('pemohon.izin-pendirian.berkas-izin-pendirian.table-sd')
+                        @include('pemohon.izin-operasional.berkas-izin-operasional.table-sd')
                     @endif
 
 

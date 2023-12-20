@@ -32,7 +32,7 @@
                     <div class="space-y-2">
                         <h1 class="font-semibold text-xl">Panduan Perizinan</h1>
                         <div class="flex items-center gap-x-8">
-                            <a href="">
+                            <a href="{{ route('operator-panduan-perizinan') }}">
                                 <div class="w-[265px] py-5 pl-5 pr-12 shadow-xl flex items-center gap-x-8 rounded-lg">
                                     <img src="{{ asset('operator/img/icon panduan perizinan.png') }}" alt="validasi"
                                         class="bg-primary p-3 aspect-square object-contain rounded-xl w-12">
@@ -44,7 +44,7 @@
                     <div class="space-y-2">
                         <h1 class="font-semibold text-xl">Monitoring</h1>
                         <div class="flex items-center gap-x-8">
-                            <a href="">
+                            <a href="{{ route('operator-monitoring') }}">
                                 <div class="w-[265px] py-5 pl-5 pr-12 shadow-xl flex items-center gap-x-8 rounded-lg">
                                     <img src="{{ asset('operator/img/icon dashboard statistik.png') }}" alt="validasi"
                                         class="bg-primary p-3 aspect-square object-contain rounded-xl w-12">

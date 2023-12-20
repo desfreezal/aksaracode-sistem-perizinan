@@ -22,10 +22,10 @@
     </a>
     <a href="{{ route('operator-panduan-perizinan') }}"
         class="cursor-pointer flex items-center pl-11 mx-5 rounded-xl hover:bg-primary hover:text-white hover:shadow gap-x-3 py-2
-        {{ in_array(Route::currentRouteName(), ['operator-panduan-perizinan', 'operator-panduan-daftar-ulang']) ? 'bg-primary shadow text-white hover:bg-primary-light' : '' }}
+        {{ in_array(Route::currentRouteName(), ['operator-panduan-perizinan', 'operator-panduan-daftar-ulang', 'operator-panduan-izin', 'operator-panduan-operasional']) ? 'bg-primary shadow text-white hover:bg-primary-light' : '' }}
         group">
         <img src="{{ asset('operator/img/sidebar/buku panduan.png') }}"
-            class="object-contain group-hover:filter-gray-to-white  {{ in_array(Route::currentRouteName(), ['operator-panduan-perizinan', 'operator-panduan-daftar-ulang']) ? 'filter-gray-to-white' : '' }}"
+            class="object-contain group-hover:filter-gray-to-white  {{ in_array(Route::currentRouteName(), ['operator-panduan-perizinan', 'operator-panduan-daftar-ulang', 'operator-panduan-izin', 'operator-panduan-operasional']) ? 'filter-gray-to-white' : '' }}"
             alt="1">
         <h1 class="text-base font-normal">
             Panduan Perizinan

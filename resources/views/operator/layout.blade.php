@@ -29,7 +29,7 @@
             </li>
             <li>
                 <div class="parent">
-                    <a href="#">
+                    <a href="{{ route('operator-notifikasi') }}">
                         <img class="images" src="{{ asset('operator/img/Notif Logo.png') }}" alt="Notif Logo"
                             style="width: 25px"></a>
                 </div>

@@ -20,14 +20,14 @@
                                     <p class="font-medium text-base">Daftar Ulang Izin Operasional Satuan Pendidikan</p>
                                 </div>
                             </a>
-                            <a href="{{ route('operator-lacak-permohonan') }}">
+                            <a href="{{ route('operator-panduan-izin') }}">
                                 <div class="w-[265px] py-5 pl-5 shadow-xl flex items-center gap-x-8 rounded-lg">
                                     <img src="{{ asset('home/img/School.png') }}" alt="validasi"
                                         class="bg-primary p-3 aspect-square object-contain rounded-xl w-12">
                                     <p class="font-medium text-base">Izin Pendirian Satuan Pendidikan</p>
                                 </div>
                             </a>
-                            <a href="{{ route('operator-lacak-permohonan') }}">
+                            <a href="{{ route('operator-panduan-operasional') }}">
                                 <div class="w-[265px] py-5 pl-5 shadow-xl flex items-center gap-x-8 rounded-lg">
                                     <img src="{{ asset('home/img/Compliant.png') }}" alt="validasi"
                                         class="bg-primary p-3 aspect-square object-contain rounded-xl w-12">

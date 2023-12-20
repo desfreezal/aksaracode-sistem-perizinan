@@ -28,7 +28,7 @@
         </div>
         <div class="kotak-putih cursor-pointer group">
             <div class="kotak-coklat group-hover:bg-primary-light">
-                <a href="#">
+                <a href="{{ route('operator-panduan-perizinan') }}">
                     <img src="{{ asset('operator/img/icon panduan perizinan.png') }}" alt="pengajuan permohonan" /></a>
             </div>
             <div class="teks-judul"><a href="#">

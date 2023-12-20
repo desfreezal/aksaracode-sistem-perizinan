@@ -195,4 +195,8 @@ Route::prefix('/dashboard-operator')->group(function () {
     Route::get('/panduan-perizinan/izin-pendirian', function () {
         return view('operator.panduan-perizinan.izin-pendirian.izin');
     })->name('operator-panduan-izin');
+
+    Route::get('/profile', function () {
+        return view('operator.profile');
+    })->name('operator-profile');
 });

@@ -53,12 +53,12 @@
             Notifikasi
         </h1>
     </a>
-    <a href="#"
+    <a href="{{ route('operator-chatting') }}"
         class="cursor-pointer flex items-center pl-11 mx-5 rounded-xl hover:bg-primary hover:text-white hover:shadow gap-x-3 py-2
-        {{ Route::currentRouteName() === '' ? 'bg-primary shadow text-white hover:bg-primary-light' : '' }} 
+        {{ in_array(Route::currentRouteName(), ['operator-chatting', 'operator-detail-chatting']) ? 'bg-primary shadow text-white hover:bg-primary-light' : '' }}
         group">
         <img src="{{ asset('operator/img/sidebar/chatting 1.png') }}"
-            class="object-contain group-hover:filter-gray-to-white  {{ Route::currentRouteName() === '' ? 'filter-gray-to-white' : '' }}"
+            class="object-contain group-hover:filter-gray-to-white  {{ Route::currentRouteName() === 'operator-chatting' ? 'filter-gray-to-white' : '' }}"
             alt="1">
         <h1 class="text-base font-normal">
             Chatting

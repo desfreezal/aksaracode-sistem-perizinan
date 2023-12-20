@@ -36,7 +36,7 @@
         </div>
         <div class="kotak-putih cursor-pointer group">
             <div class="kotak-coklat group-hover:bg-primary-light">
-                <a href="#">
+                <a href="{{ route('operator-monitoring') }}">
                     <img src="{{ asset('operator/img/icon dashboard statistik.png') }}" alt="pengajuan permohonan" /></a>
             </div>
             <div class="teks-judul"><a href="#">

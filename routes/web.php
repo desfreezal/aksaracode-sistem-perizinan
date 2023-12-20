@@ -169,4 +169,12 @@ Route::prefix('/dashboard-operator')->group(function () {
     Route::get('/notifikasi', function () {
         return view('operator.notifikasi');
     })->name('operator-notifikasi');
+
+    Route::get('/chatting', function () {
+        return view('operator.chatting');
+    })->name('operator-chatting');
+
+    Route::get('/chatting/{id_user}', function ($id_user) {
+        return view('operator.chatting');
+    })->name('operator-detail-chatting');
 });

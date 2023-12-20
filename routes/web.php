@@ -200,3 +200,36 @@ Route::prefix('/dashboard-operator')->group(function () {
         return view('operator.profile');
     })->name('operator-profile');
 });
+
+// AUDITOR
+Route::prefix('/dashboard-auditor')->group(function () {
+    Route::get('', function () {
+        return view('auditor.dashboard');
+    });
+
+    Route::get('/monitoring', function () {
+        return view('auditor.monitoring');
+    })->name('auditor-monitoring');
+
+    Route::get('/notifikasi', function () {
+        return view('auditor.notifikasi');
+    })->name('auditor-notifikasi');
+
+    Route::get('/panduan-perizinan', function () {
+        return view('auditor.panduan-perizinan');
+    })->name('auditor-panduan-perizinan');
+
+    Route::get('/panduan-perizinan/daftar-ulang', function () {
+        return view('auditor.panduan-perizinan.daftar-ulang.daftar');
+    })->name('auditor-panduan-daftar-ulang');
+
+    // panduan izin operasional
+    Route::get('/panduan-perizinan/izin-operasional', function () {
+        return view('auditor.panduan-perizinan.izin-operasional.operasional');
+    })->name('auditor-panduan-operasional');
+
+    // izin pendirian
+    Route::get('/panduan-perizinan/izin-pendirian', function () {
+        return view('auditor.panduan-perizinan.izin-pendirian.izin');
+    })->name('auditor-panduan-izin');
+});

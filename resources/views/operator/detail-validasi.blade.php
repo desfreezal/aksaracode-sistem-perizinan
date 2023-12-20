@@ -58,7 +58,7 @@
 
                         <div class="flex gap-x-7">
                             <button class="py-1 px-[47px] rounded-xl bg-primary text-white hover:bg-primary-light font-bold">Diterima</button>
-                            <button class="py-1 px-[47px] rounded-xl border border-black font-bold">Ditolak</button>
+                            <button class="py-1 px-[47px] rounded-xl border border-black font-bold hover:bg-abu-abu-second">Ditolak</button>
                         </div>
                     </div>
                 </div>

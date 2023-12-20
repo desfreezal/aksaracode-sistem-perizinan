@@ -20,7 +20,7 @@
                                     <p class="font-medium text-base">Validasi Data</p>
                                 </div>
                             </a>
-                            <a href="">
+                            <a href="{{ route('operator-lacak-permohonan') }}">
                                 <div class="w-[265px] py-5 pl-5 shadow-xl flex items-center gap-x-8 rounded-lg">
                                     <img src="{{ asset('operator/img/icon status permohonan.png') }}" alt="validasi"
                                         class="bg-primary p-3 aspect-square object-contain rounded-xl w-12">

@@ -13,11 +13,19 @@
 
 <body>
     <!-- NAVBAR Dashboard -->
-    <nav >
+    <nav>
         <div class="flex items-center">
             <img src="{{ asset('home/img/EduLicense fix 3.png') }}" alt="Logo EduLicense" />
         </div>
         <ul class="py-6 pr-6">
+            <li>
+                <div class="parent">
+                    <a href="/dashboard-operator">
+                        Dashboard
+                    </a>
+                </div>
+
+            </li>
             <li>
                 <div class="parent">
                     <a href="#">

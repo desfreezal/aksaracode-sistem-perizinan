@@ -153,4 +153,12 @@ Route::prefix('/dashboard-operator')->group(function () {
     Route::get('/detail-validasi/{id}', function ($id) {
         return view('operator.detail-validasi');
     })->name('operator-detail-validasi');
+
+    Route::get('/lacak-permohonan', function () {
+        return view('operator.lacak-permohonan');
+    })->name('operator-lacak-permohonan');
+
+    Route::get('/status-permohonan', function () {
+        return view('operator.status-permohonan');
+    })->name('operator-status-permohonan');
 });

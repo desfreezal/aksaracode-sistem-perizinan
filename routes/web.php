@@ -195,21 +195,4 @@ Route::prefix('/dashboard-operator')->group(function () {
     Route::get('/panduan-perizinan/izin-pendirian', function () {
         return view('operator.panduan-perizinan.izin-pendirian.izin');
     })->name('operator-panduan-izin');
-
-    Route::get('/pengajuan-permohonan', function () {
-        return view('operator.pengajuan-permohonan.pengajuan');
-    })->name('operator-pengajuan-mohon');
-
-    Route::get('/pengajuan-permohonan/daftar-ulang', function () {
-        return view('operator.pengajuan-permohonan.daftar-ulang.daftar');
-    })->name('operator-pengajuan-daftar-ulang');
-
-    Route::get('/pengajuan-permohonan/daftar-ulang/detail', function () {
-        return view('operator.pengajuan-permohonan.daftar-ulang.detail');
-    })->name('operator-pengajuan-daftar-ulang-dtl');
-
-    // berkas
-    Route::get('/pengajuan-permohonan/daftar-ulang/berkas', function () {
-        return view('operator.pengajuan-permohonan.daftar-ulang.berkas');
-    })->name('operator-pengajuan-daftar-ulang-berkas');
 });

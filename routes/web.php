@@ -177,4 +177,22 @@ Route::prefix('/dashboard-operator')->group(function () {
     Route::get('/chatting/{id_user}', function ($id_user) {
         return view('operator.chatting');
     })->name('operator-detail-chatting');
+
+    Route::get('/panduan-perizinan', function () {
+        return view('operator.panduan-perizinan');
+    })->name('operator-panduan-perizinan');
+
+    Route::get('/panduan-perizinan/daftar-ulang', function () {
+        return view('operator.panduan-perizinan.daftar-ulang.daftar');
+    })->name('operator-panduan-daftar-ulang');
+
+    // panduan izin operasional
+    Route::get('/panduan-perizinan/izin-operasional', function () {
+        return view('operator.panduan-perizinan.izin-operasional.operasional');
+    })->name('operator-panduan-operasional');
+
+    // izin pendirian
+    Route::get('/panduan-perizinan/izin-pendirian', function () {
+        return view('operator.panduan-perizinan.izin-pendirian.izin');
+    })->name('operator-panduan-izin');
 });

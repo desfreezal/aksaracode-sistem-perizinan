@@ -1,4 +1,4 @@
-@extends('operator.layout')
+@extends('auditor.layout')
 
 @section('content')
     <div class="min-h-screen h-full">
@@ -11,7 +11,7 @@
 
                 {{-- HEADER --}}
                 <div class="rounded-lg flex items-center gap-x-8 px-5 py-3 shadow-xl mb-9">
-                    <img src="{{ asset('operator/img/icon dashboard statistik.png') }}" alt="valid"
+                    <img src="{{ asset('auditor/img/icon dashboard statistik.png') }}" alt="valid"
                         class="bg-primary p-3 aspect-square object-contain rounded-xl w-12">
                     <h1 class="font-medium text-xl">Dashboard Statistik</h1>
                 </div>

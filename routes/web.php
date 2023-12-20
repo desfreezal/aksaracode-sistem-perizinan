@@ -232,4 +232,8 @@ Route::prefix('/dashboard-auditor')->group(function () {
     Route::get('/panduan-perizinan/izin-pendirian', function () {
         return view('auditor.panduan-perizinan.izin-pendirian.izin');
     })->name('auditor-panduan-izin');
+
+    Route::get('/profile', function () {
+        return view('auditor.profile');
+    })->name('auditor-profile');
 });

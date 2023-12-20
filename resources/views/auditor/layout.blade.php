@@ -43,7 +43,7 @@
                         <button class="p-5 flex justify-end w-full" id="closeNotif">X</button>
                         <div class="overflow-y-auto mx-5">
 
-                            <div onclick="window.location.href = '{{ route('operator-notifikasi') }}'"
+                            <div onclick="window.location.href = '{{ route('auditor-notifikasi') }}'"
                                 class="cursor-pointer flex gap-x-4 items-center px-4 py-4 bg-primary hover:bg-primary-light rounded-xl mb-3 text-white">
                                 <div class="w-12 h-12 rounded-lg bg-white flex justify-center items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -69,7 +69,7 @@
                                 </div>
                             </div>
 
-                            <div onclick="window.location.href = '{{ route('operator-notifikasi') }}'"
+                            <div onclick="window.location.href = '{{ route('auditor-notifikasi') }}'"
                                 class="flex gap-x-4 items-center px-4 py-4 bg-primary rounded-xl mb-3 text-white hover:bg-primary-light cursor-pointer">
                                 <div class="w-12 h-12 rounded-lg bg-white flex justify-center items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -95,7 +95,7 @@
                                 </div>
                             </div>
 
-                            <div onclick="window.location.href = '{{ route('operator-notifikasi') }}'"
+                            <div onclick="window.location.href = '{{ route('auditor-notifikasi') }}'"
                                 class="flex gap-x-4 items-center px-4 py-4 bg-primary rounded-xl mb-3 text-white hover:bg-primary-light cursor-pointer">
                                 <div class="w-12 h-12 rounded-lg bg-white flex justify-center items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -135,7 +135,7 @@
                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200 block"
                         aria-labelledby="profileDropDownButton">
                         <li>
-                            <a href="{{ route('operator-profile') }}"
+                            <a href="{{ route('auditor-profile') }}"
                                 class="block text-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profil
                                 Pengguna</a>
                         </li>

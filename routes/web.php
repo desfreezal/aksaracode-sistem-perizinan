@@ -161,4 +161,8 @@ Route::prefix('/dashboard-operator')->group(function () {
     Route::get('/status-permohonan', function () {
         return view('operator.status-permohonan');
     })->name('operator-status-permohonan');
+
+    Route::get('/monitoring', function () {
+        return view('operator.monitoring');
+    })->name('operator-monitoring');
 });

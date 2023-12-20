@@ -31,12 +31,12 @@
             Panduan Perizinan
         </h1>
     </a>
-    <a href="#"
+    <a href="{{ route('operator-monitoring') }}"
         class="cursor-pointer flex items-center pl-11 mx-5 rounded-xl hover:bg-primary hover:text-white hover:shadow gap-x-3 py-2
-        {{ Route::currentRouteName() === '' ? 'bg-primary shadow text-white hover:bg-primary-light' : '' }} 
+        {{ Route::currentRouteName() === 'operator-monitoring' ? 'bg-primary shadow text-white hover:bg-primary-light' : '' }} 
         group">
         <img src="{{ asset('operator/img/sidebar/monitoring.png') }}"
-            class="object-contain group-hover:filter-gray-to-white  {{ Route::currentRouteName() === '' ? 'filter-gray-to-white' : '' }}"
+            class="object-contain group-hover:filter-gray-to-white  {{ Route::currentRouteName() === 'operator-monitoring' ? 'filter-gray-to-white' : '' }}"
             alt="1">
         <h1 class="text-base font-normal">
             Monitoring

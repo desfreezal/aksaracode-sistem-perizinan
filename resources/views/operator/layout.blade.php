@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset('operator/css/styles.css') }}" />
     <script defer src="{{ asset('home/js/alpine.min.js') }}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('styles')
 </head>

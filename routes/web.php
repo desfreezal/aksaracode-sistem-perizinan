@@ -165,4 +165,8 @@ Route::prefix('/dashboard-operator')->group(function () {
     Route::get('/monitoring', function () {
         return view('operator.monitoring');
     })->name('operator-monitoring');
+
+    Route::get('/notifikasi', function () {
+        return view('operator.notifikasi');
+    })->name('operator-notifikasi');
 });

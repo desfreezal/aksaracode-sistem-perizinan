@@ -42,12 +42,12 @@
             Monitoring
         </h1>
     </a>
-    <a href="#"
+    <a href="{{ route('operator-notifikasi') }}"
         class="cursor-pointer flex items-center pl-11 mx-5 rounded-xl hover:bg-primary hover:text-white hover:shadow gap-x-3 py-2
-        {{ Route::currentRouteName() === '' ? 'bg-primary shadow text-white hover:bg-primary-light' : '' }} 
+        {{ Route::currentRouteName() === 'operator-notifikasi' ? 'bg-primary shadow text-white hover:bg-primary-light' : '' }} 
         group">
         <img src="{{ asset('operator/img/sidebar/notifikasi.png') }}"
-            class="object-contain group-hover:filter-gray-to-white  {{ Route::currentRouteName() === '' ? 'filter-gray-to-white' : '' }}"
+            class="object-contain group-hover:filter-gray-to-white  {{ Route::currentRouteName() === 'operator-notifikasi' ? 'filter-gray-to-white' : '' }}"
             alt="1">
         <h1 class="text-base font-normal">
             Notifikasi

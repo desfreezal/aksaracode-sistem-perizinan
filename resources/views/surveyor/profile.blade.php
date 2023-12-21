@@ -1,15 +1,15 @@
-@extends('operator.layout')
+@extends('surveyor.layout')
 
 @section('content')
     <div class="min-h-screen h-full">
 
         <div class="flex">
             {{-- SIDEBAR --}}
-            @include('operator.sidebar')
+            @include('surveyor.sidebar')
 
             <div class="flex-grow h-full pl-[34px] pr-[88px] py-7 box-border mb-10" id="content">
                 {{-- START KONTEN --}}
-                <form action="{{ route('operator-profile') }}" method="GET" class="w-full space-y-6" id="profile-form">
+                <form action="{{ route('surveyor-profile') }}" method="GET" class="w-full space-y-6" id="profile-form">
                     <div class="flex items-center">
                         <label for="jenid" class="w-72">Jenis Identitas</label>
                         <input readonly id="jenid" type="text"
@@ -173,14 +173,17 @@
             const closeModal = document.getElementById('closeModal')
             // send form
             const form = document.querySelector('#profile-form')
+
             closeModal.addEventListener('click', () => {
                 form.submit()
+                // alert('form submitted')
             })
 
             const modal = document.getElementById('default-modal')
             // detect when modal hidden
             modal.addEventListener('click', () => {
                 form.submit()
+                // alert('form submitted')
             })
         })
     </script>

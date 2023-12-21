@@ -335,3 +335,21 @@ Route::prefix('/dashboard-walikota')->group(function () {
         return view('walikota.profile');
     })->name('walikota-profile');
 });
+
+Route::get('/lupa-sandi', function () {
+    return view('auth-page.lupa-sandi');
+});
+
+// kode-verifikasi
+Route::get('/kode-verifikasi', function () {
+    return view('auth-page.kode-verifikasi');
+});
+
+// reset-sandi
+Route::get('/reset-sandi', function () {
+    return view('auth-page.reset-sandi');
+});
+// konfirmasi-sandi
+Route::get('/konfirmasi-sandi', function () {
+    return view('auth-page.konfirmasi-sandi');
+});

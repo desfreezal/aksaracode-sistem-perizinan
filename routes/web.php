@@ -353,3 +353,69 @@ Route::get('/reset-sandi', function () {
 Route::get('/konfirmasi-sandi', function () {
     return view('auth-page.konfirmasi-sandi');
 });
+
+
+// ADMIN DINAS
+Route::prefix('/dashboard-admin-dinas')->group(function () {
+    Route::get('', function () {
+        return view('admin-dinas.dashboard');
+    });
+
+    Route::get('/kelengkapan-data', function () {
+        return view('admin-dinas.kelengkapan-data');
+    })->name('admin-dinas-lengkap-data');
+
+    Route::get('/validasi-data', function () {
+        return view('admin-dinas.validasi-data');
+    })->name('admin-dinas-validasi-data');
+
+    Route::get('/detail-validasi/{id}', function ($id) {
+        return view('admin-dinas.detail-validasi');
+    })->name('admin-dinas-detail-validasi');
+
+    Route::get('/lacak-permohonan', function () {
+        return view('admin-dinas.lacak-permohonan');
+    })->name('admin-dinas-lacak-permohonan');
+
+    Route::get('/status-permohonan', function () {
+        return view('admin-dinas.status-permohonan');
+    })->name('admin-dinas-status-permohonan');
+
+    Route::get('/monitoring', function () {
+        return view('admin-dinas.monitoring');
+    })->name('admin-dinas-monitoring');
+
+    Route::get('/notifikasi', function () {
+        return view('admin-dinas.notifikasi');
+    })->name('admin-dinas-notifikasi');
+
+    Route::get('/chatting', function () {
+        return view('admin-dinas.chatting');
+    })->name('admin-dinas-chatting');
+
+    Route::get('/chatting/{id_user}', function ($id_user) {
+        return view('admin-dinas.chatting');
+    })->name('admin-dinas-detail-chatting');
+
+    Route::get('/panduan-perizinan', function () {
+        return view('admin-dinas.panduan-perizinan');
+    })->name('admin-dinas-panduan-perizinan');
+
+    Route::get('/panduan-perizinan/daftar-ulang', function () {
+        return view('admin-dinas.panduan-perizinan.daftar-ulang.daftar');
+    })->name('admin-dinas-panduan-daftar-ulang');
+
+    // panduan izin operasional
+    Route::get('/panduan-perizinan/izin-operasional', function () {
+        return view('admin-dinas.panduan-perizinan.izin-operasional.operasional');
+    })->name('admin-dinas-panduan-operasional');
+
+    // izin pendirian
+    Route::get('/panduan-perizinan/izin-pendirian', function () {
+        return view('admin-dinas.panduan-perizinan.izin-pendirian.izin');
+    })->name('admin-dinas-panduan-izin');
+
+    Route::get('/profile', function () {
+        return view('admin-dinas.profile');
+    })->name('admin-dinas-profile');
+});

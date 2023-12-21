@@ -29,14 +29,14 @@
                                 <button type="submit"
                                     class="bg-primary py-1 rounded-3xl font-bold text-[20px] text-white">Masuk</button>
 
-                                <a href="" class="text-center text-[15px] opacity-[35%]">Lupa Kata Sandi ?</a>
+                                <a href="/lupa-sandi" class="text-center text-[15px] opacity-[35%]">Lupa Kata Sandi ?</a>
                             </form>
                         </div>
                         <p class="text-center mt-9 font-semibold mb-44">
                             <span class="text-black opacity-70">
                                 Belum punya akun?
                             </span>
-                            <a href="" class="text-primary">Daftar Sekarang</a>
+                            <a href="/register" class="text-primary">Daftar Sekarang</a>
                         </p>
                     </div>
                 </div>

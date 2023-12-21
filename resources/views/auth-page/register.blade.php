@@ -32,7 +32,7 @@
                                     <span class="text-black opacity-70">
                                         Sudah Punya Akun?
                                     </span>
-                                    <a href="" class="text-primary">Masuk</a>
+                                    <a href="/login" class="text-primary">Masuk</a>
                                 </p>
                             </form>
                         </div>

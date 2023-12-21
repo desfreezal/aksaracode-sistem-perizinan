@@ -45,10 +45,13 @@
                                 </form>
                             </div>
                             <div class="flex justify-center mt-5 mb-10">
-                                <button type="button" onclick="collectAndSend()"
-                                    class="w-[340px] focus:outline-none text-white bg-[#9D3C39] hover:bg-[#9D3C39] focus:ring-4 focus:ring-[#9D3C39] font-bold rounded-2xl text-sm px-5 py-2.5 me-2 mb-2 dark:bg-[#9D3C39] dark:hover:bg-[#9D3C39] dark:focus:ring-[#a3413e]">
-                                    Verifikasi
-                                </button>
+                                <form action="{{ url('/reset-sandi') }}" method="GET" id="form-send">
+                                    <input type="hidden" name="all-kode">
+                                    <button type="button" onclick="collectAndSend()"
+                                        class="w-[340px] focus:outline-none text-white bg-[#9D3C39] hover:bg-[#9D3C39] focus:ring-4 focus:ring-[#9D3C39] font-bold rounded-2xl text-sm px-5 py-2.5 me-2 mb-2 dark:bg-[#9D3C39] dark:hover:bg-[#9D3C39] dark:focus:ring-[#a3413e]">
+                                        Verifikasi
+                                    </button>
+                                </form>
                             </div>
 
                         </div>
@@ -104,8 +107,12 @@
             // Gabungkan nilai dari setiap input menjadi satu variabel
             const combinedValue = `${firstValue}${secondValue}${thirdValue}${fourthValue}`;
 
+            const allKode = document.querySelector('input[name="all-kode"]');
+            allKode.value = combinedValue;
             // Kirim nilai gabungan ke server atau lakukan sesuatu dengannya
-            alert(combinedValue);
+            const formSend = document.getElementById('form-send');
+            formSend.submit();
+            
         }
     </script>
 @endpush

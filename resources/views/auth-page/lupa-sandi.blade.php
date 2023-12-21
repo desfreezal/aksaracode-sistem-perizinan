@@ -30,16 +30,18 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="flex justify-center my-4">
-                                <input type="email" id="email"
-                                    class="bg-white border border-gray-300 text-[#D9D9D9] text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-60 p-3 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="masukkan email" required>
-                            </div>
-                            <div class="flex justify-center mt-5 mb-10">
-                                <button type="button"
-                                    class="w-[340px] focus:outline-none text-white bg-[#9D3C39] hover:bg-[#9D3C39] focus:ring-4 focus:ring-[#9D3C39] font-bold rounded-2xl text-sm px-5 py-2.5 me-2 mb-2 dark:bg-[#9D3C39] dark:hover:bg-[#9D3C39] dark:focus:ring-[#a3413e]">Kirim
-                                    Kode</button>
-                            </div>
+                            <form action="{{ url('/kode-verifikasi') }}" method="GET">
+                                <div class="flex justify-center my-4">
+                                    <input type="email" id="email"
+                                        class="bg-white border border-gray-300 text-[#D9D9D9] text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-60 p-3 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="masukkan email" required>
+                                </div>
+                                <div class="flex justify-center mt-5 mb-10">
+                                    <button type="submit"
+                                        class="w-[340px] focus:outline-none text-white bg-[#9D3C39] hover:bg-[#9D3C39] focus:ring-4 focus:ring-[#9D3C39] font-bold rounded-2xl text-sm px-5 py-2.5 me-2 mb-2 dark:bg-[#9D3C39] dark:hover:bg-[#9D3C39] dark:focus:ring-[#a3413e]">Kirim
+                                        Kode</button>
+                                </div>
+                            </form>
                         </div>
 
                     </div>
@@ -57,8 +59,10 @@
         toggle.addEventListener('change', (e) => {
             if (e.target.checked) {
                 email.placeholder = "masukkan nomor handphone";
+                email.type = "number";
             } else {
                 email.placeholder = "masukkan email";
+                email.type = "email";
             }
         });
     </script>

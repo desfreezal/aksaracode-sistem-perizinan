@@ -237,3 +237,56 @@ Route::prefix('/dashboard-auditor')->group(function () {
         return view('auditor.profile');
     })->name('auditor-profile');
 });
+
+// SURVEYOR
+Route::prefix('/dashboard-surveyor')->group(function () {
+    Route::get('/kelengkapan-data', function () {
+        return view('surveyor.kelengkapan-data');
+    })->name('surveyor-lengkap-data');
+
+    Route::get('/lacak-permohonan', function () {
+        return view('surveyor.lacak-permohonan');
+    })->name('surveyor-lacak-permohonan');
+
+    Route::get('/status-permohonan', function () {
+        return view('surveyor.status-permohonan');
+    })->name('surveyor-status-permohonan');
+
+    Route::get('/monitoring', function () {
+        return view('surveyor.monitoring');
+    })->name('surveyor-monitoring');
+
+    Route::get('/notifikasi', function () {
+        return view('surveyor.notifikasi');
+    })->name('surveyor-notifikasi');
+
+    Route::get('/chatting', function () {
+        return view('surveyor.chatting');
+    })->name('surveyor-chatting');
+
+    Route::get('/chatting/{id_user}', function ($id_user) {
+        return view('surveyor.chatting');
+    })->name('surveyor-detail-chatting');
+
+    Route::get('/panduan-perizinan', function () {
+        return view('surveyor.panduan-perizinan');
+    })->name('surveyor-panduan-perizinan');
+
+    Route::get('/panduan-perizinan/daftar-ulang', function () {
+        return view('surveyor.panduan-perizinan.daftar-ulang.daftar');
+    })->name('surveyor-panduan-daftar-ulang');
+
+    // panduan izin operasional
+    Route::get('/panduan-perizinan/izin-operasional', function () {
+        return view('surveyor.panduan-perizinan.izin-operasional.operasional');
+    })->name('surveyor-panduan-operasional');
+
+    // izin pendirian
+    Route::get('/panduan-perizinan/izin-pendirian', function () {
+        return view('surveyor.panduan-perizinan.izin-pendirian.izin');
+    })->name('surveyor-panduan-izin');
+
+    Route::get('/profile', function () {
+        return view('surveyor.profile');
+    })->name('surveyor-profile');
+});

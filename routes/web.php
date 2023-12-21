@@ -298,3 +298,40 @@ Route::prefix('/dashboard-surveyor')->group(function () {
         return view('surveyor.profile');
     })->name('surveyor-profile');
 });
+
+// WALIKOTA
+Route::prefix('/dashboard-walikota')->group(function () {
+    Route::get('', function () {
+        return view('walikota.dashboard');
+    });
+
+    Route::get('/monitoring', function () {
+        return view('walikota.monitoring');
+    })->name('walikota-monitoring');
+
+    Route::get('/notifikasi', function () {
+        return view('walikota.notifikasi');
+    })->name('walikota-notifikasi');
+
+    Route::get('/panduan-perizinan', function () {
+        return view('walikota.panduan-perizinan');
+    })->name('walikota-panduan-perizinan');
+
+    Route::get('/panduan-perizinan/daftar-ulang', function () {
+        return view('walikota.panduan-perizinan.daftar-ulang.daftar');
+    })->name('walikota-panduan-daftar-ulang');
+
+    // panduan izin operasional
+    Route::get('/panduan-perizinan/izin-operasional', function () {
+        return view('walikota.panduan-perizinan.izin-operasional.operasional');
+    })->name('walikota-panduan-operasional');
+
+    // izin pendirian
+    Route::get('/panduan-perizinan/izin-pendirian', function () {
+        return view('walikota.panduan-perizinan.izin-pendirian.izin');
+    })->name('walikota-panduan-izin');
+
+    Route::get('/profile', function () {
+        return view('walikota.profile');
+    })->name('walikota-profile');
+});

@@ -1,11 +1,11 @@
-@extends('operator.layout')
+@extends('surveyor.layout')
 
 @section('content')
     <div class="min-h-screen h-full">
 
         <div class="flex">
 
-            @include('operator.sidebar')
+            @include('surveyor.sidebar')
 
             <div class="flex-grow h-full pl-[34px] pr-[88px] py-7 box-border mb-10 w-full" id="content">
                 @yield('panduan-content')

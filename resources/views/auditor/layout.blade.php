@@ -147,7 +147,7 @@
                 </div>
             </li>
             <li>
-                <a href="#">Micella</a>
+                <a href="#">Auditor</a>
             </li>
 
             {{-- LOGOUT MODAL --}}

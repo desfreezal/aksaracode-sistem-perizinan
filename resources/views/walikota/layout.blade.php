@@ -4,7 +4,7 @@
 
 <head>
     <title>Index EduLicense</title>
-    <link rel="stylesheet" href="{{ asset('surveyor/css/styles.css') }}" />
+    <link rel="stylesheet" href="{{ asset('walikota/css/styles.css') }}" />
     <script defer src="{{ asset('home/js/alpine.min.js') }}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -21,7 +21,7 @@
         <ul class="py-6 pr-6">
             <li>
                 <div class="parent">
-                    <a href="/dashboard-surveyor">
+                    <a href="/dashboard-walikota">
                         Dashboard
                     </a>
                 </div>
@@ -30,7 +30,7 @@
             <li>
                 <div class="parent">
                     <a href="#" data-dropdown-toggle="notifDropDown">
-                        <img class="images" src="{{ asset('surveyor/img/Notif Logo.png') }}" alt="Notif Logo"
+                        <img class="images" src="{{ asset('walikota/img/Notif Logo.png') }}" alt="Notif Logo"
                             style="width: 25px"></a>
                 </div>
 
@@ -43,7 +43,7 @@
                         <button class="p-5 flex justify-end w-full" id="closeNotif">X</button>
                         <div class="overflow-y-auto mx-5">
 
-                            <div onclick="window.location.href = '{{ route('surveyor-notifikasi') }}'"
+                            <div onclick="window.location.href = '{{ route('walikota-notifikasi') }}'"
                                 class="cursor-pointer flex gap-x-4 items-center px-4 py-4 bg-primary hover:bg-primary-light rounded-xl mb-3 text-white">
                                 <div class="w-12 h-12 rounded-lg bg-white flex justify-center items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -69,7 +69,7 @@
                                 </div>
                             </div>
 
-                            <div onclick="window.location.href = '{{ route('surveyor-notifikasi') }}'"
+                            <div onclick="window.location.href = '{{ route('walikota-notifikasi') }}'"
                                 class="flex gap-x-4 items-center px-4 py-4 bg-primary rounded-xl mb-3 text-white hover:bg-primary-light cursor-pointer">
                                 <div class="w-12 h-12 rounded-lg bg-white flex justify-center items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -95,7 +95,7 @@
                                 </div>
                             </div>
 
-                            <div onclick="window.location.href = '{{ route('surveyor-notifikasi') }}'"
+                            <div onclick="window.location.href = '{{ route('walikota-notifikasi') }}'"
                                 class="flex gap-x-4 items-center px-4 py-4 bg-primary rounded-xl mb-3 text-white hover:bg-primary-light cursor-pointer">
                                 <div class="w-12 h-12 rounded-lg bg-white flex justify-center items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -135,7 +135,7 @@
                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200 block"
                         aria-labelledby="profileDropDownButton">
                         <li>
-                            <a href="{{ route('surveyor-profile') }}"
+                            <a href="{{ route('walikota-profile') }}"
                                 class="block text-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profil
                                 Pengguna</a>
                         </li>
@@ -147,7 +147,7 @@
                 </div>
             </li>
             <li>
-                <a href="#">Surveyor</a>
+                <a href="#">Walikota</a>
             </li>
 
             {{-- LOGOUT MODAL --}}

@@ -11,10 +11,10 @@
     </a>
     <a href="{{ route('surveyor-lengkap-data') }}"
         class="cursor-pointer flex items-center pl-11 mx-5 rounded-xl hover:bg-primary hover:text-white hover:shadow gap-x-3 py-2 group
-        {{ in_array(Route::currentRouteName(), ['surveyor-lengkap-data', 'surveyor-validasi-data']) ? 'bg-primary shadow text-white hover:bg-primary-light' : '' }}
+        {{ in_array(Route::currentRouteName(), ['surveyor-lengkap-data', 'surveyor-riwayat-permohonan']) ? 'bg-primary shadow text-white hover:bg-primary-light' : '' }}
         ">
         <img src="{{ asset('surveyor/img/sidebar/permohonan.png') }}"
-            class="object-contain group-hover:filter-gray-to-white  {{ in_array(Route::currentRouteName(), ['surveyor-lengkap-data', 'surveyor-validasi-data']) ? 'filter-gray-to-white' : '' }}"
+            class="object-contain group-hover:filter-gray-to-white  {{ in_array(Route::currentRouteName(), ['surveyor-lengkap-data', 'surveyor-riwayat-permohonan']) ? 'filter-gray-to-white' : '' }}"
             alt="1">
         <h1 class="text-base font-normal">
             Permohonan

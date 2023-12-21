@@ -244,6 +244,14 @@ Route::prefix('/dashboard-surveyor')->group(function () {
         return view('surveyor.kelengkapan-data');
     })->name('surveyor-lengkap-data');
 
+    Route::get('/riwayat-permohonan', function () {
+        return view('surveyor.riwayat-permohonan');
+    })->name('surveyor-riwayat-permohonan');
+
+    Route::get('/detail-permohonan/{id}', function ($id) {
+        return view('surveyor.detail-permohonan');
+    })->name('surveyor-detail-permohonan');
+
     Route::get('/lacak-permohonan', function () {
         return view('surveyor.lacak-permohonan');
     })->name('surveyor-lacak-permohonan');

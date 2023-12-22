@@ -549,3 +549,41 @@ Route::prefix('/dashboard-verifikator')->group(function () {
         return view('verifikator.profile');
     })->name('verifikator-profile');
 });
+
+
+// ADMIN UTAMA
+Route::prefix('/dashboard-admin-utama')->group(function () {
+    Route::get('', function () {
+        return view('admin-utama.dashboard');
+    });
+
+    Route::get('/monitoring', function () {
+        return view('admin-utama.monitoring');
+    })->name('admin-utama-monitoring');
+
+    Route::get('/notifikasi', function () {
+        return view('admin-utama.notifikasi');
+    })->name('admin-utama-notifikasi');
+
+    Route::get('/panduan-perizinan', function () {
+        return view('admin-utama.panduan-perizinan');
+    })->name('admin-utama-panduan-perizinan');
+
+    Route::get('/panduan-perizinan/daftar-ulang', function () {
+        return view('admin-utama.panduan-perizinan.daftar-ulang.daftar');
+    })->name('admin-utama-panduan-daftar-ulang');
+
+    // panduan izin operasional
+    Route::get('/panduan-perizinan/izin-operasional', function () {
+        return view('admin-utama.panduan-perizinan.izin-operasional.operasional');
+    })->name('admin-utama-panduan-operasional');
+
+    // izin pendirian
+    Route::get('/panduan-perizinan/izin-pendirian', function () {
+        return view('admin-utama.panduan-perizinan.izin-pendirian.izin');
+    })->name('admin-utama-panduan-izin');
+
+    Route::get('/profile', function () {
+        return view('admin-utama.profile');
+    })->name('admin-utama-profile');
+});

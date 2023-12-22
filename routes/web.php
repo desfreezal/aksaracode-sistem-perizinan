@@ -484,3 +484,68 @@ Route::prefix('/dashboard-kepala-dinas')->group(function () {
         return view('kepala-dinas.profile');
     })->name('kepala-dinas-profile');
 });
+
+// VERIFIKATOR
+Route::prefix('/dashboard-verifikator')->group(function () {
+    Route::get('', function () {
+        return view('verifikator.dashboard');
+    });
+
+    Route::get('/kelengkapan-data', function () {
+        return view('verifikator.kelengkapan-data');
+    })->name('verifikator-lengkap-data');
+
+    Route::get('/validasi-data', function () {
+        return view('verifikator.validasi-data');
+    })->name('verifikator-validasi-data');
+
+    Route::get('/detail-validasi/{id}', function ($id) {
+        return view('verifikator.detail-validasi');
+    })->name('verifikator-detail-validasi');
+
+    Route::get('/lacak-permohonan', function () {
+        return view('verifikator.lacak-permohonan');
+    })->name('verifikator-lacak-permohonan');
+
+    Route::get('/status-permohonan', function () {
+        return view('verifikator.status-permohonan');
+    })->name('verifikator-status-permohonan');
+
+    Route::get('/monitoring', function () {
+        return view('verifikator.monitoring');
+    })->name('verifikator-monitoring');
+
+    Route::get('/notifikasi', function () {
+        return view('verifikator.notifikasi');
+    })->name('verifikator-notifikasi');
+
+    Route::get('/chatting', function () {
+        return view('verifikator.chatting');
+    })->name('verifikator-chatting');
+
+    Route::get('/chatting/{id_user}', function ($id_user) {
+        return view('verifikator.chatting');
+    })->name('verifikator-detail-chatting');
+
+    Route::get('/panduan-perizinan', function () {
+        return view('verifikator.panduan-perizinan');
+    })->name('verifikator-panduan-perizinan');
+
+    Route::get('/panduan-perizinan/daftar-ulang', function () {
+        return view('verifikator.panduan-perizinan.daftar-ulang.daftar');
+    })->name('verifikator-panduan-daftar-ulang');
+
+    // panduan izin operasional
+    Route::get('/panduan-perizinan/izin-operasional', function () {
+        return view('verifikator.panduan-perizinan.izin-operasional.operasional');
+    })->name('verifikator-panduan-operasional');
+
+    // izin pendirian
+    Route::get('/panduan-perizinan/izin-pendirian', function () {
+        return view('verifikator.panduan-perizinan.izin-pendirian.izin');
+    })->name('verifikator-panduan-izin');
+
+    Route::get('/profile', function () {
+        return view('verifikator.profile');
+    })->name('verifikator-profile');
+});

@@ -419,3 +419,68 @@ Route::prefix('/dashboard-admin-dinas')->group(function () {
         return view('admin-dinas.profile');
     })->name('admin-dinas-profile');
 });
+
+// KEPALA DINAS
+Route::prefix('/dashboard-kepala-dinas')->group(function () {
+    Route::get('', function () {
+        return view('kepala-dinas.dashboard');
+    });
+
+    Route::get('/kelengkapan-data', function () {
+        return view('kepala-dinas.kelengkapan-data');
+    })->name('kepala-dinas-lengkap-data');
+
+    Route::get('/validasi-data', function () {
+        return view('kepala-dinas.validasi-data');
+    })->name('kepala-dinas-validasi-data');
+
+    Route::get('/detail-validasi/{id}', function ($id) {
+        return view('kepala-dinas.detail-validasi');
+    })->name('kepala-dinas-detail-validasi');
+
+    Route::get('/lacak-permohonan', function () {
+        return view('kepala-dinas.lacak-permohonan');
+    })->name('kepala-dinas-lacak-permohonan');
+
+    Route::get('/status-permohonan', function () {
+        return view('kepala-dinas.status-permohonan');
+    })->name('kepala-dinas-status-permohonan');
+
+    Route::get('/monitoring', function () {
+        return view('kepala-dinas.monitoring');
+    })->name('kepala-dinas-monitoring');
+
+    Route::get('/notifikasi', function () {
+        return view('kepala-dinas.notifikasi');
+    })->name('kepala-dinas-notifikasi');
+
+    Route::get('/chatting', function () {
+        return view('kepala-dinas.chatting');
+    })->name('kepala-dinas-chatting');
+
+    Route::get('/chatting/{id_user}', function ($id_user) {
+        return view('kepala-dinas.chatting');
+    })->name('kepala-dinas-detail-chatting');
+
+    Route::get('/panduan-perizinan', function () {
+        return view('kepala-dinas.panduan-perizinan');
+    })->name('kepala-dinas-panduan-perizinan');
+
+    Route::get('/panduan-perizinan/daftar-ulang', function () {
+        return view('kepala-dinas.panduan-perizinan.daftar-ulang.daftar');
+    })->name('kepala-dinas-panduan-daftar-ulang');
+
+    // panduan izin operasional
+    Route::get('/panduan-perizinan/izin-operasional', function () {
+        return view('kepala-dinas.panduan-perizinan.izin-operasional.operasional');
+    })->name('kepala-dinas-panduan-operasional');
+
+    // izin pendirian
+    Route::get('/panduan-perizinan/izin-pendirian', function () {
+        return view('kepala-dinas.panduan-perizinan.izin-pendirian.izin');
+    })->name('kepala-dinas-panduan-izin');
+
+    Route::get('/profile', function () {
+        return view('kepala-dinas.profile');
+    })->name('kepala-dinas-profile');
+});

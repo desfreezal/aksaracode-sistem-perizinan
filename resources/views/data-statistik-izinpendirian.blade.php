@@ -1,7 +1,7 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bar Chart Example</title>
@@ -9,52 +9,67 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
-      /* Add some styles for better appearance */
-      body {
-        font-family: "Arial", sans-serif;
-        margin: 0; /* Menghapus margin pada body */
-        padding: 0px 50px; /* Menambahkan padding 100px ke seluruh sisi body */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column; /* Updated to column layout */
-        height: 100vh; /* Menetapkan tinggi body 100% dari viewport height */
-      }
+        /* Add some styles for better appearance */
+        body {
+            font-family: "Arial", sans-serif;
+            margin: 0;
+            /* Menghapus margin pada body */
+            padding: 0px 50px;
+            /* Menambahkan padding 100px ke seluruh sisi body */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            /* Updated to column layout */
+            height: 100vh;
+            /* Menetapkan tinggi body 100% dari viewport height */
+        }
 
-      canvas {
-        padding: 1rem;
-        border: 1px solid black;
-        border-radius: 1rem;
-        background: white;
-        box-shadow: 0 0 16px rgba(0, 0, 0, 1);
-        margin-top: 20px; /* Added margin-top */
-        max-height: 80vh; /* Menetapkan tinggi maksimum elemen canvas 80% dari viewport height */
-      }
+        canvas {
+            padding: 1rem;
+            border: 1px solid black;
+            border-radius: 1rem;
+            background: white;
+            box-shadow: 0 0 16px rgba(0, 0, 0, 1);
+            margin-top: 20px;
+            /* Added margin-top */
+            max-height: 80vh;
+            /* Menetapkan tinggi maksimum elemen canvas 80% dari viewport height */
+        }
 
-      .chart-heading {
-        text-align: center; /* Membuat teks menjadi ditengah */
-        padding-top: 0px;
-        font-weight: bold;
-        display: inline-block; /* Menjadikan teks menjadi elemen block */
-        position: relative; /* Mengatur posisi relatif */
-        font-size: 30px; /* Mengatur ukuran teks */
-      }
+        .chart-heading {
+            text-align: center;
+            /* Membuat teks menjadi ditengah */
+            padding-top: 0px;
+            font-weight: bold;
+            display: inline-block;
+            /* Menjadikan teks menjadi elemen block */
+            position: relative;
+            /* Mengatur posisi relatif */
+            font-size: 30px;
+            /* Mengatur ukuran teks */
+        }
 
-      .chart-heading:after {
-        content: "";
-        position: absolute; /* Mengatur posisi absolut */
-        bottom: -5px; /* Jarak dari teks */
-        left: 50%; /* Posisi horizontal di tengah */
-        width: 425px; /* Panjang garis */
-        border-bottom: 4px solid #b7605d; /* Warna garis dan ketebalan */
-        border-radius: 10px;
-        transform: translateX(
-          -50%
-        ); /* Mentranslasi agar garis berada di tengah */
-      }
+        .chart-heading:after {
+            content: "";
+            position: absolute;
+            /* Mengatur posisi absolut */
+            bottom: -5px;
+            /* Jarak dari teks */
+            left: 50%;
+            /* Posisi horizontal di tengah */
+            width: 425px;
+            /* Panjang garis */
+            border-bottom: 4px solid #b7605d;
+            /* Warna garis dan ketebalan */
+            border-radius: 10px;
+            transform: translateX(-50%);
+            /* Mentranslasi agar garis berada di tengah */
+        }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
     <!-- Heading -->
     <div class="chart-heading">Data Statistik Izin Pendirian</div>
 
@@ -63,70 +78,50 @@
 
     <!-- Chart data -->
     <script>
-      const labels = ["Berhasil", "Tidak Berhasil"];
-      const data = {
-        labels: labels,
-        datasets: [
-          {
-            label: "SD",
-            data: [150, 50],
-            backgroundColor: [
-              "rgba(255, 0, 0, 0.3)",
-              "rgba(119, 136, 153, 0.5)",
-            ],
-            borderColor: ["rgb(255, 0, 0", "rgb(119, 136, 153)"],
-            borderWidth: 1,
-          },
-          {
-            label: "SMP",
-            data: [250, 100],
-            backgroundColor: [
-              "rgba(255, 255, 0, 0.3)",
-              "rgba(192, 192, 192, 0.5)",
-            ],
-            borderColor: ["rgb(255, 255, 0)", "rgb(192, 192, 192)"],
-            borderWidth: 1,
-          },
-          {
-            label: "TK",
-            data: [125, 50],
-            backgroundColor: [
-              "rgba(0, 255, 0, 0.3)",
-              "rgba(176, 196, 222, 0.5)",
-            ],
-            borderColor: ["rgb(0, 255, 0)", "rgb(176, 196, 222)"],
-            borderWidth: 1,
-          },
-        ],
-      };
-      // Get the canvas element
-      const ctx = document.getElementById("myChart").getContext("2d");
+        const labels = ["SD", "SMP", "TK"];
+        const data = {
+            labels: labels,
+            datasets: [{
+                    label: "Berhasil",
+                    data: [260, 390, 420],
+                    backgroundColor: "#B7605D",
+                    barThickness: 20, //ukuran bar
+                    barPercentage: 0.5,
+                    borderColor: "rgb(255, 0, 0)",
+                    borderWidth: 1,
+                    borderRadius: 15,
+                },
+                {
+                    label: "Tidak Berhasil",
+                    data: [205, 370, 270],
+                    backgroundColor: "#D9D9D9",
+                    barThickness: 20, //ukuran bar
+                    barPercentage: 0.5,
+                    borderColor: "rgb(119, 136, 153)",
+                    borderWidth: 1,
+                    borderRadius: 15,
 
-      // Create a bar chart
-      const myChart = new Chart(ctx, {
-        type: "bar",
-        data: data,
-        options: {
-          scales: {
-            y: {
-              beginAtZero: true,
+                },
+            ],
+        };
+
+        const options = {
+            indexAxis: 'x',
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'right',
+                },
             },
-            x: {
-              ticks: {
-                fontSize: 100,
-                fontWeight: "bold", // Atur ukuran font untuk sumbu x
-              },
-            },
-            y: {
-              beginAtZero: true,
-              ticks: {
-                fontSize: 100,
-                fontWeight: "bold", // Atur ukuran font untuk sumbu y
-              },
-            },
-          },
-        },
-      });
+        };
+
+        const ctx = document.getElementById("myChart").getContext("2d");
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: options,
+        });
     </script>
-  </body>
+</body>
+
 </html>

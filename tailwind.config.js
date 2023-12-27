@@ -16,7 +16,8 @@ export default {
                 'abu-abu': '#D9D9D9',
                 'abu-abu-second' : '#F0F0F0',
                 'putih-dasar': '#FFFFFF',
-                'for-icon': '#868E96'
+                'for-icon': '#868E96',
+                'underline': '#B7605D'
             },
         },
     },

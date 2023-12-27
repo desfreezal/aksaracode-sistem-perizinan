@@ -16,16 +16,16 @@
       </div>
       <ul>
         <li>
-          <a href="#">Beranda</a>
+          <a href="/landing-pages">Beranda</a>
         </li>
         <li>
-          <a href="#">Panduan Permohonan</a>
+          <a href="#panduan">Panduan Permohonan</a>
         </li>
         <li>
-          <a href="#">Statistik</a>
+          <a href="#statistik">Statistik</a>
         </li>
         <li>
-          <a href="#">Masuk</a>
+          <a href="/login">Masuk</a>
         </li>
       </ul>
     </nav>
@@ -56,14 +56,14 @@
       </p>
     </div>
 
-    <div class="container-kotak-cokelat">
+    <div class="container-kotak-cokelat" id="panduan">
       <div class="kotak-cokelat">
         <div class="daftar-ulang">
           <div class="gambar-bulat">
             <img src="{{asset('home/img/Folder.png')}}" alt="LogoDaftarUlang" />
           </div>
           <div class="tombol-putih">
-            <a href="#">Daftar Ulang Izin Operasional Satuan Pendidikan</a>
+            <a href="/daftar-ulang">Daftar Ulang Izin Operasional Satuan Pendidikan</a>
           </div>
         </div>
       </div>
@@ -73,7 +73,7 @@
             <img src="{{asset('home/img/School.png')}}" alt="LogoIzinPendirian" />
           </div>
           <div class="tombol-putih">
-            <a href="#">Izin Pendirian Satuan Pendidikan</a>
+            <a href="/izin-pendirian">Izin Pendirian Satuan Pendidikan</a>
           </div>
         </div>
       </div>
@@ -83,7 +83,7 @@
             <img src="{{asset('home/img/Compliant.png')}}" alt="LogoIzinOperasional" />
           </div>
           <div class="tombol-putih">
-            <a href="#">Izin Operasional Satuan Pendidikan</a>
+            <a href="izin-operasional">Izin Operasional Satuan Pendidikan</a>
           </div>
         </div>
       </div>
@@ -92,16 +92,16 @@
     <!-- Panduan Perizinan -->
 
     <!-- Alur Perizinan -->
-    <div class="container-alur-perizinan">
+    <div class="container-alur-perizinan" id="alur">
       <div class="alur-perizinan">Alur Perizinan</div>
     </div>
-    <div class="gambar-alur-perizinan">
+    <div class="gambar-alur-perizinan" style="width: 100%; text-align: center">
       <img src="{{asset('home/img/Alur Perizinan.png')}}" alt="Alur Perizinan" />
     </div>
     <!-- Alur Perizinan -->
 
     <!-- Data Statistik -->
-    <div class="container-data-statistik">
+    <div class="container-data-statistik" id="statistik">
       <div class="data-statistik">Data Statistik</div>
     </div>
     <div class="tombol-data-statistik">

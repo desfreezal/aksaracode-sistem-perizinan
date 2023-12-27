@@ -1,7 +1,7 @@
 @extends('operator.panduan-perizinan.layout')
 
 @section('panduan-content')
-    @if (request('peruntukan'))
+    @if (!request('peruntukan'))
         <header class="bg-primary px-11 flex items-center gap-x-11 py-2 rounded-md mb-[21px]">
             <img src="{{ asset('home/img/Folder.png') }}" class="w-11" alt="">
             <h1 class="font-medium text-3xl text-white">Izin Pendirian Satuan Pendidikan</h1>

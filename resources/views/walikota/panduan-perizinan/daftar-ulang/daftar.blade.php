@@ -56,9 +56,7 @@
             </h1>
         </div>
         <button
-            class="py-1 px-12 border border-primary rounded-3xl font-semibold text-xl text-primary hover:bg-primary hover:text-white">Siap
-            Mengajukan
-        </button>
+            class="py-1 px-12 border border-primary rounded-3xl font-semibold text-xl text-primary hover:bg-primary hover:text-white">Siap Mengajukan Permohonan</button>
     </div>
 
     @if (request('peruntukan') === 'tk')

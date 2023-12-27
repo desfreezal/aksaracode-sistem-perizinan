@@ -10,6 +10,10 @@
 @endsection
 
 @section('content')
+
+    <div>
+        {!! Breadcrumbs::render('pemohon-dashboard') !!}
+    </div>
     <div class="container-kotak-cokelat" style="gap: 10px; margin: 80px 50px">
         <div class="kotak-cokelat">
             <div class="daftar-ulang">

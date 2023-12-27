@@ -23,7 +23,7 @@ Route::get('/landing-pages', function () {
 
 Route::get('/dashboard-pemohon', function () {
     return view('pemohon.dashboard');
-});
+})->name('pemohon-dashboard');
 
 Route::get('/dashboard-operator', function () {
     return view('operator.dashboard');

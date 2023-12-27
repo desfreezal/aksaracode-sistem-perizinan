@@ -10,7 +10,13 @@
 @endsection
 
 @section('content')
+    @if(isset($warning))
+    <div class="mx-20 text-white text-center my-8 p-4 rounded-md bg-orange-200">
+        <h1>{{ $warning }}</h1>
+    </div>
+    @endif
     <div class="container-kotak-cokelat" style="gap: 10px; margin: 80px 50px">
+
         <div class="kotak-cokelat">
             <div class="daftar-ulang">
                 <div class="gambar-bulat">

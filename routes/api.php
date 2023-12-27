@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
     // Route::post('/logout', 'Api\LoginApiController@logout')->middleware('auth:sanctum');
 
     // Email verification routes
-    Route::post('/email/verify/{id}/{hash}', [VerificationApiController::class, 'verify'])->name('verification.verify');
+    Route::get('/email/verify/{id}/{hash}', [VerificationApiController::class, 'verify'])->name('verification.verify');
     // Route::post('/email/resend', 'Api\VerificationApiController@resend')->name('verification.resend');
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

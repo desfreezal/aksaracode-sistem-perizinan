@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,11 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/landing-pages', function () {
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('/', function () {
     return view('landing-pages');
 });
 
@@ -587,3 +592,6 @@ Route::prefix('/dashboard-admin-utama')->group(function () {
         return view('admin-utama.profile');
     })->name('admin-utama-profile');
 });
+Auth::routes();
+
+

@@ -8,6 +8,9 @@
             @include('pemohon.izin-pendirian.sidebar')
 
             <div class="flex-grow h-full pl-[34px] pr-[88px] py-7 box-border mb-10" id="content">
+                <div class="mb-9">
+                    {!! Breadcrumbs::render('pemohon-daftar-ulang') !!}
+                </div>
                 {{-- CONTENT --}}
                 <div class="py-3 pl-11 border border-primary rounded-md mb-9">
                     <h1 class="text-primary font-medium text-2xl">Mohon untuk memasukkan data sesuai dengan data terupdate
@@ -78,7 +81,7 @@
                         <input id="tglsuratpemohon" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
                             name="tglsuratpemohon">
                     </div>
-                   
+
 
                     <div class="flex gap-x-12 justify-end items-center">
                         <button id="simpan" data-modal-target="default-modal" data-modal-toggle="default-modal"

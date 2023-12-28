@@ -15,7 +15,8 @@
                                     'text-sm font-medium breadcrumb-item text-edu-black hover:text-primary-light',
                                     'ml-4' => !$loop->first,
                                     'hover:text-primary-light dark:hover:text-primary' => !$loop->last,
-                                    'pointer-events-none breadcrumb-item--active', 'text-primary' => $loop->last,
+                                    'text-primary' => $loop->last,
+                                    'pointer-events-none breadcrumb-item--active' => $loop->last,
                                 ])>
                                 {{ $breadcrumb->title }}
                             </a>

@@ -2,9 +2,31 @@
 
 @section('content')
     <div class="min-h-[calc(100vh-150px)] mb-10">
-        <div class="min-h-[calc(100vh-150px)] w-full">
+        <div class="min-h-[calc(100vh-150px)] w-full relative flex">
 
-            <div class="pt-4 ml-[102px] pl-[26px] pr-[49px] min-h-[calc(100vh-150px)] bg-edu-bg">
+            <div class="text-center w-16 flex justify-center pt-5">
+                <a href="{{ route('pemohon-chatting') }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                </a>
+
+            </div>
+
+
+            <div class="pt-4 pl-[26px] pr-[49px] min-h-[calc(100vh-150px)] bg-edu-bg flex-grow">
+
+                @if (request('sesi') === 'selesai')
+                    <div class="absolute bg-black opacity-20 z-40 w-full h-full">
+                    </div>
+
+                    <div class="fixed -bottom-4 z-40 p-8 text-center bg-white w-full">
+                        <h1 class="font-semibold text-2xl text-primary">Sesi Chat Anda Telah Berakhir</h1>
+                    </div>
+                @endif
+
                 <h1 class="font-bold text-[32px] mb-[26px]">Chat</h1>
 
                 <div class="flex items-center w-full">
@@ -100,7 +122,9 @@
 
                     {{-- END SESSION --}}
                     <div class="absolute bottom-36 right-0">
-                        <button class="rounded-l-full bg-primary p-4 -mr-12 text-white hover:bg-primary-light">
+                        <button
+                            class="rounded-l-full bg-primary p-4 -mr-12 text-white hover:bg-primary-light shadow-lg drop-shadow-lg font-bold"
+                            id="akhiri">
                             akhiri sesi
                         </button>
                     </div>
@@ -136,5 +160,14 @@
             }));
         });
         // INIT ALPINEJS PALING ATAS
+
+        let params = new URLSearchParams(window.location.search);
+
+        let akhiri = document.getElementById('akhiri');
+
+        akhiri.addEventListener('click', function() {
+            params.set('sesi', 'selesai');
+            window.location.search = params;
+        });
     </script>
 @endpush

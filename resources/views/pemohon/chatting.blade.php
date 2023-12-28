@@ -45,7 +45,7 @@
 
             <div id="bubble-chat-container" class="w-full">
 
-                <a href="#">
+                <a href="{{route('pemohon-detail-chatting', ['id_user' => 1])}}">
                     <div class="py-[18px] flex justify-between border-b border-b-primary">
                         <div class="flex items-center gap-x-5">
                             <img src="https://ui-avatars.com/api/?name=Athalia Putri&background=9D3C39&color=fff"
@@ -66,7 +66,7 @@
                     </div>
                 </a>
 
-                <a href="#">
+                <a href="{{route('pemohon-detail-chatting', ['id_user' => 2])}}">
                     <div class="py-[18px] flex justify-between border-b border-b-primary">
                         <div class="flex items-center gap-x-5">
                             <img src="https://ui-avatars.com/api/?name=Raki Devan&background=9D3C39&color=fff"
@@ -87,7 +87,7 @@
                     </div>
                 </a>
 
-                <a href="#">
+                <a href="{{route('pemohon-detail-chatting', ['id_user' => 3])}}">
                     <div class="py-[18px] flex justify-between border-b border-b-primary">
                         <div class="flex items-center gap-x-5">
                             <img src="https://ui-avatars.com/api/?name=Hana Fudlola&background=9D3C39&color=fff"

@@ -93,7 +93,7 @@ Route::prefix('/dashboard-pemohon')->group(function () {
 
     Route::get('/chatting/{id_user}', function ($id_user) {
         return view('pemohon.chattting-room');
-    });
+    })->name('pemohon-detail-chatting');
 
     Route::get('/daftar-ulang', function () {
         return view('pemohon.daftar-ulang.daftar');

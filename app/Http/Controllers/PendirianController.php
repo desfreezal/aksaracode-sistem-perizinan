@@ -2,40 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PendirianRequest;
+use App\Models\Pendirian;
 use Illuminate\Http\Request;
 
 class PendirianController extends Controller
 {
-    public function createPendirian()
-    {
-        return view('pemohon.izin-pendirian.data-pemohon');
-    }
-    public function postStep1(Request $request)
-    {
-        session()->put('step1', $request->all()); 
-
-        $peruntukan = $request->input('peruntukan');
-
-        return redirect("/dashboard/izin-pendirian/step2?peruntukan=$peruntukan");
-    }
-    public function step2()
-    {
-        return view('pemohon.izin-pendirian.detail-yayasan');
-    }
-    public function postStep2(Request $request)
+    public function createPendirian(PendirianRequest $request)
     {
         
 
-        return view('pemohon.izin-pendirian.detail-yayasan');
+        return view('pemohon.izin-pendirian.data-pemohon');
     }
 
-    public function step3()
+    public function store(PendirianRequest $request)
     {
-        return view('pemohon.izin-pendirian.upload-berkas');
-    }
+        $pendirian = new Pendirian($request->validated());
 
-    public function step4()
-    {
-        return view('pemohon.izin-pendirian.detail-pendirian');
+        $pendirian->save();
+
+        return view('pemohon.lacak-permohonan');
     }
 }

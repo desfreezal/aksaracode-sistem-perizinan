@@ -37,7 +37,7 @@ class RegisterController extends Controller
 
             $roles = $user->getRoleNames();
 
-        return response()->json(['user' => $user, 'roles' => $roles, 'message' => 'User registered successfully'], 201);
+        return response()->json(['user' => $user, 'message' => 'User registered successfully'], 201);
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], 500);
         }

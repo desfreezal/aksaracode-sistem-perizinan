@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
             'email' => 'dinas@perizinan.com',
             'password' => bcrypt('dinas123'),
         ]);
-        $dinas->assignRole('admin-dinas');
+        $dinas->assignRole('dinas');
 
         $walikota = User::create([
             'name' => 'walikota Role',
@@ -52,7 +52,7 @@ class UserSeeder extends Seeder
             'email' => 'verifikator@perizinan.com',
             'password' => bcrypt('verifikator123'),
         ]);
-        $verifikator->assignRole('verifikator');
+        $verifikator->assignRole('penyelia');
 
         $surveyor = User::create([
             'name' => 'surveyor Role',

@@ -14,7 +14,7 @@
                     </h1>
                 </div>
 
-                <form action="{{ url('/dashboard-pemohon/izin-pendirian/upload-berkas') }}" method="GET"
+                <form action="{{ url('/dashboard/izin-pendirian/step5') }}" method="GET"
                     class="w-full space-y-6">
                     @if (request('peruntukan') === 'tk')
                         @include('pemohon.izin-pendirian.berkas-izin-pendirian.table-tk')

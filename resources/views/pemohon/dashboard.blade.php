@@ -33,7 +33,7 @@
                     <img src="{{ asset('home/img/School.png') }}" alt="LogoIzinPendirian" />
                 </div>
                 <div class="tombol-putih">
-                    <a href="{{ route('pemohon-izin-pendirian') }}">Izin Pendirian Satuan Pendidikan</a>
+                    <a href="{{ route('izin-pendirian-1') }}">Izin Pendirian Satuan Pendidikan</a>
                 </div>
             </div>
         </div>

@@ -13,8 +13,7 @@
                     <h1 class="text-primary font-medium text-2xl">Mohon untuk memasukkan data sesuai dengan data terupdate
                     </h1>
                 </div>
-
-                <form action="{{ url('/dashboard-pemohon/izin-pendirian/detail-pendirian') }}" method="GET"
+                <form action="{{ url('/dashboard/izin-pendirian/step3') }}" method="GET"
                     class="w-full space-y-6">
 
                     <div class="flex items-center">

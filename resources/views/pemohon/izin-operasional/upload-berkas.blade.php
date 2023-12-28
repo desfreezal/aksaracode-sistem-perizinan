@@ -8,6 +8,10 @@
             @include('pemohon.izin-operasional.sidebar')
 
             <div class="flex-grow h-full pl-[34px] pr-[88px] py-7 box-border mb-10 w-full" id="content">
+
+                <div class="mb-9">
+                    {!! Breadcrumbs::render('pemohon-berkas-operasional', $peruntukan = request('peruntukan')) !!}
+                </div>
                 {{-- CONTENT --}}
                 <div class="py-3 pl-11 bg-primary rounded-md mb-9">
                     <h1 class="text-white font-medium text-2xl">Pastikan data yang di upload sesuai dengan persyaratan

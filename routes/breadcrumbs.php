@@ -13,7 +13,7 @@ Breadcrumbs::for('pemohon-dashboard', function (Generator $trail) {
 });
 
 Breadcrumbs::for('pemohon-daftar-ulang', function (Generator $trail) {
-    $trail->parent('pemohon-beranda')->push('Ajukan Permohonan', route('pemohon-dashboard'))->push('Data Pemohon', route('pemohon-dashboard'));
+    $trail->parent('pemohon-beranda')->push('Ajukan Permohonan', route('pemohon-dashboard'))->push('Data Pemohon');
 });
 
 Breadcrumbs::for('pemohon-detail-daftar', function (Generator $trail, $peruntukan) {
@@ -34,4 +34,12 @@ Breadcrumbs::for('pemohon-izin-pendirian-berkas', function (Generator $trail, $p
     $exploded = explode(' ', $peruntukan); // Split the string using ',' as the delimiter
     $firstElement = $exploded[0];
     $trail->parent('pemohon-daftar-ulang')->push('Permohonan Pendirian ' . strtoupper($firstElement), route('pemohon-upload-berkas'));
+});
+
+Breadcrumbs::for('pemohon-detail-operasional', function (Generator $trail, $peruntukan) {
+    $trail->parent('pemohon-daftar-ulang')->push('Permohonan Izin Operasional ' . strtoupper($peruntukan), route('pemohon-izin-operasional'));
+});
+
+Breadcrumbs::for('pemohon-berkas-operasional', function (Generator $trail, $peruntukan) {
+    $trail->parent('pemohon-detail-operasional', $peruntukan)->push('Upload Persyaratan Izin Operasional ' . strtoupper($peruntukan));
 });

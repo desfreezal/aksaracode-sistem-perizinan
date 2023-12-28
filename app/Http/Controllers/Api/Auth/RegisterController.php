@@ -35,7 +35,9 @@ class RegisterController extends Controller
 
             $user->sendEmailVerificationNotification();
 
-            return response()->json(['user' => $user, 'message' => 'User registered successfully'], 201);
+            $roles = $user->getRoleNames();
+
+        return response()->json(['user' => $user, 'roles' => $roles, 'message' => 'User registered successfully'], 201);
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], 500);
         }

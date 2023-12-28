@@ -64,8 +64,14 @@ class PendirianController extends Controller
         try {
             $user = Auth::user();
             // Buat pengguna
+            
+            $category = [
+                "TK" => 1,
+                "SD" => 2,
+                "SMP" => 3
+            ];
 
-            $inputPendirian = array_merge(['user_id' => $user->id], ['category_id' => 1],['statusDokumen_id' => 1] ,$request->validated());
+            $inputPendirian = array_merge(['user_id' => $user->id], ['category_id' => $category[$request->category]],['statusDokumen_id' => 1] ,$request->validated());
 
             
             $pendirian = new Pendirian($inputPendirian);

@@ -14,7 +14,8 @@
                     </h1>
                 </div>
 
-                <form action="{{ url('/dashboard-pemohon/izin-pendirian/detail-yayasan') }}" method="GET" class="w-full space-y-6">
+                <form action="{{ url('/dashboard/izin-pendirian/step1') }}" method="POST" class="w-full space-y-6">
+                    @csrf
                     <div class="flex items-center">
                         <label for="jenid" class="w-72">Sub Perizinan</label>
                         <div x-data="select" class="relative flex-grow" @click.outside="open = false">

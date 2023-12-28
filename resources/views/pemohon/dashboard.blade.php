@@ -10,7 +10,13 @@
 @endsection
 
 @section('content')
+    @if(isset($warning))
+    <div class="mx-20 text-white text-center my-8 p-4 rounded-md bg-orange-200">
+        <h1>{{ $warning }}</h1>
+    </div>
+    @endif
     <div class="container-kotak-cokelat" style="gap: 10px; margin: 80px 50px">
+
         <div class="kotak-cokelat">
             <div class="daftar-ulang">
                 <div class="gambar-bulat">
@@ -27,7 +33,7 @@
                     <img src="{{ asset('home/img/School.png') }}" alt="LogoIzinPendirian" />
                 </div>
                 <div class="tombol-putih">
-                    <a href="{{ route('pemohon-izin-pendirian') }}">Izin Pendirian Satuan Pendidikan</a>
+                    <a href="{{ route('izin-pendirian-1') }}">Izin Pendirian Satuan Pendidikan</a>
                 </div>
             </div>
         </div>

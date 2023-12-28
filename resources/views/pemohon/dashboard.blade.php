@@ -10,11 +10,49 @@
 @endsection
 
 @section('content')
+    <div class="mx-36 mt-5 min-h-screen">
+        <div class="mb-9">
+            {!! Breadcrumbs::render('pemohon-dashboard') !!}
+        </div>
 
-    <div>
-        {!! Breadcrumbs::render('pemohon-dashboard') !!}
+        <div id="card-container" class="flex items-center gap-x-6">
+
+            <div class="w-[234px] min-h-[267px] pt-4 bg-primary rounded-[36px] box-border">
+                <a href="{{ route('pemohon-daftar-ulang') }}">
+                    <div class="mx-11 px-6 py-5 rounded-full bg-edu-bg">
+                        <img src="{{ asset('home/img/Folder.png') }}" alt="folder" class="mx-auto w-full">
+                    </div>
+
+                    <h1 class="ml-4 mr-5 mt-3 mb-8 text-white font-bold text-lg text-center">Daftar Ulang Izin Operasional
+                        Satuan Pendidikan</h1>
+                </a>
+            </div>
+
+            <div class="w-[234px] min-h-[267px] pt-4 bg-primary rounded-[36px] box-border">
+                <a href="{{ route('pemohon-izin-pendirian') }}">
+                    <div class="mx-11 px-6 py-5 rounded-full bg-edu-bg">
+                        <img src="{{ asset('home/img/School.png') }}" alt="folder" class="mx-auto w-full">
+                    </div>
+
+                    <h1 class="ml-4 mr-5 mt-3 mb-8 text-white font-bold text-lg text-center">Izin Pendirian Satuan
+                        Pendidikan
+                    </h1>
+                </a>
+            </div>
+            <div class="w-[234px] min-h-[267px] pt-4 bg-primary rounded-[36px] box-border">
+                <a href="{{ route('pemohon-izin-operasional') }}">
+                    <div class="mx-11 px-6 py-5 rounded-full bg-edu-bg">
+                        <img src="{{ asset('home/img/Compliant.png') }}" alt="folder" class="mx-auto w-full">
+                    </div>
+
+                    <h1 class="ml-4 mr-5 mt-3 mb-8 text-white font-bold text-lg text-center">Izin Operasional Satuan
+                        Pendidikan
+                    </h1>
+                </a>
+            </div>
+        </div>
     </div>
-    <div class="container-kotak-cokelat" style="gap: 10px; margin: 80px 50px">
+    {{-- <div class="container-kotak-cokelat" style="gap: 10px; margin: 80px 50px">
         <div class="kotak-cokelat">
             <div class="daftar-ulang">
                 <div class="gambar-bulat">
@@ -45,5 +83,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection

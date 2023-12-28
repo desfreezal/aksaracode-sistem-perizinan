@@ -29,6 +29,12 @@
                 <a href="/dashboard-pemohon">Beranda</a>
             </li>
             <li>
+                <a href="/dashboard-pemohon/lacak-permohonan">Panduan Permohonan</a>
+            </li>
+            <li>
+                <a href="/dashboard-pemohon">Ajukan Permohonan</a>
+            </li>
+            <li>
                 <a href="/dashboard-pemohon/lacak-permohonan">Status Permohonan</a>
             </li>
             <li>

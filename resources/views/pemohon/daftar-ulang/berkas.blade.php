@@ -8,6 +8,10 @@
             @include('pemohon.daftar-ulang.sidebar')
 
             <div class="flex-grow h-full pl-[34px] pr-[88px] py-7 box-border mb-10 w-full" id="content">
+                <div class="mb-9">
+                    {!! Breadcrumbs::render('pemohon-berkas-daftar', $peruntukan = request('peruntukan')) !!}
+                </div>
+
                 {{-- CONTENT --}}
                 <div class="py-3 pl-11 rounded-md mb-9 bg-primary">
                     <h1 class="font-medium text-2xl text-white">Pastikan data yang di upload sesuai dengan persyaratan

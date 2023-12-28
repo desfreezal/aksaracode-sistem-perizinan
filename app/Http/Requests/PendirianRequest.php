@@ -14,6 +14,7 @@ class PendirianRequest extends FormRequest
     public function rules()
     {
         return [
+            'category' => 'string',
             'longtitude' => 'string',
             'latitude' => 'string',
             'lokasi' => 'string',

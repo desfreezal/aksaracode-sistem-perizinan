@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\Pendirian;
+namespace App\Http\Controllers\Api;
 use App\Http\Requests\PendirianRequest;
 use App\Models\Pendirian;
 use App\Models\User;
@@ -25,19 +25,14 @@ class PendirianController extends Controller
     public function getAllPendirian()
     {
         try {
-            // $pendirians = Pendirian::all();
+            $pendirians = Pendirian::get();
 
-            // Retrieve all pendirians along with their associated users
-            $pendirians = Pendirian::with('user')->get();
-
-            // var_dump($pendirians);
-            // die();
-
-            // Transform the user_id to username in each pendirian
             $transformedData = $pendirians->map(function ($pendirian) {
-                $pendirian->username = optional($pendirian->user)->username;
-                unset($pendirian->user_id); // Hapus field user_id jika tidak ingin menampilkannya
-                return $pendirian;
+                $user = User::findOrFail($pendirian->user_id);
+
+                $data = collect($user->toArray())->merge($pendirian->toArray());
+                
+                return $data;
             });
     
 
@@ -51,46 +46,57 @@ class PendirianController extends Controller
     public function getPendirianById($pendirianId)
     {
         try {
+            $user = Auth::user();
             $pendirian = Pendirian::findOrFail($pendirianId);
 
-            return response()->json(['data' => $pendirian], 200);
+            $response = collect($user->toArray())->merge($pendirian->toArray());
+
+            return response()->json(['data' => $response], 200);
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], 500);
         }
     }
 
     public function createPendirian(PendirianRequest $request)
-    {
-        try {
-            $user = Auth::user();
-            // Buat pengguna
-            
-            $category = [
-                "TK" => 1,
-                "SD" => 2,
-                "SMP" => 3
-            ];
+{
+    try {
+        $user = Auth::user();
 
-            $inputPendirian = array_merge(['user_id' => $user->id], ['category_id' => $category[$request->category]],['statusDokumen_id' => 1] ,$request->validated());
+        $category = [
+            "TK" => 1,
+            "SD" => 2,
+            "SMP" => 3
+        ];
 
-            
-            $pendirian = new Pendirian($inputPendirian);
+        // Mendapatkan kategori ID atau menggunakan nilai default
+        $category_id = $category[$request->category] ?? null;
 
+        $inputPendirian = array_merge(
+            ['user_id' => $user->id],
+            ['category_id' => $category_id],
+            ['statusDokumen_id' => 1],
+            $request->validated()
+        );
 
-            // Menyimpan file yang diunggah ke penyimpanan (storage) jika ada
-            foreach ($request->validated() as $key => $input) {
-                $this->handleFileUpload($request, $pendirian, $key);
-            }
+        $pendirian = new Pendirian($inputPendirian);
 
-            $pendirian->save();
-
-            $pendirian->user_id = $user->name;
-
-            return response()->json(['data' => $pendirian, 'message' => 'Data Crated Pendirian successfully'], 201);
-        } catch (\Exception $e) {
-            return response()->json(['message' => $e->getMessage()], 500);
+        // Loop through validated data to handle file uploads
+        foreach ($request->validated() as $key => $input) {
+            $this->handleFileUpload($request, $pendirian, $key);
         }
+
+        $pendirian->save();
+
+        // Create a response array with user and pendirian data
+
+        $pendirian->user = $user;
+        $response = collect($user->toArray())->merge($pendirian->toArray());
+
+        return response()->json(['data' => $response, 'message' => 'Data Created Pendirian successfully'], 201);
+    } catch (\Exception $e) {
+        return response()->json(['message' => $e->getMessage()], 500);
     }
+}
 
     
     public function updatePendirian(PendirianRequest $request, $pendirianId)
@@ -98,22 +104,18 @@ class PendirianController extends Controller
         try {
             $user = Auth::user();
 
-            // Mencari Pendirian berdasarkan ID
             $pendirian = Pendirian::findOrFail($pendirianId);
 
-            // Memastikan bahwa pengguna yang mengakses memiliki hak akses
             if ($user->id !== $pendirian->user_id) {
                 return response()->json(['message' => 'Unauthorized'], 403);
             }
 
-            // Menghapus file gambar yang terkait dengan data yang akan diubah
             foreach ($request->validated() as $key => $input) {
                 if ($request->hasFile($key) && $pendirian->$key) {
                     Storage::delete('public/perizinanPendirian/' . $key . '/' . $pendirian->$key);
                 }
             }
 
-            // Mengganti nilai array (contoh: mengganti nama pengguna)
             $pendirian->fill(array_merge(
                 ['user_id' => $user->id],
                 ['category_id' => 1],
@@ -126,8 +128,9 @@ class PendirianController extends Controller
                 $this->handleFileUpload($request, $pendirian, $key);
             }
 
-             // Menyimpan perubahan ke basis data
              $pendirian->save();
+
+             $response = collect($user->toArray())->merge($pendirian->toArray());
 
             return response()->json(['data' => $pendirian, 'message' => 'Data Updated Pendirian successfully'], 200);
         } catch (\Exception $e) {

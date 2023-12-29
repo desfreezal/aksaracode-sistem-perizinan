@@ -6,21 +6,27 @@ use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class VerificationApiController extends Controller
 {
 
-public function verify(Request $request, $id, $hash)
-{
-    $user = \App\Models\User::findOrFail($id);
 
-    if (!$user->hasVerifiedEmail() && $user->markEmailAsVerified()) {
-        event(new Verified($user));
-        return redirect('/')->with('verified', true);
+    public function verify(Request $request, $otp)
+    {
+        $user = Auth::user();
+
+        if ($user && $user->otp === $otp) {
+            
+            $user->markEmailAsVerified();
+
+            $user->update(['email_verified_at' => now()]);
+
+            return response()->json(['message' => 'Email verification successful'], 200);
+        }
+
+        return response()->json(['message' => 'Invalid OTP'], 422);
     }
-
-    return redirect('/')->with('verified', true);
-}
 
 
     public function resend()

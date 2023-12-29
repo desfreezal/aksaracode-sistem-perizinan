@@ -14,7 +14,7 @@
 
                     <div id="container" class="flex items-center gap-x-5">
 
-                        <a href="">
+                        <a href="{{ route('pemohon-monitoring-detail', ['type'=>'daftar-ulang']) }}">
                             <div class="pl-8 pr-5 flex items-center max-w-[342px] rounded-lg bg-primary text-white">
                                 <h1 class="font-bold text-sm py-[22px] pr-1">Monitoring Permohonan Daftar Ulang Izin
                                     Operasional
@@ -26,7 +26,7 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="">
+                        <a href="{{ route('pemohon-monitoring-detail', ['type'=>'izin-pendirian']) }}">
                             <div class="pl-8 pr-5 flex items-center max-w-[342px] rounded-lg bg-primary text-white">
                                 <h1 class="font-bold text-sm py-[22px] pr-1">Monitoring Permohonan Izin Pendirian Satuan
                                     Pendidikan</h1>
@@ -36,7 +36,7 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="">
+                        <a href="{{ route('pemohon-monitoring-detail', ['type'=>'izin-operasional']) }}">
                             <div class="pl-8 pr-5 flex items-center max-w-[342px] rounded-lg bg-primary text-white">
                                 <h1 class="font-bold text-sm py-[22px] pr-1">Monitoring Permohonan Izin Operasional Satuan
                                     Pendidikan</h1>

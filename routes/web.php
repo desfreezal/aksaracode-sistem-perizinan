@@ -416,6 +416,10 @@ Route::prefix('/dashboard-admin-dinas')->group(function () {
         return view('admin-dinas.monitoring');
     })->name('admin-dinas-monitoring');
 
+    Route::get('/monitoring/{type}', function ($type) {
+        return view('admin-dinas.monitoring-detail', ['type' => $type]);
+    })->name('admin-dinas-monitoring-detail');
+
     Route::get('/notifikasi', function () {
         return view('admin-dinas.notifikasi');
     })->name('admin-dinas-notifikasi');

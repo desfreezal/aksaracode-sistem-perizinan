@@ -57,7 +57,7 @@ class PendirianRequest extends FormRequest
             'R_Gudang' => 'file|mimes:jpg,jpeg,png,pdf',
             'denah_peta' => 'file|mimes:jpg,jpeg,png,pdf',
             'keaslian_berkas' => 'file|mimes:jpg,jpeg,png,pdf',
-            'radius_jarak' => 'integer',
+            'radius_jarak' => 'file|mimes:jpg,jpeg,png,pdf',
             'surat_tidak_keberatan' => 'file|mimes:jpg,jpeg,png,pdf',
             'surat_tidak_sengketa' => 'file|mimes:jpg,jpeg,png,pdf',
             'sarana_prasarana' => 'file|mimes:jpg,jpeg,png,pdf',

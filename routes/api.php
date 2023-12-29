@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\Auth\RegisterController;
 use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\VerificationApiController;
 use App\Http\Controllers\Api\DaftarUlangController;
+use App\Http\Controllers\Api\OperasionalController;
 use App\Http\Controllers\Api\PendirianController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -42,5 +43,12 @@ use Illuminate\Support\Facades\Route;
     Route::post('/daftar-ulang', [DaftarUlangController::class, 'createDaftarUlang']);
     Route::post('/daftar-ulang/{id}', [DaftarUlangController::class, 'updateDaftarUlang']);
     Route::delete('/daftar-ulang/{id}', [DaftarUlangController::class, 'deleteDaftarUlang']);
+
+    // Operasional
+    Route::get('/operasional', [OperasionalController::class, 'getAllOperasional']);
+    Route::get('/operasional/{id}', [OperasionalController::class, 'getOperasionalById']);
+    Route::post('/operasional', [OperasionalController::class, 'createOperasional']);
+    Route::post('/operasional/{id}', [OperasionalController::class, 'updateOperasional']);
+    Route::delete('/operasional/{id}', [OperasionalController::class, 'deleteOperasional']);
 
 });

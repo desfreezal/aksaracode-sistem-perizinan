@@ -138,6 +138,28 @@ Route::prefix('/dashboard-pemohon')->group(function () {
     Route::get('/izin-operasional/berkas', function () {
         return view('pemohon.izin-operasional.upload-berkas');
     })->name('pemohon-berkas-operasional');
+
+    Route::get('/panduan-perizinan', function () {
+        return view('pemohon.panduan-perizinan');
+    })->name('pemohon-panduan-perizinan');
+
+    Route::get('/panduan-perizinan/daftar-ulang', function () {
+        return view('pemohon.panduan-perizinan.daftar-ulang.daftar');
+    })->name('pemohon-panduan-daftar-ulang');
+
+    // panduan izin operasional
+    Route::get('/panduan-perizinan/izin-operasional', function () {
+        return view('pemohon.panduan-perizinan.izin-operasional.operasional');
+    })->name('pemohon-panduan-operasional');
+
+    // izin pendirian
+    Route::get('/panduan-perizinan/izin-pendirian', function () {
+        return view('pemohon.panduan-perizinan.izin-pendirian.izin');
+    })->name('pemohon-panduan-izin');
+
+    Route::get('/monitoring', function () {
+        return view('pemohon.monitoring');
+    })->name('pemohon-monitoring');
 });
 
 // OPERATOR

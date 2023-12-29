@@ -14,6 +14,7 @@
 </style>
 <link href="{{ asset('pemohon/DataTables/datatables.min.css') }}" rel="stylesheet">
 <script src="{{ asset('pemohon/js/jquery-3.7.1.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 <script defer src="{{ asset('home/js/alpine.min.js') }}"></script>
@@ -29,7 +30,7 @@
                 <a href="/dashboard-pemohon">Beranda</a>
             </li>
             <li>
-                <a href="/dashboard-pemohon/lacak-permohonan">Panduan Permohonan</a>
+                <a href="/dashboard-pemohon/panduan-perizinan">Panduan Permohonan</a>
             </li>
             <li>
                 <a href="/dashboard-pemohon">Ajukan Permohonan</a>

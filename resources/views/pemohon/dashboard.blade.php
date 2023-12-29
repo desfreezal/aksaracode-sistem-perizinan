@@ -52,6 +52,12 @@
             </div>
         </div>
     </div>
+
+    <div class="fixed w-12 h-12 bottom-28 rounded-full left-8 bg-primary">
+        <a href="{{ route('pemohon-chatting') }}">
+            <img src="{{ asset('pemohon/img/chat.png') }}" class="w-full p-3" alt="">
+        </a>
+    </div>
     {{-- <div class="container-kotak-cokelat" style="gap: 10px; margin: 80px 50px">
         <div class="kotak-cokelat">
             <div class="daftar-ulang">

@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Api;
+
 use App\Http\Requests\DaftarUlangRequest;
 use App\Models\DaftarUlang;
+use App\Models\StatusDokumen;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -30,11 +32,23 @@ class DaftarUlangController extends Controller
             $transformedData = $daftarUlangs->map(function ($daftarUlang) {
                 $user = User::findOrFail($daftarUlang->user_id);
 
+                $statusDokumen = StatusDokumen::findOrFail($daftarUlang->statusDokumen_id);
+
+                $category = [
+                    1 => "TK",
+                    2 => "SD",
+                    3 => "SMP"
+                ];
+
+                $daftarUlang->status_dokumen = $statusDokumen->Name;
+                $daftarUlang->category = $category[$daftarUlang->statusDokumen_id];
+
+
                 $data = collect($user->toArray())->merge($daftarUlang->toArray());
-                
+
                 return $data;
             });
-    
+
 
             return response()->json(['data' => $transformedData], 200);
         } catch (\Exception $e) {
@@ -48,6 +62,16 @@ class DaftarUlangController extends Controller
         try {
             $user = Auth::user();
             $daftarUlang = DaftarUlang::findOrFail($id);
+            $statusDokumen = StatusDokumen::findOrFail($daftarUlang->statusDokumen_id);
+
+            $category = [
+                1 => "TK",
+                2 => "SD",
+                3 => "SMP"
+            ];
+
+            $daftarUlang->status_dokumen = $statusDokumen->Name;
+            $daftarUlang->category = $category[$daftarUlang->statusDokumen_id];
 
             $response = collect($user->toArray())->merge($daftarUlang->toArray());
 
@@ -58,47 +82,47 @@ class DaftarUlangController extends Controller
     }
 
     public function createDaftarUlang(DaftarUlangRequest $request)
-{
-    try {
-        $user = Auth::user();
+    {
+        try {
+            $user = Auth::user();
 
-        
-        $category = [
-            "TK" => 1,
-            "SD" => 2,
-            "SMP" => 3
-        ];
-        
-        $category_id = $category[$request->category] ?? null;
 
-        $inputDaftarUlang = array_merge(
-            ['user_id' => $user->id],
-            ['category_id' => $category_id],
-            ['statusDokumen_id' => 1],
-            $request->validated()
-        );
+            $category = [
+                "TK" => 1,
+                "SD" => 2,
+                "SMP" => 3
+            ];
 
-        $daftarUlang = new DaftarUlang($inputDaftarUlang);
+            $category_id = $category[$request->category] ?? null;
 
-        // Loop through validated data to handle file uploads
-        foreach ($request->validated() as $key => $input) {
-            $this->handleFileUpload($request, $daftarUlang, $key);
+            $inputDaftarUlang = array_merge(
+                ['user_id' => $user->id],
+                ['category_id' => $category_id],
+                ['statusDokumen_id' => 1],
+                $request->validated()
+            );
+
+            $daftarUlang = new DaftarUlang($inputDaftarUlang);
+
+            // Loop through validated data to handle file uploads
+            foreach ($request->validated() as $key => $input) {
+                $this->handleFileUpload($request, $daftarUlang, $key);
+            }
+
+            $daftarUlang->save();
+
+            // Create a response array with user and pendirian data
+
+            $daftarUlang->user = $user;
+            $response = collect($user->toArray())->merge($daftarUlang->toArray());
+
+            return response()->json(['data' => $response, 'message' => 'Data Daftar Ulang Created successfully'], 201);
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 500);
         }
-
-        $daftarUlang->save();
-
-        // Create a response array with user and pendirian data
-
-        $daftarUlang->user = $user;
-        $response = collect($user->toArray())->merge($daftarUlang->toArray());
-
-        return response()->json(['data' => $response, 'message' => 'Data Daftar Ulang Created successfully'], 201);
-    } catch (\Exception $e) {
-        return response()->json(['message' => $e->getMessage()], 500);
     }
-}
 
-    
+
     public function updateDaftarUlang(DaftarUlangRequest $request, $id)
     {
         try {
@@ -127,9 +151,9 @@ class DaftarUlangController extends Controller
                 $this->handleFileUpload($request, $daftarUlang, $key);
             }
 
-             $daftarUlang->save();
+            $daftarUlang->save();
 
-             $response = collect($user->toArray())->merge($daftarUlang->toArray());
+            $response = collect($user->toArray())->merge($daftarUlang->toArray());
 
             return response()->json(['data' => $response, 'message' => 'Data Daftar Ulang Updated successfully'], 200);
         } catch (\Exception $e) {

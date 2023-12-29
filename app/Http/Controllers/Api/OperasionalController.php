@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 use App\Http\Requests\OperasionalRequest;
 use App\Models\Operasional;
+use App\Models\StatusDokumen;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -30,6 +31,17 @@ class OperasionalController extends Controller
             $transformedData = $operasionals->map(function ($operasional) {
                 $user = User::findOrFail($operasional->user_id);
 
+                $statusDokumen = StatusDokumen::findOrFail($operasional->statusDokumen_id);
+
+                $category = [
+                    1 => "TK",
+                    2 => "SD",
+                    3 => "SMP"
+                ];
+
+                $operasional->status_dokumen = $statusDokumen->Name;
+                $operasional->category = $category[$operasional->statusDokumen_id];
+
                 $data = collect($user->toArray())->merge($operasional->toArray());
                 
                 return $data;
@@ -48,6 +60,17 @@ class OperasionalController extends Controller
         try {
             $user = Auth::user();
             $operasional = Operasional::findOrFail($operasionalId);
+
+            $statusDokumen = StatusDokumen::findOrFail($operasional->statusDokumen_id);
+
+                $category = [
+                    1 => "TK",
+                    2 => "SD",
+                    3 => "SMP"
+                ];
+
+                $operasional->status_dokumen = $statusDokumen->Name;
+                $operasional->category = $category[$operasional->statusDokumen_id];
 
             $response = collect($user->toArray())->merge($operasional->toArray());
 

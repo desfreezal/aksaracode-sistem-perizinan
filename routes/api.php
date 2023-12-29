@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\Auth\VerificationApiController;
 use App\Http\Controllers\Api\DaftarUlangController;
 use App\Http\Controllers\Api\OperasionalController;
 use App\Http\Controllers\Api\PendirianController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +30,10 @@ use Illuminate\Support\Facades\Route;
     
     Route::middleware('auth:sanctum')->group(function () {
     Route::post('/email/verify/{otp}', [VerificationApiController::class, 'verify']);
+
+    Route::get('/profile', [UserController::class, 'profile']);
+    Route::patch('/profile', [UserController::class, 'updateProfile']);
+    Route::post('/change-password', [UserController::class, 'changePassword']);
     
     // Pendirian
     Route::get('/pendirian', [PendirianController::class, 'getAllPendirian']);

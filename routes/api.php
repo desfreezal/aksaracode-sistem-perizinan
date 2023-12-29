@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\Auth\RegisterController;
 use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\VerificationApiController;
+use App\Http\Controllers\Api\DaftarUlangController;
 use App\Http\Controllers\Api\PendirianController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -28,10 +29,18 @@ use Illuminate\Support\Facades\Route;
     Route::middleware('auth:sanctum')->group(function () {
     Route::post('/email/verify/{otp}', [VerificationApiController::class, 'verify']);
     
+    // Pendirian
     Route::get('/pendirian', [PendirianController::class, 'getAllPendirian']);
     Route::get('/pendirian/{id}', [PendirianController::class, 'getPendirianById']);
     Route::post('/pendirian', [PendirianController::class, 'createPendirian']);
     Route::post('/pendirian/{pendirianId}', [PendirianController::class, 'updatePendirian']);
     Route::delete('/pendirian/{pendirianId}', [PendirianController::class, 'deletePendirian']);
+
+    // Daftar Ulang
+    Route::get('/daftar-ulang', [DaftarUlangController::class, 'getAllDaftarUlang']);
+    Route::get('/daftar-ulang/{id}', [DaftarUlangController::class, 'getDaftarUlangById']);
+    Route::post('/daftar-ulang', [DaftarUlangController::class, 'createDaftarUlang']);
+    Route::post('/daftar-ulang/{id}', [DaftarUlangController::class, 'updateDaftarUlang']);
+    Route::delete('/daftar-ulang/{id}', [DaftarUlangController::class, 'deleteDaftarUlang']);
 
 });

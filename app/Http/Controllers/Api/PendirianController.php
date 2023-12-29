@@ -132,7 +132,7 @@ class PendirianController extends Controller
 
              $response = collect($user->toArray())->merge($pendirian->toArray());
 
-            return response()->json(['data' => $pendirian, 'message' => 'Data Updated Pendirian successfully'], 200);
+            return response()->json(['data' => $response, 'message' => 'Data Updated Pendirian successfully'], 200);
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], 500);
         }

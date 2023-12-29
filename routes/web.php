@@ -164,6 +164,11 @@ Route::prefix('/dashboard-pemohon')->group(function () {
     Route::get('/monitoring/{type}', function ($type) {
         return view('pemohon.monitoring-detail', ['type' => $type]);
     })->name('pemohon-monitoring-detail');
+
+    // pengajuan-permohonan
+    Route::get('/pengajuan-permohonan', function () {
+        return view('pemohon.pengajuan-permohonan');
+    })->name('pemohon-pengajuan-permohonan');
 });
 
 // OPERATOR

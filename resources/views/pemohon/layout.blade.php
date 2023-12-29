@@ -5,6 +5,7 @@
 <head>
     <title>Index EduLicense</title>
     <link rel="stylesheet" href="{{ asset('pemohon/css/styles.css') }}" />
+    <link rel="stylesheet" href="{{ asset('operator/css/styles.css') }}" />
 </head>
 
 <style>
@@ -34,7 +35,7 @@
                 <a href="/dashboard-pemohon/panduan-perizinan">Panduan Permohonan</a>
             </li>
             <li>
-                <a href="/dashboard-pemohon">Ajukan Permohonan</a>
+                <a href="/dashboard-pemohon/pengajuan-permohonan">Ajukan Permohonan</a>
             </li>
             <li>
                 <a href="/dashboard-pemohon/lacak-permohonan">Status Permohonan</a>

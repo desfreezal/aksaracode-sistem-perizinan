@@ -24,10 +24,19 @@
             <li>
                 <div class="parent">
                     <a href="/dashboard-admin-dinas">
-                        Dashboard
+                        Beranda
                     </a>
                 </div>
-
+            </li>
+            <li>
+                <a href="/dashboard-admin-dinas/panduan-perizinan"
+                    class="{{ Route::currentRouteName() === 'admin-dinas-panduan-perizinan' ? 'text-primary' : '' }}">Panduan Permohonan</a>
+            </li>
+            <li>
+                <a href="/dashboard-admin-dinas/pengajuan-permohonan">Ajukan Permohonan</a>
+            </li>
+            <li>
+                <a href="/dashboard-admin-dinas/lacak-permohonan">Status Permohonan</a>
             </li>
             <li>
                 <div class="parent">

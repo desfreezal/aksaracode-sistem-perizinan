@@ -70,6 +70,12 @@ class Pendirian extends Model
         'R_Osis',
         'R_Toilet',
         'R_Gudang',
+        'denah_peta',
+        'keaslian_berkas',
+        'radius_jarak',
+        'surat_tidak_keberatan',
+        'surat_tidak_sengketa',
+        'sarana_prasarana',
     ];
 
     public $incrementing = false; 

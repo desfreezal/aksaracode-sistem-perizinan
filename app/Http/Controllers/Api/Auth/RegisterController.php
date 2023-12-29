@@ -33,7 +33,7 @@ class RegisterController extends Controller
 
             $user->assignRole("pemohon");
 
-            $user->sendEmailVerificationNotification();
+            $user->sendOtpMail();
 
             $roles = $user->getRoleNames();
 

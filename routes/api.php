@@ -23,10 +23,11 @@ use Illuminate\Support\Facades\Route;
     // Route::post('/logout', 'Api\LoginApiController@logout')->middleware('auth:sanctum');
 
     // Email verification routes
-    Route::get('/email/verify/{id}/{hash}', [VerificationApiController::class, 'verify'])->name('verification.verify');
     // Route::post('/email/resend', 'Api\VerificationApiController@resend')->name('verification.resend');
-
-Route::middleware('auth:sanctum')->group(function () {
+    
+    Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/email/verify/{otp}', [VerificationApiController::class, 'verify']);
+    
     Route::get('/pendirian', [PendirianController::class, 'getAllPendirian']);
     Route::get('/pendirian/{id}', [PendirianController::class, 'getPendirianById']);
     Route::post('/pendirian', [PendirianController::class, 'createPendirian']);

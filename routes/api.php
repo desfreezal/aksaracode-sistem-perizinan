@@ -3,7 +3,7 @@
 use App\Http\Controllers\Api\Auth\RegisterController;
 use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\VerificationApiController;
-use App\Http\Controllers\Api\Pendirian\PendirianController;
+use App\Http\Controllers\Api\PendirianController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

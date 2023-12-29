@@ -13,11 +13,11 @@ class PendirianMigration extends Migration
     public function up()
     {
         Schema::create('pendirian', function (Blueprint $table) {
-            $table->id();
+            $table->string('id')->primary();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('statusDokumen_id');
-            $table->string('longtitude')->nullable();
+            $table->string('longtitude')->nullable();  
             $table->string('latitude')->nullable();
             $table->string('lokasi')->nullable();
             $table->string('dokumen_survey')->nullable();

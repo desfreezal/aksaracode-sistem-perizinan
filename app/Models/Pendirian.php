@@ -2,12 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-// use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
-use Spatie\Permission\Traits\HasRoles;
 
 
 class Pendirian extends Model
@@ -17,6 +12,18 @@ class Pendirian extends Model
      *
      * @var array
      */
+
+     protected static function boot()
+     {
+         parent::boot();
+     
+         static::creating(function ($pendirian) {
+             if (!$pendirian->id) {
+                 $timestamp = now()->format('YmdHis');
+                 $pendirian->id = 'A-' . $timestamp;
+             }
+         });
+     }
     protected $table = 'pendirian';
 
     protected $fillable = [
@@ -65,10 +72,16 @@ class Pendirian extends Model
         'R_Gudang',
     ];
 
+    public $incrementing = false; 
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
     protected $hidden = ['user'];
+
+    protected $casts = [
+        'id' => 'string',
+    ];
 }

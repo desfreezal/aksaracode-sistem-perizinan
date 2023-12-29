@@ -13,7 +13,7 @@ Breadcrumbs::for('pemohon-dashboard', function (Generator $trail) {
 });
 
 Breadcrumbs::for('pemohon-daftar-ulang', function (Generator $trail) {
-    $trail->parent('pemohon-beranda')->push('Ajukan Permohonan', route('pemohon-dashboard'))->push('Data Pemohon');
+    $trail->parent('pemohon-beranda')->push('Ajukan Permohonan', route('pemohon-pengajuan-permohonan'))->push('Data Pemohon');
 });
 
 Breadcrumbs::for('pemohon-detail-daftar', function (Generator $trail, $peruntukan) {

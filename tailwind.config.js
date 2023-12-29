@@ -17,7 +17,10 @@ export default {
                 'abu-abu-second' : '#F0F0F0',
                 'putih-dasar': '#FFFFFF',
                 'for-icon': '#868E96',
-                'underline': '#B7605D'
+                'underline': '#B7605D',
+                'font-abu': '#45484F',
+                'font-kuning': '#D4AA2E',
+                'header-table': '#FDC8C7'
             },
         },
     },

@@ -160,6 +160,10 @@ Route::prefix('/dashboard-pemohon')->group(function () {
     Route::get('/monitoring', function () {
         return view('pemohon.monitoring');
     })->name('pemohon-monitoring');
+
+    Route::get('/monitoring/{type}', function ($type) {
+        return view('pemohon.monitoring-detail', ['type' => $type]);
+    })->name('pemohon-monitoring-detail');
 });
 
 // OPERATOR

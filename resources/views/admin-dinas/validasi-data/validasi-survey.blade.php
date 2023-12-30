@@ -9,34 +9,35 @@
 
             <div class="flex-grow h-full pl-[34px] pr-[88px] py-7 box-border mb-10" id="content">
 
-                <form action="" class="w-full" id="form-jadwal">
+                <div class="mt-10">
+                    <div class="flex justify-between items-center text-primary">
+                        <h1 class="font-semibold text-xl">Oksana Khoirunnida</h1>
+                        <h1 class="font-semibold text-base">007524</h1>
+                    </div>
 
-                    <div class="space-y-16 mt-20">
-                        <div class="flex items-center">
-                            <label for="nama_surveyor" class="w-40 pr-4">Nama Surveyor</label>
-                            <input type="text" class="flex-grow rounded-xl border-2 border-primary" name="nama_surveyor"
-                                id="nama_surveyor">
-                        </div>
+                    <div class="mt-5">
+                        <h1>Foto Hasil Survey</h1>
 
-
-                        <div class="flex items-center">
-                            <label for="tgl_survey" class="w-40">Tanggal Survey</label>
-                            <input type="date" class="flex-grow rounded-xl border-2 border-primary" name="tgl_survey"
-                                id="tgl_survey">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="ml-2 w-8 h-8 text-primary">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
-                            </svg>
+                        <div class="flex justify-between items-center text-primary mt-5">
+                            <h1 class="text-black">Survey desa jabung.jpg</h1>
+                            <a href="" class="px-8 py-4 rounded-full border-2 border-black font-semibold">Lihat</a>
                         </div>
                     </div>
 
-                    <button type="button" data-modal-target="default-modal" data-modal-toggle="default-modal"
-                        class="block mt-52 py-3 text-center w-[460px] mx-auto border-2 border-primary rounded-lg hover:bg-primary hover:text-white text-primary">Atur
-                        Jadwal
-                        Survey</button>
-                </form>
+                    <div class="mt-6">
+                        <h1 class="font-bold">Tulis Komentar</h1>
 
+                        <textarea name="" id="" class="w-full rounded-xl border-primary" rows="5"></textarea>
+                    </div>
+                </div>
+
+                <div class="justify-center items-center flex mt-16 space-x-10">
+                    <button data-modal-target="default-modal" data-modal-toggle="default-modal"
+                        class="py-3 w-48 block mr-10 text-center border-2 rounded-lg border-font-merah text-font-merah bg-bg-merah">Tolak</button>
+
+                    <button data-modal-target="default-modal" data-modal-toggle="default-modal"
+                        class="py-3 w-48 block text-center border-2 rounded-lg text-font-hijau bg-bg-hijau border-font-hijau">Validasi</button>
+                </div>
 
                 {{-- MODAL --}}
                 <div id="default-modal" tabindex="-1" aria-hidden="true"
@@ -61,7 +62,7 @@
                                     class="py-1 px-12 rounded-3xl text-black hover:bg-abu-abu ">Tutup</button>
 
 
-                                <button data-modal-hide="default-modal" type="button"  id="konfirmasi"
+                                <button data-modal-hide="default-modal" type="button" id="konfirmasi"
                                     class="py-1 px-12 rounded-3xl text-primary">Konfirmasi</button>
                             </div>
                         </div>
@@ -79,7 +80,6 @@
 
 @push('scripts')
     <script>
-
         // konfirmasi btn
         const konfirmasi = document.getElementById('konfirmasi');
 

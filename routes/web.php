@@ -408,6 +408,16 @@ Route::prefix('/dashboard-admin-dinas')->group(function () {
         return view('admin-dinas.validasi-data.validasi', ['id' => $id]);
     })->name('admin-dinas-detail-validasi');
 
+    // jadwal-survey
+    Route::get('/jadwal-survey/{id}', function ($id) {
+        return view('admin-dinas.validasi-data.jadwal-survey', ['id' => $id]);
+    })->name('admin-dinas-jadwal-survey');
+
+    // validasi-survey/{id}
+    Route::get('/validasi-survey/{id}', function ($id) {
+        return view('admin-dinas.validasi-data.validasi-survey', ['id' => $id]);
+    })->name('admin-dinas-validasi-survey');
+
     Route::get('/lacak-permohonan', function () {
         return view('admin-dinas.lacak-permohonan');
     })->name('admin-dinas-lacak-permohonan');

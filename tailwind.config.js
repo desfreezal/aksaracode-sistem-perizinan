@@ -23,6 +23,8 @@ export default {
                 'header-table': '#FDC8C7',
                 'font-hijau': '#50C319',
                 'bg-hijau': '#CEFED5',
+                'font-merah': '#D41E1E',
+                'bg-merah': '#F5AFAF',
             },
         },
     },

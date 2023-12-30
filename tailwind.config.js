@@ -20,7 +20,9 @@ export default {
                 'underline': '#B7605D',
                 'font-abu': '#45484F',
                 'font-kuning': '#D4AA2E',
-                'header-table': '#FDC8C7'
+                'header-table': '#FDC8C7',
+                'font-hijau': '#50C319',
+                'bg-hijau': '#CEFED5',
             },
         },
     },

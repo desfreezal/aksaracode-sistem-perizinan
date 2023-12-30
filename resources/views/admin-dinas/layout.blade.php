@@ -10,6 +10,9 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"
         integrity="sha256-IMCPPZxtLvdt9tam8RJ8ABMzn+Mq3SQiInbDmMYwjDg=" crossorigin="anonymous"></script>
+    <link href="{{ asset('pemohon/DataTables/datatables.min.css') }}" rel="stylesheet">
+    <script src="{{ asset('pemohon/js/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ asset('pemohon/DataTables/datatables.min.js') }}"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('styles')
 </head>
@@ -30,7 +33,8 @@
             </li>
             <li>
                 <a href="/dashboard-admin-dinas/panduan-perizinan"
-                    class="{{ Route::currentRouteName() === 'admin-dinas-panduan-perizinan' ? 'text-primary' : '' }}">Panduan Permohonan</a>
+                    class="{{ Route::currentRouteName() === 'admin-dinas-panduan-perizinan' ? 'text-primary' : '' }}">Panduan
+                    Permohonan</a>
             </li>
             <li>
                 <a href="/dashboard-admin-dinas/pengajuan-permohonan">Ajukan Permohonan</a>
@@ -215,6 +219,7 @@
     <div class="footer" style="padding-top: 0px">
         <div class="edu-license-2023">EduLicense 2023</div>
     </div>
+
 
     @stack('scripts')
 </body>

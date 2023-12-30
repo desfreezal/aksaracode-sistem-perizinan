@@ -485,6 +485,11 @@ Route::prefix('/dashboard-admin-dinas')->group(function () {
             'layanan' => $layanan
         ]);
     })->name('admin-dinas-buat-surat');
+
+    // RIWAYAT PERMOHONAN
+    Route::get('/riwayat', function () {
+        return view('admin-dinas.riwayat-permohonan');
+    })->name('admin-dinas-riwayat-permohonan');
 });
 
 // KEPALA DINAS

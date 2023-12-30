@@ -393,8 +393,12 @@ Route::prefix('/dashboard-admin-dinas')->group(function () {
     });
 
     Route::get('/kelengkapan-data', function () {
-        return view('admin-dinas.kelengkapan-data');
+        return view('admin-dinas.kelengkapan-data.kelengkapan-data');
     })->name('admin-dinas-lengkap-data');
+
+    Route::get('/kelengkapan-data/{id}', function ($id) {
+        return view('admin-dinas.kelengkapan-data.kelengkapan-detail', ['id' => $id]);
+    })->name('admin-dinas-kelengkapan-detail');
 
     Route::get('/validasi-data', function () {
         return view('admin-dinas.validasi-data');

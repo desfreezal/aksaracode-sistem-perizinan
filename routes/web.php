@@ -453,6 +453,38 @@ Route::prefix('/dashboard-admin-dinas')->group(function () {
     Route::get('/profile', function () {
         return view('admin-dinas.profile');
     })->name('admin-dinas-profile');
+
+    // pengesahan-dokumen
+    Route::get('/pengesahan-dokumen', function () {
+        return view('admin-dinas.pengesahan-dokumen.index');
+    })->name('admin-dinas-pengesahan-dokumen');
+
+    // jenis-pengesahan
+    Route::get('/pengesahan-dokumen/{jenis}', function ($jenis) {
+        return view(
+            'admin-dinas.pengesahan-dokumen.jenis-pengesahan',
+            ['jenis' => $jenis]
+        );
+    })->name('admin-dinas-jenis-pengesahan');
+
+    Route::get('/pengesahan-dokumen/{jenis}/{layanan}', function ($jenis, $layanan) {
+        return view(
+            'admin-dinas.pengesahan-dokumen.data-pengesahan',
+            [
+                'jenis' => $jenis,
+                'layanan' => $layanan
+            ]
+        );
+    })->name('admin-dinas-data-pengesahan');
+
+    // buat-surat/{id}
+    Route::get('/buat-surat/{jenis}/{layanan}/{id}', function ($jenis, $layanan, $id) {
+        return view('admin-dinas.pengesahan-dokumen.surat', [
+            'id' => $id,
+            'jenis' => $jenis,
+            'layanan' => $layanan
+        ]);
+    })->name('admin-dinas-buat-surat');
 });
 
 // KEPALA DINAS

@@ -1,5 +1,4 @@
-<div class="w-80 min-h-screen bg-edu-bg space-y-5 py-2 pt-16 pl-9 pr-12 box-border"
-    id="sidebar">
+<div class="w-80 min-h-screen bg-edu-bg space-y-5 py-2 pt-16 pl-9 pr-12 box-border" id="sidebar">
     {{-- isi --}}
 
 
@@ -58,12 +57,12 @@
             Notifikasi
         </h1>
     </a>
-    <a href="#"
+    <a href="{{ route('admin-dinas-pengesahan-dokumen') }}"
         class="cursor-pointer flex items-center pl-3 pr-5 rounded-xl hover:bg-primary hover:text-white hover:shadow gap-x-3 py-2
-        {{ Route::currentRouteName() === '' ? 'bg-primary shadow text-white hover:bg-primary-light' : '' }} 
+        {{ in_array(Route::currentRouteName(), ['admin-dinas-pengesahan-dokumen', 'admin-dinas-jenis-pengesahan', 'admin-dinas-data-pengesahan', 'admin-dinas-buat-surat']) ? 'bg-primary shadow text-white hover:bg-primary-light' : '' }}  
         group">
         <img src="{{ asset('sidebar/pengesahan dok.png') }}"
-            class="object-contain w-6 h-6 group-hover:filter-gray-to-white  {{ Route::currentRouteName() === '' ? 'filter-gray-to-white' : '' }}"
+            class="object-contain w-6 h-6 group-hover:filter-gray-to-white  {{ in_array(Route::currentRouteName(), ['admin-dinas-pengesahan-dokumen', 'admin-dinas-jenis-pengesahan', 'admin-dinas-data-pengesahan', 'admin-dinas-buat-surat']) ? 'filter-gray-to-white' : '' }}"
             alt="1">
         <h1 class="text-sm uppercase font-normal">
             Pengesahan Dokumen

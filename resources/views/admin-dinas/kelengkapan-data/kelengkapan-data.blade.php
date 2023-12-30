@@ -63,38 +63,47 @@
                     </div>
 
                     <div id="container" class="mt-10 space-y-8">
-                        <div class="flex gap-5">
-                            <div class="flex-grow shadow-lg rounded-lg border border-[#E5DBDB] bg-[#FBFBFB] px-3 py-4 space-y-4">
-                                <div class="flex justify-between items-center text-primary">
-                                    <h1 class="font-semibold text-xl">Oksana Khoirunnida</h1>
-                                    <h1 class="font-semibold text-base">007524</h1>
+                        <a href="{{ route('admin-dinas-kelengkapan-detail', ['id' => 1]) }}" class="block">
+                            <div class="flex gap-5">
+                                <div
+                                    class="flex-grow shadow-lg rounded-lg border border-[#E5DBDB] bg-[#FBFBFB] px-3 py-4 space-y-4">
+                                    <div class="flex justify-between items-center text-primary">
+                                        <h1 class="font-semibold text-xl">Oksana Khoirunnida</h1>
+                                        <h1 class="font-semibold text-base">007524</h1>
+                                    </div>
+                                    <h1>Daftar Ulang Izin Operasional Satuan Pendidikan SD</h1>
+                                    <p class="text-[#D77B78]">08/11/2023 - 16:59:10</p>
                                 </div>
-                                <h1>Daftar Ulang Izin Operasional Satuan Pendidikan SD</h1>
-                                <p class="text-[#D77B78]">08/11/2023 - 16:59:10</p>
-                            </div>
 
-                            <div class="w-[62px] space-y-5">
-                                <h1 class="text-center font-bold">Status</h1>
+                                <div class="w-[62px] space-y-5">
+                                    <h1 class="text-center font-bold">Status</h1>
 
-                                <button class="p-3 bg-bg-hijau text-font-hijau border border-font-hijau rounded">Valid</button>
-                            </div>
-                        </div>
-                        <div class="flex gap-5">
-                            <div class="flex-grow shadow-lg rounded-lg border border-[#E5DBDB] bg-[#FBFBFB] px-3 py-4 space-y-4">
-                                <div class="flex justify-between items-center text-primary">
-                                    <h1 class="font-semibold text-xl">Oksana Khoirunnida</h1>
-                                    <h1 class="font-semibold text-base">007524</h1>
+                                    <button
+                                        class="p-3 bg-bg-hijau text-font-hijau border border-font-hijau rounded">Valid</button>
                                 </div>
-                                <h1>Daftar Ulang Izin Operasional Satuan Pendidikan SD</h1>
-                                <p class="text-[#D77B78]">08/11/2023 - 16:59:10</p>
-                            </div>
 
-                            <div class="w-[62px] space-y-5">
-                                <h1 class="text-center font-bold">Status</h1>
-
-                                <button class="p-3 bg-bg-hijau text-font-hijau border border-font-hijau rounded">Valid</button>
                             </div>
-                        </div>
+                        </a>
+                        <a href="{{ route('admin-dinas-kelengkapan-detail', ['id' => 2]) }}" class="block">
+                            <div class="flex gap-5">
+                                <div
+                                    class="flex-grow shadow-lg rounded-lg border border-[#E5DBDB] bg-[#FBFBFB] px-3 py-4 space-y-4">
+                                    <div class="flex justify-between items-center text-primary">
+                                        <h1 class="font-semibold text-xl">Oksana Khoirunnida</h1>
+                                        <h1 class="font-semibold text-base">007524</h1>
+                                    </div>
+                                    <h1>Daftar Ulang Izin Operasional Satuan Pendidikan SD</h1>
+                                    <p class="text-[#D77B78]">08/11/2023 - 16:59:10</p>
+                                </div>
+
+                                <div class="w-[62px] space-y-5">
+                                    <h1 class="text-center font-bold">Status</h1>
+
+                                    <button
+                                        class="p-3 bg-bg-hijau text-font-hijau border border-font-hijau rounded">Valid</button>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>

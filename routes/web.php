@@ -401,11 +401,11 @@ Route::prefix('/dashboard-admin-dinas')->group(function () {
     })->name('admin-dinas-kelengkapan-detail');
 
     Route::get('/validasi-data', function () {
-        return view('admin-dinas.validasi-data');
+        return view('admin-dinas.validasi-data.index');
     })->name('admin-dinas-validasi-data');
 
     Route::get('/detail-validasi/{id}', function ($id) {
-        return view('admin-dinas.detail-validasi');
+        return view('admin-dinas.validasi-data.validasi', ['id' => $id]);
     })->name('admin-dinas-detail-validasi');
 
     Route::get('/lacak-permohonan', function () {

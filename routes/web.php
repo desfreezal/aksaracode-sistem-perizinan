@@ -512,47 +512,47 @@ Route::prefix('/dashboard-admin-dinas')->group(function () {
     })->name('admin-dinas-pengajuan-permohonan');
 
     Route::get('/daftar-ulang', function () {
-        return view('pemohon.daftar-ulang.daftar');
+        return view('admin-dinas.daftar-ulang.daftar');
     })->name('admin-dinas-daftar-ulang');
 
     Route::get('/daftar-ulang/data', function () {
-        return view('pemohon.daftar-ulang.daftar');
+        return view('admin-dinas.daftar-ulang.daftar');
     });
 
     Route::get('/daftar-ulang/detail', function () {
-        return view('pemohon.daftar-ulang.detail');
+        return view('admin-dinas.daftar-ulang.detail');
     })->name('admin-dinas-detail');
 
     Route::get('/daftar-ulang/berkas', function () {
-        return view('pemohon.daftar-ulang.berkas');
+        return view('admin-dinas.daftar-ulang.berkas');
     })->name('admin-dinas-berkas');
 
     Route::get('/izin-pendirian', function () {
-        return view('pemohon.izin-pendirian.data-pemohon');
+        return view('admin-dinas.izin-pendirian.data-pemohon');
     })->name('admin-dinas-izin-pendirian');
 
     Route::get('/izin-pendirian/detail-yayasan', function () {
-        return view('pemohon.izin-pendirian.detail-yayasan');
+        return view('admin-dinas.izin-pendirian.detail-yayasan');
     })->name('admin-dinas-detail-yayasan');
 
     Route::get('/izin-pendirian/detail-pendirian', function () {
-        return view('pemohon.izin-pendirian.detail-pendirian');
+        return view('admin-dinas.izin-pendirian.detail-pendirian');
     })->name('admin-dinas-detail-pendirian');
     // upload berkas
     Route::get('/izin-pendirian/upload-berkas', function () {
-        return view('pemohon.izin-pendirian.upload-berkas');
+        return view('admin-dinas.izin-pendirian.upload-berkas');
     })->name('admin-dinas-upload-berkas');
 
     Route::get('/izin-operasional', function () {
-        return view('pemohon.izin-operasional.data-pemohon');
+        return view('admin-dinas.izin-operasional.data-pemohon');
     })->name('admin-dinas-izin-operasional');
 
     Route::get('/izin-operasional/detail', function () {
-        return view('pemohon.izin-operasional.detail-operasional');
+        return view('admin-dinas.izin-operasional.detail-operasional');
     })->name('admin-dinas-detail-operasional');
 
     Route::get('/izin-operasional/berkas', function () {
-        return view('pemohon.izin-operasional.upload-berkas');
+        return view('admin-dinas.izin-operasional.upload-berkas');
     })->name('admin-dinas-berkas-operasional');
 
 });

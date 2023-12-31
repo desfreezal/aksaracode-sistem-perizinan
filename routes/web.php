@@ -29,7 +29,7 @@ Route::get('/dashboard-pemohon', function () {
 
 Route::get('/dashboard-operator', function () {
     return view('operator.dashboard');
-});
+})->name('operator-dashboard');
 
 Route::get('/dashboard-surveyor', function () {
     return view('surveyor.dashboard');
@@ -202,8 +202,12 @@ Route::get('/izin-operasional', function () {
 // OPERATOR
 Route::prefix('/dashboard-operator')->group(function () {
     Route::get('/kelengkapan-data', function () {
-        return view('operator.kelengkapan-data');
+        return view('operator.kelengkapan-data.kelengkapan-data');
     })->name('operator-lengkap-data');
+
+    Route::get('/kelengkapan-data/{id}', function ($id) {
+        return view('operator.kelengkapan-data.kelengkapan-detail', ['id' => $id]);
+    })->name('operator-kelengkapan-detail');
 
     Route::get('/validasi-data', function () {
         return view('operator.validasi-data');
@@ -225,6 +229,10 @@ Route::prefix('/dashboard-operator')->group(function () {
         return view('operator.monitoring');
     })->name('operator-monitoring');
 
+    Route::get('/monitoring/{type}', function ($type) {
+        return view('operator.monitoring-detail', ['type' => $type]);
+    })->name('operator-monitoring-detail');
+
     Route::get('/notifikasi', function () {
         return view('operator.notifikasi');
     })->name('operator-notifikasi');
@@ -234,7 +242,7 @@ Route::prefix('/dashboard-operator')->group(function () {
     })->name('operator-chatting');
 
     Route::get('/chatting/{id_user}', function ($id_user) {
-        return view('operator.chatting');
+        return view('operator.chattting-room');
     })->name('operator-detail-chatting');
 
     Route::get('/panduan-perizinan', function () {
@@ -258,6 +266,59 @@ Route::prefix('/dashboard-operator')->group(function () {
     Route::get('/profile', function () {
         return view('operator.profile');
     })->name('operator-profile');
+
+    Route::get('/riwayat', function () {
+        return view('operator.riwayat-permohonan');
+    });
+
+    // PENGAJUAN PERMOHONAN
+    Route::get('/pengajuan-permohonan', function () {
+        return view('operator.pengajuan-permohonan');
+    })->name('operator-pengajuan-permohonan');
+
+    Route::get('/daftar-ulang', function () {
+        return view('operator.daftar-ulang.daftar');
+    })->name('operator-daftar-ulang');
+
+    Route::get('/daftar-ulang/data', function () {
+        return view('operator.daftar-ulang.daftar');
+    });
+
+    Route::get('/daftar-ulang/detail', function () {
+        return view('operator.daftar-ulang.detail');
+    })->name('operator-detail');
+
+    Route::get('/daftar-ulang/berkas', function () {
+        return view('operator.daftar-ulang.berkas');
+    })->name('operator-berkas');
+
+    Route::get('/izin-pendirian', function () {
+        return view('operator.izin-pendirian.data-pemohon');
+    })->name('operator-izin-pendirian');
+
+    Route::get('/izin-pendirian/detail-yayasan', function () {
+        return view('operator.izin-pendirian.detail-yayasan');
+    })->name('operator-detail-yayasan');
+
+    Route::get('/izin-pendirian/detail-pendirian', function () {
+        return view('operator.izin-pendirian.detail-pendirian');
+    })->name('operator-detail-pendirian');
+    // upload berkas
+    Route::get('/izin-pendirian/upload-berkas', function () {
+        return view('operator.izin-pendirian.upload-berkas');
+    })->name('operator-upload-berkas');
+
+    Route::get('/izin-operasional', function () {
+        return view('operator.izin-operasional.data-pemohon');
+    })->name('operator-izin-operasional');
+
+    Route::get('/izin-operasional/detail', function () {
+        return view('operator.izin-operasional.detail-operasional');
+    })->name('operator-detail-operasional');
+
+    Route::get('/izin-operasional/berkas', function () {
+        return view('operator.izin-operasional.upload-berkas');
+    })->name('operator-berkas-operasional');
 });
 
 // AUDITOR

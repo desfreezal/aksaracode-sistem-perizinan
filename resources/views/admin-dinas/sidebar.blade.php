@@ -78,3 +78,9 @@
         </h1>
     </a>
 </div>
+
+<div class="fixed w-12 h-12 bottom-28 rounded-full left-8 bg-primary">
+    <a href="{{ route('admin-dinas-chatting') }}">
+        <img src="{{ asset('pemohon/img/chat.png') }}" class="w-full p-3" alt="">
+    </a>
+</div>

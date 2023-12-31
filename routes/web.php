@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\PendirianController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,11 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/landing-pages', function () {
+Route::get('/', function () {
     return view('landing-pages');
 });
 
@@ -65,8 +67,24 @@ Route::get('/izin-operasional', function () {
     return view('landing-page.izin-operasional.operasional');
 });
 
+
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
 // PEMOHON
-Route::prefix('/dashboard-pemohon')->group(function () {
+Route::middleware(['role:pemohon'])->prefix('/dashboard')->group(function () {
+    Route::get('/izin-pendirian', [PendirianController::class, 'createPendirian'])->name('izin-pendirian-1');
+    Route::post('/izin-pendirian/step1', [PendirianController::class, 'postStep1']);
+
+    Route::get('/izin-pendirian/step2', [PendirianController::class, 'step2'])->name('izin-pendirian-2');
+    Route::post('/izin-pendirian/step2', [PendirianController::class, 'postStep2']);
+
+    Route::get('/izin-pendirian/step3', [PendirianController::class, 'step3'])->name('izin-pendirian-3');
+    Route::post('/izin-pendirian/step3', [PendirianController::class, 'postStep3']);
+
+    Route::get('/izin-pendirian/step4', [PendirianController::class, 'step4'])->name('izin-pendirian-4');
+    Route::post('/izin-pendirian/step4', [PendirianController::class, 'postStep4']);
+
     Route::get('/lacak-permohonan', function () {
         return view('pemohon.lacak-permohonan');
     });
@@ -111,22 +129,6 @@ Route::prefix('/dashboard-pemohon')->group(function () {
         return view('pemohon.daftar-ulang.berkas');
     })->name('pemohon-berkas');
 
-    Route::get('/izin-pendirian', function () {
-        return view('pemohon.izin-pendirian.data-pemohon');
-    })->name('pemohon-izin-pendirian');
-
-    Route::get('/izin-pendirian/detail-yayasan', function () {
-        return view('pemohon.izin-pendirian.detail-yayasan');
-    })->name('pemohon-detail-yayasan');
-
-    Route::get('/izin-pendirian/detail-pendirian', function () {
-        return view('pemohon.izin-pendirian.detail-pendirian');
-    })->name('pemohon-detail-pendirian');
-    // upload berkas
-    Route::get('/izin-pendirian/upload-berkas', function () {
-        return view('pemohon.izin-pendirian.upload-berkas');
-    })->name('pemohon-upload-berkas');
-
     Route::get('/izin-operasional', function () {
         return view('pemohon.izin-operasional.data-pemohon');
     })->name('pemohon-izin-operasional');
@@ -170,6 +172,32 @@ Route::prefix('/dashboard-pemohon')->group(function () {
         return view('pemohon.pengajuan-permohonan');
     })->name('pemohon-pengajuan-permohonan');
 });
+
+Route::get('/data-statistik-daftarulang', function () {
+    return view('data-statistik-daftarulang');
+});
+
+Route::get('/data-statistik-izinoperasional', function () {
+    return view('data-statistik-izinoperasional');
+});
+
+Route::get('/data-statistik-izinpendirian', function () {
+    return view('data-statistik-izinpendirian');
+});
+
+Route::get('/daftar-ulang', function () {
+    return view(('landing-page.daftar-ulang.daftar'));
+});
+
+Route::get('/izin-pendirian', function () {
+    return view(('landing-page.izin-pendirian.izin'));
+});
+
+Route::get('/izin-operasional', function () {
+    return view('landing-page.izin-operasional.operasional');
+});
+
+
 
 // OPERATOR
 Route::prefix('/dashboard-operator')->group(function () {
@@ -724,3 +752,6 @@ Route::prefix('/dashboard-admin-utama')->group(function () {
         return view('admin-utama.profile');
     })->name('admin-utama-profile');
 });
+Auth::routes();
+
+

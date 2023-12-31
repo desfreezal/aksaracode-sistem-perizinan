@@ -16,7 +16,8 @@
 <link href="{{ asset('pemohon/DataTables/datatables.min.css') }}" rel="stylesheet">
 <script src="{{ asset('pemohon/js/jquery-3.7.1.min.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js" integrity="sha256-IMCPPZxtLvdt9tam8RJ8ABMzn+Mq3SQiInbDmMYwjDg=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"
+    integrity="sha256-IMCPPZxtLvdt9tam8RJ8ABMzn+Mq3SQiInbDmMYwjDg=" crossorigin="anonymous"></script>
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 <script defer src="{{ asset('home/js/alpine.min.js') }}"></script>
@@ -29,7 +30,7 @@
         </div>
         <ul class="py-6 pr-6">
             <li>
-                <a href="/dashboard-pemohon">Beranda</a>
+                <a href="/dashboard">Beranda</a>
             </li>
             <li>
                 <a href="/dashboard-pemohon/panduan-perizinan">Panduan Permohonan</a>
@@ -38,7 +39,7 @@
                 <a href="/dashboard-pemohon/pengajuan-permohonan">Ajukan Permohonan</a>
             </li>
             <li>
-                <a href="/dashboard-pemohon/lacak-permohonan">Status Permohonan</a>
+                <a href="/dashboard/lacak-permohonan">Status Permohonan</a>
             </li>
             <li>
                 <a href="#" id="notifDropDownButton" data-dropdown-toggle="notifDropDown">
@@ -54,7 +55,7 @@
                         <button class="p-5 flex justify-end w-full" id="closeNotif">X</button>
                         <div class="overflow-y-auto mx-5">
 
-                            <div onclick="window.location.href = '/dashboard-pemohon/notifikasi'"
+                            <div onclick="window.location.href = '/dashboard/notifikasi'"
                                 class="cursor-pointer flex gap-x-4 items-center px-4 py-4 bg-primary hover:bg-primary-light rounded-xl mb-3 text-white">
                                 <div class="w-12 h-12 rounded-lg bg-white flex justify-center items-center">
                                     <img src="{{ asset('pemohon/img/document.png') }}" alt=""
@@ -76,7 +77,7 @@
                                 </div>
                             </div>
 
-                            <div onclick="window.location.href = '/dashboard-pemohon/notifikasi'"
+                            <div onclick="window.location.href = '/dashboard/notifikasi'"
                                 class="flex gap-x-4 items-center px-4 py-4 bg-primary rounded-xl mb-3 text-white hover:bg-primary-light cursor-pointer">
                                 <div class="w-12 h-12 rounded-lg bg-white flex justify-center items-center">
                                     <img src="{{ asset('pemohon/img/documents check.png') }}" alt=""
@@ -98,7 +99,7 @@
                                 </div>
                             </div>
 
-                            <div onclick="window.location.href = '/dashboard-pemohon/notifikasi'"
+                            <div onclick="window.location.href = '/dashboard/notifikasi'"
                                 class="flex gap-x-4 items-center px-4 py-4 bg-primary rounded-xl mb-3 text-white hover:bg-primary-light cursor-pointer">
                                 <div class="w-12 h-12 rounded-lg bg-white flex justify-center items-center">
                                     <img src="{{ asset('pemohon/img/survey.png') }}" alt=""
@@ -134,12 +135,12 @@
                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200 block"
                         aria-labelledby="profileDropDownButton">
                         <li>
-                            <a href="/dashboard-pemohon/profile"
+                            <a href="/dashboard/profile"
                                 class="block text-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profil
                                 Pengguna</a>
                         </li>
                         <li>
-                            <a href="/dashboard-pemohon/riwayat"
+                            <a href="/dashboard/riwayat"
                                 class="block text-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Riwayat
                                 Permohonan</a>
                         </li>
@@ -187,8 +188,8 @@
                         data-modal-hide="logout-modal">
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 14 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                         </svg>
                         <span class="sr-only">Close modal</span>
                     </button>
@@ -207,7 +208,8 @@
                     <button data-modal-hide="logout-modal" type="button" id="closeModal"
                         class="py-1 px-12 rounded-3xl border border-edu-black text-primary hover:bg-abu-abu ">Kembali</button>
 
-                    <form action="{{ url('/landing-pages', []) }}" method="get">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
                         <button type="submit" data-modal-hide="logout-modal" type="button" id="closeModal"
                             class="py-1 px-12 rounded-3xl bg-primary hover:bg-primary-light text-white ">Keluar</button>
                     </form>

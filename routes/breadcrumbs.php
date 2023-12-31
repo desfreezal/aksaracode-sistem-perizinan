@@ -43,3 +43,44 @@ Breadcrumbs::for('pemohon-detail-operasional', function (Generator $trail, $peru
 Breadcrumbs::for('pemohon-berkas-operasional', function (Generator $trail, $peruntukan) {
     $trail->parent('pemohon-detail-operasional', $peruntukan)->push('Upload Persyaratan Izin Operasional ' . strtoupper($peruntukan));
 });
+
+// ADMIN DINAS
+Breadcrumbs::for('admin-dinas-beranda', function (Generator $trail) {
+    $trail->push('Beranda', route('admin-dinas-dashboard'));
+});
+
+Breadcrumbs::for('admin-dinas-dashboard', function (Generator $trail) {
+    $trail->parent('admin-dinas-beranda')->push('Ajukan Permohonan')->push('Ajukan Permohonan', route('admin-dinas-dashboard'));
+});
+
+Breadcrumbs::for('admin-dinas-daftar-ulang', function (Generator $trail) {
+    $trail->parent('admin-dinas-beranda')->push('Ajukan Permohonan', route('admin-dinas-pengajuan-permohonan'))->push('Data Pemohon');
+});
+
+Breadcrumbs::for('admin-dinas-detail-daftar', function (Generator $trail, $peruntukan) {
+    $trail->parent('admin-dinas-daftar-ulang')->push('Daftar Ulang ' . strtoupper($peruntukan), route('admin-dinas-detail'));
+});
+
+Breadcrumbs::for('admin-dinas-berkas-daftar', function (Generator $trail, $peruntukan) {
+    $trail->parent('admin-dinas-detail-daftar', strtoupper($peruntukan))->push('Upload Persyaratan ' . strtoupper($peruntukan), route('admin-dinas-berkas'));
+});
+
+// for admin-dinas-izin-pendirian
+Breadcrumbs::for('admin-dinas-izin-pendirian', function (Generator $trail, $peruntukan) {
+    $trail->parent('admin-dinas-daftar-ulang')->push('Daftar Ulang ' . strtoupper($peruntukan), route('admin-dinas-izin-pendirian'));
+});
+
+// for admin-dinas-izin-pendirian
+Breadcrumbs::for('admin-dinas-izin-pendirian-berkas', function (Generator $trail, $peruntukan) {
+    $exploded = explode(' ', $peruntukan); // Split the string using ',' as the delimiter
+    $firstElement = $exploded[0];
+    $trail->parent('admin-dinas-daftar-ulang')->push('Permohonan Pendirian ' . strtoupper($firstElement), route('admin-dinas-upload-berkas'));
+});
+
+Breadcrumbs::for('admin-dinas-detail-operasional', function (Generator $trail, $peruntukan) {
+    $trail->parent('admin-dinas-daftar-ulang')->push('Permohonan Izin Operasional ' . strtoupper($peruntukan), route('admin-dinas-izin-operasional'));
+});
+
+Breadcrumbs::for('admin-dinas-berkas-operasional', function (Generator $trail, $peruntukan) {
+    $trail->parent('admin-dinas-detail-operasional', $peruntukan)->push('Upload Persyaratan Izin Operasional ' . strtoupper($peruntukan));
+});

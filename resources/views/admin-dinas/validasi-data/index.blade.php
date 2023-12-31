@@ -99,13 +99,13 @@
                         <p class="text-[#D77B78]">08/11/2023 - 16:59:10</p>
 
                         <div class="space-y-3">
-                            <a href="" class="block">
+                            <a href="{{ route('admin-dinas-detail-validasi', ['id' => 1]) }}" class="block">
                                 <div class="w-full bg-primary py-3 text-center rounded text-white hover:bg-primary-light">
                                     Validasi Data Pemohon
                                 </div>
                             </a>
 
-                            <a href="" class="block">
+                            <a href="{{ route('admin-dinas-validasi-survey', ['id' => 3]) }}" class="block">
                                 <div class="w-full bg-primary py-3 text-center rounded text-white hover:bg-primary-light">
                                     Validasi Hasil Survey
                                 </div>
@@ -114,7 +114,7 @@
 
 
                     </div>
-                    
+
                     <div class="shadow-lg rounded-lg border border-[#E5DBDB] bg-[#FBFBFB] px-3 py-4 space-y-4">
                         <div class="flex justify-between items-center text-primary">
                             <h1 class="font-semibold text-xl">Oksana Khoirunnida</h1>
@@ -124,13 +124,13 @@
                         <p class="text-[#D77B78]">08/11/2023 - 16:59:10</p>
 
                         <div class="space-y-3">
-                            <a href="" class="block">
+                            <a href="{{ route('admin-dinas-detail-validasi', ['id' => 2]) }}" class="block">
                                 <div class="w-full bg-primary py-3 text-center rounded text-white hover:bg-primary-light">
                                     Validasi Data Pemohon
                                 </div>
                             </a>
 
-                            <a href="" class="block">
+                            <a href="{{ route('admin-dinas-validasi-survey', ['id' => 3]) }}" class="block">
                                 <div class="w-full bg-primary py-3 text-center rounded text-white hover:bg-primary-light">
                                     Validasi Hasil Survey
                                 </div>

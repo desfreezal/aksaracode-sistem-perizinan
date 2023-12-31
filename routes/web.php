@@ -390,7 +390,7 @@ Route::get('/konfirmasi-sandi', function () {
 Route::prefix('/dashboard-admin-dinas')->group(function () {
     Route::get('', function () {
         return view('admin-dinas.dashboard');
-    });
+    })->name('admin-dinas-dashboard');
 
     Route::get('/kelengkapan-data', function () {
         return view('admin-dinas.kelengkapan-data.kelengkapan-data');
@@ -443,7 +443,7 @@ Route::prefix('/dashboard-admin-dinas')->group(function () {
     })->name('admin-dinas-chatting');
 
     Route::get('/chatting/{id_user}', function ($id_user) {
-        return view('admin-dinas.chatting');
+        return view('pemohon.chattting-room');
     })->name('admin-dinas-detail-chatting');
 
     Route::get('/panduan-perizinan', function () {
@@ -504,6 +504,57 @@ Route::prefix('/dashboard-admin-dinas')->group(function () {
     Route::get('/riwayat', function () {
         return view('admin-dinas.riwayat-permohonan');
     })->name('admin-dinas-riwayat-permohonan');
+
+    // PENGAJUAN PERMOHONAN
+
+    Route::get('/pengajuan-permohonan', function () {
+        return view('admin-dinas.pengajuan-permohonan');
+    })->name('admin-dinas-pengajuan-permohonan');
+
+    Route::get('/daftar-ulang', function () {
+        return view('pemohon.daftar-ulang.daftar');
+    })->name('admin-dinas-daftar-ulang');
+
+    Route::get('/daftar-ulang/data', function () {
+        return view('pemohon.daftar-ulang.daftar');
+    });
+
+    Route::get('/daftar-ulang/detail', function () {
+        return view('pemohon.daftar-ulang.detail');
+    })->name('admin-dinas-detail');
+
+    Route::get('/daftar-ulang/berkas', function () {
+        return view('pemohon.daftar-ulang.berkas');
+    })->name('admin-dinas-berkas');
+
+    Route::get('/izin-pendirian', function () {
+        return view('pemohon.izin-pendirian.data-pemohon');
+    })->name('admin-dinas-izin-pendirian');
+
+    Route::get('/izin-pendirian/detail-yayasan', function () {
+        return view('pemohon.izin-pendirian.detail-yayasan');
+    })->name('admin-dinas-detail-yayasan');
+
+    Route::get('/izin-pendirian/detail-pendirian', function () {
+        return view('pemohon.izin-pendirian.detail-pendirian');
+    })->name('admin-dinas-detail-pendirian');
+    // upload berkas
+    Route::get('/izin-pendirian/upload-berkas', function () {
+        return view('pemohon.izin-pendirian.upload-berkas');
+    })->name('admin-dinas-upload-berkas');
+
+    Route::get('/izin-operasional', function () {
+        return view('pemohon.izin-operasional.data-pemohon');
+    })->name('admin-dinas-izin-operasional');
+
+    Route::get('/izin-operasional/detail', function () {
+        return view('pemohon.izin-operasional.detail-operasional');
+    })->name('admin-dinas-detail-operasional');
+
+    Route::get('/izin-operasional/berkas', function () {
+        return view('pemohon.izin-operasional.upload-berkas');
+    })->name('admin-dinas-berkas-operasional');
+
 });
 
 // KEPALA DINAS

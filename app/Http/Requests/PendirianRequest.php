@@ -61,6 +61,17 @@ class PendirianRequest extends FormRequest
             'surat_tidak_keberatan' => 'file|mimes:jpg,jpeg,png,pdf',
             'surat_tidak_sengketa' => 'file|mimes:jpg,jpeg,png,pdf',
             'sarana_prasarana' => 'file|mimes:jpg,jpeg,png,pdf',
+            'R_Sirkulasi' => 'file|mimes:jpg,jpeg,png,pdf',
+            'tempat_bermain_berolahraga' => 'file|mimes:jpg,jpeg,png,pdf',
+            'kerangka_dasar_struktur_kurikulum' => 'file|mimes:jpg,jpeg,png,pdf',
+            'beban_belajar' => 'file|mimes:jpg,jpeg,png,pdf',
+            'kalender' => 'file|mimes:jpg,jpeg,png,pdf',
+            'tata_tertib' => 'file|mimes:jpg,jpeg,png,pdf',
+            'data_kepala_sekolah' => 'file|mimes:jpg,jpeg,png,pdf',
+            'sk_pengangkatan_kepala_sekolah' => 'file|mimes:jpg,jpeg,png,pdf',
+            'data_instruktur' => 'file|mimes:jpg,jpeg,png,pdf',
+            'sumber_pendanaan' => 'file|mimes:jpg,jpeg,png,pdf',
+            'biaya_personal' => 'file|mimes:jpg,jpeg,png,pdf',
         ];
     }
 }

@@ -17,7 +17,7 @@
                     </h1>
                 </div>
 
-                <form action="{{ url('/dashboard/izin-pendirian/step4') }}" method="GET"
+                <form action="{{ url('/dashboard-pemohon/izin-pendirian/detail-pendirian') }}" method="get"
                     class="w-full space-y-6">
 
                     <div class="flex items-center">

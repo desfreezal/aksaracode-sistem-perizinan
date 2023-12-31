@@ -19,7 +19,7 @@
                 </div>
 
                 <form action="{{ url('/dashboard-admin-dinas/izin-pendirian/upload-berkas') }}" method="GET"
-                    class="w-full space-y-6">
+                    class="w-full space-y-6" id="form">
                     @if (request('peruntukan') === 'tk')
                         @include('admin-dinas.izin-pendirian.berkas-izin-pendirian.table-tk')
                     @elseif (request('peruntukan') === 'sd')
@@ -184,7 +184,7 @@
             // closemodal onclick or modal hidden send form
             const closeModal = document.getElementById('closeModal')
             // send form
-            const form = document.querySelector('form')
+            const form = document.getElementById('form')
             closeModal.addEventListener('click', () => {
                 form.submit()
             })

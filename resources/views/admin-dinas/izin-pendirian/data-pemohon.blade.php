@@ -18,7 +18,7 @@
                     </h1>
                 </div>
 
-                <form action="{{ url('/dashboard-admin-dinas/izin-pendirian/detail-yayasan') }}" method="GET" class="w-full space-y-6">
+                <form action="{{ url('/dashboard-admin-dinas/izin-pendirian/detail-yayasan') }}" method="GET" class="w-full space-y-6" id="form">
                     <div class="flex items-center">
                         <label for="jenid" class="w-72">Sub Perizinan</label>
                         <div x-data="select" class="relative flex-grow" @click.outside="open = false">
@@ -259,7 +259,7 @@
             // closemodal onclick or modal hidden send form
             const closeModal = document.getElementById('closeModal')
             // send form
-            const form = document.querySelector('form')
+            const form = document.getElementById('form')
             closeModal.addEventListener('click', () => {
                 form.submit()
             })

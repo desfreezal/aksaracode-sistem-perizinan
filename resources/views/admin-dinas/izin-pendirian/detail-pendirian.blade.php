@@ -18,7 +18,7 @@
                 </div>
 
                 <form action="{{ url('/dashboard-admin-dinas/izin-pendirian/upload-berkas') }}" method="GET"
-                    class="w-full space-y-6">
+                    class="w-full space-y-6" id="form">
 
                     <div class="flex items-center">
                         <label for="namasekolah" class="w-72">Nama Sekolah</label>
@@ -236,7 +236,7 @@
             // closemodal onclick or modal hidden send form
             const closeModal = document.getElementById('closeModal')
             // send form
-            const form = document.querySelector('form')
+            const form = document.getElementById('form')
             closeModal.addEventListener('click', () => {
                 form.submit()
             })

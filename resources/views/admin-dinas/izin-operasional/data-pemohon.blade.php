@@ -18,7 +18,7 @@
                     </h1>
                 </div>
 
-                <form action="{{ route('admin-dinas-detail-operasional') }}" method="GET" class="w-full space-y-6">
+                <form action="{{ route('admin-dinas-detail-operasional') }}" method="GET" class="w-full space-y-6" id="form">
                     <input type="text" id="peruntukan" name="peruntukan" hidden>
                     <div class="flex items-center">
                         <label for="nik" class="w-72">NIK admin-dinas</label>
@@ -233,7 +233,7 @@
             // closemodal onclick or modal hidden send form
             const closeModal = document.getElementById('closeModal')
             // send form
-            const form = document.querySelector('form')
+            const form = document.getElementById('form')
             closeModal.addEventListener('click', () => {
                 form.submit()
             })

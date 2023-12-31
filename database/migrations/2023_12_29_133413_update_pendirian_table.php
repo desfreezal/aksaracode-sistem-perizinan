@@ -15,11 +15,8 @@ return new class extends Migration
             // Menambahkan kolom 'denah_peta'
             $table->string('denah_peta')->nullable();
 
-            // Menambahkan kolom 'keaslian_berkas'
-            $table->string('keaslian_berkas')->nullable();
-
             // Menambahkan kolom 'radius_jarak'
-            $table->float('radius_jarak')->nullable();
+            $table->string('radius_jarak')->nullable();
 
             // Menambahkan kolom 'surat_tidak_keberatan'
             $table->string('surat_tidak_keberatan')->nullable();

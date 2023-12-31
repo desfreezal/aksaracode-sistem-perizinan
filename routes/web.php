@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\DaftarUlangController;
+use App\Http\Controllers\OperasionalController;
 use App\Http\Controllers\PendirianController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,10 +24,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('landing-pages');
 });
-
-Route::get('/dashboard-pemohon', function () {
-    return view('pemohon.dashboard');
-})->name('pemohon-dashboard');
 
 Route::get('/dashboard-operator', function () {
     return view('operator.dashboard');
@@ -68,22 +66,24 @@ Route::get('/izin-operasional', function () {
 });
 
 
-Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// PEMOHON
+Route::get('/dashboard-pemohon', [App\Http\Controllers\HomeController::class, 'index'])->name('pemohon-dashboard');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// PEMOHON
-Route::middleware(['role:pemohon'])->prefix('/dashboard')->group(function () {
+Route::middleware(['role:pemohon', 'verified'])->prefix('/dashboard-pemohon')->group(function () {
     Route::get('/izin-pendirian', [PendirianController::class, 'createPendirian'])->name('izin-pendirian-1');
-    Route::post('/izin-pendirian/step1', [PendirianController::class, 'postStep1']);
 
-    Route::get('/izin-pendirian/step2', [PendirianController::class, 'step2'])->name('izin-pendirian-2');
-    Route::post('/izin-pendirian/step2', [PendirianController::class, 'postStep2']);
+    Route::get('/izin-pendirian/detail-yayasan', function () {
+        return view('admin-dinas.izin-pendirian.detail-yayasan');
+    })->name('admin-dinas-detail-yayasan');
 
-    Route::get('/izin-pendirian/step3', [PendirianController::class, 'step3'])->name('izin-pendirian-3');
-    Route::post('/izin-pendirian/step3', [PendirianController::class, 'postStep3']);
-
-    Route::get('/izin-pendirian/step4', [PendirianController::class, 'step4'])->name('izin-pendirian-4');
-    Route::post('/izin-pendirian/step4', [PendirianController::class, 'postStep4']);
+    Route::get('/izin-pendirian/detail-pendirian', function () {
+        return view('admin-dinas.izin-pendirian.detail-pendirian');
+    })->name('admin-dinas-detail-pendirian');
+    // upload berkas
+    Route::get('/izin-pendirian/upload-berkas', function () {
+        return view('admin-dinas.izin-pendirian.upload-berkas');
+    })->name('admin-dinas-upload-berkas');
 
     Route::get('/lacak-permohonan', function () {
         return view('pemohon.lacak-permohonan');
@@ -171,6 +171,16 @@ Route::middleware(['role:pemohon'])->prefix('/dashboard')->group(function () {
     Route::get('/pengajuan-permohonan', function () {
         return view('pemohon.pengajuan-permohonan');
     })->name('pemohon-pengajuan-permohonan');
+
+    // Store Data
+    Route::post('/daftar-ulang', [DaftarUlangController::class, 'store']);
+    Route::post('/pendirian', [PendirianController::class, 'store']);
+    Route::post('/operasional', [OperasionalController::class, 'store']);
+
+    // Update Data
+    Route::post('/daftar-ulang/{id}', [DaftarUlangController::class, 'update']);
+    Route::post('/pendirian/{id}', [PendirianController::class, 'update']);
+    Route::post('/operasional/{id}', [OperasionalController::class, 'update']);
 });
 
 Route::get('/data-statistik-daftarulang', function () {
@@ -402,7 +412,7 @@ Route::get('/lupa-sandi', function () {
 // kode-verifikasi
 Route::get('/kode-verifikasi', function () {
     return view('auth-page.kode-verifikasi');
-});
+})->name('verification.notice');
 
 // reset-sandi
 Route::get('/reset-sandi', function () {

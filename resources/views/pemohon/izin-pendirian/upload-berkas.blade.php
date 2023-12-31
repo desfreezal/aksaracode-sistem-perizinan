@@ -4,10 +4,14 @@
     <div class="min-h-screen h-full">
 
         <div class="flex">
+
             {{-- SIDEBAR --}}
             @include('pemohon.izin-pendirian.sidebar')
 
             <div class="flex-grow h-full pl-[34px] pr-[88px] py-7 box-border mb-10 w-full" id="content">
+                <div class="mb-9">
+                    {!! Breadcrumbs::render('pemohon-izin-pendirian-berkas', $peruntukan = request('namasekolah')) !!}
+                </div>
                 {{-- CONTENT --}}
                 <div class="py-3 pl-11 bg-primary rounded-md mb-9">
                     <h1 class="text-white font-medium text-2xl">Pastikan data yang di upload sesuai dengan persyaratan

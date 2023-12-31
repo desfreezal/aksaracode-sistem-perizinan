@@ -8,6 +8,9 @@
             @include('pemohon.izin-operasional.sidebar')
 
             <div class="flex-grow h-full pl-[34px] pr-[88px] py-7 box-border mb-10" id="content">
+                <div class="mb-9">
+                    {!! Breadcrumbs::render('pemohon-detail-operasional', $peruntukan = request('peruntukan')) !!}
+                </div>
                 {{-- CONTENT --}}
                 <div class="py-3 pl-11 border border-primary rounded-md mb-9">
                     <h1 class="text-primary font-medium text-2xl">Mohon untuk memasukkan data sesuai dengan data terupdate

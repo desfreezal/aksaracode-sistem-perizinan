@@ -5,6 +5,7 @@
 <head>
     <title>Index EduLicense</title>
     <link rel="stylesheet" href="{{ asset('pemohon/css/styles.css') }}" />
+    <link rel="stylesheet" href="{{ asset('operator/css/styles.css') }}" />
 </head>
 
 <style>
@@ -14,6 +15,9 @@
 </style>
 <link href="{{ asset('pemohon/DataTables/datatables.min.css') }}" rel="stylesheet">
 <script src="{{ asset('pemohon/js/jquery-3.7.1.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"
+    integrity="sha256-IMCPPZxtLvdt9tam8RJ8ABMzn+Mq3SQiInbDmMYwjDg=" crossorigin="anonymous"></script>
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 <script defer src="{{ asset('home/js/alpine.min.js') }}"></script>
@@ -27,6 +31,12 @@
         <ul class="py-6 pr-6">
             <li>
                 <a href="/dashboard">Beranda</a>
+            </li>
+            <li>
+                <a href="/dashboard/panduan-perizinan">Panduan Permohonan</a>
+            </li>
+            <li>
+                <a href="{{ route('pemohon-pengajuan-permohonan') }}">Ajukan Permohonan</a>
             </li>
             <li>
                 <a href="/dashboard/lacak-permohonan">Status Permohonan</a>
@@ -178,8 +188,8 @@
                         data-modal-hide="logout-modal">
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 14 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                         </svg>
                         <span class="sr-only">Close modal</span>
                     </button>

@@ -8,13 +8,17 @@
             @include('pemohon.daftar-ulang.sidebar')
 
             <div class="flex-grow h-full pl-[34px] pr-[88px] py-7 box-border mb-10" id="content">
+                <div class="mb-9">
+                    {!! Breadcrumbs::render('pemohon-daftar-ulang') !!}
+                </div>
+
                 {{-- CONTENT --}}
                 <div class="py-3 pl-11 border border-primary rounded-md mb-9">
                     <h1 class="text-primary font-medium text-2xl">Mohon untuk memasukkan data sesuai dengan data terupdate
                     </h1>
                 </div>
 
-                <form action="{{ url('/dashboard-pemohon/daftar-ulang/detail') }}" method="GET" class="w-full space-y-6">
+                <form action="{{ url('/dashboard/daftar-ulang/detail') }}" method="GET" class="w-full space-y-6">
                     <div class="flex items-center">
                         <label for="jenid" class="w-72">Sub Perizinan</label>
                         <div x-data="select" class="relative flex-grow" @click.outside="open = false">

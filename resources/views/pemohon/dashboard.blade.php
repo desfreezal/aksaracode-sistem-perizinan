@@ -1,51 +1,50 @@
 @extends('pemohon.layout')
 
-@section('notif-container')
-    <button class="float-right m-5" id="closeNotif">X</button>
-    <div class="w-60 text-center flex justify-center items-center flex-col m-16">
-        <img src="{{ asset('pemohon/img/Illustration.png') }}" class="aspect-square object-fill w-40 mb-7" alt="">
-        <p>Kami akan memberi tahu Anda setelah kami melakukan
-            sesuatu untukmu</p>
-    </div>
-@endsection
-
 @section('content')
-    @if(isset($warning))
-    <div class="mx-20 text-white text-center my-8 p-4 rounded-md bg-orange-200">
-        <h1>{{ $warning }}</h1>
-    </div>
+    @if (isset($warning))
+        <div class="mx-20 text-white text-center my-8 p-4 rounded-md bg-orange-200">
+            <h1>{{ $warning }}</h1>
+        </div>
     @endif
-    <div class="container-kotak-cokelat" style="gap: 10px; margin: 80px 50px">
+    <div class="dashboard flex justify-center mt-6 min-h-[calc(100vh-150px)]">
+        <div class="kotak-putih cursor-pointer group">
+            <div class="kotak-coklat group-hover:bg-primary-light">
+                <a href="{{ route('pemohon-pengajuan-permohonan') }}">
+                    <img src="{{ asset('operator/img/icon pengajuan permohonan.png') }}" alt="pengajuan permohonan" /></a>
+            </div>
+            <div class="teks-judul"><a href="#">
+                    <p>Ajukan Permohonan</div>
+        </div>
+        <div class="kotak-putih cursor-pointer group">
+            <div class="kotak-coklat group-hover:bg-primary-light">
+                <a href="{{ route('pemohon-panduan-perizinan') }}">
+                    <img src="{{ asset('operator/img/icon panduan perizinan.png') }}" alt="pengajuan permohonan" /></a>
+            </div>
+            <div class="teks-judul"><a href="#">
+                    <p>Panduan Permohonan</div>
+        </div>
+        <div class="kotak-putih cursor-pointer group">
+            <div class="kotak-coklat group-hover:bg-primary-light">
+                <a href="{{ route('pemohon-monitoring') }}">
+                    <img src="{{ asset('operator/img/icon dashboard statistik.png') }}" alt="pengajuan permohonan" /></a>
+            </div>
+            <div class="teks-judul"><a href="#">
+                    <p>Monitoring</div>
+        </div>
+        <div class="kotak-putih cursor-pointer group">
+            <div class="kotak-coklat group-hover:bg-primary-light">
+                <a href="{{ route('pemohon-chatting') }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                        class="w-8 h-8 text-white">
+                        <path fill-rule="evenodd"
+                            d="M4.848 2.771A49.144 49.144 0 0 1 12 2.25c2.43 0 4.817.178 7.152.52 1.978.292 3.348 2.024 3.348 3.97v6.02c0 1.946-1.37 3.678-3.348 3.97a48.901 48.901 0 0 1-3.476.383.39.39 0 0 0-.297.17l-2.755 4.133a.75.75 0 0 1-1.248 0l-2.755-4.133a.39.39 0 0 0-.297-.17 48.9 48.9 0 0 1-3.476-.384c-1.978-.29-3.348-2.024-3.348-3.97V6.741c0-1.946 1.37-3.68 3.348-3.97ZM6.75 8.25a.75.75 0 0 1 .75-.75h9a.75.75 0 0 1 0 1.5h-9a.75.75 0 0 1-.75-.75Zm.75 2.25a.75.75 0 0 0 0 1.5H12a.75.75 0 0 0 0-1.5H7.5Z"
+                            clip-rule="evenodd" />
+                    </svg>
 
-        <div class="kotak-cokelat">
-            <div class="daftar-ulang">
-                <div class="gambar-bulat">
-                    <img src="{{ asset('home/img/Folder.png') }}" alt="LogoDaftarUlang" />
-                </div>
-                <div class="tombol-putih">
-                    <a href="{{ route('pemohon-daftar-ulang') }}">Daftar Ulang Izin Operasional Satuan Pendidikan</a>
-                </div>
+                </a>
             </div>
-        </div>
-        <div class="kotak-cokelat-1">
-            <div class="izin-pendirian">
-                <div class="gambar-bulat">
-                    <img src="{{ asset('home/img/School.png') }}" alt="LogoIzinPendirian" />
-                </div>
-                <div class="tombol-putih">
-                    <a href="{{ route('izin-pendirian-1') }}">Izin Pendirian Satuan Pendidikan</a>
-                </div>
-            </div>
-        </div>
-        <div class="kotak-cokelat-2">
-            <div class="izin-operasional">
-                <div class="gambar-bulat">
-                    <img src="{{ asset('home/img/Compliant.png') }}" alt="LogoIzinOperasional" />
-                </div>
-                <div class="tombol-putih">
-                    <a href="{{ route('pemohon-izin-operasional') }}">Izin Operasional Satuan Pendidikan</a>
-                </div>
-            </div>
+            <div class="teks-judul"><a href="#">
+                    <p>Chatting</div>
         </div>
     </div>
 @endsection

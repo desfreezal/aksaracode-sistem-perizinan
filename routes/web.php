@@ -23,6 +23,51 @@ Route::get('/', function () {
     return view('landing-pages');
 });
 
+Route::get('/dashboard-pemohon', function () {
+    return view('pemohon.dashboard');
+})->name('pemohon-dashboard');
+
+Route::get('/dashboard-operator', function () {
+    return view('operator.dashboard');
+});
+
+Route::get('/dashboard-surveyor', function () {
+    return view('surveyor.dashboard');
+});
+
+Route::get('/data-statistik-daftarulang', function () {
+    return view('data-statistik-daftarulang');
+});
+
+Route::get('/data-statistik-izinoperasional', function () {
+    return view('data-statistik-izinoperasional');
+});
+
+Route::get('/data-statistik-izinpendirian', function () {
+    return view('data-statistik-izinpendirian');
+});
+
+Route::get('/login', function () {
+    return view('auth-page.login');
+});
+
+Route::get('/register', function () {
+    return view('auth-page.register');
+});
+
+Route::get('/daftar-ulang', function () {
+    return view(('landing-page.daftar-ulang.daftar'));
+});
+
+Route::get('/izin-pendirian', function () {
+    return view(('landing-page.izin-pendirian.izin'));
+});
+
+Route::get('/izin-operasional', function () {
+    return view('landing-page.izin-operasional.operasional');
+});
+
+
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
@@ -65,8 +110,8 @@ Route::middleware(['role:pemohon'])->prefix('/dashboard')->group(function () {
     })->name('pemohon-chatting');
 
     Route::get('/chatting/{id_user}', function ($id_user) {
-        return view('pemohon.chatting');
-    });
+        return view('pemohon.chattting-room');
+    })->name('pemohon-detail-chatting');
 
     Route::get('/daftar-ulang', function () {
         return view('pemohon.daftar-ulang.daftar');
@@ -95,6 +140,37 @@ Route::middleware(['role:pemohon'])->prefix('/dashboard')->group(function () {
     Route::get('/izin-operasional/berkas', function () {
         return view('pemohon.izin-operasional.upload-berkas');
     })->name('pemohon-berkas-operasional');
+
+    Route::get('/panduan-perizinan', function () {
+        return view('pemohon.panduan-perizinan');
+    })->name('pemohon-panduan-perizinan');
+
+    Route::get('/panduan-perizinan/daftar-ulang', function () {
+        return view('pemohon.panduan-perizinan.daftar-ulang.daftar');
+    })->name('pemohon-panduan-daftar-ulang');
+
+    // panduan izin operasional
+    Route::get('/panduan-perizinan/izin-operasional', function () {
+        return view('pemohon.panduan-perizinan.izin-operasional.operasional');
+    })->name('pemohon-panduan-operasional');
+
+    // izin pendirian
+    Route::get('/panduan-perizinan/izin-pendirian', function () {
+        return view('pemohon.panduan-perizinan.izin-pendirian.izin');
+    })->name('pemohon-panduan-izin');
+
+    Route::get('/monitoring', function () {
+        return view('pemohon.monitoring');
+    })->name('pemohon-monitoring');
+
+    Route::get('/monitoring/{type}', function ($type) {
+        return view('pemohon.monitoring-detail', ['type' => $type]);
+    })->name('pemohon-monitoring-detail');
+
+    // pengajuan-permohonan
+    Route::get('/pengajuan-permohonan', function () {
+        return view('pemohon.pengajuan-permohonan');
+    })->name('pemohon-pengajuan-permohonan');
 });
 
 Route::get('/data-statistik-daftarulang', function () {
@@ -342,19 +418,33 @@ Route::get('/konfirmasi-sandi', function () {
 Route::prefix('/dashboard-admin-dinas')->group(function () {
     Route::get('', function () {
         return view('admin-dinas.dashboard');
-    });
+    })->name('admin-dinas-dashboard');
 
     Route::get('/kelengkapan-data', function () {
-        return view('admin-dinas.kelengkapan-data');
+        return view('admin-dinas.kelengkapan-data.kelengkapan-data');
     })->name('admin-dinas-lengkap-data');
 
+    Route::get('/kelengkapan-data/{id}', function ($id) {
+        return view('admin-dinas.kelengkapan-data.kelengkapan-detail', ['id' => $id]);
+    })->name('admin-dinas-kelengkapan-detail');
+
     Route::get('/validasi-data', function () {
-        return view('admin-dinas.validasi-data');
+        return view('admin-dinas.validasi-data.index');
     })->name('admin-dinas-validasi-data');
 
     Route::get('/detail-validasi/{id}', function ($id) {
-        return view('admin-dinas.detail-validasi');
+        return view('admin-dinas.validasi-data.validasi', ['id' => $id]);
     })->name('admin-dinas-detail-validasi');
+
+    // jadwal-survey
+    Route::get('/jadwal-survey/{id}', function ($id) {
+        return view('admin-dinas.validasi-data.jadwal-survey', ['id' => $id]);
+    })->name('admin-dinas-jadwal-survey');
+
+    // validasi-survey/{id}
+    Route::get('/validasi-survey/{id}', function ($id) {
+        return view('admin-dinas.validasi-data.validasi-survey', ['id' => $id]);
+    })->name('admin-dinas-validasi-survey');
 
     Route::get('/lacak-permohonan', function () {
         return view('admin-dinas.lacak-permohonan');
@@ -368,6 +458,10 @@ Route::prefix('/dashboard-admin-dinas')->group(function () {
         return view('admin-dinas.monitoring');
     })->name('admin-dinas-monitoring');
 
+    Route::get('/monitoring/{type}', function ($type) {
+        return view('admin-dinas.monitoring-detail', ['type' => $type]);
+    })->name('admin-dinas-monitoring-detail');
+
     Route::get('/notifikasi', function () {
         return view('admin-dinas.notifikasi');
     })->name('admin-dinas-notifikasi');
@@ -377,7 +471,7 @@ Route::prefix('/dashboard-admin-dinas')->group(function () {
     })->name('admin-dinas-chatting');
 
     Route::get('/chatting/{id_user}', function ($id_user) {
-        return view('admin-dinas.chatting');
+        return view('pemohon.chattting-room');
     })->name('admin-dinas-detail-chatting');
 
     Route::get('/panduan-perizinan', function () {
@@ -401,6 +495,94 @@ Route::prefix('/dashboard-admin-dinas')->group(function () {
     Route::get('/profile', function () {
         return view('admin-dinas.profile');
     })->name('admin-dinas-profile');
+
+    // pengesahan-dokumen
+    Route::get('/pengesahan-dokumen', function () {
+        return view('admin-dinas.pengesahan-dokumen.index');
+    })->name('admin-dinas-pengesahan-dokumen');
+
+    // jenis-pengesahan
+    Route::get('/pengesahan-dokumen/{jenis}', function ($jenis) {
+        return view(
+            'admin-dinas.pengesahan-dokumen.jenis-pengesahan',
+            ['jenis' => $jenis]
+        );
+    })->name('admin-dinas-jenis-pengesahan');
+
+    Route::get('/pengesahan-dokumen/{jenis}/{layanan}', function ($jenis, $layanan) {
+        return view(
+            'admin-dinas.pengesahan-dokumen.data-pengesahan',
+            [
+                'jenis' => $jenis,
+                'layanan' => $layanan
+            ]
+        );
+    })->name('admin-dinas-data-pengesahan');
+
+    // buat-surat/{id}
+    Route::get('/buat-surat/{jenis}/{layanan}/{id}', function ($jenis, $layanan, $id) {
+        return view('admin-dinas.pengesahan-dokumen.surat', [
+            'id' => $id,
+            'jenis' => $jenis,
+            'layanan' => $layanan
+        ]);
+    })->name('admin-dinas-buat-surat');
+
+    // RIWAYAT PERMOHONAN
+    Route::get('/riwayat', function () {
+        return view('admin-dinas.riwayat-permohonan');
+    })->name('admin-dinas-riwayat-permohonan');
+
+    // PENGAJUAN PERMOHONAN
+
+    Route::get('/pengajuan-permohonan', function () {
+        return view('admin-dinas.pengajuan-permohonan');
+    })->name('admin-dinas-pengajuan-permohonan');
+
+    Route::get('/daftar-ulang', function () {
+        return view('admin-dinas.daftar-ulang.daftar');
+    })->name('admin-dinas-daftar-ulang');
+
+    Route::get('/daftar-ulang/data', function () {
+        return view('admin-dinas.daftar-ulang.daftar');
+    });
+
+    Route::get('/daftar-ulang/detail', function () {
+        return view('admin-dinas.daftar-ulang.detail');
+    })->name('admin-dinas-detail');
+
+    Route::get('/daftar-ulang/berkas', function () {
+        return view('admin-dinas.daftar-ulang.berkas');
+    })->name('admin-dinas-berkas');
+
+    Route::get('/izin-pendirian', function () {
+        return view('admin-dinas.izin-pendirian.data-pemohon');
+    })->name('admin-dinas-izin-pendirian');
+
+    Route::get('/izin-pendirian/detail-yayasan', function () {
+        return view('admin-dinas.izin-pendirian.detail-yayasan');
+    })->name('admin-dinas-detail-yayasan');
+
+    Route::get('/izin-pendirian/detail-pendirian', function () {
+        return view('admin-dinas.izin-pendirian.detail-pendirian');
+    })->name('admin-dinas-detail-pendirian');
+    // upload berkas
+    Route::get('/izin-pendirian/upload-berkas', function () {
+        return view('admin-dinas.izin-pendirian.upload-berkas');
+    })->name('admin-dinas-upload-berkas');
+
+    Route::get('/izin-operasional', function () {
+        return view('admin-dinas.izin-operasional.data-pemohon');
+    })->name('admin-dinas-izin-operasional');
+
+    Route::get('/izin-operasional/detail', function () {
+        return view('admin-dinas.izin-operasional.detail-operasional');
+    })->name('admin-dinas-detail-operasional');
+
+    Route::get('/izin-operasional/berkas', function () {
+        return view('admin-dinas.izin-operasional.upload-berkas');
+    })->name('admin-dinas-berkas-operasional');
+
 });
 
 // KEPALA DINAS

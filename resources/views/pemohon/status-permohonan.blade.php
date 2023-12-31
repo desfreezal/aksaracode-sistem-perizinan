@@ -12,27 +12,27 @@
         <form action="" class="space-y-3 mb-8">
             <div class="flex items-center w-[1008px]">
                 <label for="" class="pl-4 w-80">Sub Perizinan</label>
-                <input type="text" class="flex-grow border border-abu-abu rounded">
+                <input type="text" readonly class="flex-grow border border-abu-abu rounded" value="Daftar Ulang Izin Opersional Satuan Pendidikan SD">
             </div>
             <div class="flex items-center w-[1008px]">
                 <label for="" class="pl-4 w-80">Tanggal Pendaftaran</label>
-                <input type="text" class="flex-grow border border-abu-abu rounded">
+                <input type="text" readonly class="flex-grow border border-abu-abu rounded" value="10 Oktober 2023">
             </div>
             <div class="flex items-center w-[1008px]">
                 <label for="" class="pl-4 w-80">NIK Pemohon</label>
-                <input type="text" class="flex-grow border border-abu-abu rounded">
+                <input type="text" readonly class="flex-grow border border-abu-abu rounded" value="1234567891012345">
             </div>
             <div class="flex items-center w-[1008px]">
                 <label for="" class="pl-4 w-80">Nama Pemohon</label>
-                <input type="text" class="flex-grow border border-abu-abu rounded">
+                <input type="text" readonly class="flex-grow border border-abu-abu rounded" value="Putri Lestari">
             </div>
             <div class="flex items-center w-[1008px]">
                 <label for="" class="pl-4 w-80">No. Handphone Pemohon</label>
-                <input type="text" class="flex-grow border border-abu-abu rounded">
+                <input type="text" readonly class="flex-grow border border-abu-abu rounded" value="081234567891">
             </div>
             <div class="flex items-center w-[1008px]">
                 <label for="" class="pl-4 w-80">ID Pendaftaran</label>
-                <input type="text" class="flex-grow border border-abu-abu rounded">
+                <input type="text" readonly class="flex-grow border border-abu-abu rounded" value="10982734">
             </div>
         </form>
 

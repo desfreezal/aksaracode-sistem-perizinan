@@ -12,6 +12,7 @@
         "laravel/tinker": "^2.8",
         "rawilk/laravel-breadcrumbs": "^4.0",
         "laravel/ui": "^4.3",
+        "munafio/chatify": "^1.6",
         "spatie/laravel-permission": "^6.2"
     },
     "require-dev": {

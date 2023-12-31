@@ -29,7 +29,7 @@
             </div>
 
             <div class="w-[234px] min-h-[267px] pt-4 bg-primary rounded-[36px] box-border">
-                <a href="{{ route('pemohon-izin-pendirian') }}">
+                <a href="{{ route('izin-pendirian-1') }}">
                     <div class="mx-11 px-6 py-5 rounded-full bg-edu-bg">
                         <img src="{{ asset('home/img/School.png') }}" alt="folder" class="mx-auto w-full">
                     </div>

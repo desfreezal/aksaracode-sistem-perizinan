@@ -21,7 +21,7 @@
     {{-- END BUTTON --}}
 
     <div x-show.transition.duration.500ms="isOpen" class="sidebar-content w-80 transition-all">
-        <a href="/dashboard-pemohon/izin-operasional"
+        <a href="/dashboard/izin-operasional"
             class="cursor-pointer flex items-center pl-11 w-full {{ Route::currentRouteName() === 'pemohon-izin-operasional' ? 'bg-white shadow' : '' }} hover:bg-white gap-x-3 py-2">
             <img src="{{ asset('pemohon/img/Project.png') }}" class="object-contain" alt="1">
             <h1 class="text-base font-normal text-edu-black">

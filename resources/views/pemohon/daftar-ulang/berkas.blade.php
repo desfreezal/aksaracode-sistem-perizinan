@@ -18,7 +18,7 @@
                     </h1>
                 </div>
 
-                <form action="{{ url('/dashboard-pemohon/daftar-ulang/berkas') }}" method="GET" class="w-full space-y-6">
+                <form action="{{ url('/dashboard/daftar-ulang/berkas') }}" method="GET" class="w-full space-y-6">
                     @if (request('peruntukan') === 'tk')
                         @include('pemohon.daftar-ulang.berkas-daftar-ulang.table-tk')
                     @elseif (request('peruntukan') === 'sd')

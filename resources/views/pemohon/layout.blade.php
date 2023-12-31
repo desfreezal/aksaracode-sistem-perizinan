@@ -33,10 +33,10 @@
                 <a href="/dashboard">Beranda</a>
             </li>
             <li>
-                <a href="/dashboard-pemohon/panduan-perizinan">Panduan Permohonan</a>
+                <a href="/dashboard/panduan-perizinan">Panduan Permohonan</a>
             </li>
             <li>
-                <a href="/dashboard-pemohon/pengajuan-permohonan">Ajukan Permohonan</a>
+                <a href="{{ route('pemohon-pengajuan-permohonan') }}">Ajukan Permohonan</a>
             </li>
             <li>
                 <a href="/dashboard/lacak-permohonan">Status Permohonan</a>

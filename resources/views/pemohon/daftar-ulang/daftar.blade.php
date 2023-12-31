@@ -18,7 +18,7 @@
                     </h1>
                 </div>
 
-                <form action="{{ url('/dashboard-pemohon/daftar-ulang/detail') }}" method="GET" class="w-full space-y-6">
+                <form action="{{ url('/dashboard/daftar-ulang/detail') }}" method="GET" class="w-full space-y-6">
                     <div class="flex items-center">
                         <label for="jenid" class="w-72">Sub Perizinan</label>
                         <div x-data="select" class="relative flex-grow" @click.outside="open = false">

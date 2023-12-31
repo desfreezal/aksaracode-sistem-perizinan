@@ -16,7 +16,7 @@
             </div>
         </div>
 
-        <form action="{{ url('/dashboard-pemohon/status-permohonan', []) }}" method="get">
+        <form action="{{ url('/dashboard/status-permohonan', []) }}" method="get">
             <div class="mt-16 mb-40 pt-20 pb-24 shadow-2xl rounded flex flex-col">
 
                 <div class="flex gap-8 items-center justify-center mb-14">

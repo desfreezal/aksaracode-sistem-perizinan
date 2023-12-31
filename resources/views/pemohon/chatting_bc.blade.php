@@ -12,7 +12,7 @@
 
                 <div class="mt-3 space-y-3">
                     {{-- PILIH BUBBLE CHAT --}}
-                    <a href="/dashboard-pemohon/chatting/1">
+                    <a href="/dashboard/chatting/1">
                         <div
                             class="pl-12 mb-4 pr-3 flex items-center gap-x-4 {{ request()->route()->parameter('id_user') == 1? 'bg-abu-abu shadow': '' }} hover:bg-abu-abu">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
@@ -28,7 +28,7 @@
                         </div>
 
                     </a>
-                    <a href="/dashboard-pemohon/chatting/2">
+                    <a href="/dashboard/chatting/2">
                         <div
                             class="pl-12 mb-4 pr-3 flex items-center gap-x-4 {{ request()->route()->parameter('id_user') == 2? 'bg-abu-abu shadow': '' }} hover:bg-abu-abu">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
@@ -44,7 +44,7 @@
                         </div>
 
                     </a>
-                    <a href="/dashboard-pemohon/chatting/3">
+                    <a href="/dashboard/chatting/3">
                         <div
                             class="pl-12 mb-4 pr-3 flex items-center gap-x-4 {{ request()->route()->parameter('id_user') == 3? 'bg-abu-abu shadow': '' }} hover:bg-abu-abu">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"

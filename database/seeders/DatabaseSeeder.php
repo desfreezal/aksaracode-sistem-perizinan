@@ -3,6 +3,10 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\DaftarUlang;
+use App\Models\Operasional;
+use App\Models\Pendirian;
+use App\Models\StatusDokumen;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,13 +17,17 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-        $this->call(CategoriesSeeder::class);
-        $this->call(StatusDokumenSeeder::class);
-        $this->call(RoleSeeder::class);
-        $this->call(UserSeeder::class);
+        if (StatusDokumen::count() === 0) {
+            $this->call(StatusDokumenSeeder::class);
+            $this->call(RoleSeeder::class);
+            $this->call(CategoriesSeeder::class);
+            $this->call(UserSeeder::class);
+        }
 
 
-
+        Pendirian::factory(100)->create();
+        Operasional::factory(100)->create();
+        DaftarUlang::factory(100)->create();
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([

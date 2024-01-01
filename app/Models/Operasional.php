@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Support\Str;
 class Operasional extends Model
 {
     use HasFactory;
@@ -16,7 +16,7 @@ class Operasional extends Model
          static::creating(function ($daftarUlang) {
              if (!$daftarUlang->id) {
                  $timestamp = now()->format('YmdHis');
-                 $daftarUlang->id = 'C-' . $timestamp;
+                 $daftarUlang->id = 'C-' . $timestamp . '-' . Str::random(5);
              }
          });
      }

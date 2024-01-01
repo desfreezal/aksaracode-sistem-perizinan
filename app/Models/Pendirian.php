@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 
 class Pendirian extends Model
 {
+    use HasFactory;
     /**
      * The attributes that are mass assignable.
      *
@@ -20,7 +23,7 @@ class Pendirian extends Model
          static::creating(function ($pendirian) {
              if (!$pendirian->id) {
                  $timestamp = now()->format('YmdHis');
-                 $pendirian->id = 'A-' . $timestamp;
+                 $pendirian->id = 'A-' . $timestamp . '-' . Str::random(5);
              }
          });
      }

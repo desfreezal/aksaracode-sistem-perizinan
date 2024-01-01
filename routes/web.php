@@ -838,6 +838,24 @@ Route::prefix('/dashboard-verifikator')->group(function () {
     Route::get('/kelengkapan-data/{id}', function ($id) {
         return view('verifikator.kelengkapan-data.kelengkapan-detail', ['id' => $id]);
     })->name('verifikator-kelengkapan-detail');
+
+    Route::get('/validasi-data', function () {
+        return view('verifikator.validasi-data.index');
+    })->name('verifikator-validasi-data');
+
+    Route::get('/detail-validasi/{id}', function ($id) {
+        return view('verifikator.validasi-data.validasi', ['id' => $id]);
+    })->name('verifikator-detail-validasi');
+
+    // jadwal-survey
+    Route::get('/jadwal-survey/{id}', function ($id) {
+        return view('verifikator.validasi-data.jadwal-survey', ['id' => $id]);
+    })->name('verifikator-jadwal-survey');
+
+    // validasi-survey/{id}
+    Route::get('/validasi-survey/{id}', function ($id) {
+        return view('verifikator.validasi-data.validasi-survey', ['id' => $id]);
+    })->name('verifikator-validasi-survey');
 });
 
 

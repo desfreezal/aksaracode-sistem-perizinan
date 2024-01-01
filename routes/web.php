@@ -1107,6 +1107,29 @@ Route::prefix('/dashboard-verifikator')->group(function () {
     Route::get('/validasi-survey/{id}', function ($id) {
         return view('verifikator.validasi-data.validasi-survey', ['id' => $id]);
     })->name('verifikator-validasi-survey');
+
+    // survey
+    Route::get('/survey', function () {
+        return view('verifikator.survey.index');
+    })->name('verifikator-survey');
+
+    Route::get('/survey/{id}', function ($id) {
+        return view('verifikator.survey.isi-form', [
+            'id' => $id
+        ]);
+    })->name('verifikator-isi-survey');
+
+    // pembaruan-data
+    Route::get('/pembaruan-data', function () {
+        return view('verifikator.pembaruan-data.index');
+    })->name('verifikator-pembaruan-data');
+
+    // pembaruan-data/{id}
+    Route::get('/pembaruan-data/{id}', function ($id) {
+        return view('verifikator.pembaruan-data.detail', [
+            'id' => $id
+        ]);
+    })->name('verifikator-detail-pembaruan-data');
 });
 
 

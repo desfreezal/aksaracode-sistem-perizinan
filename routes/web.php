@@ -714,7 +714,7 @@ Route::prefix('/dashboard-kepala-dinas')->group(function () {
 Route::prefix('/dashboard-verifikator')->group(function () {
     Route::get('', function () {
         return view('verifikator.dashboard');
-    });
+    })->name('verifikator-dashboard');
 
     Route::get('/kelengkapan-data', function () {
         return view('verifikator.kelengkapan-data');
@@ -781,6 +781,55 @@ Route::prefix('/dashboard-verifikator')->group(function () {
     Route::get('/monitoring/{type}', function ($type) {
         return view('verifikator.monitoring-detail', ['type' => $type]);
     })->name('verifikator-monitoring-detail');
+
+    // PENGAJUAN PERMOHONAN
+    Route::get('/pengajuan-permohonan', function () {
+        return view('verifikator.pengajuan-permohonan');
+    })->name('verifikator-pengajuan-permohonan');
+
+    Route::get('/daftar-ulang', function () {
+        return view('verifikator.daftar-ulang.daftar');
+    })->name('verifikator-daftar-ulang');
+
+    Route::get('/daftar-ulang/data', function () {
+        return view('verifikator.daftar-ulang.daftar');
+    });
+
+    Route::get('/daftar-ulang/detail', function () {
+        return view('verifikator.daftar-ulang.detail');
+    })->name('verifikator-detail');
+
+    Route::get('/daftar-ulang/berkas', function () {
+        return view('verifikator.daftar-ulang.berkas');
+    })->name('verifikator-berkas');
+
+    Route::get('/izin-pendirian', function () {
+        return view('verifikator.izin-pendirian.data-pemohon');
+    })->name('verifikator-izin-pendirian');
+
+    Route::get('/izin-pendirian/detail-yayasan', function () {
+        return view('verifikator.izin-pendirian.detail-yayasan');
+    })->name('verifikator-detail-yayasan');
+
+    Route::get('/izin-pendirian/detail-pendirian', function () {
+        return view('verifikator.izin-pendirian.detail-pendirian');
+    })->name('verifikator-detail-pendirian');
+    // upload berkas
+    Route::get('/izin-pendirian/upload-berkas', function () {
+        return view('verifikator.izin-pendirian.upload-berkas');
+    })->name('verifikator-upload-berkas');
+
+    Route::get('/izin-operasional', function () {
+        return view('verifikator.izin-operasional.data-pemohon');
+    })->name('verifikator-izin-operasional');
+
+    Route::get('/izin-operasional/detail', function () {
+        return view('verifikator.izin-operasional.detail-operasional');
+    })->name('verifikator-detail-operasional');
+
+    Route::get('/izin-operasional/berkas', function () {
+        return view('verifikator.izin-operasional.upload-berkas');
+    })->name('verifikator-berkas-operasional');
 });
 
 

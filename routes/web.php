@@ -740,6 +740,40 @@ Route::prefix('/dashboard-admin-dinas')->group(function () {
             'id' => $id
         ]);
     })->name('admin-dinas-detail-pembaruan-data');
+
+    // kelola-sistem
+    Route::get('/kelola-sistem', function () {
+        return view('admin-dinas.kelola-sistem.index');
+    })->name('admin-dinas-kelola-sistem');
+
+    // kelola-sistem/daftar-user
+    Route::get('/kelola-sistem/daftar-user', function () {
+        return view('admin-dinas.kelola-sistem.daftar-user');
+    })->name('admin-dinas-daftar-user');
+
+    // kelola-sistem/daftar-user/{id}
+    Route::get('/kelola-sistem/daftar-user/{id}', function ($id) {
+        return view('admin-dinas.kelola-sistem.edit-user', [
+            'id' => $id
+        ]);
+    })->name('admin-dinas-edit-user');
+
+    // kelola-sistem/panduan-perizinan
+    Route::get('/kelola-sistem/panduan-perizinan', function () {
+        return view('admin-dinas.kelola-sistem.panduan-perizinan');
+    })->name('admin-dinas-kelola-panduan');
+
+    Route::get('/kelola-sistem/panduan-perizinan/daftar-ulang', function () {
+        return view('admin-dinas.kelola-sistem.jenis-panduan.daftar-ulang');
+    })->name('admin-dinas-kelola-daftar-ulang');
+
+    Route::get('/kelola-sistem/panduan-perizinan/izin-pendirian', function () {
+        return view('admin-dinas.kelola-sistem.jenis-panduan.izin-pendirian');
+    })->name('admin-dinas-kelola-izin-pendirian');
+
+    Route::get('/kelola-sistem/panduan-perizinan/izin-operasional', function () {
+        return view('admin-dinas.kelola-sistem.jenis-panduan.izin-operasional');
+    })->name('admin-dinas-kelola-izin-operasional');
 });
 
 // KEPALA DINAS

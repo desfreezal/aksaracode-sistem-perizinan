@@ -1,175 +1,106 @@
 @extends('surveyor.layout')
 
-@php
-    $data = [
-        [
-            'id' => 1,
-            'Nama Pemohon' => 'Oksana Khoirunnida',
-            'No Daftar' => '123456',
-            'Tanggal Daftar' => '08/11/2023 - 16:59:10',
-            'Nama Perizinan' => 'Daftar Ulang Izin Operasional Satuan Pendidikan SD',
-        ],
-        [
-            'id' => 2,
-            'Nama Pemohon' => 'Jauza Audy Safitri',
-            'No Daftar' => '123457',
-            'Tanggal Daftar' => '21/11/2023 - 16:18:05',
-            'Nama Perizinan' => 'Izin Pendirian Satuan Pendidikan SD',
-        ],
-    ];
-@endphp
-
 @section('content')
     <div class="min-h-screen h-full">
 
         <div class="flex">
             {{-- SIDEBAR --}}
-            @include('surveyor.sidebar')
+            @include('surveyor.sidebar-profile')
+            {{-- SIDEBAR --}}
 
             <div class="flex-grow h-full pl-[34px] pr-[88px] py-7 box-border mb-10" id="content">
-
-                {{-- HEADER --}}
-                <div class="rounded-lg flex items-center gap-x-8 px-5 py-3 shadow-xl mb-4">
-                    <img src="{{ asset('surveyor/img/validasi data.png') }}" alt="valid"
-                        class="bg-primary p-3 aspect-square object-contain rounded-xl w-12">
-                    <h1 class="font-medium text-xl">Riwayat Permohonan</h1>
-                </div>
-                {{-- END HEADER --}}
-
-                {{-- START KONTEN --}}
-                <div class="flex max-w-screen-md gap-x-3 items-center mb-3">
-                    <div x-data="select" class="relative flex-grow max-w-[416px] w-full"
-                        @click.outside="open = false">
-                        <button type="button" @click="toggle" :class="(open) && 'ring-blue-600'"
-                            class="flex w-full items-center justify-between rounded bg-white p-2 ring-1 ring-gray-300">
-                            <span x-text="perizinan || 'Pilih Perizinan'"></span>
-                            <i class="fas fa-chevron-down text-xl"></i>
-                        </button>
-
-                        <ul class="z-50 absolute mt-1 w-full rounded bg-gray-50 ring-1 ring-gray-300" x-show="open">
-                            <li class="cursor-pointer select-none p-2 hover:bg-gray-200"
-                                @click="setPerizinan(event.target.innerText)">
-                                Daftar Ulang Izin
-                                Operasional</li>
-                            <li class="cursor-pointer select-none p-2 hover:bg-gray-200"
-                                @click="setPerizinan(event.target.innerText)">
-                                Izin Pendirian</li>
-                            <li class="cursor-pointer select-none p-2 hover:bg-gray-200"
-                                @click="setPerizinan(event.target.innerText)">
-                                Izin Operasional</li>
-                        </ul>
-                    </div>
-                    <div x-data="select" class="relative flex-grow max-w-[416px] w-full"
-                        @click.outside="open2 = false">
-                        <button type="button" @click="toggle2" :class="(open2) && 'ring-blue-600'"
-                            class="flex w-full items-center justify-between rounded bg-white p-2 ring-1 ring-gray-300">
-                            <span x-text="jenjang || 'Pilih Jenjang'"></span>
-                            <i class="fas fa-chevron-down text-xl"></i>
-                        </button>
-
-                        <ul class="z-50 absolute mt-1 w-full rounded bg-gray-50 ring-1 ring-gray-300" x-show="open2">
-                            <li class="cursor-pointer select-none p-2 hover:bg-gray-200"
-                                @click="setJenjang(event.target.innerText)">
-                                TK</li>
-                            <li class="cursor-pointer select-none p-2 hover:bg-gray-200"
-                                @click="setJenjang(event.target.innerText)">
-                                SD</li>
-                            <li class="cursor-pointer select-none p-2 hover:bg-gray-200"
-                                @click="setJenjang(event.target.innerText)">
-                                SMP</li>
-                        </ul>
-                    </div>
+                {{-- START CONTENT --}}
+                <div class="py-3 pl-11 bg-primary rounded-md mb-9">
+                    <h1 class="text-white font-medium text-3xl">Permohonan Saya</h1>
                 </div>
 
-                {{-- START TABLE --}}
+                {{-- TABLE --}}
+                <table id="example" class="display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Pemohon</th>
+                            <th>No Daftar</th>
+                            <th>Tanggal Daftar</th>
+                            <th>Nama Perizinan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Oksana Khoirunnida</td>
+                            <td>123456</td>
+                            <td>08/11/2023 - 16:59:10</td>
+                            <td>Daftar Ulang Izin Operasional Satuan Pendidikan SD</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Budi</td>
+                            <td>123456789</td>
+                            <td>12-12-2021</td>
+                            <td>TES</td>
+                        </tr>
+                    </tbody>
+                </table>
 
 
-                <div class="relative overflow-x-auto">
-                    <table class="w-full text-sm text-left rtl:text-right">
-                        <thead class="font-semibold uppercase text-black">
-                            <tr>
-                                <th scope="col" class="px-6 py-3">
-                                    NO
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Nama Pemohon
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    No Daftar
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Tanggal Daftar
-                                </th>
-                                <th class="text-center">
-                                    Aksi
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($data as $key => $value)
-                                <tr class="bg-white hover:bg-gray-50">
-                                    <td class="px-6 py-4">
-                                        {{ $key + 1 }}
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        {{ $value['Nama Pemohon'] }}
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        {{ $value['No Daftar'] }}
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        {{ $value['Tanggal Daftar'] }}
-                                    </td>
-                                    <td class="px-6 py-4 text-center">
-                                        <a href="{{ route('surveyor-detail-permohonan', ['id' => $value['id']]) }}"
-                                            class="py-1 px-6 bg-primary hover:bg-primary-light rounded-3xl text-white">Detail</a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-
-
-
-
+                {{-- END OF CONTENT --}}
 
             </div>
         </div>
-
-    </div>
     </div>
 @endsection
 
 
 @push('scripts')
     <script>
-        document.addEventListener("alpine:init", () => {
-            Alpine.data("select", () => ({
-                open: false,
-                open2: false,
-                perizinan: "",
-                jenjang: "",
-
-                toggle() {
-                    this.open = !this.open;
-                },
-
-                toggle2() {
-                    this.open2 = !this.open2;
-                },
-
-                setPerizinan(perizinan) {
-                    this.perizinan = perizinan;
-                    this.open = false;
-                },
-
-                setJenjang(jenjang) {
-                    this.jenjang = jenjang;
-                    this.open2 = false;
-                },
-            }));
+        new DataTable('#example', {
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/id.json',
+            },
         });
-        // INIT ALPINE DI ATAS
+        const formHeight = document.getElementById('content').offsetHeight;
+        // Mendapatkan tinggi form
+        const sidebar = document.getElementById('sidebar');
+        // Ganti 'sidebar' dengan id yang sesuai
+        sidebar.style.height = formHeight + 'px';
+        // PENTING DI ATAS, JANGAN DI HAPUS
+
+        const editBtn = document.getElementById('edit')
+
+        editBtn.addEventListener('click', (event) => {
+            event.preventDefault()
+            const inputs = document.querySelectorAll('input')
+            inputs.forEach(input => {
+                input.removeAttribute('readonly')
+            })
+            editBtn.style.display = 'none'
+            document.getElementById('simpan').style.display = 'block'
+        })
+
+        const simpanBtn = document.getElementById('simpan')
+
+        simpanBtn.addEventListener('click', (event) => {
+            event.preventDefault()
+            const inputs = document.querySelectorAll('input')
+            inputs.forEach(input => {
+                input.setAttribute('readonly', '')
+            })
+            document.getElementById('edit').style.display = 'block'
+
+            // closemodal onclick or modal hidden send form
+            const closeModal = document.getElementById('closeModal')
+            // send form
+            const form = document.querySelector('form')
+            closeModal.addEventListener('click', () => {
+                form.submit()
+            })
+
+            const modal = document.getElementById('default-modal')
+            // detect when modal hidden
+            modal.addEventListener('click', () => {
+                form.submit()
+            })
+        })
     </script>
 @endpush

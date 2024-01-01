@@ -9,53 +9,68 @@
 
             <div class="flex-grow h-full pl-[34px] pr-[88px] py-7 box-border mb-10" id="content">
 
-                {{-- HEADER --}}
-                <div class="rounded-lg flex items-center gap-x-8 px-5 py-3 shadow-xl mb-9">
-                    <img src="{{ asset('auditor/img/icon dashboard statistik.png') }}" alt="valid"
-                        class="bg-primary p-3 aspect-square object-contain rounded-xl w-12">
-                    <h1 class="font-medium text-xl">Dashboard Statistik</h1>
-                </div>
-                {{-- END HEADER --}}
+                <div class="space-y-14">
+                    <h1 class="font-bold text-3xl">Monitoring</h1>
 
-                <div class="rounded-lg gap-x-8 px-5 py-5 shadow-xl mb-9">
-                    <h1 class="font-semibold text-2xl mb-8">Total Pengajuan Permohonan</h1>
+                    <div id="container" class="flex items-center gap-x-5">
 
-                    <div class="flex items-center justify-around">
-                        <div class="text-center space-y-2">
-                            <h1 class="font-semibold text-5xl">1.020</h1>
-                            <h2 class="font-semibold text-xl text-for-icon">Berhasil</h2>
-                        </div>
-                        <div class="text-center space-y-2">
-                            <h1 class="font-semibold text-5xl">586</h1>
-                            <h2 class="font-semibold text-xl text-for-icon">Gagal</h2>
-                        </div>
-                        <div class="text-center space-y-2">
-                            <h1 class="font-semibold text-5xl">1.606</h1>
-                            <h2 class="font-semibold text-xl text-for-icon">Total Keseluruhan</h2>
-                        </div>
+                        <a href="{{ route('auditor-monitoring-detail', ['type'=>'daftar-ulang']) }}">
+                            <div class="pl-8 pr-5 flex items-center max-w-[342px] rounded-lg bg-primary text-white">
+                                <h1 class="font-bold text-sm py-[22px] pr-1">Monitoring Permohonan Daftar Ulang Izin
+                                    Operasional
+                                    Satuan
+                                    Pendidikan</h1>
+
+                                <div class="p-[18px] bg-edu-bg rounded-full">
+                                    <img src="{{ asset('home/img/Folder.png') }}" alt="folder" class="">
+                                </div>
+                            </div>
+                        </a>
+                        <a href="{{ route('auditor-monitoring-detail', ['type'=>'izin-pendirian']) }}">
+                            <div class="pl-8 pr-5 flex items-center max-w-[342px] rounded-lg bg-primary text-white">
+                                <h1 class="font-bold text-sm py-[22px] pr-1">Monitoring Permohonan Izin Pendirian Satuan
+                                    Pendidikan</h1>
+
+                                <div class="p-[18px] bg-edu-bg rounded-full">
+                                    <img src="{{ asset('home/img/School.png') }}" alt="folder" class="">
+                                </div>
+                            </div>
+                        </a>
+                        <a href="{{ route('auditor-monitoring-detail', ['type'=>'izin-operasional']) }}">
+                            <div class="pl-8 pr-5 flex items-center max-w-[342px] rounded-lg bg-primary text-white">
+                                <h1 class="font-bold text-sm py-[22px] pr-1">Monitoring Permohonan Izin Operasional Satuan
+                                    Pendidikan</h1>
+
+                                <div class="p-[18px] bg-edu-bg rounded-full">
+                                    <img src="{{ asset('home/img/Compliant.png') }}" alt="folder" class="">
+                                </div>
+                            </div>
+                        </a>
+
                     </div>
 
+                    <div class="flex justify-between items-start w-full">
+                        <div class="space-y-3">
+                            <h1 class="font-semibold text-base text-font-abu">Status Dokumen</h1>
+
+                            <div class="flex items-center gap-[14px]">
+                                <p class="font-semibold text-font-abu">Filter</p>
+
+                                <select name="" id=""
+                                    class="text-font-kuning border-0 focus:ring-0 ring-transparent ">
+                                    <option value="" class="text-font-kuning ring-transparent">Hari ini</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="space-y-1">
+                            <p class="text-font-kuning text-xs">Hari ini</p>
+                            <p class="text-primary font-semibold">06/11/2023</p>
+                        </div>
+                    </div>
                 </div>
-
-                {{-- DATA DAFTAR ULANG --}}
-                <div class="rounded-lg gap-x-8 px-5 py-5 shadow-xl mb-9">
-                    <h1 class="font-semibold text-2xl mb-8">Daftar Ulang Izin Operasional Satuan Pendidikan</h1>
-
-                    <canvas id="daftar-ulang" width="150" height="75"></canvas>
-                </div>
-
-                {{-- DATA IZIN PENDIRIAN --}}
-                <div class="rounded-lg gap-x-8 px-5 py-5 shadow-xl mb-9">
-                    <h1 class="font-semibold text-2xl mb-8">Izin Pendirian Satuan Pendidikan</h1>
-
-                    <canvas id="izin-pendirian" width="150" height="75"></canvas>
-                </div>
-
-                {{-- DATA IZIN Operasional --}}
-                <div class="rounded-lg gap-x-8 px-5 py-5 shadow-xl mb-9">
-                    <h1 class="font-semibold text-2xl mb-8">Izin Operasional Satuan Pendidikan</h1>
-
-                    <canvas id="izin-operasional" width="150" height="75"></canvas>
+                <div class="w-full flex justify-center">
+                    <canvas id="myChart" style="width:100%;max-width:300px; max-height: 300px"></canvas>
                 </div>
 
             </div>
@@ -65,125 +80,46 @@
 
 @push('scripts')
     <script>
-        // DAFTAR ULANG
-        const daftarUlang = ["SD", "SMP", "TK"];
-        const dataDaftarUlang = {
-            labels: daftarUlang,
-            datasets: [{
-                    label: "Berhasil",
-                    data: [420, 330, 490],
-                    backgroundColor: "#B7605D",
-                    barThickness: 20,
-                    barPercentage: 0.5,
-                    borderColor: "rgb(255, 0, 0)",
-                    borderWidth: 1,
-                    borderRadius: 15,
+        var xValues = ["Dokumen Diajukan", "Dokumen Diproses", "Dokumen Selesai"];
+        var yValues = [55, 49, 44];
+        var barColors = [
+            "#A155B9",
+            "#F765A3",
+            "#16BFD6",
+        ];
 
-                },
-                {
-                    label: "Tidak Berhasil",
-                    data: [310, 250, 190],
-                    backgroundColor: "#D9D9D9",
-                    barThickness: 20,
-                    barPercentage: 0.5,
-                    borderColor: "rgb(119, 136, 153)",
-                    borderWidth: 1,
-                    borderRadius: 15,
-
-                },
-            ],
-        };
-
-        const options = {
-            indexAxis: 'x',
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'right',
-                },
+        new Chart("myChart", {
+            type: "pie",
+            data: {
+                labels: xValues,
+                datasets: [{
+                    backgroundColor: barColors,
+                    data: yValues
+                }]
             },
-            tooltip: {
-                borderRadius: 10, // Atur tingkat kebulatan tooltip
+            options: {
+                title: {
+                    display: true,
+                    text: "Dokumen Permohoanan"
+                },
+                plugins: {
+                    legend: {
+                        position: 'right', // Menempatkan legend di sebelah kanan
+                        align: 'center', // Aligment dari legend
+                        labels: {
+                            usePointStyle: true // Menggunakan style point untuk label
+                        }
+                    },
+                    datalabels: {
+                        display: true, // Menampilkan data label
+                        color: 'white', // Warna teks
+                        font: {
+                            weight: 'bold'
+                        }
+                    }
+                }
             },
-        };
-
-        const daftarElemen = document.getElementById("daftar-ulang").getContext("2d");
-        const daftar = new Chart(daftarElemen, {
-            type: 'bar',
-            data: dataDaftarUlang,
-            options: options,
-        });
-
-        // IZIN PENDIRIAN
-        const izinPendirian = ["SD", "SMP", "TK"];
-        const dataIzinPendirian = {
-            labels: izinPendirian,
-            datasets: [{
-                    label: "Berhasil",
-                    data: [260, 390, 420],
-                    backgroundColor: "#B7605D",
-                    barThickness: 20, //ukuran bar
-                    barPercentage: 0.5,
-                    borderColor: "rgb(255, 0, 0)",
-                    borderWidth: 1,
-                    borderRadius: 15,
-
-                },
-                {
-                    label: "Tidak Berhasil",
-                    data: [205, 370, 270],
-                    backgroundColor: "#D9D9D9",
-                    barThickness: 20, //ukuran bar
-                    barPercentage: 0.5,
-                    borderColor: "rgb(119, 136, 153)",
-                    borderWidth: 1,
-                    borderRadius: 15,
-
-                },
-            ],
-        };
-
-        const izinPendElement = document.getElementById("izin-pendirian").getContext("2d");
-        const izinChart = new Chart(izinPendElement, {
-            type: 'bar',
-            data: dataIzinPendirian,
-            options: options,
-        });
-
-        // IZIN OPERASIONAL
-        const izinOperasional = ["SD", "SMP", "TK"];
-        const dataIzinOperasional = {
-            labels: izinOperasional,
-            datasets: [{
-                    label: "Berhasil",
-                    data: [390, 480, 320],
-                    backgroundColor: "#B7605D",
-                    barThickness: 20, //ukuran bar
-                    barPercentage: 0.5,
-                    borderColor: "rgb(255, 0, 0)",
-                    borderWidth: 1,
-                    borderRadius: 15,
-
-                },
-                {
-                    label: "Tidak Berhasil",
-                    data: [270, 310, 120],
-                    backgroundColor: "#D9D9D9",
-                    barThickness: 20, //ukuran bar
-                    barPercentage: 0.5,
-                    borderColor: "rgb(119, 136, 153)",
-                    borderWidth: 1,
-                    borderRadius: 15,
-
-                },
-            ],
-        };
-
-        const ctx = document.getElementById("izin-operasional").getContext("2d");
-        const myChart = new Chart(ctx, {
-            type: 'bar',
-            data: dataIzinOperasional,
-            options: options,
+            plugins: [ChartDataLabels]
         });
     </script>
 @endpush

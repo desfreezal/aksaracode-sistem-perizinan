@@ -52,14 +52,53 @@
                     <p class="text-primary">Tipe file upload : pdf, jpg, jpeg, png</p>
                 </td>
                 <td class="px-6 py-4">
-                    <label for="file-{{ $key + 1 }}">
-                        <div
-                            class="py-3 px-6 rounded-3xl border border-black text-primary font-semibold cursor-pointer hover:bg-primary hover:text-white">
-                            Lihat File
-                        </div>
-                    </label>
-                    <input id="file-{{ $key + 1 }}" class="hidden" type="file"
-                        name="persyaratan-{{ $key + 1 }}" accept=".pdf,.jpeg,.jpg,.png">
+                    @if (isset($page))
+                        @if ($page === 'kel-data')
+                            <div class="space-y-3">
+                                <label for="file-{{ $key + 1 }}">
+                                    <a href="https://imgix3.ruangguru.com/assets/miscellaneous/png_jryg9i_2164.png"
+                                        target="_blank">
+                                        <div
+                                            class="py-3 px-0 rounded-3xl border border-black text-primary font-semibold cursor-pointer hover:bg-primary hover:text-white text-center">
+                                            Lihat
+                                        </div>
+                                    </a>
+                                </label>
+
+
+                                <button type="submit" class="block mx-auto">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                        class="w-8 h-8 text-[#27C119]">
+                                        <path fill-rule="evenodd"
+                                            d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+
+                                </button>
+
+
+                                <button class="block mx-auto">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                        class="w-8 h-8 text-[#EE0F0F]">
+                                        <path fill-rule="evenodd"
+                                            d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+
+                                </button>
+
+                            </div>
+                        @endif
+                    @else
+                        <label for="file-{{ $key + 1 }}">
+                            <div
+                                class="py-3 px-6 rounded-3xl border border-black text-primary font-semibold cursor-pointer hover:bg-primary hover:text-white">
+                                Lihat File
+                            </div>
+                        </label>
+                        <input id="file-{{ $key + 1 }}" class="hidden" type="file"
+                            name="persyaratan-{{ $key + 1 }}" accept=".pdf,.jpeg,.jpg,.png">
+                    @endif
                 </td>
             </tr>
         @endforeach

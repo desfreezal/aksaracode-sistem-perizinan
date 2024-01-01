@@ -77,7 +77,7 @@
             Pengesahan Dokumen
         </h1>
     </a>
-    <a href="#"
+    {{-- <a href="#"
         class="cursor-pointer flex items-center pl-3 pr-5 rounded-xl hover:bg-primary hover:text-white hover:shadow gap-x-3 py-2
         {{ Route::currentRouteName() === '' ? 'bg-primary shadow text-white hover:bg-primary-light' : '' }} 
         group">
@@ -87,7 +87,7 @@
         <h1 class="text-sm uppercase font-normal">
             Kelola Sistem
         </h1>
-    </a>
+    </a> --}}
 </div>
 
 <div class="fixed w-12 h-12 bottom-28 rounded-full left-8 bg-primary">

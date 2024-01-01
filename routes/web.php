@@ -1218,5 +1218,39 @@ Route::prefix('/dashboard-admin-utama')->group(function () {
     Route::get('/profile', function () {
         return view('admin-utama.profile');
     })->name('admin-utama-profile');
+
+    // kelola-sistem
+    Route::get('/kelola-sistem', function () {
+        return view('admin-utama.kelola-sistem.index');
+    })->name('admin-utama-kelola-sistem');
+
+    // kelola-sistem/daftar-user
+    Route::get('/kelola-sistem/daftar-user', function () {
+        return view('admin-utama.kelola-sistem.daftar-user');
+    })->name('admin-utama-daftar-user');
+
+    // kelola-sistem/daftar-user/{id}
+    Route::get('/kelola-sistem/daftar-user/{id}', function ($id) {
+        return view('admin-utama.kelola-sistem.edit-user', [
+            'id' => $id
+        ]);
+    })->name('admin-utama-edit-user');
+
+    // kelola-sistem/panduan-perizinan
+    Route::get('/kelola-sistem/panduan-perizinan', function () {
+        return view('admin-utama.kelola-sistem.panduan-perizinan');
+    })->name('admin-utama-kelola-panduan');
+
+    Route::get('/kelola-sistem/panduan-perizinan/daftar-ulang', function () {
+        return view('admin-utama.kelola-sistem.jenis-panduan.daftar-ulang');
+    })->name('admin-utama-kelola-daftar-ulang');
+
+    Route::get('/kelola-sistem/panduan-perizinan/izin-pendirian', function () {
+        return view('admin-utama.kelola-sistem.jenis-panduan.izin-pendirian');
+    })->name('admin-utama-kelola-izin-pendirian');
+
+    Route::get('/kelola-sistem/panduan-perizinan/izin-operasional', function () {
+        return view('admin-utama.kelola-sistem.jenis-panduan.izin-operasional');
+    })->name('admin-utama-kelola-izin-operasional');
 });
 Auth::routes();

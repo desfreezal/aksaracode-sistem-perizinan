@@ -1042,6 +1042,10 @@ Route::prefix('/dashboard-admin-utama')->group(function () {
         return view('admin-utama.monitoring');
     })->name('admin-utama-monitoring');
 
+    Route::get('/monitoring/{type}', function ($type) {
+        return view('admin-utama.monitoring-detail', ['type' => $type]);
+    })->name('admin-utama-monitoring-detail');
+
     Route::get('/notifikasi', function () {
         return view('admin-utama.notifikasi');
     })->name('admin-utama-notifikasi');

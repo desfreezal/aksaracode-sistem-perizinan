@@ -723,10 +723,11 @@ Route::prefix('/dashboard-admin-dinas')->group(function () {
         return view('admin-dinas.survey.index');
     })->name('admin-dinas-survey');
 
-    Route::get('/survey/{id}', function () {
-        return view('admin-dinas.survey.isi-form');
+    Route::get('/survey/{id}', function ($id) {
+        return view('admin-dinas.survey.isi-form', [
+            'id' => $id
+        ]);
     })->name('admin-dinas-isi-survey');
-
 });
 
 // KEPALA DINAS
@@ -1092,5 +1093,3 @@ Route::prefix('/dashboard-admin-utama')->group(function () {
     })->name('admin-utama-profile');
 });
 Auth::routes();
-
-

@@ -73,13 +73,13 @@
                         <p class="text-[#D77B78]">08/11/2023 - 16:59:10</p>
 
                         <div class="flex items-center w-full">
-                            <a href=""
-                                class="flex-grow text-center group">
-                                <h1 class="text-white font-semibold bg-primary hover:bg-primary-light py-3 rounded">Isi Formulir</h1>
+                            <a href="{{ route('admin-dinas-isi-survey', ['id' => 1]) }}" class="flex-grow text-center group">
+                                <h1 class="text-white font-semibold bg-primary hover:bg-primary-light py-3 rounded">Isi
+                                    Formulir</h1>
                             </a>
                         </div>
                     </div>
-                    
+
                     <div class="shadow-lg rounded-lg border border-[#E5DBDB] bg-[#FBFBFB] px-3 py-4 space-y-4">
                         <div class="flex justify-between items-center text-primary">
                             <h1 class="font-semibold text-xl">Oksana Khoirunnida</h1>
@@ -89,9 +89,9 @@
                         <p class="text-[#D77B78]">08/11/2023 - 16:59:10</p>
 
                         <div class="flex items-center w-full">
-                            <a href=""
-                                class="flex-grow text-center group">
-                                <h1 class="text-white font-semibold bg-primary hover:bg-primary-light py-3 rounded">Isi Formulir</h1>
+                            <a href="{{ route('admin-dinas-isi-survey', ['id' => 2]) }}" class="flex-grow text-center group">
+                                <h1 class="text-white font-semibold bg-primary hover:bg-primary-light py-3 rounded">Isi
+                                    Formulir</h1>
                             </a>
                         </div>
                     </div>

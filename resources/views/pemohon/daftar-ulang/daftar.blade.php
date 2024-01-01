@@ -18,7 +18,7 @@
                     </h1>
                 </div>
 
-                <form action="{{ url('/dashboard/daftar-ulang/detail') }}" method="GET" class="w-full space-y-6">
+                <form action="{{ url('/dashboard-pemohon/daftar-ulang/detail') }}" method="GET" class="w-full space-y-6">
                     <div class="flex items-center">
                         <label for="jenid" class="w-72">Sub Perizinan</label>
                         <div x-data="select" class="relative flex-grow" @click.outside="open = false">
@@ -41,7 +41,7 @@
                             </ul>
                         </div>
                     </div>
-                    <input type="text" id="peruntukan" name="peruntukan" hidden>
+                    <input type="text" id="peruntukan" name="category" hidden>
                     <div class="flex items-center">
                         <label for="nik" class="w-72">NIK Pemohon</label>
                         <input id="nik" type="number" class="flex-grow text-edu-black border-abu-abu rounded"
@@ -61,10 +61,10 @@
                         <label for="kabupaten" class="w-72">Kabupaten</label>
                         <input id="kabupaten" type="text" class="flex-grow text-edu-black border-abu-abu rounded" name="kabupaten">
                     </div>
-                    <div class="flex items-center">
+                    {{-- <div class="flex items-center">
                         <label for="jenkel" class="w-72">Jenis Kelamin</label>
                         <input id="jenkel" type="text" class="flex-grow text-edu-black border-abu-abu rounded" name="jenkel">
-                    </div>
+                    </div> --}}
                     <div class="flex items-center">
                         <label for="kecamatan" class="w-72">Kecamatan</label>
                         <input id="kecamatan" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
@@ -220,17 +220,17 @@
                     if (val === 'tk') {
                         params.set('peruntukan', 'tk')
                         // window.location.search = params
-                        inputPeruntukan.value = 'tk'
+                        inputPeruntukan.value = 'TK'
                         this.detail = 'Daftar Ulang Izin Operasional Satuan Pendidikan TK'
                     } else if (val === "sd") {
                         params.set('peruntukan', 'sd')
                         // window.location.search = params
-                        inputPeruntukan.value = 'sd'
+                        inputPeruntukan.value = 'SD'
                         this.detail = 'Daftar Ulang Izin Operasional Satuan Pendidikan SD'
                     } else {
                         params.set('peruntukan', 'smp')
                         // window.location.search = params
-                        inputPeruntukan.value = 'smp'
+                        inputPeruntukan.value = 'SMP'
                         this.detail = 'Daftar Ulang Izin Operasional Satuan Pendidikan SMP'
                     }
                 },

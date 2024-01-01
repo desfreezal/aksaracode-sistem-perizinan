@@ -61,6 +61,12 @@
                         </svg>
                     </div>
 
+                    <div class="w-[437px] mx-auto pt-24"> 
+                        <button class="w-full border border-primary py-3 hover:bg-primary hover:text-white text-primary rounded-lg">
+                            Kirim
+                        </button>
+                    </div>
+
 
                 </form>
             </div>

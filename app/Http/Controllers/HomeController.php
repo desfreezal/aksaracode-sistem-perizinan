@@ -28,7 +28,7 @@ class HomeController extends Controller
         $page = Auth::user()->getRoleNames()[0] . '-dashboard';
         
         if (!$user->hasVerifiedEmail()) {
-            return view($page)->with('warning', 'Silakan verifikasi email Anda terlebih dahulu.');
+            return redirect()->route("$page");
         }
         return redirect()->route("$page");
     }

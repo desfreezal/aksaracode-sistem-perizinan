@@ -46,7 +46,7 @@ class OperasionalController extends Controller
                 ];
 
                 $operasional->status_dokumen = $statusDokumen->Name;
-                $operasional->category = $category[$operasional->statusDokumen_id];
+                $operasional->category = $category[$operasional->category_id];
 
                 $data = collect($user->toArray())->merge($operasional->toArray());
                 

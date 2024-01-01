@@ -27,14 +27,25 @@ Route::get('/', function () {
     return view('landing-pages');
 });
 
-Route::get('/dashboard-operator', function () {
-    return view('operator.dashboard');
-})->name('operator-dashboard');
+Auth::routes();
+Route::get('/lupa-sandi', function () {
+    return view('auth-page.lupa-sandi');
+});
+// kode-verifikasi
+Route::get('/kode-verifikasi', function () {
+    return view('auth-page.kode-verifikasi');
+})->name('verification.notice');
 
-Route::get('/dashboard-surveyor', function () {
-    return view('surveyor.dashboard');
-})->name('surveyor-dashboard');
-
+// reset-sandi
+Route::get('/reset-sandi', function () {
+    return view('auth-page.reset-sandi');
+});
+// konfirmasi-sandi
+Route::get('/konfirmasi-sandi', function () {
+    return view('auth-page.konfirmasi-sandi');
+});
+// Logout
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Informasi Pengajuan
 Route::get('/data-statistik-izinpendirian', function () {
@@ -50,14 +61,14 @@ Route::get('/izin-operasional', function () {
     return view('landing-page.izin-operasional.operasional');
 });
 
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+// STATISTIK
+Route::get('/data-statistik-daftarulang', [StatistikController::class, 'dataStatistikDaftarUlang']);
+Route::get('/data-statistik-izinoperasional', [StatistikController::class, 'dataStatistikIzinOperasional']);
+Route::get('/data-statistik-izinpendirian', [StatistikController::class, 'dataStatistikIzinPendirian']);
 
-
-
-Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('pemohon-dashboard');
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index']);
 
 // PEMOHON
-// TODO : DONE
 Route::middleware(['role:pemohon', 'verified'])->prefix('/dashboard-pemohon')->group(function () {
     Route::get('/', [PemohonController::class, 'dashboard'])->name('pemohon-dashboard');
 
@@ -108,374 +119,8 @@ Route::middleware(['role:pemohon', 'verified'])->prefix('/dashboard-pemohon')->g
     Route::post('/operasional/{id}', [OperasionalController::class, 'update']);
 });
 
-// STATISTIK
-Route::get('/data-statistik-daftarulang', [StatistikController::class, 'dataStatistikDaftarUlang']);
-Route::get('/data-statistik-izinoperasional', [StatistikController::class, 'dataStatistikIzinOperasional']);
-Route::get('/data-statistik-izinpendirian', [StatistikController::class, 'dataStatistikIzinPendirian']);
-
-
-// OPERATOR
-Route::prefix('/dashboard-operator')->group(function () {
-    Route::get('/kelengkapan-data', function () {
-        return view('operator.kelengkapan-data.kelengkapan-data');
-    })->name('operator-lengkap-data');
-
-    Route::get('/kelengkapan-data/{id}', function ($id) {
-        return view('operator.kelengkapan-data.kelengkapan-detail', ['id' => $id]);
-    })->name('operator-kelengkapan-detail');
-
-    Route::get('/validasi-data', function () {
-        return view('operator.validasi-data');
-    })->name('operator-validasi-data');
-
-    Route::get('/detail-validasi/{id}', function ($id) {
-        return view('operator.detail-validasi');
-    })->name('operator-detail-validasi');
-
-    Route::get('/lacak-permohonan', function () {
-        return view('operator.lacak-permohonan');
-    })->name('operator-lacak-permohonan');
-
-    Route::get('/status-permohonan', function () {
-        return view('operator.status-permohonan');
-    })->name('operator-status-permohonan');
-
-    Route::get('/monitoring', function () {
-        return view('operator.monitoring');
-    })->name('operator-monitoring');
-
-    Route::get('/monitoring/{type}', function ($type) {
-        return view('operator.monitoring-detail', ['type' => $type]);
-    })->name('operator-monitoring-detail');
-
-    Route::get('/notifikasi', function () {
-        return view('operator.notifikasi');
-    })->name('operator-notifikasi');
-
-    Route::get('/panduan-perizinan', function () {
-        return view('operator.panduan-perizinan');
-    })->name('operator-panduan-perizinan');
-
-    Route::get('/panduan-perizinan/daftar-ulang', function () {
-        return view('operator.panduan-perizinan.daftar-ulang.daftar');
-    })->name('operator-panduan-daftar-ulang');
-
-    // panduan izin operasional
-    Route::get('/panduan-perizinan/izin-operasional', function () {
-        return view('operator.panduan-perizinan.izin-operasional.operasional');
-    })->name('operator-panduan-operasional');
-
-    // izin pendirian
-    Route::get('/panduan-perizinan/izin-pendirian', function () {
-        return view('operator.panduan-perizinan.izin-pendirian.izin');
-    })->name('operator-panduan-izin');
-
-    Route::get('/profile', function () {
-        return view('operator.profile');
-    })->name('operator-profile');
-
-    Route::get('/riwayat', function () {
-        return view('operator.riwayat-permohonan');
-    })->name('operator-riwayat-permohonan');
-
-    // PENGAJUAN PERMOHONAN
-    Route::get('/pengajuan-permohonan', function () {
-        return view('operator.pengajuan-permohonan');
-    })->name('operator-pengajuan-permohonan');
-
-    Route::get('/daftar-ulang', function () {
-        return view('operator.daftar-ulang.daftar');
-    })->name('operator-daftar-ulang');
-
-    Route::get('/daftar-ulang/data', function () {
-        return view('operator.daftar-ulang.daftar');
-    });
-
-    Route::get('/daftar-ulang/detail', function () {
-        return view('operator.daftar-ulang.detail');
-    })->name('operator-detail');
-
-    Route::get('/daftar-ulang/berkas', function () {
-        return view('operator.daftar-ulang.berkas');
-    })->name('operator-berkas');
-
-    Route::get('/izin-pendirian', function () {
-        return view('operator.izin-pendirian.data-pemohon');
-    })->name('operator-izin-pendirian');
-
-    Route::get('/izin-pendirian/detail-yayasan', function () {
-        return view('operator.izin-pendirian.detail-yayasan');
-    })->name('operator-detail-yayasan');
-
-    Route::get('/izin-pendirian/detail-pendirian', function () {
-        return view('operator.izin-pendirian.detail-pendirian');
-    })->name('operator-detail-pendirian');
-    // upload berkas
-    Route::get('/izin-pendirian/upload-berkas', function () {
-        return view('operator.izin-pendirian.upload-berkas');
-    })->name('operator-upload-berkas');
-
-    Route::get('/izin-operasional', function () {
-        return view('operator.izin-operasional.data-pemohon');
-    })->name('operator-izin-operasional');
-
-    Route::get('/izin-operasional/detail', function () {
-        return view('operator.izin-operasional.detail-operasional');
-    })->name('operator-detail-operasional');
-
-    Route::get('/izin-operasional/berkas', function () {
-        return view('operator.izin-operasional.upload-berkas');
-    })->name('operator-berkas-operasional');
-
-    // pembaruan-data
-    Route::get('/pembaruan-data', function () {
-        return view('operator.pembaruan-data.index');
-    })->name('operator-pembaruan-data');
-
-    // pembaruan-data/{id}
-    Route::get('/pembaruan-data/{id}', function ($id) {
-        return view('operator.pembaruan-data.detail', [
-            'id' => $id
-        ]);
-    })->name('operator-detail-pembaruan-data');
-});
-
-// AUDITOR
-Route::prefix('/dashboard-auditor')->group(function () {
-    Route::get('', function () {
-        return view('auditor.dashboard');
-    });
-
-    Route::get('/monitoring', function () {
-        return view('auditor.monitoring');
-    })->name('auditor-monitoring');
-
-    Route::get('/monitoring/{type}', function ($type) {
-        return view('auditor.monitoring-detail', ['type' => $type]);
-    })->name('auditor-monitoring-detail');
-
-    Route::get('/notifikasi', function () {
-        return view('auditor.notifikasi');
-    })->name('auditor-notifikasi');
-
-    Route::get('/panduan-perizinan', function () {
-        return view('auditor.panduan-perizinan');
-    })->name('auditor-panduan-perizinan');
-
-    Route::get('/panduan-perizinan/daftar-ulang', function () {
-        return view('auditor.panduan-perizinan.daftar-ulang.daftar');
-    })->name('auditor-panduan-daftar-ulang');
-
-    // panduan izin operasional
-    Route::get('/panduan-perizinan/izin-operasional', function () {
-        return view('auditor.panduan-perizinan.izin-operasional.operasional');
-    })->name('auditor-panduan-operasional');
-
-    // izin pendirian
-    Route::get('/panduan-perizinan/izin-pendirian', function () {
-        return view('auditor.panduan-perizinan.izin-pendirian.izin');
-    })->name('auditor-panduan-izin');
-
-    Route::get('/profile', function () {
-        return view('auditor.profile');
-    })->name('auditor-profile');
-});
-
-// SURVEYOR
-Route::prefix('/dashboard-surveyor')->group(function () {
-    Route::get('/kelengkapan-data', function () {
-        return view('surveyor.kelengkapan-data.kelengkapan-data');
-    })->name('surveyor-lengkap-data');
-
-    Route::get('/kelengkapan-data/{id}', function ($id) {
-        return view('surveyor.kelengkapan-data.kelengkapan-detail', ['id' => $id]);
-    })->name('surveyor-kelengkapan-detail');
-
-    Route::get('/riwayat', function () {
-        return view('surveyor.riwayat-permohonan');
-    })->name('surveyor-riwayat-permohonan');
-
-    Route::get('/detail-permohonan/{id}', function ($id) {
-        return view('surveyor.detail-permohonan');
-    })->name('surveyor-detail-permohonan');
-
-    Route::get('/lacak-permohonan', function () {
-        return view('surveyor.lacak-permohonan');
-    })->name('surveyor-lacak-permohonan');
-
-    Route::get('/status-permohonan', function () {
-        return view('surveyor.status-permohonan');
-    })->name('surveyor-status-permohonan');
-
-    Route::get('/monitoring', function () {
-        return view('surveyor.monitoring');
-    })->name('surveyor-monitoring');
-
-    Route::get('/monitoring/{type}', function ($type) {
-        return view('surveyor.monitoring-detail', ['type' => $type]);
-    })->name('surveyor-monitoring-detail');
-
-    Route::get('/notifikasi', function () {
-        return view('surveyor.notifikasi');
-    })->name('surveyor-notifikasi');
-
-    Route::get('/panduan-perizinan', function () {
-        return view('surveyor.panduan-perizinan');
-    })->name('surveyor-panduan-perizinan');
-
-    Route::get('/panduan-perizinan/daftar-ulang', function () {
-        return view('surveyor.panduan-perizinan.daftar-ulang.daftar');
-    })->name('surveyor-panduan-daftar-ulang');
-
-    // panduan izin operasional
-    Route::get('/panduan-perizinan/izin-operasional', function () {
-        return view('surveyor.panduan-perizinan.izin-operasional.operasional');
-    })->name('surveyor-panduan-operasional');
-
-    // izin pendirian
-    Route::get('/panduan-perizinan/izin-pendirian', function () {
-        return view('surveyor.panduan-perizinan.izin-pendirian.izin');
-    })->name('surveyor-panduan-izin');
-
-    Route::get('/profile', function () {
-        return view('surveyor.profile');
-    })->name('surveyor-profile');
-
-    // PENGAJUAN PERMOHONAN
-    Route::get('/pengajuan-permohonan', function () {
-        return view('surveyor.pengajuan-permohonan');
-    })->name('surveyor-pengajuan-permohonan');
-
-    Route::get('/daftar-ulang', function () {
-        return view('surveyor.daftar-ulang.daftar');
-    })->name('surveyor-daftar-ulang');
-
-    Route::get('/daftar-ulang/data', function () {
-        return view('surveyor.daftar-ulang.daftar');
-    });
-
-    Route::get('/daftar-ulang/detail', function () {
-        return view('surveyor.daftar-ulang.detail');
-    })->name('surveyor-detail');
-
-    Route::get('/daftar-ulang/berkas', function () {
-        return view('surveyor.daftar-ulang.berkas');
-    })->name('surveyor-berkas');
-
-    Route::get('/izin-pendirian', function () {
-        return view('surveyor.izin-pendirian.data-pemohon');
-    })->name('surveyor-izin-pendirian');
-
-    Route::get('/izin-pendirian/detail-yayasan', function () {
-        return view('surveyor.izin-pendirian.detail-yayasan');
-    })->name('surveyor-detail-yayasan');
-
-    Route::get('/izin-pendirian/detail-pendirian', function () {
-        return view('surveyor.izin-pendirian.detail-pendirian');
-    })->name('surveyor-detail-pendirian');
-    // upload berkas
-    Route::get('/izin-pendirian/upload-berkas', function () {
-        return view('surveyor.izin-pendirian.upload-berkas');
-    })->name('surveyor-upload-berkas');
-
-    Route::get('/izin-operasional', function () {
-        return view('surveyor.izin-operasional.data-pemohon');
-    })->name('surveyor-izin-operasional');
-
-    Route::get('/izin-operasional/detail', function () {
-        return view('surveyor.izin-operasional.detail-operasional');
-    })->name('surveyor-detail-operasional');
-
-    Route::get('/izin-operasional/berkas', function () {
-        return view('surveyor.izin-operasional.upload-berkas');
-    })->name('surveyor-berkas-operasional');
-
-    // survey
-    Route::get('/survey', function () {
-        return view('surveyor.survey.index');
-    })->name('surveyor-survey');
-
-    Route::get('/survey/{id}', function ($id) {
-        return view('surveyor.survey.isi-form', [
-            'id' => $id
-        ]);
-    })->name('surveyor-isi-survey');
-
-    // pembaruan-data
-    Route::get('/pembaruan-data', function () {
-        return view('surveyor.pembaruan-data.index');
-    })->name('surveyor-pembaruan-data');
-
-    // pembaruan-data/{id}
-    Route::get('/pembaruan-data/{id}', function ($id) {
-        return view('surveyor.pembaruan-data.detail', [
-            'id' => $id
-        ]);
-    })->name('surveyor-detail-pembaruan-data');
-});
-
-// WALIKOTA
-Route::prefix('/dashboard-walikota')->group(function () {
-    Route::get('', function () {
-        return view('walikota.dashboard');
-    });
-
-    Route::get('/monitoring', function () {
-        return view('walikota.monitoring');
-    })->name('walikota-monitoring');
-
-    Route::get('/monitoring/{type}', function ($type) {
-        return view('walikota.monitoring-detail', ['type' => $type]);
-    })->name('walikota-monitoring-detail');
-
-    Route::get('/notifikasi', function () {
-        return view('walikota.notifikasi');
-    })->name('walikota-notifikasi');
-
-    Route::get('/panduan-perizinan', function () {
-        return view('walikota.panduan-perizinan');
-    })->name('walikota-panduan-perizinan');
-
-    Route::get('/panduan-perizinan/daftar-ulang', function () {
-        return view('walikota.panduan-perizinan.daftar-ulang.daftar');
-    })->name('walikota-panduan-daftar-ulang');
-
-    // panduan izin operasional
-    Route::get('/panduan-perizinan/izin-operasional', function () {
-        return view('walikota.panduan-perizinan.izin-operasional.operasional');
-    })->name('walikota-panduan-operasional');
-
-    // izin pendirian
-    Route::get('/panduan-perizinan/izin-pendirian', function () {
-        return view('walikota.panduan-perizinan.izin-pendirian.izin');
-    })->name('walikota-panduan-izin');
-
-    Route::get('/profile', function () {
-        return view('walikota.profile');
-    })->name('walikota-profile');
-});
-
-Route::get('/lupa-sandi', function () {
-    return view('auth-page.lupa-sandi');
-});
-
-// kode-verifikasi
-Route::get('/kode-verifikasi', function () {
-    return view('auth-page.kode-verifikasi');
-})->name('verification.notice');
-
-// reset-sandi
-Route::get('/reset-sandi', function () {
-    return view('auth-page.reset-sandi');
-});
-// konfirmasi-sandi
-Route::get('/konfirmasi-sandi', function () {
-    return view('auth-page.konfirmasi-sandi');
-});
-
-
 // ADMIN DINAS
-Route::prefix('/dashboard-admin-dinas')->group(function () {
+Route::middleware(['role:admin-dinas', 'verified'])->prefix('/dashboard-admin-dinas')->group(function () {
     Route::get('', function () {
         return view('admin-dinas.dashboard');
     })->name('admin-dinas-dashboard');
@@ -702,6 +347,430 @@ Route::prefix('/dashboard-admin-dinas')->group(function () {
     Route::get('/kelola-sistem/panduan-perizinan/izin-operasional', function () {
         return view('admin-dinas.kelola-sistem.jenis-panduan.izin-operasional');
     })->name('admin-dinas-kelola-izin-operasional');
+});
+
+// ADMIN UTAMA
+Route::prefix('/dashboard-admin-utama')->group(function () {
+    Route::get('', function () {
+        return view('admin-utama.dashboard');
+    });
+
+    Route::get('/monitoring', function () {
+        return view('admin-utama.monitoring');
+    })->name('admin-utama-monitoring');
+
+    Route::get('/monitoring/{type}', function ($type) {
+        return view('admin-utama.monitoring-detail', ['type' => $type]);
+    })->name('admin-utama-monitoring-detail');
+
+    Route::get('/notifikasi', function () {
+        return view('admin-utama.notifikasi');
+    })->name('admin-utama-notifikasi');
+
+    Route::get('/panduan-perizinan', function () {
+        return view('admin-utama.panduan-perizinan');
+    })->name('admin-utama-panduan-perizinan');
+
+    Route::get('/panduan-perizinan/daftar-ulang', function () {
+        return view('admin-utama.panduan-perizinan.daftar-ulang.daftar');
+    })->name('admin-utama-panduan-daftar-ulang');
+
+    // panduan izin operasional
+    Route::get('/panduan-perizinan/izin-operasional', function () {
+        return view('admin-utama.panduan-perizinan.izin-operasional.operasional');
+    })->name('admin-utama-panduan-operasional');
+
+    // izin pendirian
+    Route::get('/panduan-perizinan/izin-pendirian', function () {
+        return view('admin-utama.panduan-perizinan.izin-pendirian.izin');
+    })->name('admin-utama-panduan-izin');
+
+    Route::get('/profile', function () {
+        return view('admin-utama.profile');
+    })->name('admin-utama-profile');
+
+    // kelola-sistem
+    Route::get('/kelola-sistem', function () {
+        return view('admin-utama.kelola-sistem.index');
+    })->name('admin-utama-kelola-sistem');
+
+    // kelola-sistem/daftar-user
+    Route::get('/kelola-sistem/daftar-user', function () {
+        return view('admin-utama.kelola-sistem.daftar-user');
+    })->name('admin-utama-daftar-user');
+
+    // kelola-sistem/daftar-user/{id}
+    Route::get('/kelola-sistem/daftar-user/{id}', function ($id) {
+        return view('admin-utama.kelola-sistem.edit-user', [
+            'id' => $id
+        ]);
+    })->name('admin-utama-edit-user');
+
+    // kelola-sistem/panduan-perizinan
+    Route::get('/kelola-sistem/panduan-perizinan', function () {
+        return view('admin-utama.kelola-sistem.panduan-perizinan');
+    })->name('admin-utama-kelola-panduan');
+
+    Route::get('/kelola-sistem/panduan-perizinan/daftar-ulang', function () {
+        return view('admin-utama.kelola-sistem.jenis-panduan.daftar-ulang');
+    })->name('admin-utama-kelola-daftar-ulang');
+
+    Route::get('/kelola-sistem/panduan-perizinan/izin-pendirian', function () {
+        return view('admin-utama.kelola-sistem.jenis-panduan.izin-pendirian');
+    })->name('admin-utama-kelola-izin-pendirian');
+
+    Route::get('/kelola-sistem/panduan-perizinan/izin-operasional', function () {
+        return view('admin-utama.kelola-sistem.jenis-panduan.izin-operasional');
+    })->name('admin-utama-kelola-izin-operasional');
+});
+
+// OPERATOR
+Route::prefix('/dashboard-operator')->group(function () {
+    Route::get('/', function () {
+        return view('operator.dashboard');
+    })->name('operator-dashboard');
+
+    Route::get('/kelengkapan-data', function () {
+        return view('operator.kelengkapan-data.kelengkapan-data');
+    })->name('operator-lengkap-data');
+
+    Route::get('/kelengkapan-data/{id}', function ($id) {
+        return view('operator.kelengkapan-data.kelengkapan-detail', ['id' => $id]);
+    })->name('operator-kelengkapan-detail');
+
+    Route::get('/validasi-data', function () {
+        return view('operator.validasi-data');
+    })->name('operator-validasi-data');
+
+    Route::get('/detail-validasi/{id}', function ($id) {
+        return view('operator.detail-validasi');
+    })->name('operator-detail-validasi');
+
+    Route::get('/lacak-permohonan', function () {
+        return view('operator.lacak-permohonan');
+    })->name('operator-lacak-permohonan');
+
+    Route::get('/status-permohonan', function () {
+        return view('operator.status-permohonan');
+    })->name('operator-status-permohonan');
+
+    Route::get('/monitoring', function () {
+        return view('operator.monitoring');
+    })->name('operator-monitoring');
+
+    Route::get('/monitoring/{type}', function ($type) {
+        return view('operator.monitoring-detail', ['type' => $type]);
+    })->name('operator-monitoring-detail');
+
+    Route::get('/notifikasi', function () {
+        return view('operator.notifikasi');
+    })->name('operator-notifikasi');
+
+    Route::get('/panduan-perizinan', function () {
+        return view('operator.panduan-perizinan');
+    })->name('operator-panduan-perizinan');
+
+    Route::get('/panduan-perizinan/daftar-ulang', function () {
+        return view('operator.panduan-perizinan.daftar-ulang.daftar');
+    })->name('operator-panduan-daftar-ulang');
+
+    // panduan izin operasional
+    Route::get('/panduan-perizinan/izin-operasional', function () {
+        return view('operator.panduan-perizinan.izin-operasional.operasional');
+    })->name('operator-panduan-operasional');
+
+    // izin pendirian
+    Route::get('/panduan-perizinan/izin-pendirian', function () {
+        return view('operator.panduan-perizinan.izin-pendirian.izin');
+    })->name('operator-panduan-izin');
+
+    Route::get('/profile', function () {
+        return view('operator.profile');
+    })->name('operator-profile');
+
+    Route::get('/riwayat', function () {
+        return view('operator.riwayat-permohonan');
+    })->name('operator-riwayat-permohonan');
+
+    // PENGAJUAN PERMOHONAN
+    Route::get('/pengajuan-permohonan', function () {
+        return view('operator.pengajuan-permohonan');
+    })->name('operator-pengajuan-permohonan');
+
+    Route::get('/daftar-ulang', function () {
+        return view('operator.daftar-ulang.daftar');
+    })->name('operator-daftar-ulang');
+
+    Route::get('/daftar-ulang/data', function () {
+        return view('operator.daftar-ulang.daftar');
+    });
+
+    Route::get('/daftar-ulang/detail', function () {
+        return view('operator.daftar-ulang.detail');
+    })->name('operator-detail');
+
+    Route::get('/daftar-ulang/berkas', function () {
+        return view('operator.daftar-ulang.berkas');
+    })->name('operator-berkas');
+
+    Route::get('/izin-pendirian', function () {
+        return view('operator.izin-pendirian.data-pemohon');
+    })->name('operator-izin-pendirian');
+
+    Route::get('/izin-pendirian/detail-yayasan', function () {
+        return view('operator.izin-pendirian.detail-yayasan');
+    })->name('operator-detail-yayasan');
+
+    Route::get('/izin-pendirian/detail-pendirian', function () {
+        return view('operator.izin-pendirian.detail-pendirian');
+    })->name('operator-detail-pendirian');
+    // upload berkas
+    Route::get('/izin-pendirian/upload-berkas', function () {
+        return view('operator.izin-pendirian.upload-berkas');
+    })->name('operator-upload-berkas');
+
+    Route::get('/izin-operasional', function () {
+        return view('operator.izin-operasional.data-pemohon');
+    })->name('operator-izin-operasional');
+
+    Route::get('/izin-operasional/detail', function () {
+        return view('operator.izin-operasional.detail-operasional');
+    })->name('operator-detail-operasional');
+
+    Route::get('/izin-operasional/berkas', function () {
+        return view('operator.izin-operasional.upload-berkas');
+    })->name('operator-berkas-operasional');
+
+    // pembaruan-data
+    Route::get('/pembaruan-data', function () {
+        return view('operator.pembaruan-data.index');
+    })->name('operator-pembaruan-data');
+
+    // pembaruan-data/{id}
+    Route::get('/pembaruan-data/{id}', function ($id) {
+        return view('operator.pembaruan-data.detail', [
+            'id' => $id
+        ]);
+    })->name('operator-detail-pembaruan-data');
+});
+
+// AUDITOR
+Route::prefix('/dashboard-auditor')->group(function () {
+    Route::get('', function () {
+        return view('auditor.dashboard');
+    });
+
+    Route::get('/monitoring', function () {
+        return view('auditor.monitoring');
+    })->name('auditor-monitoring');
+
+    Route::get('/monitoring/{type}', function ($type) {
+        return view('auditor.monitoring-detail', ['type' => $type]);
+    })->name('auditor-monitoring-detail');
+
+    Route::get('/notifikasi', function () {
+        return view('auditor.notifikasi');
+    })->name('auditor-notifikasi');
+
+    Route::get('/panduan-perizinan', function () {
+        return view('auditor.panduan-perizinan');
+    })->name('auditor-panduan-perizinan');
+
+    Route::get('/panduan-perizinan/daftar-ulang', function () {
+        return view('auditor.panduan-perizinan.daftar-ulang.daftar');
+    })->name('auditor-panduan-daftar-ulang');
+
+    // panduan izin operasional
+    Route::get('/panduan-perizinan/izin-operasional', function () {
+        return view('auditor.panduan-perizinan.izin-operasional.operasional');
+    })->name('auditor-panduan-operasional');
+
+    // izin pendirian
+    Route::get('/panduan-perizinan/izin-pendirian', function () {
+        return view('auditor.panduan-perizinan.izin-pendirian.izin');
+    })->name('auditor-panduan-izin');
+
+    Route::get('/profile', function () {
+        return view('auditor.profile');
+    })->name('auditor-profile');
+});
+
+// SURVEYOR
+Route::prefix('/dashboard-surveyor')->group(function () {
+    Route::get('/', function () {
+        return view('surveyor.dashboard');
+    })->name('surveyor-dashboard');
+
+    Route::get('/kelengkapan-data', function () {
+        return view('surveyor.kelengkapan-data.kelengkapan-data');
+    })->name('surveyor-lengkap-data');
+
+    Route::get('/kelengkapan-data/{id}', function ($id) {
+        return view('surveyor.kelengkapan-data.kelengkapan-detail', ['id' => $id]);
+    })->name('surveyor-kelengkapan-detail');
+
+    Route::get('/riwayat', function () {
+        return view('surveyor.riwayat-permohonan');
+    })->name('surveyor-riwayat-permohonan');
+
+    Route::get('/detail-permohonan/{id}', function ($id) {
+        return view('surveyor.detail-permohonan');
+    })->name('surveyor-detail-permohonan');
+
+    Route::get('/lacak-permohonan', function () {
+        return view('surveyor.lacak-permohonan');
+    })->name('surveyor-lacak-permohonan');
+
+    Route::get('/status-permohonan', function () {
+        return view('surveyor.status-permohonan');
+    })->name('surveyor-status-permohonan');
+
+    Route::get('/monitoring', function () {
+        return view('surveyor.monitoring');
+    })->name('surveyor-monitoring');
+
+    Route::get('/monitoring/{type}', function ($type) {
+        return view('surveyor.monitoring-detail', ['type' => $type]);
+    })->name('surveyor-monitoring-detail');
+
+    Route::get('/notifikasi', function () {
+        return view('surveyor.notifikasi');
+    })->name('surveyor-notifikasi');
+
+    Route::get('/panduan-perizinan', function () {
+        return view('surveyor.panduan-perizinan');
+    })->name('surveyor-panduan-perizinan');
+
+    Route::get('/panduan-perizinan/daftar-ulang', function () {
+        return view('surveyor.panduan-perizinan.daftar-ulang.daftar');
+    })->name('surveyor-panduan-daftar-ulang');
+
+    // panduan izin operasional
+    Route::get('/panduan-perizinan/izin-operasional', function () {
+        return view('surveyor.panduan-perizinan.izin-operasional.operasional');
+    })->name('surveyor-panduan-operasional');
+
+    // izin pendirian
+    Route::get('/panduan-perizinan/izin-pendirian', function () {
+        return view('surveyor.panduan-perizinan.izin-pendirian.izin');
+    })->name('surveyor-panduan-izin');
+
+    Route::get('/profile', function () {
+        return view('surveyor.profile');
+    })->name('surveyor-profile');
+
+    // PENGAJUAN PERMOHONAN
+    Route::get('/pengajuan-permohonan', function () {
+        return view('surveyor.pengajuan-permohonan');
+    })->name('surveyor-pengajuan-permohonan');
+
+    Route::get('/daftar-ulang', function () {
+        return view('surveyor.daftar-ulang.daftar');
+    })->name('surveyor-daftar-ulang');
+
+    Route::get('/daftar-ulang/data', function () {
+        return view('surveyor.daftar-ulang.daftar');
+    });
+
+    Route::get('/daftar-ulang/detail', function () {
+        return view('surveyor.daftar-ulang.detail');
+    })->name('surveyor-detail');
+
+    Route::get('/daftar-ulang/berkas', function () {
+        return view('surveyor.daftar-ulang.berkas');
+    })->name('surveyor-berkas');
+
+    Route::get('/izin-pendirian', function () {
+        return view('surveyor.izin-pendirian.data-pemohon');
+    })->name('surveyor-izin-pendirian');
+
+    Route::get('/izin-pendirian/detail-yayasan', function () {
+        return view('surveyor.izin-pendirian.detail-yayasan');
+    })->name('surveyor-detail-yayasan');
+
+    Route::get('/izin-pendirian/detail-pendirian', function () {
+        return view('surveyor.izin-pendirian.detail-pendirian');
+    })->name('surveyor-detail-pendirian');
+    // upload berkas
+    Route::get('/izin-pendirian/upload-berkas', function () {
+        return view('surveyor.izin-pendirian.upload-berkas');
+    })->name('surveyor-upload-berkas');
+
+    Route::get('/izin-operasional', function () {
+        return view('surveyor.izin-operasional.data-pemohon');
+    })->name('surveyor-izin-operasional');
+
+    Route::get('/izin-operasional/detail', function () {
+        return view('surveyor.izin-operasional.detail-operasional');
+    })->name('surveyor-detail-operasional');
+
+    Route::get('/izin-operasional/berkas', function () {
+        return view('surveyor.izin-operasional.upload-berkas');
+    })->name('surveyor-berkas-operasional');
+
+    // survey
+    Route::get('/survey', function () {
+        return view('surveyor.survey.index');
+    })->name('surveyor-survey');
+
+    Route::get('/survey/{id}', function ($id) {
+        return view('surveyor.survey.isi-form', [
+            'id' => $id
+        ]);
+    })->name('surveyor-isi-survey');
+
+    // pembaruan-data
+    Route::get('/pembaruan-data', function () {
+        return view('surveyor.pembaruan-data.index');
+    })->name('surveyor-pembaruan-data');
+
+    // pembaruan-data/{id}
+    Route::get('/pembaruan-data/{id}', function ($id) {
+        return view('surveyor.pembaruan-data.detail', [
+            'id' => $id
+        ]);
+    })->name('surveyor-detail-pembaruan-data');
+});
+
+// WALIKOTA
+Route::prefix('/dashboard-walikota')->group(function () {
+    Route::get('', function () {
+        return view('walikota.dashboard');
+    });
+
+    Route::get('/monitoring', function () {
+        return view('walikota.monitoring');
+    })->name('walikota-monitoring');
+
+    Route::get('/monitoring/{type}', function ($type) {
+        return view('walikota.monitoring-detail', ['type' => $type]);
+    })->name('walikota-monitoring-detail');
+
+    Route::get('/notifikasi', function () {
+        return view('walikota.notifikasi');
+    })->name('walikota-notifikasi');
+
+    Route::get('/panduan-perizinan', function () {
+        return view('walikota.panduan-perizinan');
+    })->name('walikota-panduan-perizinan');
+
+    Route::get('/panduan-perizinan/daftar-ulang', function () {
+        return view('walikota.panduan-perizinan.daftar-ulang.daftar');
+    })->name('walikota-panduan-daftar-ulang');
+
+    // panduan izin operasional
+    Route::get('/panduan-perizinan/izin-operasional', function () {
+        return view('walikota.panduan-perizinan.izin-operasional.operasional');
+    })->name('walikota-panduan-operasional');
+
+    // izin pendirian
+    Route::get('/panduan-perizinan/izin-pendirian', function () {
+        return view('walikota.panduan-perizinan.izin-pendirian.izin');
+    })->name('walikota-panduan-izin');
+
+    Route::get('/profile', function () {
+        return view('walikota.profile');
+    })->name('walikota-profile');
 });
 
 // KEPALA DINAS
@@ -1058,78 +1127,3 @@ Route::prefix('/dashboard-verifikator')->group(function () {
 });
 
 
-// ADMIN UTAMA
-Route::prefix('/dashboard-admin-utama')->group(function () {
-    Route::get('', function () {
-        return view('admin-utama.dashboard');
-    });
-
-    Route::get('/monitoring', function () {
-        return view('admin-utama.monitoring');
-    })->name('admin-utama-monitoring');
-
-    Route::get('/monitoring/{type}', function ($type) {
-        return view('admin-utama.monitoring-detail', ['type' => $type]);
-    })->name('admin-utama-monitoring-detail');
-
-    Route::get('/notifikasi', function () {
-        return view('admin-utama.notifikasi');
-    })->name('admin-utama-notifikasi');
-
-    Route::get('/panduan-perizinan', function () {
-        return view('admin-utama.panduan-perizinan');
-    })->name('admin-utama-panduan-perizinan');
-
-    Route::get('/panduan-perizinan/daftar-ulang', function () {
-        return view('admin-utama.panduan-perizinan.daftar-ulang.daftar');
-    })->name('admin-utama-panduan-daftar-ulang');
-
-    // panduan izin operasional
-    Route::get('/panduan-perizinan/izin-operasional', function () {
-        return view('admin-utama.panduan-perizinan.izin-operasional.operasional');
-    })->name('admin-utama-panduan-operasional');
-
-    // izin pendirian
-    Route::get('/panduan-perizinan/izin-pendirian', function () {
-        return view('admin-utama.panduan-perizinan.izin-pendirian.izin');
-    })->name('admin-utama-panduan-izin');
-
-    Route::get('/profile', function () {
-        return view('admin-utama.profile');
-    })->name('admin-utama-profile');
-
-    // kelola-sistem
-    Route::get('/kelola-sistem', function () {
-        return view('admin-utama.kelola-sistem.index');
-    })->name('admin-utama-kelola-sistem');
-
-    // kelola-sistem/daftar-user
-    Route::get('/kelola-sistem/daftar-user', function () {
-        return view('admin-utama.kelola-sistem.daftar-user');
-    })->name('admin-utama-daftar-user');
-
-    // kelola-sistem/daftar-user/{id}
-    Route::get('/kelola-sistem/daftar-user/{id}', function ($id) {
-        return view('admin-utama.kelola-sistem.edit-user', [
-            'id' => $id
-        ]);
-    })->name('admin-utama-edit-user');
-
-    // kelola-sistem/panduan-perizinan
-    Route::get('/kelola-sistem/panduan-perizinan', function () {
-        return view('admin-utama.kelola-sistem.panduan-perizinan');
-    })->name('admin-utama-kelola-panduan');
-
-    Route::get('/kelola-sistem/panduan-perizinan/daftar-ulang', function () {
-        return view('admin-utama.kelola-sistem.jenis-panduan.daftar-ulang');
-    })->name('admin-utama-kelola-daftar-ulang');
-
-    Route::get('/kelola-sistem/panduan-perizinan/izin-pendirian', function () {
-        return view('admin-utama.kelola-sistem.jenis-panduan.izin-pendirian');
-    })->name('admin-utama-kelola-izin-pendirian');
-
-    Route::get('/kelola-sistem/panduan-perizinan/izin-operasional', function () {
-        return view('admin-utama.kelola-sistem.jenis-panduan.izin-operasional');
-    })->name('admin-utama-kelola-izin-operasional');
-});
-Auth::routes();

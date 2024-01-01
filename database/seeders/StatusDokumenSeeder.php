@@ -19,6 +19,7 @@ class StatusDokumenSeeder extends Seeder
             'Dokumen Ditolak',
             'Tanda Tangan Kepala Dinas',
             'Permohonan Selesai',
+            'Permohonan Ditolak',
         ];
 
         foreach ($statuses as $status) {

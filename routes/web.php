@@ -5,6 +5,7 @@ use App\Http\Controllers\DaftarUlangController;
 use App\Http\Controllers\OperasionalController;
 use App\Http\Controllers\PemohonController;
 use App\Http\Controllers\PendirianController;
+use App\Http\Controllers\StatistikController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -115,17 +116,10 @@ Route::middleware(['role:pemohon', 'verified'])->prefix('/dashboard-pemohon')->g
     Route::post('/operasional/{id}', [OperasionalController::class, 'update']);
 });
 
-Route::get('/data-statistik-daftarulang', function () {
-    return view('data-statistik-daftarulang');
-});
-
-Route::get('/data-statistik-izinoperasional', function () {
-    return view('data-statistik-izinoperasional');
-});
-
-Route::get('/data-statistik-izinpendirian', function () {
-    return view('data-statistik-izinpendirian');
-});
+// STATISTIK
+Route::get('/data-statistik-daftarulang', [StatistikController::class, 'dataStatistikDaftarUlang']);
+Route::get('/data-statistik-izinoperasional', [StatistikController::class, 'dataStatistikIzinOperasional']);
+Route::get('/data-statistik-izinpendirian', [StatistikController::class, 'dataStatistikIzinPendirian']);
 
 Route::get('/daftar-ulang', function () {
     return view(('landing-page.daftar-ulang.daftar'));

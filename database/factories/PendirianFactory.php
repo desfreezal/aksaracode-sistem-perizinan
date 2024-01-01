@@ -19,7 +19,7 @@ class PendirianFactory extends Factory
         return [
             'user_id' => $this->faker->randomElement([1,2,3,4,5,6,7,8,9]),
             'category_id' => $this->faker->randomElement([1,2,3]),
-            'statusDokumen_id' => $this->faker->randomElement([1,2,3,4,5,6,7,8,9,10]),
+            'statusDokumen_id' => $this->faker->randomElement([1,2,3,4,5,6,7,8,9,10,11]),
             'latitude' => $this->faker->latitude(),
             'longtitude' => $this->faker->longitude(),
             'lokasi' => $this->faker->address(),

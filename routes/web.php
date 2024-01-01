@@ -486,6 +486,10 @@ Route::prefix('/dashboard-walikota')->group(function () {
         return view('walikota.monitoring');
     })->name('walikota-monitoring');
 
+    Route::get('/monitoring/{type}', function ($type) {
+        return view('walikota.monitoring-detail', ['type' => $type]);
+    })->name('walikota-monitoring-detail');
+
     Route::get('/notifikasi', function () {
         return view('walikota.notifikasi');
     })->name('walikota-notifikasi');

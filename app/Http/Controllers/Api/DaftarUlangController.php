@@ -186,4 +186,24 @@ class DaftarUlangController extends Controller
             return response()->json(['message' => $e->getMessage()], 500);
         }
     }
+
+    public function deleteInvalidFile(DaftarUlangRequest $request, $id, $field)
+    {
+        try {
+            $pendirian = DaftarUlang::findOrFail($id);
+
+            if (!$pendirian->$field) {
+                return response()->json(['message' => 'File not found'], 404);
+            }
+
+            Storage::delete('public/daftarUlang/' . $field . '/' . $pendirian->$field);
+
+            $pendirian->$field = null;
+            $pendirian->save();
+
+            return response()->json(['message' => 'File deleted successfully'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 500);
+        }
+    }
 }

@@ -44,6 +44,7 @@ use Illuminate\Support\Facades\Route;
     Route::post('/pendirian', [PendirianController::class, 'createPendirian']);
     Route::post('/pendirian/{pendirianId}', [PendirianController::class, 'updatePendirian']);
     Route::delete('/pendirian/{pendirianId}', [PendirianController::class, 'deletePendirian']);
+    Route::delete('/pendirian/file/{id}/{field}', [PendirianController::class, 'deleteInvalidFile']);
 
     // Daftar Ulang
     Route::get('/daftar-ulang', [DaftarUlangController::class, 'getAllDaftarUlang']);
@@ -51,6 +52,7 @@ use Illuminate\Support\Facades\Route;
     Route::post('/daftar-ulang', [DaftarUlangController::class, 'createDaftarUlang']);
     Route::post('/daftar-ulang/{id}', [DaftarUlangController::class, 'updateDaftarUlang']);
     Route::delete('/daftar-ulang/{id}', [DaftarUlangController::class, 'deleteDaftarUlang']);
+    Route::delete('/daftar-ulang/file/{id}/{field}', [DaftarUlangController::class, 'deleteInvalidFile']);
 
     // Operasional
     Route::get('/operasional', [OperasionalController::class, 'getAllOperasional']);
@@ -58,5 +60,6 @@ use Illuminate\Support\Facades\Route;
     Route::post('/operasional', [OperasionalController::class, 'createOperasional']);
     Route::post('/operasional/{id}', [OperasionalController::class, 'updateOperasional']);
     Route::delete('/operasional/{id}', [OperasionalController::class, 'deleteOperasional']);
+    Route::delete('/operasional/file/{id}/{field}', [OperasionalController::class, 'deleteInvalidFile']);
 
 });

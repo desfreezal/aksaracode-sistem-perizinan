@@ -47,7 +47,7 @@ class PendirianController extends Controller
                 ];
 
                 $pendirian->status_dokumen = $statusDokumen->Name;
-                $pendirian->category = $category[$pendirian->statusDokumen_id];
+                $pendirian->category = $category[$pendirian->category_id];
 
                 $data = collect($user->toArray())->merge($pendirian->toArray());
 

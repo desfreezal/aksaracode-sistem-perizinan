@@ -26,9 +26,9 @@ class DaftarUlangController extends Controller
     }
 
     public function getAllDaftarUlang(DaftarUlangRequest $request)
-    {
-        try {
-            $daftarUlangs = DaftarUlang::when($request->has('statusDokumen_id'), function ($query) use ($request) {
+{
+    try {
+        $daftarUlangs = DaftarUlang::when($request->has('statusDokumen_id'), function ($query) use ($request) {
                 $query->where('statusDokumen_id', $request->statusDokumen_id);
             })
             ->when($request->has('category_id'), function ($query) use ($request) {
@@ -36,32 +36,31 @@ class DaftarUlangController extends Controller
             })
             ->get();
 
-            $transformedData = $daftarUlangs->map(function ($daftarUlang) {
-                $user = User::findOrFail($daftarUlang->user_id);
+        $transformedData = $daftarUlangs->map(function ($daftarUlang) {
+            $user = User::findOrFail($daftarUlang->user_id);
 
-                $statusDokumen = StatusDokumen::findOrFail($daftarUlang->statusDokumen_id);
+            $statusDokumen = StatusDokumen::findOrFail($daftarUlang->statusDokumen_id);
 
-                $category = [
-                    1 => "TK",
-                    2 => "SD",
-                    3 => "SMP"
-                ];
+            $category = [
+                1 => "TK",
+                2 => "SD",
+                3 => "SMP"
+            ];
 
-                $daftarUlang->status_dokumen = $statusDokumen->Name;
-                $daftarUlang->category = $category[$daftarUlang->statusDokumen_id];
+            $daftarUlang->status_dokumen = $statusDokumen->Name;
+            $daftarUlang->category = $category[$daftarUlang->category_id];
 
+            $data = collect($user->toArray())->merge($daftarUlang->toArray());
 
-                $data = collect($user->toArray())->merge($daftarUlang->toArray());
+            return $data;
+        });
 
-                return $data;
-            });
-
-
-            return response()->json(['data' => $transformedData], 200);
-        } catch (\Exception $e) {
-            return response()->json(['message' => $e->getMessage()], 500);
-        }
+        return response()->json(['data' => $transformedData], 200);
+    } catch (\Exception $e) {
+        return response()->json(['message' => $e->getMessage()], 500);
     }
+}
+
 
 
     public function getDaftarUlangById($id)

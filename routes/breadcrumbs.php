@@ -167,3 +167,44 @@ Breadcrumbs::for('verifikator-detail-operasional', function (Generator $trail, $
 Breadcrumbs::for('verifikator-berkas-operasional', function (Generator $trail, $peruntukan) {
     $trail->parent('verifikator-detail-operasional', $peruntukan)->push('Upload Persyaratan Izin Operasional ' . strtoupper($peruntukan));
 });
+
+// surveyor //
+Breadcrumbs::for('surveyor-beranda', function (Generator $trail) {
+    $trail->push('Beranda', route('surveyor-dashboard'));
+});
+
+Breadcrumbs::for('surveyor-dashboard', function (Generator $trail) {
+    $trail->parent('surveyor-beranda')->push('Ajukan Permohonan')->push('Ajukan Permohonan', route('surveyor-dashboard'));
+});
+
+Breadcrumbs::for('surveyor-daftar-ulang', function (Generator $trail) {
+    $trail->parent('surveyor-beranda')->push('Ajukan Permohonan', route('surveyor-pengajuan-permohonan'))->push('Data Pemohon');
+});
+
+Breadcrumbs::for('surveyor-detail-daftar', function (Generator $trail, $peruntukan) {
+    $trail->parent('surveyor-daftar-ulang')->push('Daftar Ulang ' . strtoupper($peruntukan), route('surveyor-detail'));
+});
+
+Breadcrumbs::for('surveyor-berkas-daftar', function (Generator $trail, $peruntukan) {
+    $trail->parent('surveyor-detail-daftar', strtoupper($peruntukan))->push('Upload Persyaratan ' . strtoupper($peruntukan), route('surveyor-berkas'));
+});
+
+// for surveyor-izin-pendirian
+Breadcrumbs::for('surveyor-izin-pendirian', function (Generator $trail, $peruntukan) {
+    $trail->parent('surveyor-daftar-ulang')->push('Daftar Ulang ' . strtoupper($peruntukan), route('surveyor-izin-pendirian'));
+});
+
+// for surveyor-izin-pendirian
+Breadcrumbs::for('surveyor-izin-pendirian-berkas', function (Generator $trail, $peruntukan) {
+    $exploded = explode(' ', $peruntukan); // Split the string using ',' as the delimiter
+    $firstElement = $exploded[0];
+    $trail->parent('surveyor-daftar-ulang')->push('Permohonan Pendirian ' . strtoupper($firstElement), route('surveyor-upload-berkas'));
+});
+
+Breadcrumbs::for('surveyor-detail-operasional', function (Generator $trail, $peruntukan) {
+    $trail->parent('surveyor-daftar-ulang')->push('Permohonan Izin Operasional ' . strtoupper($peruntukan), route('surveyor-izin-operasional'));
+});
+
+Breadcrumbs::for('surveyor-berkas-operasional', function (Generator $trail, $peruntukan) {
+    $trail->parent('surveyor-detail-operasional', $peruntukan)->push('Upload Persyaratan Izin Operasional ' . strtoupper($peruntukan));
+});

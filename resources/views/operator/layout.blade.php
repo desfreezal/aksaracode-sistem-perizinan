@@ -33,7 +33,7 @@
             </li>
             <li>
                 <a href="/dashboard-operator/panduan-perizinan"
-                    class="{{ Route::currentRouteName() === 'admin-dinas-panduan-perizinan' ? 'text-primary' : '' }}">Panduan
+                    class="{{ Route::currentRouteName() === 'operator-panduan-perizinan' ? 'text-primary' : '' }}">Panduan
                     Permohonan</a>
             </li>
             <li>

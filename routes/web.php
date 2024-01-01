@@ -33,7 +33,7 @@ Route::get('/dashboard-operator', function () {
 
 Route::get('/dashboard-surveyor', function () {
     return view('surveyor.dashboard');
-});
+})->name('surveyor-dashboard');
 
 Route::get('/data-statistik-daftarulang', function () {
     return view('data-statistik-daftarulang');
@@ -361,8 +361,12 @@ Route::prefix('/dashboard-auditor')->group(function () {
 // SURVEYOR
 Route::prefix('/dashboard-surveyor')->group(function () {
     Route::get('/kelengkapan-data', function () {
-        return view('surveyor.kelengkapan-data');
+        return view('surveyor.kelengkapan-data.kelengkapan-data');
     })->name('surveyor-lengkap-data');
+
+    Route::get('/kelengkapan-data/{id}', function ($id) {
+        return view('surveyor.kelengkapan-data.kelengkapan-detail', ['id' => $id]);
+    })->name('surveyor-kelengkapan-detail');
 
     Route::get('/riwayat', function () {
         return view('surveyor.riwayat-permohonan');
@@ -383,6 +387,10 @@ Route::prefix('/dashboard-surveyor')->group(function () {
     Route::get('/monitoring', function () {
         return view('surveyor.monitoring');
     })->name('surveyor-monitoring');
+
+    Route::get('/monitoring/{type}', function ($type) {
+        return view('surveyor.monitoring-detail', ['type' => $type]);
+    })->name('surveyor-monitoring-detail');
 
     Route::get('/notifikasi', function () {
         return view('surveyor.notifikasi');
@@ -417,6 +425,55 @@ Route::prefix('/dashboard-surveyor')->group(function () {
     Route::get('/profile', function () {
         return view('surveyor.profile');
     })->name('surveyor-profile');
+
+    // PENGAJUAN PERMOHONAN
+    Route::get('/pengajuan-permohonan', function () {
+        return view('surveyor.pengajuan-permohonan');
+    })->name('surveyor-pengajuan-permohonan');
+
+    Route::get('/daftar-ulang', function () {
+        return view('surveyor.daftar-ulang.daftar');
+    })->name('surveyor-daftar-ulang');
+
+    Route::get('/daftar-ulang/data', function () {
+        return view('surveyor.daftar-ulang.daftar');
+    });
+
+    Route::get('/daftar-ulang/detail', function () {
+        return view('surveyor.daftar-ulang.detail');
+    })->name('surveyor-detail');
+
+    Route::get('/daftar-ulang/berkas', function () {
+        return view('surveyor.daftar-ulang.berkas');
+    })->name('surveyor-berkas');
+
+    Route::get('/izin-pendirian', function () {
+        return view('surveyor.izin-pendirian.data-pemohon');
+    })->name('surveyor-izin-pendirian');
+
+    Route::get('/izin-pendirian/detail-yayasan', function () {
+        return view('surveyor.izin-pendirian.detail-yayasan');
+    })->name('surveyor-detail-yayasan');
+
+    Route::get('/izin-pendirian/detail-pendirian', function () {
+        return view('surveyor.izin-pendirian.detail-pendirian');
+    })->name('surveyor-detail-pendirian');
+    // upload berkas
+    Route::get('/izin-pendirian/upload-berkas', function () {
+        return view('surveyor.izin-pendirian.upload-berkas');
+    })->name('surveyor-upload-berkas');
+
+    Route::get('/izin-operasional', function () {
+        return view('surveyor.izin-operasional.data-pemohon');
+    })->name('surveyor-izin-operasional');
+
+    Route::get('/izin-operasional/detail', function () {
+        return view('surveyor.izin-operasional.detail-operasional');
+    })->name('surveyor-detail-operasional');
+
+    Route::get('/izin-operasional/berkas', function () {
+        return view('surveyor.izin-operasional.upload-berkas');
+    })->name('surveyor-berkas-operasional');
 });
 
 // WALIKOTA

@@ -4,7 +4,7 @@
     <div class="dashboard flex justify-center gap-5 mx-[70px] mt-6 min-h-[calc(100vh-150px)]">
         <div class="kotak-putih cursor-pointer group">
             <div class="kotak-coklat group-hover:bg-primary-light">
-                <a href="{{ route('surveyor-monitoring') }}">
+                <a href="{{ route('surveyor-pengajuan-permohonan') }}">
                     <img src="{{ asset('surveyor/img/icon pengajuan permohonan.png') }}" alt="pengajuan permohonan" /></a>
             </div>
             <div class="teks-judul"><a href="#">

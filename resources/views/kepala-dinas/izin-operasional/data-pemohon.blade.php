@@ -1,151 +1,83 @@
-@extends('operator.layout')
+@extends('kepala-dinas.layout')
 
 @section('content')
     <div class="min-h-screen h-full">
 
         <div class="flex">
             {{-- SIDEBAR --}}
-            @include('operator.izin-operasional.sidebar')
+            @include('kepala-dinas.izin-operasional.sidebar')
 
             <div class="flex-grow h-full pl-[34px] pr-[88px] py-7 box-border mb-10" id="content">
                 <div class="mb-9">
-                    {!! Breadcrumbs::render('operator-detail-operasional', $peruntukan = request('peruntukan')) !!}
+                    {!! Breadcrumbs::render('kepala-dinas-daftar-ulang', $peruntukan = request('peruntukan')) !!}
                 </div>
+
                 {{-- CONTENT --}}
                 <div class="py-3 pl-11 border border-primary rounded-md mb-9">
                     <h1 class="text-primary font-medium text-2xl">Mohon untuk memasukkan data sesuai dengan data terupdate
                     </h1>
                 </div>
 
-                <form action="{{ route('operator-berkas-operasional') }}" method="GET" class="w-full space-y-6" id="form">
-                    <div class="flex items-center">
-                        <label for="jenid" class="w-72">Sub Perizinan</label>
-                        <div x-data="select" class="relative flex-grow" @click.outside="open = false">
-                            <button type="button" @click="toggle" :class="(open) && 'ring-blue-600'"
-                                class="flex w-full items-center justify-between rounded bg-white p-2 ring-1 ring-gray-300">
-                                <span x-text="detail || 'Pilih Peruntukan'"></span>
-                                <i class="fas fa-chevron-down text-xl"></i>
-                            </button>
-
-                            <ul class="z-50 absolute mt-1 w-full rounded bg-gray-50 ring-1 ring-gray-300" x-show="open">
-                                <li class="cursor-pointer select-none p-2 hover:bg-gray-200" @click="setPeruntukan('tk')">
-                                    Daftar Ulang Izin
-                                    Operasional Satuan Pendidikan TK</li>
-                                <li class="cursor-pointer select-none p-2 hover:bg-gray-200" @click="setPeruntukan('sd')">
-                                    Daftar Ulang Izin
-                                    Operasional Satuan Pendidikan SD</li>
-                                <li class="cursor-pointer select-none p-2 hover:bg-gray-200" @click="setPeruntukan('smp')">
-                                    Daftar Ulang Izin
-                                    Operasional Satuan Pendidikan SMP</li>
-                            </ul>
-                        </div>
-                    </div>
+                <form action="{{ route('kepala-dinas-detail-operasional') }}" method="GET" class="w-full space-y-6" id="form">
                     <input type="text" id="peruntukan" name="peruntukan" hidden>
                     <div class="flex items-center">
-                        <label for="alamatsekolah" class="w-72">Alamat Sekolah</label>
-                        <input id="alamatsekolah" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="alamatsekolah">
+                        <label for="nik" class="w-72">NIK kepala-dinas</label>
+                        <input id="nik" type="number" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="nik">
                     </div>
                     <div class="flex items-center">
-                        <label for="kecsekolah" class="w-72">Kecamatan Sekolah</label>
-                        <input id="kecsekolah" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="kecsekolah">
+                        <label for="nama" class="w-72">Nama kepala-dinas</label>
+                        <input id="nama" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="nama">
                     </div>
                     <div class="flex items-center">
-                        <label for="kelurahansekolah" class="w-72">Kelurahan Sekolah</label>
-                        <input id="kelurahansekolah" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="kelurahansekolah">
+                        <label for="jenkel" class="w-72">Jenis Kelamin</label>
+                        <input id="jenkel" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="jenkel">
                     </div>
                     <div class="flex items-center">
-                        <label for="rtsekolah" class="w-72">RT Sekolah</label>
-                        <input id="rtsekolah" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="rtsekolah">
+                        <label for="kabupaten" class="w-72">Kabupaten</label>
+                        <input id="kabupaten" type="text" class="flex-grow text-edu-black border-abu-abu rounded" name="kabupaten">
                     </div>
                     <div class="flex items-center">
-                        <label for="rwsekolah" class="w-72">RW Sekolah</label>
-                        <input id="rwsekolah" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="rwsekolah">
-                    </div>
-                    
-                    <div class="flex items-center">
-                        <label for="namayysn" class="w-72">Nama Yayasan</label>
-                        <input id="namayysn" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="namayysn">
+                        <label for="kecamatan" class="w-72">Kecamatan</label>
+                        <input id="kecamatan" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="kecamatan">
                     </div>
                     <div class="flex items-center">
-                        <label for="alamatyysn" class="w-72">Alamat Yayasan</label>
-                        <input id="alamatyysn" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="alamatyysn">
+                        <label for="kelurahan" class="w-72">Kelurahan</label>
+                        <input id="kelurahan" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="kelurahan">
                     </div>
                     <div class="flex items-center">
-                        <label for="ketuayysn" class="w-72">Ketua Yayasan</label>
-                        <input id="ketuayysn" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="ketuayysn">
+                        <label for="alamat" class="w-72">Alamat kepala-dinas</label>
+                        <input id="alamat" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="alamat">
                     </div>
                     <div class="flex items-center">
-                        <label for="nosuratoperator" class="w-72">No Surat operator</label>
-                        <input id="nosuratoperator" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="nosuratoperator">
+                        <label for="alamatdomisili" class="w-72">Alamat Domisili kepala-dinas</label>
+                        <input id="alamatdomisili" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="alamatdomisili">
                     </div>
                     <div class="flex items-center">
-                        <label for="tglsuratoperator" class="w-72">Tanggal Surat operator</label>
-                        <input id="tglsuratoperator" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="tglsuratoperator">
+                        <label for="tempatlahir" class="w-72">Tempat Lahir kepala-dinas</label>
+                        <input id="tempatlahir" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="tempatlahir">
                     </div>
                     <div class="flex items-center">
-                        <label for="skpendirianby" class="w-72">SK Pendirian Dikeluarkan Oleh</label>
-                        <input id="skpendirianby" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="skpendirianby">
+                        <label for="tanggallahir" class="w-72">Tanggal Lahir kepala-dinas</label>
+                        <input id="tanggallahir" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="tanggallahir">
                     </div>
                     <div class="flex items-center">
-                        <label for="noskpendirian" class="w-72">No SK Pendirian</label>
-                        <input id="noskpendirian" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="noskpendirian">
+                        <label for="nohp" class="w-72">No. Handphone kepala-dinas</label>
+                        <input id="nohp" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="nohp">
                     </div>
                     <div class="flex items-center">
-                        <label for="tglizinpendirian" class="w-72">Tanggal Penetapan Izin Pendirian</label>
-                        <input id="tglizinpendirian" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="tglizinpendirian">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="tglmulaiskpendirian" class="w-72">Tanggal Mulai Berlaku SK <br> Pendirian</label>
-                        <input id="tglmulaiskpendirian" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="tglmulaiskpendirian">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="no_operasional_lama" class="w-72">No Izin Operasional Lama</label>
-                        <input id="no_operasional_lama" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="no_operasional_lama">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="tglmulaioperasional_lama" class="w-72">Tanggal Mulai Izin Operasional <br> Lama</label>
-                        <input id="tglmulaioperasional_lama" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="tglmulaioperasional_lama">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="tglakhiroperasional_lama" class="w-72">Tanggal Berakhir Izin Operasional <br> Lama</label>
-                        <input id="tglakhiroperasional_lama" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="tglakhiroperasional_lama">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="tglakreditasi" class="w-72">Tanggal Akreditasi</label>
-                        <input id="tglakreditasi" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="tglakreditasi">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="noakreditasi" class="w-72">No Akreditasi</label>
-                        <input id="noakreditasi" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="noakreditasi">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="akreditasi" class="w-72">Akreditasi</label>
-                        <input id="akreditasi" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="akreditasi">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="jns_sekolah" class="w-72">Jenis Sekolah</label>
-                        <input id="jns_sekolah" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="jns_sekolah">
+                        <label for="pekerjaan" class="w-72">Pekerjaan kepala-dinas</label>
+                        <input id="pekerjaan" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="pekerjaan">
                     </div>
 
                     <div class="flex gap-x-12 justify-end items-center">
@@ -292,12 +224,11 @@
         simpanBtn.addEventListener('click', (event) => {
             event.preventDefault()
 
-            // PERUNTUKAN HARUS ISI
-            const peruntukanValue = document.getElementById('peruntukan').value
-            if(peruntukanValue === '') {
-                alert('Pilih Sub Perizinan')
-                return
-            }
+            // const peruntukanValue = document.getElementById('peruntukan').value
+            // if(peruntukanValue === '') {
+            //     alert('Pilih Sub Perizinan')
+            //     return
+            // }
 
             // closemodal onclick or modal hidden send form
             const closeModal = document.getElementById('closeModal')

@@ -1,15 +1,15 @@
-@extends('operator.layout')
+@extends('kepala-dinas.layout')
 
 @section('content')
     <div class="min-h-screen h-full">
 
         <div class="flex">
             {{-- SIDEBAR --}}
-            @include('operator.izin-operasional.sidebar')
+            @include('kepala-dinas.izin-operasional.sidebar')
 
             <div class="flex-grow h-full pl-[34px] pr-[88px] py-7 box-border mb-10" id="content">
                 <div class="mb-9">
-                    {!! Breadcrumbs::render('operator-detail-operasional', $peruntukan = request('peruntukan')) !!}
+                    {!! Breadcrumbs::render('kepala-dinas-detail-operasional', $peruntukan = request('peruntukan')) !!}
                 </div>
                 {{-- CONTENT --}}
                 <div class="py-3 pl-11 border border-primary rounded-md mb-9">
@@ -17,7 +17,7 @@
                     </h1>
                 </div>
 
-                <form action="{{ route('operator-berkas-operasional') }}" method="GET" class="w-full space-y-6" id="form">
+                <form action="{{ route('kepala-dinas-berkas-operasional') }}" method="GET" class="w-full space-y-6" id="form">
                     <div class="flex items-center">
                         <label for="jenid" class="w-72">Sub Perizinan</label>
                         <div x-data="select" class="relative flex-grow" @click.outside="open = false">
@@ -83,14 +83,14 @@
                             name="ketuayysn">
                     </div>
                     <div class="flex items-center">
-                        <label for="nosuratoperator" class="w-72">No Surat operator</label>
-                        <input id="nosuratoperator" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="nosuratoperator">
+                        <label for="nosuratkepala-dinas" class="w-72">No Surat kepala-dinas</label>
+                        <input id="nosuratkepala-dinas" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="nosuratkepala-dinas">
                     </div>
                     <div class="flex items-center">
-                        <label for="tglsuratoperator" class="w-72">Tanggal Surat operator</label>
-                        <input id="tglsuratoperator" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="tglsuratoperator">
+                        <label for="tglsuratkepala-dinas" class="w-72">Tanggal Surat kepala-dinas</label>
+                        <input id="tglsuratkepala-dinas" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="tglsuratkepala-dinas">
                     </div>
                     <div class="flex items-center">
                         <label for="skpendirianby" class="w-72">SK Pendirian Dikeluarkan Oleh</label>

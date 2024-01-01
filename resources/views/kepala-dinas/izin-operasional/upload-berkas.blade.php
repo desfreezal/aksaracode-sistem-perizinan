@@ -1,143 +1,35 @@
-@extends('operator.layout')
+@extends('kepala-dinas.layout')
 
 @section('content')
     <div class="min-h-screen h-full">
 
         <div class="flex">
             {{-- SIDEBAR --}}
-            @include('operator.izin-pendirian.sidebar')
+            @include('kepala-dinas.izin-operasional.sidebar')
 
-            <div class="flex-grow h-full pl-[34px] pr-[88px] py-7 box-border mb-10" id="content">
+            <div class="flex-grow h-full pl-[34px] pr-[88px] py-7 box-border mb-10 w-full" id="content">
+
                 <div class="mb-9">
-                    {!! Breadcrumbs::render('operator-izin-pendirian', $peruntukan = request('peruntukan')) !!}
+                    {!! Breadcrumbs::render('kepala-dinas-berkas-operasional', $peruntukan = request('peruntukan')) !!}
                 </div>
-
                 {{-- CONTENT --}}
-                <div class="py-3 pl-11 border border-primary rounded-md mb-9">
-                    <h1 class="text-primary font-medium text-2xl">Mohon untuk memasukkan data sesuai dengan data terupdate
+                <div class="py-3 pl-11 bg-primary rounded-md mb-9">
+                    <h1 class="text-white font-medium text-2xl">Pastikan data yang di upload sesuai dengan persyaratan
                     </h1>
                 </div>
 
-                <form action="{{ url('/dashboard-operator/izin-pendirian/detail-pendirian') }}" method="GET"
+                <form action="{{ route('kepala-dinas-berkas-operasional') }}" method="GET"
                     class="w-full space-y-6" id="form">
+                    @if (request('peruntukan') === 'tk')
+                        @include('kepala-dinas.izin-operasional.berkas-izin-operasional.table-tk')
+                    @elseif (request('peruntukan') === 'sd')
+                        @include('kepala-dinas.izin-operasional.berkas-izin-operasional.table-sd')
+                    @elseif (request('peruntukan') === 'smp')
+                        @include('kepala-dinas.izin-operasional.berkas-izin-operasional.table-smp')
+                    @else
+                        @include('kepala-dinas.izin-operasional.berkas-izin-operasional.table-sd')
+                    @endif
 
-                    <div class="flex items-center">
-                        <label for="namayayasan" class="w-72">Nama Yayasan / CV/ PT/ Perorangan</label>
-                        <input id="namayayasan" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="namayayasan">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="alamatyayasan" class="w-72">Alamat Yayasan</label>
-                        <input id="alamatyayasan" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="alamatyayasan">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="tlpyayasan" class="w-72">Telepon Yayasan</label>
-                        <input id="tlpyayasan" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="tlpyayasan">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="emailyayasan" class="w-72">Email Yayasan</label>
-                        <input id="emailyayasan" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="emailyayasan">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="jenbadhuk" class="w-72">Jenis Badan Hukum</label>
-                        <div class="space-y-3">
-                            <div class="flex items-center gap-3">
-                                <input type="radio" name="jenbadhuk" id="yayasan" value="yayasan"
-                                    class="w-5 h-5 border-abu-abu">
-                                <label for="yayasan">Yayasan</label>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <input type="radio" name="jenbadhuk" id="pt" value="pt"
-                                    class="w-5 h-5 border-abu-abu">
-                                <label for="pt">PT</label>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <input type="radio" name="jenbadhuk" id="cv" value="cv"
-                                    class="w-5 h-5 border-abu-abu">
-                                <label for="cv">CV</label>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <input type="radio" name="jenbadhuk" id="lainnya" class="w-5 h-5 border-abu-abu"
-                                    value="lainnya">
-                                <label for="lainnya">lainnya</label>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="flex items-center">
-                        <label for="rwsekolah" class="w-72">RW Sekolah</label>
-                        <input id="rwsekolah" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="rwsekolah">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="thnberdiri" class="w-72">Tahun Berdiri</label>
-                        <input id="thnberdiri" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="thnberdiri">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="tglsk" class="w-72">Tanggal SK Menkumham</label>
-                        <input id="tglsk" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="tglsk">
-                    </div>
-
-                    <div class="flex items-center">
-                        <label for="nosk" class="w-72">No SK Menkumham RI</label>
-                        <input id="nosk" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="nosk">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="nopengnotaris" class="w-72">No Pengesahan Notaris</label>
-                        <input id="nopengnotaris" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="nopengnotaris">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="tglaktanotaris" class="w-72">Tanggal Akta Notaris</label>
-                        <input id="tglaktanotaris" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="tglaktanotaris">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="namanotaris" class="w-72">Nama Notaris</label>
-                        <input id="namanotaris" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="namanotaris">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="alamatnotaris" class="w-72">Alamat Notaris</label>
-                        <input id="alamatnotaris" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="alamatnotaris">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="namapemilik" class="w-72">Nama Pemilik / Ketua Yayasan</label>
-                        <input id="namapemilik" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="namapemilik">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="nikpemilik" class="w-72">NIK Pemilik / Ketua Yayasan</label>
-                        <input id="nikpemilik" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="nikpemilik">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="agamapemilik" class="w-72">Agama Pemilik</label>
-                        <input id="agamapemilik" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="agamapemilik">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="askot" class="w-72">Asal Kota</label>
-                        <input id="askot" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="askot">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="tlppemilik" class="w-72">Telepon Pemilik</label>
-                        <input id="tlppemilik" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="tlppemilik">
-                    </div>
-                    <div class="flex items-center">
-                        <label for="kewargapemilik" class="w-72">Kewarganegaraan Pemilik</label>
-                        <input id="kewargapemilik" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="kewargapemilik">
-                    </div>
 
                     <div class="flex gap-x-12 justify-end items-center">
                         <button id="simpan" data-modal-target="default-modal" data-modal-toggle="default-modal"

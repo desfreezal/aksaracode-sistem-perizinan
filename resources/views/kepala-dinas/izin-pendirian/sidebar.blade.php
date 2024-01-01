@@ -19,24 +19,30 @@
 
     </button>
     {{-- END BUTTON --}}
-
     <div x-show.transition.duration.500ms="isOpen" class="sidebar-content w-80 transition-all">
-        <a href="/dashboard-operator/izin-operasional"
-            class="cursor-pointer flex items-center pl-11 w-full {{ Route::currentRouteName() === 'operator-izin-operasional' ? 'bg-white shadow' : '' }} hover:bg-white gap-x-3 py-2">
+        <a href="/dashboard-kepala-dinas/izin-pendirian"
+            class="cursor-pointer flex items-center pl-11 w-full {{ Route::currentRouteName() === 'kepala-dinas-izin-pendirian' ? 'bg-white shadow' : '' }} hover:bg-white gap-x-3 py-2">
             <img src="{{ asset('admin-dinas/img/Project.png') }}" class="object-contain" alt="1">
             <h1 class="text-base font-normal text-edu-black">
-                Data operator
+                Data kepala-dinas
             </h1>
         </a>
         <a href="#"
-            class="cursor-pointer flex items-center pl-11 w-full {{ Route::currentRouteName() === 'operator-detail-operasional' ? 'bg-white shadow' : '' }} hover:bg-white hover:shadow gap-x-3 py-2">
+            class="cursor-pointer flex items-center pl-11 w-full {{ Route::currentRouteName() === 'kepala-dinas-detail-yayasan' ? 'bg-white shadow' : '' }} hover:bg-white hover:shadow gap-x-3 py-2">
             <img src="{{ asset('admin-dinas/img/Check list.png') }}" class="object-contain" alt="1">
             <h1 class="text-base font-normal text-edu-black">
-                Detail Operasional
+                Data Yayasan
             </h1>
         </a>
         <a href="#"
-            class="cursor-pointer flex items-center pl-11 w-full hover:bg-white {{ Route::currentRouteName() === 'operator-berkas-operasional' ? 'bg-white shadow' : '' }}  hover:shadow gap-x-3 py-2">
+            class="cursor-pointer flex items-center pl-11 w-full {{ Route::currentRouteName() === 'kepala-dinas-detail-pendirian' ? 'bg-white shadow' : '' }} hover:bg-white hover:shadow gap-x-3 py-2">
+            <img src="{{ asset('admin-dinas/img/Check list.png') }}" class="object-contain" alt="1">
+            <h1 class="text-base font-normal text-edu-black">
+                Detail Pendirian
+            </h1>
+        </a>
+        <a href="#"
+            class="cursor-pointer flex items-center pl-11 w-full hover:bg-white {{ Route::currentRouteName() === 'kepala-dinas-upload-berkas' ? 'bg-white shadow' : '' }}  hover:shadow gap-x-3 py-2">
             <img src="{{ asset('admin-dinas/img/Submit.png') }}" class="object-contain" alt="1">
             <h1 class="text-base font-normal">
                 Upload Persyaratan
@@ -46,7 +52,7 @@
 </div>
 
 <div class="fixed w-12 h-12 bottom-28 rounded-full left-8 bg-primary">
-    <a href="{{ route('operator-chatting') }}">
+    <a href="{{ route('kepala-dinas-chatting') }}">
         <img src="{{ asset('admin-dinas/img/chat.png') }}" class="w-full p-3" alt="">
     </a>
 </div>

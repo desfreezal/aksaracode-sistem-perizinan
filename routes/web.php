@@ -706,7 +706,7 @@ Route::prefix('/dashboard-admin-dinas')->group(function () {
 Route::prefix('/dashboard-kepala-dinas')->group(function () {
     Route::get('', function () {
         return view('kepala-dinas.dashboard');
-    });
+    })->name('kepala-dinas-dashboard');
 
     Route::get('/kelengkapan-data', function () {
         return view('kepala-dinas.kelengkapan-data');
@@ -765,6 +765,100 @@ Route::prefix('/dashboard-kepala-dinas')->group(function () {
     Route::get('/profile', function () {
         return view('kepala-dinas.profile');
     })->name('kepala-dinas-profile');
+
+    // RIWAYAT PERMOHONAN
+    Route::get('/riwayat', function () {
+        return view('kepala-dinas.riwayat-permohonan');
+    })->name('kepala-dinas-riwayat-permohonan');
+
+    // pengesahan-dokumen
+    Route::get('/pengesahan-dokumen', function () {
+        return view('kepala-dinas.pengesahan-dokumen.index');
+    })->name('kepala-dinas-pengesahan-dokumen');
+
+    // jenis-pengesahan
+    Route::get('/pengesahan-dokumen/{jenis}', function ($jenis) {
+        return view(
+            'kepala-dinas.pengesahan-dokumen.jenis-pengesahan',
+            ['jenis' => $jenis]
+        );
+    })->name('kepala-dinas-jenis-pengesahan');
+
+    Route::get('/pengesahan-dokumen/{jenis}/{layanan}', function ($jenis, $layanan) {
+        return view(
+            'kepala-dinas.pengesahan-dokumen.data-pengesahan',
+            [
+                'jenis' => $jenis,
+                'layanan' => $layanan
+            ]
+        );
+    })->name('kepala-dinas-data-pengesahan');
+
+    // buat-surat/{id}
+    Route::get('/buat-surat/{jenis}/{layanan}/{id}', function ($jenis, $layanan, $id) {
+        return view('kepala-dinas.pengesahan-dokumen.surat', [
+            'id' => $id,
+            'jenis' => $jenis,
+            'layanan' => $layanan
+        ]);
+    })->name('kepala-dinas-buat-surat');
+
+    Route::get('/monitoring', function () {
+        return view('kepala-dinas.monitoring');
+    })->name('kepala-dinas-monitoring');
+
+    Route::get('/monitoring/{type}', function ($type) {
+        return view('kepala-dinas.monitoring-detail', ['type' => $type]);
+    })->name('kepala-dinas-monitoring-detail');
+
+    // PENGAJUAN PERMOHONAN
+    Route::get('/pengajuan-permohonan', function () {
+        return view('kepala-dinas.pengajuan-permohonan');
+    })->name('kepala-dinas-pengajuan-permohonan');
+
+    Route::get('/daftar-ulang', function () {
+        return view('kepala-dinas.daftar-ulang.daftar');
+    })->name('kepala-dinas-daftar-ulang');
+
+    Route::get('/daftar-ulang/data', function () {
+        return view('kepala-dinas.daftar-ulang.daftar');
+    });
+
+    Route::get('/daftar-ulang/detail', function () {
+        return view('kepala-dinas.daftar-ulang.detail');
+    })->name('kepala-dinas-detail');
+
+    Route::get('/daftar-ulang/berkas', function () {
+        return view('kepala-dinas.daftar-ulang.berkas');
+    })->name('kepala-dinas-berkas');
+
+    Route::get('/izin-pendirian', function () {
+        return view('kepala-dinas.izin-pendirian.data-pemohon');
+    })->name('kepala-dinas-izin-pendirian');
+
+    Route::get('/izin-pendirian/detail-yayasan', function () {
+        return view('kepala-dinas.izin-pendirian.detail-yayasan');
+    })->name('kepala-dinas-detail-yayasan');
+
+    Route::get('/izin-pendirian/detail-pendirian', function () {
+        return view('kepala-dinas.izin-pendirian.detail-pendirian');
+    })->name('kepala-dinas-detail-pendirian');
+    // upload berkas
+    Route::get('/izin-pendirian/upload-berkas', function () {
+        return view('kepala-dinas.izin-pendirian.upload-berkas');
+    })->name('kepala-dinas-upload-berkas');
+
+    Route::get('/izin-operasional', function () {
+        return view('kepala-dinas.izin-operasional.data-pemohon');
+    })->name('kepala-dinas-izin-operasional');
+
+    Route::get('/izin-operasional/detail', function () {
+        return view('kepala-dinas.izin-operasional.detail-operasional');
+    })->name('kepala-dinas-detail-operasional');
+
+    Route::get('/izin-operasional/berkas', function () {
+        return view('kepala-dinas.izin-operasional.upload-berkas');
+    })->name('kepala-dinas-berkas-operasional');
 });
 
 // VERIFIKATOR

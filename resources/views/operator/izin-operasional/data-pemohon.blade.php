@@ -1,15 +1,15 @@
-@extends('pemohon.layout')
+@extends('operator.layout')
 
 @section('content')
     <div class="min-h-screen h-full">
 
         <div class="flex">
             {{-- SIDEBAR --}}
-            @include('pemohon.izin-operasional.sidebar')
+            @include('operator.izin-operasional.sidebar')
 
             <div class="flex-grow h-full pl-[34px] pr-[88px] py-7 box-border mb-10" id="content">
                 <div class="mb-9">
-                    {!! Breadcrumbs::render('pemohon-daftar-ulang', $peruntukan = request('peruntukan')) !!}
+                    {!! Breadcrumbs::render('operator-daftar-ulang', $peruntukan = request('peruntukan')) !!}
                 </div>
 
                 {{-- CONTENT --}}
@@ -18,15 +18,15 @@
                     </h1>
                 </div>
 
-                <form action="{{ route('pemohon-detail-operasional') }}" method="GET" class="w-full space-y-6">
+                <form action="{{ route('operator-detail-operasional') }}" method="GET" class="w-full space-y-6" id="form">
                     <input type="text" id="peruntukan" name="peruntukan" hidden>
                     <div class="flex items-center">
-                        <label for="nik" class="w-72">NIK Pemohon</label>
+                        <label for="nik" class="w-72">NIK operator</label>
                         <input id="nik" type="number" class="flex-grow text-edu-black border-abu-abu rounded"
                             name="nik">
                     </div>
                     <div class="flex items-center">
-                        <label for="nama" class="w-72">Nama Pemohon</label>
+                        <label for="nama" class="w-72">Nama operator</label>
                         <input id="nama" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
                             name="nama">
                     </div>
@@ -50,32 +50,32 @@
                             name="kelurahan">
                     </div>
                     <div class="flex items-center">
-                        <label for="alamat" class="w-72">Alamat Pemohon</label>
+                        <label for="alamat" class="w-72">Alamat operator</label>
                         <input id="alamat" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
                             name="alamat">
                     </div>
                     <div class="flex items-center">
-                        <label for="alamatdomisili" class="w-72">Alamat Domisili Pemohon</label>
+                        <label for="alamatdomisili" class="w-72">Alamat Domisili operator</label>
                         <input id="alamatdomisili" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
                             name="alamatdomisili">
                     </div>
                     <div class="flex items-center">
-                        <label for="tempatlahir" class="w-72">Tempat Lahir Pemohon</label>
+                        <label for="tempatlahir" class="w-72">Tempat Lahir operator</label>
                         <input id="tempatlahir" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
                             name="tempatlahir">
                     </div>
                     <div class="flex items-center">
-                        <label for="tanggallahir" class="w-72">Tanggal Lahir Pemohon</label>
+                        <label for="tanggallahir" class="w-72">Tanggal Lahir operator</label>
                         <input id="tanggallahir" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
                             name="tanggallahir">
                     </div>
                     <div class="flex items-center">
-                        <label for="nohp" class="w-72">No. Handphone Pemohon</label>
+                        <label for="nohp" class="w-72">No. Handphone operator</label>
                         <input id="nohp" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
                             name="nohp">
                     </div>
                     <div class="flex items-center">
-                        <label for="pekerjaan" class="w-72">Pekerjaan Pemohon</label>
+                        <label for="pekerjaan" class="w-72">Pekerjaan operator</label>
                         <input id="pekerjaan" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
                             name="pekerjaan">
                     </div>
@@ -110,7 +110,7 @@
                             <!-- Modal body -->
                             <div class="p-4 md:p-5 space-y-4">
                                 <div class="flex flex-col justify-center items-center space-x-4">
-                                    <img src="{{ asset('pemohon/img/Check.png') }}" alt="check" class="w-20 mb-6">
+                                    <img src="{{ asset('admin-dinas/img/Check.png') }}" alt="check" class="w-20 mb-6">
 
                                     <h1 class="font-bold text-3xl text-edu-black">Berhasil Menyimpan Data</h1>
 
@@ -148,7 +148,7 @@
                             <!-- Modal body -->
                             <div class="p-4 md:p-5 space-y-4">
                                 <div class="flex flex-col justify-center items-center space-x-4">
-                                    <img src="{{ asset('pemohon/img/Cancel.png') }}" alt="cancel" class="w-20 mb-6">
+                                    <img src="{{ asset('admin-dinas/img/Cancel.png') }}" alt="cancel" class="w-20 mb-6">
 
                                     <h1 class="font-bold text-3xl text-edu-black">Gagal Menyimpan Data</h1>
 
@@ -233,7 +233,7 @@
             // closemodal onclick or modal hidden send form
             const closeModal = document.getElementById('closeModal')
             // send form
-            const form = document.querySelector('form')
+            const form = document.getElementById('form')
             closeModal.addEventListener('click', () => {
                 form.submit()
             })

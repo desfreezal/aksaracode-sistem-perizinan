@@ -1,16 +1,16 @@
-@extends('pemohon.layout')
+@extends('operator.layout')
 
 @section('content')
     <div class="min-h-screen h-full">
 
         <div class="flex">
             {{-- SIDEBAR --}}
-            @include('pemohon.izin-operasional.sidebar')
+            @include('operator.izin-operasional.sidebar')
 
             <div class="flex-grow h-full pl-[34px] pr-[88px] py-7 box-border mb-10 w-full" id="content">
 
                 <div class="mb-9">
-                    {!! Breadcrumbs::render('pemohon-berkas-operasional', $peruntukan = request('peruntukan')) !!}
+                    {!! Breadcrumbs::render('operator-berkas-operasional', $peruntukan = request('peruntukan')) !!}
                 </div>
                 {{-- CONTENT --}}
                 <div class="py-3 pl-11 bg-primary rounded-md mb-9">
@@ -18,16 +18,16 @@
                     </h1>
                 </div>
 
-                <form action="{{ route('pemohon-berkas-operasional') }}" method="GET"
-                    class="w-full space-y-6">
+                <form action="{{ route('operator-berkas-operasional') }}" method="GET"
+                    class="w-full space-y-6" id="form">
                     @if (request('peruntukan') === 'tk')
-                        @include('pemohon.izin-operasional.berkas-izin-operasional.table-tk')
+                        @include('operator.izin-operasional.berkas-izin-operasional.table-tk')
                     @elseif (request('peruntukan') === 'sd')
-                        @include('pemohon.izin-operasional.berkas-izin-operasional.table-sd')
+                        @include('operator.izin-operasional.berkas-izin-operasional.table-sd')
                     @elseif (request('peruntukan') === 'smp')
-                        @include('pemohon.izin-operasional.berkas-izin-operasional.table-smp')
+                        @include('operator.izin-operasional.berkas-izin-operasional.table-smp')
                     @else
-                        @include('pemohon.izin-operasional.berkas-izin-operasional.table-sd')
+                        @include('operator.izin-operasional.berkas-izin-operasional.table-sd')
                     @endif
 
 
@@ -61,7 +61,7 @@
                             <!-- Modal body -->
                             <div class="p-4 md:p-5 space-y-4">
                                 <div class="flex flex-col justify-center items-center space-x-4">
-                                    <img src="{{ asset('pemohon/img/Check.png') }}" alt="check" class="w-20 mb-6">
+                                    <img src="{{ asset('admin-dinas/img/Check.png') }}" alt="check" class="w-20 mb-6">
 
                                     <h1 class="font-bold text-3xl text-edu-black">Berhasil Menyimpan Data</h1>
 
@@ -99,7 +99,7 @@
                             <!-- Modal body -->
                             <div class="p-4 md:p-5 space-y-4">
                                 <div class="flex flex-col justify-center items-center space-x-4">
-                                    <img src="{{ asset('pemohon/img/Cancel.png') }}" alt="cancel" class="w-20 mb-6">
+                                    <img src="{{ asset('admin-dinas/img/Cancel.png') }}" alt="cancel" class="w-20 mb-6">
 
                                     <h1 class="font-bold text-3xl text-edu-black">Gagal Menyimpan Data</h1>
 
@@ -184,7 +184,7 @@
             // closemodal onclick or modal hidden send form
             const closeModal = document.getElementById('closeModal')
             // send form
-            const form = document.querySelector('form')
+            const form = document.getElementById('form')
             closeModal.addEventListener('click', () => {
                 form.submit()
             })

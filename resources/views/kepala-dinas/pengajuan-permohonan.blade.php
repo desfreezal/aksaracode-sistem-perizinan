@@ -1,4 +1,4 @@
-@extends('operator.layout')
+@extends('kepala-dinas.layout')
 
 @section('notif-container')
     <button class="float-right m-5" id="closeNotif">X</button>
@@ -12,13 +12,13 @@
 @section('content')
     <div class="mx-36 mt-5 min-h-screen">
         <div class="mb-9">
-            {!! Breadcrumbs::render('operator-dashboard') !!}
+            {!! Breadcrumbs::render('kepala-dinas-dashboard') !!}
         </div>
 
         <div id="card-container" class="flex items-center gap-x-6">
 
             <div class="w-[234px] min-h-[267px] pt-4 bg-primary rounded-[36px] box-border">
-                <a href="{{ route('operator-daftar-ulang') }}">
+                <a href="{{ route('kepala-dinas-daftar-ulang') }}">
                     <div class="mx-11 px-6 py-5 rounded-full bg-edu-bg">
                         <img src="{{ asset('home/img/Folder.png') }}" alt="folder" class="mx-auto w-full">
                     </div>
@@ -29,7 +29,7 @@
             </div>
 
             <div class="w-[234px] min-h-[267px] pt-4 bg-primary rounded-[36px] box-border">
-                <a href="{{ route('operator-izin-pendirian') }}">
+                <a href="{{ route('kepala-dinas-izin-pendirian') }}">
                     <div class="mx-11 px-6 py-5 rounded-full bg-edu-bg">
                         <img src="{{ asset('home/img/School.png') }}" alt="folder" class="mx-auto w-full">
                     </div>
@@ -40,7 +40,7 @@
                 </a>
             </div>
             <div class="w-[234px] min-h-[267px] pt-4 bg-primary rounded-[36px] box-border">
-                <a href="{{ route('operator-izin-operasional') }}">
+                <a href="{{ route('kepala-dinas-izin-operasional') }}">
                     <div class="mx-11 px-6 py-5 rounded-full bg-edu-bg">
                         <img src="{{ asset('home/img/Compliant.png') }}" alt="folder" class="mx-auto w-full">
                     </div>
@@ -54,7 +54,7 @@
     </div>
 
     <div class="fixed w-12 h-12 bottom-28 rounded-full left-8 bg-primary">
-        <a href="{{ route('operator-chatting') }}">
+        <a href="{{ route('kepala-dinas-chatting') }}">
             <img src="{{ asset('pemohon/img/chat.png') }}" class="w-full p-3" alt="">
         </a>
     </div>
@@ -65,7 +65,7 @@
                     <img src="{{ asset('home/img/Folder.png') }}" alt="LogoDaftarUlang" />
                 </div>
                 <div class="tombol-putih">
-                    <a href="{{ route('operator-daftar-ulang') }}">Daftar Ulang Izin Operasional Satuan Pendidikan</a>
+                    <a href="{{ route('kepala-dinas-daftar-ulang') }}">Daftar Ulang Izin Operasional Satuan Pendidikan</a>
                 </div>
             </div>
         </div>
@@ -75,7 +75,7 @@
                     <img src="{{ asset('home/img/School.png') }}" alt="LogoIzinPendirian" />
                 </div>
                 <div class="tombol-putih">
-                    <a href="{{ route('operator-izin-pendirian') }}">Izin Pendirian Satuan Pendidikan</a>
+                    <a href="{{ route('kepala-dinas-izin-pendirian') }}">Izin Pendirian Satuan Pendidikan</a>
                 </div>
             </div>
         </div>
@@ -85,7 +85,7 @@
                     <img src="{{ asset('home/img/Compliant.png') }}" alt="LogoIzinOperasional" />
                 </div>
                 <div class="tombol-putih">
-                    <a href="{{ route('operator-izin-operasional') }}">Izin Operasional Satuan Pendidikan</a>
+                    <a href="{{ route('kepala-dinas-izin-operasional') }}">Izin Operasional Satuan Pendidikan</a>
                 </div>
             </div>
         </div>

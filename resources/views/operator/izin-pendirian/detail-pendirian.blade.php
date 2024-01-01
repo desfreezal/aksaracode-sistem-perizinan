@@ -1,15 +1,15 @@
-@extends('pemohon.layout')
+@extends('operator.layout')
 
 @section('content')
     <div class="min-h-screen h-full">
 
         <div class="flex">
             {{-- SIDEBAR --}}
-            @include('pemohon.izin-pendirian.sidebar')
+            @include('operator.izin-pendirian.sidebar')
 
             <div class="flex-grow h-full pl-[34px] pr-[88px] py-7 box-border mb-10" id="content">
                 <div class="mb-9">
-                    {!! Breadcrumbs::render('pemohon-daftar-ulang') !!}
+                    {!! Breadcrumbs::render('operator-daftar-ulang') !!}
                 </div>
                 {{-- CONTENT --}}
                 <div class="py-3 pl-11 border border-primary rounded-md mb-9">
@@ -17,8 +17,8 @@
                     </h1>
                 </div>
 
-                <form action="{{ url('/dashboard/izin-pendirian/step4') }}" method="GET"
-                    class="w-full space-y-6">
+                <form action="{{ url('/dashboard-operator/izin-pendirian/upload-berkas') }}" method="GET"
+                    class="w-full space-y-6" id="form">
 
                     <div class="flex items-center">
                         <label for="namasekolah" class="w-72">Nama Sekolah</label>
@@ -72,14 +72,14 @@
                             name="jmltka">
                     </div>
                     <div class="flex items-center">
-                        <label for="nosuratpemohon" class="w-72">No Surat Pemohon</label>
-                        <input id="nosuratpemohon" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="nosuratpemohon">
+                        <label for="nosuratoperator" class="w-72">No Surat operator</label>
+                        <input id="nosuratoperator" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="nosuratoperator">
                     </div>
                     <div class="flex items-center">
-                        <label for="tglsuratpemohon" class="w-72">Tanggal Surat Pemohon</label>
-                        <input id="tglsuratpemohon" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
-                            name="tglsuratpemohon">
+                        <label for="tglsuratoperator" class="w-72">Tanggal Surat operator</label>
+                        <input id="tglsuratoperator" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
+                            name="tglsuratoperator">
                     </div>
 
 
@@ -113,7 +113,7 @@
                             <!-- Modal body -->
                             <div class="p-4 md:p-5 space-y-4">
                                 <div class="flex flex-col justify-center items-center space-x-4">
-                                    <img src="{{ asset('pemohon/img/Check.png') }}" alt="check" class="w-20 mb-6">
+                                    <img src="{{ asset('admin-dinas/img/Check.png') }}" alt="check" class="w-20 mb-6">
 
                                     <h1 class="font-bold text-3xl text-edu-black">Berhasil Menyimpan Data</h1>
 
@@ -151,7 +151,7 @@
                             <!-- Modal body -->
                             <div class="p-4 md:p-5 space-y-4">
                                 <div class="flex flex-col justify-center items-center space-x-4">
-                                    <img src="{{ asset('pemohon/img/Cancel.png') }}" alt="cancel" class="w-20 mb-6">
+                                    <img src="{{ asset('admin-dinas/img/Cancel.png') }}" alt="cancel" class="w-20 mb-6">
 
                                     <h1 class="font-bold text-3xl text-edu-black">Gagal Menyimpan Data</h1>
 
@@ -236,7 +236,7 @@
             // closemodal onclick or modal hidden send form
             const closeModal = document.getElementById('closeModal')
             // send form
-            const form = document.querySelector('form')
+            const form = document.getElementById('form')
             closeModal.addEventListener('click', () => {
                 form.submit()
             })

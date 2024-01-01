@@ -5,7 +5,7 @@
 
         <div class="flex">
             {{-- SIDEBAR --}}
-            @include('kepala-dinas.sidebar')
+            @include('kepala-dinas.sidebar-profile')
 
             <div class="flex-grow h-full pl-[34px] pr-[88px] py-7 box-border mb-10" id="content">
                 {{-- START KONTEN --}}

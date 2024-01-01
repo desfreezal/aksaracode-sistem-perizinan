@@ -1,15 +1,15 @@
-@extends('pemohon.layout')
+@extends('operator.layout')
 
 @section('content')
     <div class="min-h-screen h-full">
 
         <div class="flex">
             {{-- SIDEBAR --}}
-            @include('pemohon.daftar-ulang.sidebar')
+            @include('operator.daftar-ulang.sidebar')
 
             <div class="flex-grow h-full pl-[34px] pr-[88px] py-7 box-border mb-10 w-full" id="content">
                 <div class="mb-9">
-                    {!! Breadcrumbs::render('pemohon-berkas-daftar', $peruntukan = request('peruntukan')) !!}
+                    {!! Breadcrumbs::render('operator-berkas-daftar', $peruntukan = request('peruntukan')) !!}
                 </div>
 
                 {{-- CONTENT --}}
@@ -18,13 +18,13 @@
                     </h1>
                 </div>
 
-                <form action="{{ url('/dashboard/daftar-ulang/berkas') }}" method="GET" class="w-full space-y-6">
+                <form action="{{ url('/dashboard-operator/daftar-ulang/berkas') }}" method="GET" class="w-full space-y-6" id="form">
                     @if (request('peruntukan') === 'tk')
-                        @include('pemohon.daftar-ulang.berkas-daftar-ulang.table-tk')
+                        @include('operator.daftar-ulang.berkas-daftar-ulang.table-tk')
                     @elseif (request('peruntukan') === 'sd')
-                        @include('pemohon.daftar-ulang.berkas-daftar-ulang.table-sd')
+                        @include('operator.daftar-ulang.berkas-daftar-ulang.table-sd')
                     @elseif (request('peruntukan') === 'smp')
-                        @include('pemohon.daftar-ulang.berkas-daftar-ulang.table-smp')
+                        @include('operator.daftar-ulang.berkas-daftar-ulang.table-smp')
                     @else
                         Berkas Sudah di submit
                     @endif
@@ -61,7 +61,7 @@
                             <!-- Modal body -->
                             <div class="p-4 md:p-5 space-y-4">
                                 <div class="flex flex-col justify-center items-center space-x-4">
-                                    <img src="{{ asset('pemohon/img/Check.png') }}" alt="check" class="w-20 mb-6">
+                                    <img src="{{ asset('admin-dinas/img/Check.png') }}" alt="check" class="w-20 mb-6">
 
                                     <h1 class="font-bold text-3xl text-edu-black">Berhasil Menyimpan Data</h1>
 
@@ -99,7 +99,7 @@
                             <!-- Modal body -->
                             <div class="p-4 md:p-5 space-y-4">
                                 <div class="flex flex-col justify-center items-center space-x-4">
-                                    <img src="{{ asset('pemohon/img/Cancel.png') }}" alt="cancel" class="w-20 mb-6">
+                                    <img src="{{ asset('admin-dinas/img/Cancel.png') }}" alt="cancel" class="w-20 mb-6">
 
                                     <h1 class="font-bold text-3xl text-edu-black">Gagal Menyimpan Data</h1>
 
@@ -180,7 +180,7 @@
             // closemodal onclick or modal hidden send form
             const closeModal = document.getElementById('closeModal')
             // send form
-            const form = document.querySelector('form')
+            const form = document.getElementById('form')
             // check jika form ada yang kosong
             closeModal.addEventListener('click', () => {
                 form.submit()

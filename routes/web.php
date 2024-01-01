@@ -329,6 +329,18 @@ Route::prefix('/dashboard-operator')->group(function () {
     Route::get('/izin-operasional/berkas', function () {
         return view('operator.izin-operasional.upload-berkas');
     })->name('operator-berkas-operasional');
+
+    // pembaruan-data
+    Route::get('/pembaruan-data', function () {
+        return view('operator.pembaruan-data.index');
+    })->name('operator-pembaruan-data');
+
+    // pembaruan-data/{id}
+    Route::get('/pembaruan-data/{id}', function ($id) {
+        return view('operator.pembaruan-data.detail', [
+            'id' => $id
+        ]);
+    })->name('operator-detail-pembaruan-data');
 });
 
 // AUDITOR

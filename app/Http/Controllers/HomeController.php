@@ -25,11 +25,11 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $page = Auth::user()->getRoleNames()[0] . '.dashboard';
+        $page = Auth::user()->getRoleNames()[0] . '-dashboard';
         
         if (!$user->hasVerifiedEmail()) {
             return view($page)->with('warning', 'Silakan verifikasi email Anda terlebih dahulu.');
         }
-        return view($page);
+        return redirect()->route("$page");
     }
 }

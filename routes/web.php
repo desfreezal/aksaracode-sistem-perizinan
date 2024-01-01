@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DaftarUlangController;
 use App\Http\Controllers\OperasionalController;
+use App\Http\Controllers\PemohonController;
 use App\Http\Controllers\PendirianController;
 use Illuminate\Support\Facades\Route;
 
@@ -57,105 +58,34 @@ Route::get('/izin-operasional', function () {
     return view('landing-page.izin-operasional.operasional');
 });
 
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('pemohon-dashboard');
+
 
 // PEMOHON
-Route::get('/dashboard-pemohon', [App\Http\Controllers\HomeController::class, 'index'])->name('pemohon-dashboard');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware(['role:pemohon', 'verified'])->prefix('/dashboard-pemohon')->group(function () {
-    Route::get('/izin-pendirian', [PendirianController::class, 'createPendirian'])->name('izin-pendirian-1');
-
-    Route::get('/izin-pendirian/detail-yayasan', function () {
-        return view('admin-dinas.izin-pendirian.detail-yayasan');
-    })->name('admin-dinas-detail-yayasan');
-
-    Route::get('/izin-pendirian/detail-pendirian', function () {
-        return view('admin-dinas.izin-pendirian.detail-pendirian');
-    })->name('admin-dinas-detail-pendirian');
-    // upload berkas
-    Route::get('/izin-pendirian/upload-berkas', function () {
-        return view('admin-dinas.izin-pendirian.upload-berkas');
-    })->name('admin-dinas-upload-berkas');
-
-    Route::get('/lacak-permohonan', function () {
-        return view('pemohon.lacak-permohonan');
-    });
-
-    Route::get('/status-permohonan', function () {
-        return view('pemohon.status-permohonan');
-    });
-
-    Route::get('/profile', function () {
-        return view('pemohon.profile');
-    });
-
-    Route::get('/riwayat', function () {
-        return view('pemohon.riwayat-permohonan');
-    });
-
-    Route::get('/notifikasi', function () {
-        return view('pemohon.notifikasi');
-    });
-
-
-    Route::get('/daftar-ulang', function () {
-        return view('pemohon.daftar-ulang.daftar');
-    })->name('pemohon-daftar-ulang');
-
-    Route::get('/daftar-ulang/data', function () {
-        return view('pemohon.daftar-ulang.daftar');
-    });
-
-    Route::get('/daftar-ulang/detail', function () {
-        return view('pemohon.daftar-ulang.detail');
-    })->name('pemohon-detail');
-
-    Route::get('/daftar-ulang/berkas', function () {
-        return view('pemohon.daftar-ulang.berkas');
-    })->name('pemohon-berkas');
-
-    Route::get('/izin-operasional', function () {
-        return view('pemohon.izin-operasional.data-pemohon');
-    })->name('pemohon-izin-operasional');
-
-    Route::get('/izin-operasional/detail', function () {
-        return view('pemohon.izin-operasional.detail-operasional');
-    })->name('pemohon-detail-operasional');
-
-    Route::get('/izin-operasional/berkas', function () {
-        return view('pemohon.izin-operasional.upload-berkas');
-    })->name('pemohon-berkas-operasional');
-
-    Route::get('/panduan-perizinan', function () {
-        return view('pemohon.panduan-perizinan');
-    })->name('pemohon-panduan-perizinan');
-
-    Route::get('/panduan-perizinan/daftar-ulang', function () {
-        return view('pemohon.panduan-perizinan.daftar-ulang.daftar');
-    })->name('pemohon-panduan-daftar-ulang');
-
-    // panduan izin operasional
-    Route::get('/panduan-perizinan/izin-operasional', function () {
-        return view('pemohon.panduan-perizinan.izin-operasional.operasional');
-    })->name('pemohon-panduan-operasional');
-
-    // izin pendirian
-    Route::get('/panduan-perizinan/izin-pendirian', function () {
-        return view('pemohon.panduan-perizinan.izin-pendirian.izin');
-    })->name('pemohon-panduan-izin');
-
-    Route::get('/monitoring', function () {
-        return view('pemohon.monitoring');
-    })->name('pemohon-monitoring');
-
-    Route::get('/monitoring/{type}', function ($type) {
-        return view('pemohon.monitoring-detail', ['type' => $type]);
-    })->name('pemohon-monitoring-detail');
-
-    // pengajuan-permohonan
-    Route::get('/pengajuan-permohonan', function () {
-        return view('pemohon.pengajuan-permohonan');
-    })->name('pemohon-pengajuan-permohonan');
+    Route::get('/', [PemohonController::class, 'dashboard'])->name('pemohon-dashboard');
+    Route::get('/izin-pendirian', [PemohonController::class, 'izinPendirian']);
+    Route::get('/lacak-permohonan', [PemohonController::class, 'lacakPermohonan']);
+    Route::get('/status-permohonan', [PemohonController::class, 'statusPermohonan']);
+    Route::get('/profile', [PemohonController::class, 'profile']);
+    Route::get('/riwayat', [PemohonController::class, 'riwayat']);
+    Route::get('/notifikasi', [PemohonController::class, 'notifikasi']);
+    Route::get('/daftar-ulang', [PemohonController::class, 'daftarUlang'])->name('pemohon-daftar-ulang');
+    Route::get('/daftar-ulang/data', [PemohonController::class, 'daftarUlangData']);
+    Route::get('/daftar-ulang/detail', [PemohonController::class, 'daftarUlangDetail'])->name('pemohon-detail');
+    Route::get('/daftar-ulang/berkas', [PemohonController::class, 'daftarUlangBerkas'])->name('pemohon-berkas');
+    Route::get('/izin-operasional', [PemohonController::class, 'izinOperasional'])->name('pemohon-izin-operasional');
+    Route::get('/izin-operasional/detail', [PemohonController::class, 'detailOperasional'])->name('pemohon-detail-operasional');
+    Route::get('/izin-operasional/berkas', [PemohonController::class, 'berkasOperasional'])->name('pemohon-berkas-operasional');
+    Route::get('/panduan-perizinan', [PemohonController::class, 'panduanPerizinan'])->name('pemohon-panduan-perizinan');
+    Route::get('/panduan-perizinan/daftar-ulang', [PemohonController::class, 'panduanDaftarUlang'])->name('pemohon-panduan-daftar-ulang');
+    Route::get('/panduan-perizinan/izin-operasional', [PemohonController::class, 'panduanOperasional'])->name('pemohon-panduan-operasional');
+    Route::get('/panduan-perizinan/izin-pendirian', [PemohonController::class, 'panduanIzinPendirian'])->name('pemohon-panduan-izin');
+    Route::get('/monitoring', [PemohonController::class, 'monitoring'])->name('pemohon-monitoring');
+    Route::get('/monitoring/{type}', [PemohonController::class, 'monitoringDetail'])->name('pemohon-monitoring-detail');
+    Route::get('/pengajuan-permohonan', [PemohonController::class, 'pengajuanPermohonan'])->name('pemohon-pengajuan-permohonan');
 
     // Store Data
     Route::post('/daftar-ulang', [DaftarUlangController::class, 'store']);
@@ -559,6 +489,18 @@ Route::prefix('/dashboard-admin-dinas')->group(function () {
     Route::get('', function () {
         return view('admin-dinas.dashboard');
     })->name('admin-dinas-dashboard');
+
+    Route::get('/izin-pendirian/detail-yayasan', function () {
+        return view('admin-dinas.izin-pendirian.detail-yayasan');
+    })->name('admin-dinas-detail-yayasan');
+    
+    Route::get('/izin-pendirian/detail-pendirian', function () {
+        return view('admin-dinas.izin-pendirian.detail-pendirian');
+    })->name('admin-dinas-detail-pendirian');
+    // upload berkas
+    Route::get('/izin-pendirian/upload-berkas', function () {
+        return view('admin-dinas.izin-pendirian.upload-berkas');
+    })->name('admin-dinas-upload-berkas');
 
     Route::get('/kelengkapan-data', function () {
         return view('admin-dinas.kelengkapan-data.kelengkapan-data');

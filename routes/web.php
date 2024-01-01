@@ -57,13 +57,14 @@ Route::get('/izin-pendirian', function () {
 Route::get('/izin-operasional', function () {
     return view('landing-page.izin-operasional.operasional');
 });
-
-Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('pemohon-dashboard');
-
-
-// PEMOHON
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
+
+
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('pemohon-dashboard');
+// PEMOHON
+
+// TODO : DONE
 Route::middleware(['role:pemohon', 'verified'])->prefix('/dashboard-pemohon')->group(function () {
     Route::get('/', [PemohonController::class, 'dashboard'])->name('pemohon-dashboard');
 

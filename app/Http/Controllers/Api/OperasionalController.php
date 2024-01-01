@@ -187,4 +187,24 @@ class OperasionalController extends Controller
             return response()->json(['message' => $e->getMessage()], 500);
         }
     }
+
+    public function deleteInvalidFile(OperasionalRequest $request, $id, $field)
+    {
+        try {
+            $pendirian = Operasional::findOrFail($id);
+
+            if (!$pendirian->$field) {
+                return response()->json(['message' => 'File not found'], 404);
+            }
+
+            Storage::delete('public/operasional/' . $field . '/' . $pendirian->$field);
+
+            $pendirian->$field = null;
+            $pendirian->save();
+
+            return response()->json(['message' => 'File deleted successfully'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 500);
+        }
+    }
 }

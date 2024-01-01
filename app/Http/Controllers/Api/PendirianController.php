@@ -188,4 +188,24 @@ class PendirianController extends Controller
             return response()->json(['message' => $e->getMessage()], 500);
         }
     }
+
+    public function deleteInvalidFile(PendirianRequest $request, $id, $field)
+    {
+        try {
+            $pendirian = Pendirian::findOrFail($id);
+
+            if (!$pendirian->$field) {
+                return response()->json(['message' => 'File not found'], 404);
+            }
+
+            Storage::delete('public/perizinanPendirian/' . $field . '/' . $pendirian->$field);
+
+            $pendirian->$field = null;
+            $pendirian->save();
+
+            return response()->json(['message' => 'File deleted successfully'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 500);
+        }
+    }
 }

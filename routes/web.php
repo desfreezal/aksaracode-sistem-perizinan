@@ -364,7 +364,7 @@ Route::prefix('/dashboard-surveyor')->group(function () {
         return view('surveyor.kelengkapan-data');
     })->name('surveyor-lengkap-data');
 
-    Route::get('/riwayat-permohonan', function () {
+    Route::get('/riwayat', function () {
         return view('surveyor.riwayat-permohonan');
     })->name('surveyor-riwayat-permohonan');
 

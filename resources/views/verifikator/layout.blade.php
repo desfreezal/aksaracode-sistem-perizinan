@@ -162,7 +162,7 @@
                 </div>
             </li>
             <li>
-                <a href="#">Kepala Dinas</a>
+                <a href="#">Verifikator</a>
             </li>
 
             {{-- LOGOUT MODAL --}}

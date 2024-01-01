@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Support\Str;
 class DaftarUlang extends Model
 {
     use HasFactory;
@@ -16,7 +16,7 @@ class DaftarUlang extends Model
          static::creating(function ($daftarUlang) {
              if (!$daftarUlang->id) {
                  $timestamp = now()->format('YmdHis');
-                 $daftarUlang->id = 'B-' . $timestamp;
+                 $daftarUlang->id = 'B-' . $timestamp . '-' . Str::random(5);
              }
          });
      }

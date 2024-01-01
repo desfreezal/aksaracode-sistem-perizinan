@@ -982,6 +982,29 @@ Route::prefix('/dashboard-kepala-dinas')->group(function () {
     Route::get('/izin-operasional/berkas', function () {
         return view('kepala-dinas.izin-operasional.upload-berkas');
     })->name('kepala-dinas-berkas-operasional');
+
+    // survey
+    Route::get('/survey', function () {
+        return view('kepala-dinas.survey.index');
+    })->name('kepala-dinas-survey');
+
+    Route::get('/survey/{id}', function ($id) {
+        return view('kepala-dinas.survey.isi-form', [
+            'id' => $id
+        ]);
+    })->name('kepala-dinas-isi-survey');
+
+    // pembaruan-data
+    Route::get('/pembaruan-data', function () {
+        return view('kepala-dinas.pembaruan-data.index');
+    })->name('kepala-dinas-pembaruan-data');
+
+    // pembaruan-data/{id}
+    Route::get('/pembaruan-data/{id}', function ($id) {
+        return view('kepala-dinas.pembaruan-data.detail', [
+            'id' => $id
+        ]);
+    })->name('kepala-dinas-detail-pembaruan-data');
 });
 
 // VERIFIKATOR

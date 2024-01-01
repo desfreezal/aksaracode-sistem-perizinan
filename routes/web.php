@@ -755,7 +755,7 @@ Route::prefix('/dashboard-kepala-dinas')->group(function () {
     })->name('kepala-dinas-chatting');
 
     Route::get('/chatting/{id_user}', function ($id_user) {
-        return view('kepala-dinas.chatting');
+        return view('kepala-dinas.chattting-room');
     })->name('kepala-dinas-detail-chatting');
 
     Route::get('/panduan-perizinan', function () {

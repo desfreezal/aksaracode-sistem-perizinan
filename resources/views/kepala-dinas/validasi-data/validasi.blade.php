@@ -1,11 +1,11 @@
-@extends('admin-dinas.layout')
+@extends('kepala-dinas.layout')
 
 @section('content')
     <div class="min-h-screen h-full">
 
         <div class="flex">
             {{-- SIDEBAR --}}
-            @include('admin-dinas.sidebar')
+            @include('kepala-dinas.sidebar')
 
             <div class="flex-grow w-full h-full pl-[34px] pr-[88px] py-7 box-border mb-10" id="content">
 
@@ -14,7 +14,7 @@
                     </h1>
                 </div>
 
-                @include('admin-dinas.berkas-izin-pendirian.table-tk', ['page' => 'kel-data'])
+                @include('kepala-dinas.berkas-izin-pendirian.table-tk', ['page' => 'kel-data'])
 
                 <form action="" method="GET" id="kel-data">
                     <div class="w-full mt-16 flex justify-end">

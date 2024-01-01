@@ -5,7 +5,7 @@
         <div class="min-h-[calc(100vh-150px)] w-full relative flex">
 
             <div class="text-center w-16 flex justify-center pt-5">
-                <a href="{{ route('operator-chatting') }}">
+                <a href="/chatting">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round"

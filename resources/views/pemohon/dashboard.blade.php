@@ -33,7 +33,7 @@
         </div>
         <div class="kotak-putih cursor-pointer group">
             <div class="kotak-coklat group-hover:bg-primary-light">
-                <a href="{{ route('pemohon-chatting') }}">
+                <a href="/chatting">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                         class="w-8 h-8 text-white">
                         <path fill-rule="evenodd"

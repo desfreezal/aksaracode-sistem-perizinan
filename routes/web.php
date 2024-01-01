@@ -500,6 +500,29 @@ Route::prefix('/dashboard-surveyor')->group(function () {
     Route::get('/izin-operasional/berkas', function () {
         return view('surveyor.izin-operasional.upload-berkas');
     })->name('surveyor-berkas-operasional');
+
+    // survey
+    Route::get('/survey', function () {
+        return view('surveyor.survey.index');
+    })->name('surveyor-survey');
+
+    Route::get('/survey/{id}', function ($id) {
+        return view('surveyor.survey.isi-form', [
+            'id' => $id
+        ]);
+    })->name('surveyor-isi-survey');
+
+    // pembaruan-data
+    Route::get('/pembaruan-data', function () {
+        return view('surveyor.pembaruan-data.index');
+    })->name('surveyor-pembaruan-data');
+
+    // pembaruan-data/{id}
+    Route::get('/pembaruan-data/{id}', function ($id) {
+        return view('surveyor.pembaruan-data.detail', [
+            'id' => $id
+        ]);
+    })->name('surveyor-detail-pembaruan-data');
 });
 
 // WALIKOTA

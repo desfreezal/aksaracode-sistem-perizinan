@@ -18,11 +18,16 @@ class UserController extends Controller
      */
     // Menampilkan semua user
     public function index()
-    {
-        $users = User::all();
+{
+    $users = User::all();
 
-        return response()->json(['data' => $users]);
-    }
+    $usersWithRoles = $users->map(function ($user) {
+        $user->getRoleNames();
+    });
+
+    return response()->json(['data' => $users]);
+}
+
 
     // Menyimpan user baru
     public function store(UserRequest $request)

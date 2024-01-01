@@ -23,6 +23,8 @@ class RegisterRequest extends FormRequest
             'jenis_kelamin' => 'nullable|in:Laki-laki,Perempuan',
             'kecamatan' => 'nullable|string|max:255',
             'kelurahan' => 'nullable|string|max:255',
+            'kabupaten' => 'nullable|string|max:255',
+            'provinsi' => 'nullable|string|max:255',
             'alamat' => 'nullable|string|max:255',
             'pekerjaan' => 'nullable|string|max:255',
         ];

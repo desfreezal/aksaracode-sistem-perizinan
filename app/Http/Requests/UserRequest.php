@@ -33,6 +33,8 @@ class UserRequest extends FormRequest
             'jenis_kelamin' => 'string|in:Laki-laki,Perempuan',
             'kecamatan' => 'string|max:255',
             'kelurahan' => 'string|max:255',
+            'kabupaten' => 'nullable|string|max:255',
+            'provinsi' => 'nullable|string|max:255',
             'alamat' => 'string|max:255',
             'pekerjaan' => 'string|max:255',
         ];

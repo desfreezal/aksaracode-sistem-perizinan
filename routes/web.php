@@ -728,6 +728,18 @@ Route::prefix('/dashboard-admin-dinas')->group(function () {
             'id' => $id
         ]);
     })->name('admin-dinas-isi-survey');
+
+    // pembaruan-data
+    Route::get('/pembaruan-data', function () {
+        return view('admin-dinas.pembaruan-data.index');
+    })->name('admin-dinas-pembaruan-data');
+
+    // pembaruan-data/{id}
+    Route::get('/pembaruan-data/{id}', function ($id) {
+        return view('admin-dinas.pembaruan-data.detail', [
+            'id' => $id
+        ]);
+    })->name('admin-dinas-detail-pembaruan-data');
 });
 
 // KEPALA DINAS

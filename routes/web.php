@@ -35,36 +35,28 @@ Route::get('/dashboard-surveyor', function () {
     return view('surveyor.dashboard');
 })->name('surveyor-dashboard');
 
-Route::get('/data-statistik-daftarulang', function () {
-    return view('data-statistik-daftarulang');
-});
 
-Route::get('/data-statistik-izinoperasional', function () {
-    return view('data-statistik-izinoperasional');
-});
-
+// Informasi Pengajuan
 Route::get('/data-statistik-izinpendirian', function () {
     return view('data-statistik-izinpendirian');
 });
-
 Route::get('/daftar-ulang', function () {
     return view(('landing-page.daftar-ulang.daftar'));
 });
-
 Route::get('/izin-pendirian', function () {
     return view(('landing-page.izin-pendirian.izin'));
 });
-
 Route::get('/izin-operasional', function () {
     return view('landing-page.izin-operasional.operasional');
 });
+
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('pemohon-dashboard');
-// PEMOHON
 
+// PEMOHON
 // TODO : DONE
 Route::middleware(['role:pemohon', 'verified'])->prefix('/dashboard-pemohon')->group(function () {
     Route::get('/', [PemohonController::class, 'dashboard'])->name('pemohon-dashboard');
@@ -120,19 +112,6 @@ Route::middleware(['role:pemohon', 'verified'])->prefix('/dashboard-pemohon')->g
 Route::get('/data-statistik-daftarulang', [StatistikController::class, 'dataStatistikDaftarUlang']);
 Route::get('/data-statistik-izinoperasional', [StatistikController::class, 'dataStatistikIzinOperasional']);
 Route::get('/data-statistik-izinpendirian', [StatistikController::class, 'dataStatistikIzinPendirian']);
-
-Route::get('/daftar-ulang', function () {
-    return view(('landing-page.daftar-ulang.daftar'));
-});
-
-Route::get('/izin-pendirian', function () {
-    return view(('landing-page.izin-pendirian.izin'));
-});
-
-Route::get('/izin-operasional', function () {
-    return view('landing-page.izin-operasional.operasional');
-});
-
 
 
 // OPERATOR

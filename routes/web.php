@@ -718,6 +718,15 @@ Route::prefix('/dashboard-admin-dinas')->group(function () {
         return view('admin-dinas.izin-operasional.upload-berkas');
     })->name('admin-dinas-berkas-operasional');
 
+    // survey
+    Route::get('/survey', function () {
+        return view('admin-dinas.survey.index');
+    })->name('admin-dinas-survey');
+
+    Route::get('/survey/{id}', function () {
+        return view('admin-dinas.survey.isi-form');
+    })->name('admin-dinas-isi-survey');
+
 });
 
 // KEPALA DINAS

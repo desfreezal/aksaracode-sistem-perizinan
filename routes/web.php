@@ -830,6 +830,14 @@ Route::prefix('/dashboard-verifikator')->group(function () {
     Route::get('/izin-operasional/berkas', function () {
         return view('verifikator.izin-operasional.upload-berkas');
     })->name('verifikator-berkas-operasional');
+
+    Route::get('/kelengkapan-data', function () {
+        return view('verifikator.kelengkapan-data.kelengkapan-data');
+    })->name('verifikator-lengkap-data');
+
+    Route::get('/kelengkapan-data/{id}', function ($id) {
+        return view('verifikator.kelengkapan-data.kelengkapan-detail', ['id' => $id]);
+    })->name('verifikator-kelengkapan-detail');
 });
 
 

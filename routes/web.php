@@ -66,27 +66,43 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware(['role:pemohon', 'verified'])->prefix('/dashboard-pemohon')->group(function () {
     Route::get('/', [PemohonController::class, 'dashboard'])->name('pemohon-dashboard');
-    Route::get('/izin-pendirian', [PemohonController::class, 'izinPendirian']);
+
+    // Lacak Permohonan
     Route::get('/lacak-permohonan', [PemohonController::class, 'lacakPermohonan']);
-    Route::get('/status-permohonan', [PemohonController::class, 'statusPermohonan']);
+    Route::get('/status-permohonan', function(){
+        return redirect('dashboard-pemohon/lacak-permohonan');
+    });
+    Route::get('/status-permohonan/{id}', [PemohonController::class, 'statusPermohonan']);
+
+
     Route::get('/profile', [PemohonController::class, 'profile']);
+    Route::post('/profile', [PemohonController::class, 'editProfile']);
+    
     Route::get('/riwayat', [PemohonController::class, 'riwayat']);
     Route::get('/notifikasi', [PemohonController::class, 'notifikasi']);
+
+    Route::get('/izin-pendirian', [PemohonController::class, 'izinPendirian'])->name('izin-pendirian');
+    Route::get('/izin-pendirian/detail-yayasan', [PemohonController::class, 'detailYayasan'])->name('pemohon-detail-yayasan');
+    Route::get('/izin-pendirian/detail-pendirian', [PemohonController::class, 'detailPendirian'])->name('pemohon-detail-pendirian');
+    Route::get('/izin-pendirian/upload-berkas', [PemohonController::class, 'uploadBerkasIzinPendirian'])->name('pemohon-upload-berkas');
+
     Route::get('/daftar-ulang', [PemohonController::class, 'daftarUlang'])->name('pemohon-daftar-ulang');
     Route::get('/daftar-ulang/data', [PemohonController::class, 'daftarUlangData']);
     Route::get('/daftar-ulang/detail', [PemohonController::class, 'daftarUlangDetail'])->name('pemohon-detail');
     Route::get('/daftar-ulang/berkas', [PemohonController::class, 'daftarUlangBerkas'])->name('pemohon-berkas');
+
     Route::get('/izin-operasional', [PemohonController::class, 'izinOperasional'])->name('pemohon-izin-operasional');
     Route::get('/izin-operasional/detail', [PemohonController::class, 'detailOperasional'])->name('pemohon-detail-operasional');
     Route::get('/izin-operasional/berkas', [PemohonController::class, 'berkasOperasional'])->name('pemohon-berkas-operasional');
+
     Route::get('/panduan-perizinan', [PemohonController::class, 'panduanPerizinan'])->name('pemohon-panduan-perizinan');
     Route::get('/panduan-perizinan/daftar-ulang', [PemohonController::class, 'panduanDaftarUlang'])->name('pemohon-panduan-daftar-ulang');
     Route::get('/panduan-perizinan/izin-operasional', [PemohonController::class, 'panduanOperasional'])->name('pemohon-panduan-operasional');
     Route::get('/panduan-perizinan/izin-pendirian', [PemohonController::class, 'panduanIzinPendirian'])->name('pemohon-panduan-izin');
+
     Route::get('/monitoring', [PemohonController::class, 'monitoring'])->name('pemohon-monitoring');
     Route::get('/monitoring/{type}', [PemohonController::class, 'monitoringDetail'])->name('pemohon-monitoring-detail');
     Route::get('/pengajuan-permohonan', [PemohonController::class, 'pengajuanPermohonan'])->name('pemohon-pengajuan-permohonan');
-
     // Store Data
     Route::post('/daftar-ulang', [DaftarUlangController::class, 'store']);
     Route::post('/pendirian', [PendirianController::class, 'store']);

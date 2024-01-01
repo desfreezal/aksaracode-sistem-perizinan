@@ -155,6 +155,11 @@
                                 Pengguna</a>
                         </li>
                         <li>
+                            <a href="{{ route('operator-riwayat-permohonan') }}"
+                                class="block text-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Riwayat
+                                Permohonan</a>
+                        </li>
+                        <li>
                             <a href="#" data-modal-target="logout-modal" data-modal-toggle="logout-modal"
                                 class="block text-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Keluar</a>
                         </li>

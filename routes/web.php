@@ -269,7 +269,7 @@ Route::prefix('/dashboard-operator')->group(function () {
 
     Route::get('/riwayat', function () {
         return view('operator.riwayat-permohonan');
-    });
+    })->name('operator-riwayat-permohonan');
 
     // PENGAJUAN PERMOHONAN
     Route::get('/pengajuan-permohonan', function () {

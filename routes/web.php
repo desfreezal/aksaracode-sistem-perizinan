@@ -709,16 +709,30 @@ Route::prefix('/dashboard-kepala-dinas')->group(function () {
     })->name('kepala-dinas-dashboard');
 
     Route::get('/kelengkapan-data', function () {
-        return view('kepala-dinas.kelengkapan-data');
+        return view('kepala-dinas.kelengkapan-data.kelengkapan-data');
     })->name('kepala-dinas-lengkap-data');
 
+    Route::get('/kelengkapan-data/{id}', function ($id) {
+        return view('kepala-dinas.kelengkapan-data.kelengkapan-detail', ['id' => $id]);
+    })->name('kepala-dinas-kelengkapan-detail');
+
     Route::get('/validasi-data', function () {
-        return view('kepala-dinas.validasi-data');
+        return view('kepala-dinas.validasi-data.index');
     })->name('kepala-dinas-validasi-data');
 
     Route::get('/detail-validasi/{id}', function ($id) {
-        return view('kepala-dinas.detail-validasi');
+        return view('kepala-dinas.validasi-data.validasi', ['id' => $id]);
     })->name('kepala-dinas-detail-validasi');
+
+    // jadwal-survey
+    Route::get('/jadwal-survey/{id}', function ($id) {
+        return view('kepala-dinas.validasi-data.jadwal-survey', ['id' => $id]);
+    })->name('kepala-dinas-jadwal-survey');
+
+    // validasi-survey/{id}
+    Route::get('/validasi-survey/{id}', function ($id) {
+        return view('kepala-dinas.validasi-data.validasi-survey', ['id' => $id]);
+    })->name('kepala-dinas-validasi-survey');
 
     Route::get('/lacak-permohonan', function () {
         return view('kepala-dinas.lacak-permohonan');

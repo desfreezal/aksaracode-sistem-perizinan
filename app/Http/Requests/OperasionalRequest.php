@@ -24,6 +24,7 @@ class OperasionalRequest extends FormRequest
     public function rules()
     {
         return [
+            'statusDokumen_id' => 'nullable|integer',
             'longtitude' => 'nullable|string',
             'latitude' => 'nullable|string',
             'lokasi' => 'nullable|string',
@@ -44,6 +45,7 @@ class OperasionalRequest extends FormRequest
             'Data_Daya_Tampung' => 'file|mimes:jpg,jpeg,png,pdf',
             'SK_Izin_Pendirian' => 'file|mimes:jpg,jpeg,png,pdf',
             'Piagam_Akreditasi' => 'file|mimes:jpg,jpeg,png,pdf',
+            'Foto_Kepala_Yayasan' => 'file|mimes:jpg,jpeg,png,pdf',
         ];
     }
 }

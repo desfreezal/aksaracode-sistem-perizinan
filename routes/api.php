@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\Auth\RegisterController;
 use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\VerificationApiController;
 use App\Http\Controllers\Api\DaftarUlangController;
+use App\Http\Controllers\Api\HelperController;
 use App\Http\Controllers\Api\OperasionalController;
 use App\Http\Controllers\Api\PendirianController;
 use App\Http\Controllers\Api\UserController;
@@ -27,6 +28,7 @@ use Illuminate\Support\Facades\Route;
 
     // Email verification routes
     // Route::post('/email/resend', 'Api\VerificationApiController@resend')->name('verification.resend');
+    Route::get('/status-dokumen', [HelperController::class, 'getStatusDokumen']);
     
     Route::middleware('auth:sanctum')->group(function () {
     Route::post('/email/verify/{otp}', [VerificationApiController::class, 'verify']);

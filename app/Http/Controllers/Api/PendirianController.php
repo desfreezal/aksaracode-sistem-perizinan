@@ -24,10 +24,16 @@ class PendirianController extends Controller
         }
     }
 
-    public function getAllPendirian()
+    public function getAllPendirian(PendirianRequest $request)
     {
         try {
-            $pendirians = Pendirian::get();
+            $pendirians = Pendirian::when($request->has('statusDokumen_id'), function ($query) use ($request) {
+                $query->where('statusDokumen_id', $request->statusDokumen_id);
+            })
+            ->when($request->has('category_id'), function ($query) use ($request) {
+                $query->where('category_id', $request->category_id);
+            })
+            ->get();    
 
             $transformedData = $pendirians->map(function ($pendirian) {
                 $user = User::findOrFail($pendirian->user_id);
@@ -126,13 +132,8 @@ class PendirianController extends Controller
     public function updatePendirian(PendirianRequest $request, $pendirianId)
     {
         try {
-            $user = Auth::user();
-
             $pendirian = Pendirian::findOrFail($pendirianId);
-
-            if ($user->id !== $pendirian->user_id) {
-                return response()->json(['message' => 'Unauthorized'], 403);
-            }
+            $user = User::findOrFail($pendirian->user_id);
 
             foreach ($request->validated() as $key => $input) {
                 if ($request->hasFile($key) && $pendirian->$key) {
@@ -140,23 +141,19 @@ class PendirianController extends Controller
                 }
             }
 
-            $pendirian->fill(array_merge(
-                ['user_id' => $user->id],
-                ['category_id' => 1],
-                ['statusDokumen_id' => 1],
-                $request->validated()
-            ));
+            $pendirian->fill($request->validated());
 
             // Menyimpan file yang diunggah ke penyimpanan (storage) jika ada
             foreach ($request->validated() as $key => $input) {
                 $this->handleFileUpload($request, $pendirian, $key);
             }
 
-            $pendirian->save();
+             $pendirian->save();
 
-            $response = collect($user->toArray())->merge($pendirian->toArray());
+             $data = collect($user->toArray())->merge($pendirian->toArray());
 
-            return response()->json(['data' => $response, 'message' => 'Data Updated Pendirian successfully'], 200);
+
+            return response()->json(['data' => $data, 'message' => 'Data Updated Pendirian successfully'], 200);
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], 500);
         }

@@ -47,6 +47,7 @@ class Operasional extends Model
         'Data_Daya_Tampung',
         'SK_Izin_Pendirian',
         'Piagam_Akreditasi',
+        'Foto_Kepala_Yayasan',
         'created_at',
         'updated_at',
     ];

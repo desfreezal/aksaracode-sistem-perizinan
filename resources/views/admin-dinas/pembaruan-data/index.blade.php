@@ -10,7 +10,6 @@
             <div class="flex-grow h-full pl-[34px] pr-[88px] py-7 box-border mb-10" id="content">
 
                 <div class="space-y-9 mb-16">
-                    <h1 class="font-bold text-3xl">Survey</h1>
 
                     <div class="flex items-center">
                         <label for="" class="w-44">Filter Data</label>
@@ -44,13 +43,6 @@
                 </div>
 
                 <div class="space-y-3">
-                    <h1 class="text-xl">Cari Data</h1>
-
-                    <div class="flex items-center gap-3">
-                        <input type="text" class="flex-grow rounded border border-primary focus:border-primary ">
-                        <button class="px-5 py-2 bg-primary hover:bg-primary-light text-white rounded-lg">Cari</button>
-                    </div>
-
                     <div class="flex items-center gap-6">
                         <h1 class="font-bold text-sm">Tampilkan</h1>
                         <select name="jumlah" id="jumlah" class="rounded-2xl py-0">
@@ -62,39 +54,76 @@
                     </div>
                 </div>
 
-                <div class="space-y-8 mt-12">
+                <div id="container" class="mt-10 space-y-8">
                     {{-- CARD --}}
-                    <div class="shadow-lg rounded-lg border border-[#E5DBDB] bg-[#FBFBFB] px-3 py-4 space-y-4">
-                        <div class="flex justify-between items-center text-primary">
-                            <h1 class="font-semibold text-xl">Oksana Khoirunnida</h1>
-                            <h1 class="font-semibold text-base">007524</h1>
-                        </div>
-                        <h1>Daftar Ulang Izin Operasional Satuan Pendidikan SD</h1>
-                        <p class="text-[#D77B78]">08/11/2023 - 16:59:10</p>
 
-                        <div class="flex items-center w-full">
-                            <a href="{{ route('admin-dinas-isi-survey', ['id' => 1]) }}" class="flex-grow text-center group">
-                                <h1 class="text-white font-semibold bg-primary hover:bg-primary-light py-3 rounded">Isi
-                                    Formulir</h1>
-                            </a>
-                        </div>
-                    </div>
+                    @if (request('layanan'))
+                        <div class="flex gap-5">
+                            <div
+                                class="flex-grow shadow-lg rounded-lg border border-[#E5DBDB] bg-[#FBFBFB] px-3 py-4 space-y-4">
+                                <div class="flex justify-between items-center text-primary">
+                                    <h1 class="font-semibold text-xl">Oksana Khoirunnida</h1>
+                                    <h1 class="font-semibold text-base">007524</h1>
+                                </div>
+                                <h1>Daftar Ulang Izin Operasional Satuan Pendidikan SD</h1>
+                                <p class="text-[#D77B78]">08/11/2023 - 16:59:10</p>
 
-                    <div class="shadow-lg rounded-lg border border-[#E5DBDB] bg-[#FBFBFB] px-3 py-4 space-y-4">
-                        <div class="flex justify-between items-center text-primary">
-                            <h1 class="font-semibold text-xl">Oksana Khoirunnida</h1>
-                            <h1 class="font-semibold text-base">007524</h1>
-                        </div>
-                        <h1>Daftar Ulang Izin Operasional Satuan Pendidikan SD</h1>
-                        <p class="text-[#D77B78]">08/11/2023 - 16:59:10</p>
+                                <a href="{{ route('admin-dinas-detail-pembaruan-data', ['id'=>1]) }}" class="block group">
+                                    <div
+                                        class="w-full rounded-md border-primary text-primary text-center border py-2 hover:bg-primary hover:text-white">
+                                        Perbaiki
+                                    </div>
+                                </a>
+                            </div>
 
-                        <div class="flex items-center w-full">
-                            <a href="{{ route('admin-dinas-isi-survey', ['id' => 2]) }}" class="flex-grow text-center group">
-                                <h1 class="text-white font-semibold bg-primary hover:bg-primary-light py-3 rounded">Isi
-                                    Formulir</h1>
-                            </a>
+                            <div class="w-[62px] space-y-5">
+                                <h1 class="text-center font-bold">Status</h1>
+
+                                <button class="p-3 rounded bg-bg-merah border border-font-merah text-font-merah">Belum
+                                    Valid</button>
+                            </div>
+
                         </div>
-                    </div>
+
+                        <div class="flex gap-5">
+                            <div
+                                class="flex-grow shadow-lg rounded-lg border border-[#E5DBDB] bg-[#FBFBFB] px-3 py-4 space-y-4">
+                                <div class="flex justify-between items-center text-primary">
+                                    <h1 class="font-semibold text-xl">Oksana Khoirunnida</h1>
+                                    <h1 class="font-semibold text-base">007524</h1>
+                                </div>
+                                <h1>Daftar Ulang Izin Operasional Satuan Pendidikan SD</h1>
+                                <p class="text-[#D77B78]">08/11/2023 - 16:59:10</p>
+                            </div>
+
+                            <div class="w-[62px] space-y-5">
+                                <h1 class="text-center font-bold">Status</h1>
+
+                                <button
+                                    class="p-3 bg-bg-hijau text-font-hijau border border-font-hijau rounded">Valid</button>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-5">
+                            <div
+                                class="flex-grow shadow-lg rounded-lg border border-[#E5DBDB] bg-[#FBFBFB] px-3 py-4 space-y-4">
+                                <div class="flex justify-between items-center text-primary">
+                                    <h1 class="font-semibold text-xl">Oksana Khoirunnida</h1>
+                                    <h1 class="font-semibold text-base">007524</h1>
+                                </div>
+                                <h1>Daftar Ulang Izin Operasional Satuan Pendidikan SD</h1>
+                                <p class="text-[#D77B78]">08/11/2023 - 16:59:10</p>
+                            </div>
+
+                            <div class="w-[62px] space-y-5">
+                                <h1 class="text-center font-bold">Status</h1>
+
+                                <button
+                                    class="p-3 bg-bg-hijau text-font-hijau border border-font-hijau rounded">Valid</button>
+                            </div>
+                        </div>
+                    @endif
+
 
                 </div>
             </div>
@@ -126,13 +155,6 @@
                     params.set('layanan', val)
                     window.location.search = params
                 },
-
-                setJenval(val) {
-                    this.jenval = val;
-                    this.open = false;
-                    params.set('jenis', val)
-                    window.location.search = params
-                }
             }));
         });
     </script>

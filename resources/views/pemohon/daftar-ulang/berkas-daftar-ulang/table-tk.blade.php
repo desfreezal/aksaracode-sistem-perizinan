@@ -1,22 +1,31 @@
 @php
     $persyaratan = [
-        'Surat Permohonan Izin Perpanjangan operasional dari Ketua Yayasan / Perkumpulan / Badan Penyelenggara',
-        'SK Izin Pendirian asli',
-        'Struktur Organisasi Lembaga',
-        'SK Izin Operasional asli',
-        'Akta notaris dan /atau surat penetapan badan hukum dalam bentuk yayasan, perkumpulan, atau badan lain sejenis dari kementerian bidang hukum atas nama pendiri atau induk organisasi pendiri disertai surat keputusan yang menunjukkan adanya hubungan dengan organisasi induk',
-        'Data Pendidik/Guru sesuai dengan standar kompetensi dilampiri fotocopy ijazah terakhir, sertifikat pendukung dan KTP',
-        'Data anak didik/peserta didik dengan jumlah peserta didik minimal 1 (satu) Kelompok 15 (Lima Belas) anak',
-        'Rencana Jadwal Pembelajaran',
-        'Dokumen tentang status tanah/gedung (Hak Milik/sewa/pinjam/kontrak minimal 5 tahun) dan / atau surat keterangan penggunaan Fasilitas Umum diketahui oleh Pengurus yang digunakan tempatnya dan Ketua Yayasan',
-        'Surat Pernyataan tidak keberatan atas pendirian dan penyelenggaraan Sekolah diketahui oleh Tetangga terdekat, Ketua RT, Ketua RW, Lurah dan Camat setempat',
-        'Surat pernyataan terkait Lembaga tidak sedang dalam konflik/sengketa (ditandatangani ketua yayasan dan Kepala Lembaga bermaterai 10000 atau (boleh materai 6000 2 lembar atau 6000+3000))',
-        'Copy status Akreditasi Lembaga',
-        'Pas foto ketua yayasan terbaru (Foto formal, background warna merah)',
-        'Copy rekening a.n lembaga',
-        'Surat Pernyataan Keabsahan Data/Dokumen yang di upload (bermaterai 10000 atau (boleh materai 6000 2 lembar atau 6000+3000))',
-        'Berita Acara Keterlambatan Perpanjangan Izin Operasional (Bagi yang melewati masa berlaku)',
-        'Surat pernyataan kegiatan belajar mengajar masih berjalan dan aktif (Bagi yang mengajukan pas pada tanggal berakhirnya masa berlaku)',
+        ['text' => 'Surat Permohonan Izin Perpanjangan operasional dari Ketua Yayasan / Perkumpulan / Badan Penyelenggara', 'name' => 'Super_Daftar_Ulang'],
+        ['text' => 'SK Izin Pendirian asli', 'name' => 'SK_Izin_Pendirian'],
+        ['text' => 'Struktur Organisasi Lembaga'],
+        ['text' => 'SK Izin Operasional asli', 'name' => 'SK_Izin_Operasional'],
+        ['text' => 'Akta notaris dan /atau surat penetapan badan hukum dalam bentuk yayasan, perkumpulan, atau badan lain sejenis dari kementerian bidang hukum atas nama pendiri atau induk organisasi pendiri disertai surat keputusan yang menunjukkan adanya hubungan dengan organisasi induk', 'Data Pendidik/Guru sesuai dengan standar kompetensi dilampiri fotocopy ijazah terakhir, sertifikat pendukung dan KTP',
+        'name' => 'Akta_Notaris'
+    ],
+        ['text' => 'Data anak didik/peserta didik dengan jumlah peserta didik minimal 1 (satu) Kelompok 15 (Lima Belas) anak',
+        'name' => 'Data_Anak_Dididk'
+        ],
+        ['text' => 'Rencana Jadwal Pembelajaran',
+        'name' => 'Rencana_Jadwal'
+        ],
+        ['text' => 'Dokumen tentang status tanah/gedung (Hak Milik/sewa/pinjam/kontrak minimal 5 tahun) dan / atau surat keterangan penggunaan Fasilitas Umum diketahui oleh Pengurus yang digunakan tempatnya dan Ketua Yayasan',
+        'name' => 'Doc_Milik_Lahan'
+    ],
+        ['text' => 'Surat Pernyataan tidak keberatan atas pendirian dan penyelenggaraan Sekolah diketahui oleh Tetangga terdekat, Ketua RT, Ketua RW, Lurah dan Camat setempat',
+        'name' => 'Super_Bermaterai'
+    ],
+        ['text' => 'Surat pernyataan terkait Lembaga tidak sedang dalam konflik/sengketa (ditandatangani ketua yayasan dan Kepala Lembaga bermaterai 10000 atau (boleh materai 6000 2 lembar atau 6000+3000))'],
+        ['text' => 'Copy status Akreditasi Lembaga'],
+        ['text' => 'Pas foto ketua yayasan terbaru (Foto formal, background warna merah)'],
+        ['text' => 'Copy rekening a.n lembaga'],
+        ['text' => 'Surat Pernyataan Keabsahan Data/Dokumen yang di upload (bermaterai 10000 atau (boleh materai 6000 2 lembar atau 6000+3000))'],
+        ['text' => 'Berita Acara Keterlambatan Perpanjangan Izin Operasional (Bagi yang melewati masa berlaku)'],
+        ['text' => 'Surat pernyataan kegiatan belajar mengajar masih berjalan dan aktif (Bagi yang mengajukan pas pada tanggal berakhirnya masa berlaku)'],
     ];
 
 @endphp
@@ -44,7 +53,7 @@
                 </td>
                 <td class="px-6 py-4">
                     <p>
-                        {!! $value !!}
+                        {!! $value['text'] !!}
                     </p>
                     <br>
                     <p class="text-primary">Tipe file upload : pdf, jpg, jpeg, png</p>

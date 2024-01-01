@@ -1,11 +1,11 @@
-@extends('admin-dinas.layout')
+@extends('kepala-dinas.layout')
 
 @section('content')
     <div class="min-h-screen h-full">
 
         <div class="flex">
             {{-- SIDEBAR --}}
-            @include('admin-dinas.sidebar')
+            @include('kepala-dinas.sidebar')
 
             <div class="flex-grow h-full pl-[34px] pr-[88px] py-7 box-border mb-10" id="content">
 
@@ -73,7 +73,7 @@
                         <p class="text-[#D77B78]">08/11/2023 - 16:59:10</p>
 
                         <div class="flex items-center w-full">
-                            <a href="{{ route('admin-dinas-isi-survey', ['id' => 1]) }}" class="flex-grow text-center group">
+                            <a href="{{ route('kepala-dinas-isi-survey', ['id' => 1]) }}" class="flex-grow text-center group">
                                 <h1 class="text-white font-semibold bg-primary hover:bg-primary-light py-3 rounded">Isi
                                     Formulir</h1>
                             </a>
@@ -89,7 +89,7 @@
                         <p class="text-[#D77B78]">08/11/2023 - 16:59:10</p>
 
                         <div class="flex items-center w-full">
-                            <a href="{{ route('admin-dinas-isi-survey', ['id' => 2]) }}" class="flex-grow text-center group">
+                            <a href="{{ route('kepala-dinas-isi-survey', ['id' => 2]) }}" class="flex-grow text-center group">
                                 <h1 class="text-white font-semibold bg-primary hover:bg-primary-light py-3 rounded">Isi
                                     Formulir</h1>
                             </a>

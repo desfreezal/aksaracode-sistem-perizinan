@@ -306,6 +306,18 @@ Route::prefix('/dashboard-operator')->group(function () {
     Route::get('/izin-operasional/berkas', function () {
         return view('operator.izin-operasional.upload-berkas');
     })->name('operator-berkas-operasional');
+
+    // pembaruan-data
+    Route::get('/pembaruan-data', function () {
+        return view('operator.pembaruan-data.index');
+    })->name('operator-pembaruan-data');
+
+    // pembaruan-data/{id}
+    Route::get('/pembaruan-data/{id}', function ($id) {
+        return view('operator.pembaruan-data.detail', [
+            'id' => $id
+        ]);
+    })->name('operator-detail-pembaruan-data');
 });
 
 // AUDITOR
@@ -457,6 +469,29 @@ Route::prefix('/dashboard-surveyor')->group(function () {
     Route::get('/izin-operasional/berkas', function () {
         return view('surveyor.izin-operasional.upload-berkas');
     })->name('surveyor-berkas-operasional');
+
+    // survey
+    Route::get('/survey', function () {
+        return view('surveyor.survey.index');
+    })->name('surveyor-survey');
+
+    Route::get('/survey/{id}', function ($id) {
+        return view('surveyor.survey.isi-form', [
+            'id' => $id
+        ]);
+    })->name('surveyor-isi-survey');
+
+    // pembaruan-data
+    Route::get('/pembaruan-data', function () {
+        return view('surveyor.pembaruan-data.index');
+    })->name('surveyor-pembaruan-data');
+
+    // pembaruan-data/{id}
+    Route::get('/pembaruan-data/{id}', function ($id) {
+        return view('surveyor.pembaruan-data.detail', [
+            'id' => $id
+        ]);
+    })->name('surveyor-detail-pembaruan-data');
 });
 
 // WALIKOTA
@@ -679,6 +714,62 @@ Route::prefix('/dashboard-admin-dinas')->group(function () {
         return view('admin-dinas.izin-operasional.upload-berkas');
     })->name('admin-dinas-berkas-operasional');
 
+    // survey
+    Route::get('/survey', function () {
+        return view('admin-dinas.survey.index');
+    })->name('admin-dinas-survey');
+
+    Route::get('/survey/{id}', function ($id) {
+        return view('admin-dinas.survey.isi-form', [
+            'id' => $id
+        ]);
+    })->name('admin-dinas-isi-survey');
+
+    // pembaruan-data
+    Route::get('/pembaruan-data', function () {
+        return view('admin-dinas.pembaruan-data.index');
+    })->name('admin-dinas-pembaruan-data');
+
+    // pembaruan-data/{id}
+    Route::get('/pembaruan-data/{id}', function ($id) {
+        return view('admin-dinas.pembaruan-data.detail', [
+            'id' => $id
+        ]);
+    })->name('admin-dinas-detail-pembaruan-data');
+
+    // kelola-sistem
+    Route::get('/kelola-sistem', function () {
+        return view('admin-dinas.kelola-sistem.index');
+    })->name('admin-dinas-kelola-sistem');
+
+    // kelola-sistem/daftar-user
+    Route::get('/kelola-sistem/daftar-user', function () {
+        return view('admin-dinas.kelola-sistem.daftar-user');
+    })->name('admin-dinas-daftar-user');
+
+    // kelola-sistem/daftar-user/{id}
+    Route::get('/kelola-sistem/daftar-user/{id}', function ($id) {
+        return view('admin-dinas.kelola-sistem.edit-user', [
+            'id' => $id
+        ]);
+    })->name('admin-dinas-edit-user');
+
+    // kelola-sistem/panduan-perizinan
+    Route::get('/kelola-sistem/panduan-perizinan', function () {
+        return view('admin-dinas.kelola-sistem.panduan-perizinan');
+    })->name('admin-dinas-kelola-panduan');
+
+    Route::get('/kelola-sistem/panduan-perizinan/daftar-ulang', function () {
+        return view('admin-dinas.kelola-sistem.jenis-panduan.daftar-ulang');
+    })->name('admin-dinas-kelola-daftar-ulang');
+
+    Route::get('/kelola-sistem/panduan-perizinan/izin-pendirian', function () {
+        return view('admin-dinas.kelola-sistem.jenis-panduan.izin-pendirian');
+    })->name('admin-dinas-kelola-izin-pendirian');
+
+    Route::get('/kelola-sistem/panduan-perizinan/izin-operasional', function () {
+        return view('admin-dinas.kelola-sistem.jenis-panduan.izin-operasional');
+    })->name('admin-dinas-kelola-izin-operasional');
 });
 
 // KEPALA DINAS
@@ -845,6 +936,29 @@ Route::prefix('/dashboard-kepala-dinas')->group(function () {
     Route::get('/izin-operasional/berkas', function () {
         return view('kepala-dinas.izin-operasional.upload-berkas');
     })->name('kepala-dinas-berkas-operasional');
+
+    // survey
+    Route::get('/survey', function () {
+        return view('kepala-dinas.survey.index');
+    })->name('kepala-dinas-survey');
+
+    Route::get('/survey/{id}', function ($id) {
+        return view('kepala-dinas.survey.isi-form', [
+            'id' => $id
+        ]);
+    })->name('kepala-dinas-isi-survey');
+
+    // pembaruan-data
+    Route::get('/pembaruan-data', function () {
+        return view('kepala-dinas.pembaruan-data.index');
+    })->name('kepala-dinas-pembaruan-data');
+
+    // pembaruan-data/{id}
+    Route::get('/pembaruan-data/{id}', function ($id) {
+        return view('kepala-dinas.pembaruan-data.detail', [
+            'id' => $id
+        ]);
+    })->name('kepala-dinas-detail-pembaruan-data');
 });
 
 // VERIFIKATOR
@@ -986,6 +1100,29 @@ Route::prefix('/dashboard-verifikator')->group(function () {
     Route::get('/validasi-survey/{id}', function ($id) {
         return view('verifikator.validasi-data.validasi-survey', ['id' => $id]);
     })->name('verifikator-validasi-survey');
+
+    // survey
+    Route::get('/survey', function () {
+        return view('verifikator.survey.index');
+    })->name('verifikator-survey');
+
+    Route::get('/survey/{id}', function ($id) {
+        return view('verifikator.survey.isi-form', [
+            'id' => $id
+        ]);
+    })->name('verifikator-isi-survey');
+
+    // pembaruan-data
+    Route::get('/pembaruan-data', function () {
+        return view('verifikator.pembaruan-data.index');
+    })->name('verifikator-pembaruan-data');
+
+    // pembaruan-data/{id}
+    Route::get('/pembaruan-data/{id}', function ($id) {
+        return view('verifikator.pembaruan-data.detail', [
+            'id' => $id
+        ]);
+    })->name('verifikator-detail-pembaruan-data');
 });
 
 
@@ -1028,7 +1165,39 @@ Route::prefix('/dashboard-admin-utama')->group(function () {
     Route::get('/profile', function () {
         return view('admin-utama.profile');
     })->name('admin-utama-profile');
+
+    // kelola-sistem
+    Route::get('/kelola-sistem', function () {
+        return view('admin-utama.kelola-sistem.index');
+    })->name('admin-utama-kelola-sistem');
+
+    // kelola-sistem/daftar-user
+    Route::get('/kelola-sistem/daftar-user', function () {
+        return view('admin-utama.kelola-sistem.daftar-user');
+    })->name('admin-utama-daftar-user');
+
+    // kelola-sistem/daftar-user/{id}
+    Route::get('/kelola-sistem/daftar-user/{id}', function ($id) {
+        return view('admin-utama.kelola-sistem.edit-user', [
+            'id' => $id
+        ]);
+    })->name('admin-utama-edit-user');
+
+    // kelola-sistem/panduan-perizinan
+    Route::get('/kelola-sistem/panduan-perizinan', function () {
+        return view('admin-utama.kelola-sistem.panduan-perizinan');
+    })->name('admin-utama-kelola-panduan');
+
+    Route::get('/kelola-sistem/panduan-perizinan/daftar-ulang', function () {
+        return view('admin-utama.kelola-sistem.jenis-panduan.daftar-ulang');
+    })->name('admin-utama-kelola-daftar-ulang');
+
+    Route::get('/kelola-sistem/panduan-perizinan/izin-pendirian', function () {
+        return view('admin-utama.kelola-sistem.jenis-panduan.izin-pendirian');
+    })->name('admin-utama-kelola-izin-pendirian');
+
+    Route::get('/kelola-sistem/panduan-perizinan/izin-operasional', function () {
+        return view('admin-utama.kelola-sistem.jenis-panduan.izin-operasional');
+    })->name('admin-utama-kelola-izin-operasional');
 });
 Auth::routes();
-
-

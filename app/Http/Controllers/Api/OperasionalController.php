@@ -23,10 +23,16 @@ class OperasionalController extends Controller
         }
     }
 
-    public function getAllOperasional()
+    public function getAllOperasional(OperasionalRequest $request)
     {
         try {
-            $operasionals = Operasional::get();
+            $operasionals = Operasional::when($request->has('statusDokumen_id'), function ($query) use ($request) {
+                $query->where('statusDokumen_id', $request->statusDokumen_id);
+            })
+            ->when($request->has('category_id'), function ($query) use ($request) {
+                $query->where('category_id', $request->category_id);
+            })
+            ->get();
 
             $transformedData = $operasionals->map(function ($operasional) {
                 $user = User::findOrFail($operasional->user_id);
@@ -125,13 +131,8 @@ class OperasionalController extends Controller
     public function updateOperasional(OperasionalRequest $request, $operasionalId)
     {
         try {
-            $user = Auth::user();
-
             $operasional = Operasional::findOrFail($operasionalId);
-
-            if ($user->id !== $operasional->user_id) {
-                return response()->json(['message' => 'Unauthorized'], 403);
-            }
+            $user = User::findOrFail($operasional->user_id);
 
             foreach ($request->validated() as $key => $input) {
                 if ($request->hasFile($key) && $operasional->$key) {
@@ -139,12 +140,7 @@ class OperasionalController extends Controller
                 }
             }
 
-            $operasional->fill(array_merge(
-                ['user_id' => $user->id],
-                ['category_id' => 1],
-                ['statusDokumen_id' => 1],
-                $request->validated()
-            ));
+            $operasional->fill($request->validated());
 
             // Menyimpan file yang diunggah ke penyimpanan (storage) jika ada
             foreach ($request->validated() as $key => $input) {
@@ -153,9 +149,10 @@ class OperasionalController extends Controller
 
              $operasional->save();
 
-             $response = collect($user->toArray())->merge($operasional->toArray());
+             $data = collect($user->toArray())->merge($operasional->toArray());
 
-            return response()->json(['data' => $response, 'message' => 'Data Updated Operasional successfully'], 200);
+
+            return response()->json(['data' => $data, 'message' => 'Data Updated Operasional successfully'], 200);
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], 500);
         }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\DaftarUlangRequest;
+use App\Http\Requests\PendirianRequest;
 use App\Models\DaftarUlang;
 use App\Models\StatusDokumen;
 use App\Models\User;
@@ -24,10 +25,16 @@ class DaftarUlangController extends Controller
         }
     }
 
-    public function getAllDaftarUlang()
+    public function getAllDaftarUlang(DaftarUlangRequest $request)
     {
         try {
-            $daftarUlangs = DaftarUlang::get();
+            $daftarUlangs = DaftarUlang::when($request->has('statusDokumen_id'), function ($query) use ($request) {
+                $query->where('statusDokumen_id', $request->statusDokumen_id);
+            })
+            ->when($request->has('category_id'), function ($query) use ($request) {
+                $query->where('category_id', $request->category_id);
+            })
+            ->get();
 
             $transformedData = $daftarUlangs->map(function ($daftarUlang) {
                 $user = User::findOrFail($daftarUlang->user_id);
@@ -123,16 +130,11 @@ class DaftarUlangController extends Controller
     }
 
 
-    public function updateDaftarUlang(DaftarUlangRequest $request, $id)
+    public function updateDaftarUlang(DaftarUlangRequest $request, $daftarUlangId)
     {
         try {
-            $user = Auth::user();
-
-            $daftarUlang = DaftarUlang::findOrFail($id);
-
-            if ($user->id !== $daftarUlang->user_id) {
-                return response()->json(['message' => 'Unauthorized'], 403);
-            }
+            $daftarUlang = DaftarUlang::findOrFail($daftarUlangId);
+            $user = User::findOrFail($daftarUlang->user_id);
 
             foreach ($request->validated() as $key => $input) {
                 if ($request->hasFile($key) && $daftarUlang->$key) {
@@ -140,22 +142,19 @@ class DaftarUlangController extends Controller
                 }
             }
 
-            $daftarUlang->fill(array_merge(
-                ['user_id' => $user->id],
-                ['category_id' => 1],
-                ['statusDokumen_id' => 1],
-                $request->validated()
-            ));
+            $daftarUlang->fill($request->validated());
 
+            // Menyimpan file yang diunggah ke penyimpanan (storage) jika ada
             foreach ($request->validated() as $key => $input) {
                 $this->handleFileUpload($request, $daftarUlang, $key);
             }
 
-            $daftarUlang->save();
+             $daftarUlang->save();
 
-            $response = collect($user->toArray())->merge($daftarUlang->toArray());
+             $data = collect($user->toArray())->merge($daftarUlang->toArray());
 
-            return response()->json(['data' => $response, 'message' => 'Data Daftar Ulang Updated successfully'], 200);
+
+            return response()->json(['data' => $data, 'message' => 'Data Updated DaftarUlang successfully'], 200);
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], 500);
         }

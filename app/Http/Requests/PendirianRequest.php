@@ -14,6 +14,7 @@ class PendirianRequest extends FormRequest
     public function rules()
     {
         return [
+            'statusDokumen_id' => 'nullable|integer',
             'category' => 'string',
             'longtitude' => 'string',
             'latitude' => 'string',

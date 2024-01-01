@@ -24,6 +24,7 @@ class DaftarUlangRequest extends FormRequest
     public function rules()
     {
         return [
+            'statusDokumen_id' => 'nullable|integer',
             'longtitude' => 'nullable|string',
             'latitude' => 'nullable|string',
             'lokasi' => 'nullable|string',

@@ -16,6 +16,53 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
+    // Menampilkan semua user
+    public function index()
+    {
+        $users = User::all();
+
+        return response()->json(['data' => $users]);
+    }
+
+    // Menyimpan user baru
+    public function store(UserRequest $request)
+    {
+        $validatedData = $request->validated();
+
+        $user = User::create($validatedData);
+
+        return response()->json(['data' => $user, 'message' => 'User created successfully'], 201);
+    }
+
+    // Menampilkan detail user
+    public function show($id)
+    {
+        $user = User::findOrFail($id);
+
+        return response()->json(['data' => $user]);
+    }
+
+    // Mengupdate user
+    public function update(UserRequest $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        $validatedData = $request->validated();
+
+        $user->update($validatedData);
+
+        return response()->json(['data' => $user, 'message' => 'User updated successfully']);
+    }
+
+    // Menghapus user
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+
+        $user->delete();
+
+        return response()->json(['message' => 'User deleted successfully']);
+    }
     public function profile()
     {
         $user = Auth::user();

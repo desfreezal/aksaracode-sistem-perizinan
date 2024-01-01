@@ -32,6 +32,7 @@ use Illuminate\Support\Facades\Route;
     
     Route::middleware('auth:sanctum')->group(function () {
     Route::post('/email/verify/{otp}', [VerificationApiController::class, 'verify']);
+    Route::resource('/users', UserController::class);
 
     Route::get('/profile', [UserController::class, 'profile']);
     Route::patch('/profile', [UserController::class, 'updateProfile']);

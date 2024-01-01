@@ -45,14 +45,6 @@ Route::get('/data-statistik-izinpendirian', function () {
     return view('data-statistik-izinpendirian');
 });
 
-Route::get('/login', function () {
-    return view('auth-page.login');
-});
-
-Route::get('/register', function () {
-    return view('auth-page.register');
-});
-
 Route::get('/daftar-ulang', function () {
     return view(('landing-page.daftar-ulang.daftar'));
 });
@@ -105,13 +97,6 @@ Route::middleware(['role:pemohon', 'verified'])->prefix('/dashboard-pemohon')->g
         return view('pemohon.notifikasi');
     });
 
-    Route::get('/chatting', function () {
-        return view('pemohon.chatting');
-    })->name('pemohon-chatting');
-
-    Route::get('/chatting/{id_user}', function ($id_user) {
-        return view('pemohon.chattting-room');
-    })->name('pemohon-detail-chatting');
 
     Route::get('/daftar-ulang', function () {
         return view('pemohon.daftar-ulang.daftar');
@@ -246,14 +231,6 @@ Route::prefix('/dashboard-operator')->group(function () {
     Route::get('/notifikasi', function () {
         return view('operator.notifikasi');
     })->name('operator-notifikasi');
-
-    Route::get('/chatting', function () {
-        return view('operator.chatting');
-    })->name('operator-chatting');
-
-    Route::get('/chatting/{id_user}', function ($id_user) {
-        return view('operator.chattting-room');
-    })->name('operator-detail-chatting');
 
     Route::get('/panduan-perizinan', function () {
         return view('operator.panduan-perizinan');
@@ -409,14 +386,6 @@ Route::prefix('/dashboard-surveyor')->group(function () {
     Route::get('/notifikasi', function () {
         return view('surveyor.notifikasi');
     })->name('surveyor-notifikasi');
-
-    Route::get('/chatting', function () {
-        return view('surveyor.chatting');
-    })->name('surveyor-chatting');
-
-    Route::get('/chatting/{id_user}', function ($id_user) {
-        return view('surveyor.chattting-room');
-    })->name('surveyor-detail-chatting');
 
     Route::get('/panduan-perizinan', function () {
         return view('surveyor.panduan-perizinan');
@@ -602,14 +571,6 @@ Route::prefix('/dashboard-admin-dinas')->group(function () {
         return view('admin-dinas.notifikasi');
     })->name('admin-dinas-notifikasi');
 
-    Route::get('/chatting', function () {
-        return view('admin-dinas.chatting');
-    })->name('admin-dinas-chatting');
-
-    Route::get('/chatting/{id_user}', function ($id_user) {
-        return view('admin-dinas.chattting-room');
-    })->name('admin-dinas-detail-chatting');
-
     Route::get('/panduan-perizinan', function () {
         return view('admin-dinas.panduan-perizinan');
     })->name('admin-dinas-panduan-perizinan');
@@ -768,13 +729,6 @@ Route::prefix('/dashboard-kepala-dinas')->group(function () {
         return view('kepala-dinas.notifikasi');
     })->name('kepala-dinas-notifikasi');
 
-    Route::get('/chatting', function () {
-        return view('kepala-dinas.chatting');
-    })->name('kepala-dinas-chatting');
-
-    Route::get('/chatting/{id_user}', function ($id_user) {
-        return view('kepala-dinas.chattting-room');
-    })->name('kepala-dinas-detail-chatting');
 
     Route::get('/panduan-perizinan', function () {
         return view('kepala-dinas.panduan-perizinan');
@@ -923,13 +877,6 @@ Route::prefix('/dashboard-verifikator')->group(function () {
         return view('verifikator.notifikasi');
     })->name('verifikator-notifikasi');
 
-    Route::get('/chatting', function () {
-        return view('verifikator.chatting');
-    })->name('verifikator-chatting');
-
-    Route::get('/chatting/{id_user}', function ($id_user) {
-        return view('verifikator.chattting-room');
-    })->name('verifikator-detail-chatting');
 
     Route::get('/panduan-perizinan', function () {
         return view('verifikator.panduan-perizinan');

@@ -595,7 +595,6 @@ Route::prefix('/dashboard-admin-dinas')->group(function () {
     })->name('admin-dinas-riwayat-permohonan');
 
     // PENGAJUAN PERMOHONAN
-
     Route::get('/pengajuan-permohonan', function () {
         return view('admin-dinas.pengajuan-permohonan');
     })->name('admin-dinas-pengajuan-permohonan');
@@ -737,10 +736,6 @@ Route::prefix('/dashboard-verifikator')->group(function () {
         return view('verifikator.status-permohonan');
     })->name('verifikator-status-permohonan');
 
-    Route::get('/monitoring', function () {
-        return view('verifikator.monitoring');
-    })->name('verifikator-monitoring');
-
     Route::get('/notifikasi', function () {
         return view('verifikator.notifikasi');
     })->name('verifikator-notifikasi');
@@ -774,6 +769,18 @@ Route::prefix('/dashboard-verifikator')->group(function () {
     Route::get('/profile', function () {
         return view('verifikator.profile');
     })->name('verifikator-profile');
+
+    Route::get('/riwayat', function () {
+        return view('verifikator.riwayat-permohonan');
+    })->name('verifikator-riwayat-permohonan');
+
+    Route::get('/monitoring', function () {
+        return view('verifikator.monitoring');
+    })->name('verifikator-monitoring');
+
+    Route::get('/monitoring/{type}', function ($type) {
+        return view('verifikator.monitoring-detail', ['type' => $type]);
+    })->name('verifikator-monitoring-detail');
 });
 
 

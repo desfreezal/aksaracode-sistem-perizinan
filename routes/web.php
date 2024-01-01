@@ -331,6 +331,10 @@ Route::prefix('/dashboard-auditor')->group(function () {
         return view('auditor.monitoring');
     })->name('auditor-monitoring');
 
+    Route::get('/monitoring/{type}', function ($type) {
+        return view('auditor.monitoring-detail', ['type' => $type]);
+    })->name('auditor-monitoring-detail');
+
     Route::get('/notifikasi', function () {
         return view('auditor.notifikasi');
     })->name('auditor-notifikasi');

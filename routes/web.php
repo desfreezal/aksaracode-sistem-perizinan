@@ -401,7 +401,7 @@ Route::prefix('/dashboard-surveyor')->group(function () {
     })->name('surveyor-chatting');
 
     Route::get('/chatting/{id_user}', function ($id_user) {
-        return view('surveyor.chatting');
+        return view('surveyor.chattting-room');
     })->name('surveyor-detail-chatting');
 
     Route::get('/panduan-perizinan', function () {
@@ -802,7 +802,7 @@ Route::prefix('/dashboard-verifikator')->group(function () {
     })->name('verifikator-chatting');
 
     Route::get('/chatting/{id_user}', function ($id_user) {
-        return view('verifikator.chatting');
+        return view('verifikator.chattting-room');
     })->name('verifikator-detail-chatting');
 
     Route::get('/panduan-perizinan', function () {

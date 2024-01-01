@@ -607,7 +607,7 @@ Route::prefix('/dashboard-admin-dinas')->group(function () {
     })->name('admin-dinas-chatting');
 
     Route::get('/chatting/{id_user}', function ($id_user) {
-        return view('pemohon.chattting-room');
+        return view('admin-dinas.chattting-room');
     })->name('admin-dinas-detail-chatting');
 
     Route::get('/panduan-perizinan', function () {

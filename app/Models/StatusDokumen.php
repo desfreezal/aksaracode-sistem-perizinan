@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class StatusDokumen extends Model
 {
     use HasFactory;
+    public $timestamps = false;
+
 
     protected $table = 'status_dokumen';
 

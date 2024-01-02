@@ -99,6 +99,13 @@ class Pendirian extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function getUser()
+    {
+        $user = User::find($this->user_id);
+        
+        return $user;
+    }
+
     protected $hidden = ['user'];
 
     protected $casts = [

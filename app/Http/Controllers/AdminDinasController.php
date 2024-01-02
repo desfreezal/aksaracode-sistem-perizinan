@@ -6,7 +6,10 @@ use App\Http\Requests\PendirianRequest;
 use App\Models\DaftarUlang;
 use App\Models\Operasional;
 use App\Models\Pendirian;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class AdminDinasController extends Controller
@@ -33,14 +36,15 @@ class AdminDinasController extends Controller
 
     public function kelengkapanData()
     {
-        $pendirian = Pendirian::whereIn('statusDokumen_id', [1,2,3])->get();
-        $daftarUlang = DaftarUlang::whereIn('statusDokumen_id', [1,2,3])->get();
-        $operasional = Operasional::whereIn('statusDokumen_id', [1,2,3])->get();
+        $pendirian = Pendirian::whereIn('statusDokumen_id', [1, 2, 3])->get();
+        $daftarUlang = DaftarUlang::whereIn('statusDokumen_id', [1, 2, 3])->get();
+        $operasional = Operasional::whereIn('statusDokumen_id', [1, 2, 3])->get();
 
-        return view('admin-dinas.kelengkapan-data.kelengkapan-data', compact('pendirian','daftarUlang', 'operasional'));
+        return view('admin-dinas.kelengkapan-data.kelengkapan-data', compact('pendirian', 'daftarUlang', 'operasional'));
     }
 
-    public function deleteInvalidFile($type, $id, $field) {
+    public function deleteInvalidFile($type, $id, $field)
+    {
         try {
             $storagePath = [
                 'pendirian' => 'perizinanPendirian',
@@ -48,7 +52,7 @@ class AdminDinasController extends Controller
                 'daftarUlang' => 'daftarUlang'
             ];
 
-            if($type === "pendirian") {
+            if ($type === "pendirian") {
                 $pendirian = Pendirian::findOrFail($id);
 
                 Storage::delete('public/' . $storagePath[$type] . ' /' . $field . '/' . $pendirian->$field);
@@ -56,14 +60,14 @@ class AdminDinasController extends Controller
                 $pendirian->$field = null;
                 $pendirian->save();
 
-            }elseif($type === "operasional") {
+            } elseif ($type === "operasional") {
                 $operasional = Operasional::findOrFail($id);
 
                 Storage::delete('public/' . $storagePath[$type] . ' /' . $field . '/' . $operasional->$field);
 
                 $operasional->$field = null;
                 $operasional->save();
-            }else {
+            } else {
                 $daftarUlang = DaftarUlang::findOrFail($id);
 
                 Storage::delete('public/' . $storagePath[$type] . ' /' . $field . '/' . $daftarUlang->$field);
@@ -80,14 +84,14 @@ class AdminDinasController extends Controller
 
     public function kelengkapanDetail($id)
     {
-    $type = explode('-', $id);
+        $type = explode('-', $id);
 
-$data = [];
-        if($type === "A"){
+        $data = [];
+        if ($type === "A") {
             $data = Pendirian::findOrFail($id);
-        }elseif($type === "B") {
+        } elseif ($type === "B") {
             $data = DaftarUlang::findOrFail($id);
-        }else {
+        } else {
             $data = Operasional::findOrFail($id);
         }
 
@@ -96,12 +100,27 @@ $data = [];
 
     public function validasiData()
     {
-        return view('admin-dinas.validasi-data.index');
+        $pendirian = Pendirian::whereIn('statusDokumen_id', [1, 2, 3])->get();
+        $daftarUlang = DaftarUlang::whereIn('statusDokumen_id', [1, 2, 3])->get();
+        $operasional = Operasional::whereIn('statusDokumen_id', [1, 2, 3])->get();
+
+        return view('admin-dinas.validasi-data.index', compact('pendirian', 'daftarUlang', 'operasional'));
     }
 
     public function detailValidasi($id)
     {
-        return view('admin-dinas.validasi-data.validasi', ['id' => $id]);
+        $type = explode('-', $id);
+
+        $data = [];
+        if ($type === "A") {
+            $data = Pendirian::findOrFail($id);
+        } elseif ($type === "B") {
+            $data = DaftarUlang::findOrFail($id);
+        } else {
+            $data = Operasional::findOrFail($id);
+        }
+
+        return view('admin-dinas.validasi-data.validasi', compact('id', 'data'));
     }
 
     public function jadwalSurvey($id)
@@ -119,24 +138,75 @@ $data = [];
         return view('admin-dinas.lacak-permohonan');
     }
 
-    public function statusPermohonan()
+    public function statusPermohonan($id)
     {
-        return view('admin-dinas.status-permohonan');
+        $parts = explode('-', $id);
+
+        $tipe = $parts[0];
+
+        $hasil = [];
+
+        $tipe_dokumen = '';
+
+        if($tipe === "A") {
+            $tipe_dokumen = 'Pendirian';
+            $hasil = Pendirian::findOrFail($id);
+        }elseif ($tipe === "B") {
+            $tipe_dokumen = 'Daftar Ulang';
+            $hasil = DaftarUlang::findOrFail($id);
+        }else {
+            $tipe_dokumen = 'Operasional';
+            $hasil = Operasional::findOrFail($id);
+        }
+
+        return view('admin-dinas.status-permohonan', compact('tipe_dokumen','hasil'));
     }
 
     public function monitoring()
     {
-        return view('admin-dinas.monitoring');
+        $pendirian = Pendirian::count();
+        $daftarUlang = DaftarUlang::count();
+        $operasional = Operasional::count();
+
+        $data = [
+            'pendirian' => $pendirian,
+            'daftarUlang' => $daftarUlang,
+            'operasional' => $operasional,
+        ];
+
+        return view('admin-dinas.monitoring', compact('data'));
     }
 
     public function monitoringDetail($type)
     {
-        return view('admin-dinas.monitoring-detail', ['type' => $type]);
+        switch ($type) {
+            case 'daftar-ulang':
+                $data = DaftarUlang::get();
+                break;
+            case 'izin-pendirian':
+                $data = Pendirian::get();
+                break;
+            case 'izin-operasional':
+                $data = Operasional::get();
+                break;
+            
+            default:
+                $data = [];
+                break;
+        }
+
+        return view('admin-dinas.monitoring-detail', compact('type', 'data'));
     }
 
     public function notifikasi()
     {
-        return view('admin-dinas.notifikasi');
+        $pendirian = Pendirian::whereDate('updated_at', Carbon::today())->get();
+
+        $daftarUlang = DaftarUlang::whereDate('updated_at', Carbon::today())->get();
+
+        $operasional = Operasional::whereDate('updated_at', Carbon::today())->get();
+
+        return view('admin-dinas.notifikasi', compact('pendirian', 'daftarUlang', 'operasional'));
     }
 
     public function panduanPerizinan()
@@ -161,7 +231,9 @@ $data = [];
 
     public function profile()
     {
-        return view('admin-dinas.profile');
+        $user = Auth::user();
+
+        return view('admin-dinas.profile', compact('user'));
     }
 
     public function pengesahanDokumen()
@@ -176,7 +248,30 @@ $data = [];
 
     public function dataPengesahan($jenis, $layanan)
     {
-        return view('admin-dinas.pengesahan-dokumen.data-pengesahan', ['jenis' => $jenis, 'layanan' => $layanan]);
+        $status = [
+            'mp' => 9,
+            'terkendala' => 11,
+            'sedang-aktif' => 10
+        ];
+
+        $data = [];
+        switch ($layanan) {
+            case 'daftar-ulang-izin-operasional':
+                $data = DaftarUlang::where('statusDokumen_id', $status[$jenis])->get();
+                break;
+            case 'izin-pendirian':
+                $data = Pendirian::where('statusDokumen_id', $status[$jenis])->get();
+                break;
+            case 'izin-operasional':
+                $data = Operasional::where('statusDokumen_id', $status[$jenis])->get();
+                break;
+            
+            default:
+                $data = [];
+                break;
+        }
+
+        return view('admin-dinas.pengesahan-dokumen.data-pengesahan', ['jenis' => $jenis, 'layanan' => $layanan, 'data' => $data]);
     }
 
     public function buatSurat($jenis, $layanan, $id)
@@ -186,11 +281,17 @@ $data = [];
 
     public function riwayatPermohonan()
     {
-        return view('admin-dinas.riwayat-permohonan');
+        $pendirian = Pendirian::get();
+        $daftarUlang = DaftarUlang::get();
+        $operasional = Operasional::get();
+
+        return view('admin-dinas.riwayat-permohonan', compact('pendirian', 'daftarUlang', 'operasional'));
     }
 
     public function pengajuanPermohonan()
     {
+
+
         return view('admin-dinas.pengajuan-permohonan');
     }
 
@@ -276,12 +377,16 @@ $data = [];
 
     public function daftarUser()
     {
-        return view('admin-dinas.kelola-sistem.daftar-user');
+        $users = User::get();
+
+        return view('admin-dinas.kelola-sistem.daftar-user', compact('users'));
     }
 
     public function editUser($id)
     {
-        return view('admin-dinas.kelola-sistem.edit-user', ['id' => $id]);
+        $user = User::findOrFail($id);
+
+        return view('admin-dinas.kelola-sistem.edit-user', compact('id', 'user'));
     }
 
     public function panduanKelolaSistem()

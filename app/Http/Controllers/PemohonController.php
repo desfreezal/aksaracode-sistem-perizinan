@@ -17,6 +17,10 @@ class PemohonController extends Controller
     {
         return view('pemohon.dashboard');
     }
+    public function show($id)
+    {
+        
+    }
 
     public function izinPendirian()
     {

@@ -8,6 +8,8 @@ use App\Models\Operasional;
 use App\Models\Pendirian;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+
 
 class AdminDinasController extends Controller
 {
@@ -186,7 +188,13 @@ $data = [];
 
     public function riwayatPermohonan()
     {
-        return view('admin-dinas.riwayat-permohonan');
+        $user = Auth::user();
+
+        $pendirian = Pendirian::where('user_id', $user->id)->get();
+        $daftarUlang = DaftarUlang::where('user_id', $user->id)->get();
+        $operasional = Operasional::where('user_id', $user->id)->get();
+
+        return view('admin-dinas.riwayat-permohonan', compact('pendirian', 'daftarUlang', 'operasional', 'user'));
     }
 
     public function pengajuanPermohonan()

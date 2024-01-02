@@ -7,6 +7,7 @@ use App\Http\Controllers\OperasionalController;
 use App\Http\Controllers\PemohonController;
 use App\Http\Controllers\PendirianController;
 use App\Http\Controllers\StatistikController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -62,10 +63,13 @@ Route::get('/izin-operasional', function () {
     return view('landing-page.izin-operasional.operasional');
 });
 
+
+// Validasi dan Kelengkapan Data
 Route::post('/update/pendirian/statusDokumen', [PendirianController::class, 'update_status_dokumen'])->name('statusPendirian.update');
 Route::post('/update/operasional/statusDokumen', [OperasionalController::class, 'update_status_dokumen'])->name('statusOperasional.update');
 Route::post('/update/daftarUlang/statusDokumen', [DaftarUlangController::class, 'update_status_dokumen'])->name('statusDaftarUlang.update');
 
+// Pengesahan Dokumen
 Route::post('/update/pendirian/permohonanSelesai', [PendirianController::class, 'permohonan_selesai'])->name('permohonanSelesaiPendirian.update');
 Route::post('/update/operasional/permohonanSelesai', [OperasionalController::class, 'permohonan_selesai'])->name('permohonanSelesaiOperasional.update');
 Route::post('/update/daftarUlang/permohonanSelesai', [DaftarUlangController::class, 'permohonan_selesai'])->name('permohonanSelesaiDaftarUlang.update');
@@ -122,6 +126,10 @@ Route::middleware(['role:pemohon', 'verified'])->prefix('/dashboard-pemohon')->g
     Route::post('/daftar-ulang', [DaftarUlangController::class, 'store']);
     Route::post('/pendirian', [PendirianController::class, 'store']);
     Route::post('/operasional', [OperasionalController::class, 'store']);
+
+    // Update Profile
+    Route::post('/update-profile', [UserController::class, 'updateProfile']);
+    Route::post('/change-password', [UserController::class, 'changePassword']);
 
     // Update Data
     Route::post('/daftar-ulang/{id}', [DaftarUlangController::class, 'update']);
@@ -198,6 +206,7 @@ Route::middleware(['role:admin-dinas', 'verified'])->prefix('/dashboard-admin-di
     Route::get('kelola-sistem', [AdminDinasController::class, 'kelolaSistem'])->name('admin-dinas-kelola-sistem');
     Route::get('kelola-sistem/daftar-user', [AdminDinasController::class, 'daftarUser'])->name('admin-dinas-daftar-user');
     Route::get('kelola-sistem/daftar-user/{id}', [AdminDinasController::class, 'editUser'])->name('admin-dinas-edit-user');
+    
     Route::get('kelola-sistem/panduan-perizinan', [AdminDinasController::class, 'panduanPerizinan'])->name('admin-dinas-kelola-panduan');
     Route::get('kelola-sistem/panduan-perizinan/daftar-ulang', [AdminDinasController::class, 'panduanDaftarUlang'])->name('admin-dinas-kelola-daftar-ulang');
     Route::get('kelola-sistem/panduan-perizinan/izin-pendirian', [AdminDinasController::class, 'panduanIzinPendirian'])->name('admin-dinas-kelola-izin-pendirian');

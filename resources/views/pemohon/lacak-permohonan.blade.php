@@ -50,14 +50,6 @@
         const submitbtn = document.getElementById('submitbtn');
         const id = document.getElementById('id');
 
-        // detect enter inside input
-        id.addEventListener('keyup', function(e) {
-            e.preventDefault();
-            if (e.key === 'Enter' || e.keyCode === 13) {
-                alert('lll')
-            }
-        });
-
         submitbtn.addEventListener('click', () => {
             if (id.value == '') {
                 alert('ID Pendaftaran tidak boleh kosong');

@@ -103,7 +103,7 @@
                     </div>
 
                     <div class="flex gap-x-12 justify-end items-center">
-                        <button id="edit"
+                        <button id="edit" type="button"
                             class="px-12 py-[5px] rounded-3xl border border-edu-black font-semibold text-xl text-primary hover:bg-primary hover:text-white hover:border-0">
                             Edit Data
                         </button>

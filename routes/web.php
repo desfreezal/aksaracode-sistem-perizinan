@@ -127,6 +127,10 @@ Route::middleware(['role:pemohon', 'verified'])->prefix('/dashboard-pemohon')->g
     Route::post('/daftar-ulang/{id}', [DaftarUlangController::class, 'update']);
     Route::post('/pendirian/{id}', [PendirianController::class, 'update']);
     Route::post('/operasional/{id}', [OperasionalController::class, 'update']);
+
+    // pembaruan data
+    Route::get('pembaruan-data', [PemohonController::class, 'pembaruanData'])->name('pemohon-pembaruan-data');
+    Route::get('pembaruan-data/{id}', [PemohonController::class, 'detailPembaruanData'])->name('pemohon-detail-pembaruan-data');
 });
 
 // ADMIN DINAS

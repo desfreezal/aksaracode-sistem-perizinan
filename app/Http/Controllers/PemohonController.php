@@ -219,4 +219,14 @@ class PemohonController extends Controller
     {
         return view('pemohon.pengajuan-permohonan');
     }
+
+    public function pembaruanData()
+    {
+        return view('pemohon.pembaruan-data.index');
+    }
+
+    public function detailPembaruanData($id)
+    {
+        return view('pemohon.pembaruan-data.detail', ['id' => $id]);
+    }
 }

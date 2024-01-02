@@ -18,13 +18,14 @@
                     </h1>
                 </div>
 
-                <form action="{{ url('/dashboard-admin-dinas/daftar-ulang/berkas') }}" method="GET" class="w-full space-y-6" id="form">
+                <form action="{{ url('/dashboard-admin-dinas/daftar-ulang') }}" method="POST" class="w-full space-y-6"
+                    id="form">
                     @if (request('peruntukan') === 'tk')
                         @include('admin-dinas.daftar-ulang.berkas-daftar-ulang.table-tk')
                     @elseif (request('peruntukan') === 'sd')
                         @include('admin-dinas.daftar-ulang.berkas-daftar-ulang.table-sd')
                     @elseif (request('peruntukan') === 'smp')
-                        @include('admin-dinas.daftar-ulang.berkas-daftar-ulang.table-smp')
+                        @include('admin-dinas.daftar-ulang.berkas-daftar-ulang.table-sd')
                     @else
                         Berkas Sudah di submit
                     @endif

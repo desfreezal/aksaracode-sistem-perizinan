@@ -181,7 +181,7 @@ Route::middleware(['role:admin-dinas', 'verified'])->prefix('/dashboard-admin-di
     Route::get('pengajuan-permohonan', [AdminDinasController::class, 'pengajuanPermohonan'])->name('admin-dinas-pengajuan-permohonan');
     Route::get('daftar-ulang', [AdminDinasController::class, 'daftarUlang'])->name('admin-dinas-daftar-ulang');
     Route::get('daftar-ulang/data', [AdminDinasController::class, 'daftarUlangData']);
-    Route::get('daftar-ulang/detail', [AdminDinasController::class, 'daftarUlangDetail'])->name('admin-dinas-detail');
+    Route::get('daftar-ulang/detail', [AdminDinasController::class, 'detailDaftarUlang'])->name('admin-dinas-detail');
     Route::get('daftar-ulang/berkas', [AdminDinasController::class, 'daftarUlangBerkas'])->name('admin-dinas-berkas');
 
     Route::get('izin-pendirian', [AdminDinasController::class, 'izinPendirian'])->name('admin-dinas-izin-pendirian');

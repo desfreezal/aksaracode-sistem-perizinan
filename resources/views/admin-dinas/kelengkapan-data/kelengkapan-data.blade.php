@@ -105,7 +105,7 @@
                                                 @endif
                                             </h1>
                                             <p class="text-[#D77B78]">
-                                                {{ $item->created_at }}
+                                                {{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y H:i') }}
                                             </p>
                                         </div>
 
@@ -148,7 +148,7 @@
                                                 @endif
                                             </h1>
                                             <p class="text-[#D77B78]">
-                                                {{ $item->created_at }}
+                                                {{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y H:i') }}
                                             </p>
                                         </div>
 
@@ -192,7 +192,7 @@
                                                 @endif
                                             </h1>
                                             <p class="text-[#D77B78]">
-                                                {{ $item->created_at }}
+                                                {{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y H:i') }}
                                             </p>
                                         </div>
 

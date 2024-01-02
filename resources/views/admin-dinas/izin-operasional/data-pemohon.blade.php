@@ -21,12 +21,12 @@
                 <form action="{{ route('admin-dinas-detail-operasional') }}" method="GET" class="w-full space-y-6" id="form">
                     <input type="text" id="peruntukan" name="peruntukan" hidden>
                     <div class="flex items-center">
-                        <label for="nik" class="w-72">NIK admin-dinas</label>
+                        <label for="nik" class="w-72">NIK Pemohon</label>
                         <input id="nik" type="number" class="flex-grow text-edu-black border-abu-abu rounded"
                             name="nik">
                     </div>
                     <div class="flex items-center">
-                        <label for="nama" class="w-72">Nama admin-dinas</label>
+                        <label for="nama" class="w-72">Nama Pemohon</label>
                         <input id="nama" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
                             name="nama">
                     </div>
@@ -50,32 +50,32 @@
                             name="kelurahan">
                     </div>
                     <div class="flex items-center">
-                        <label for="alamat" class="w-72">Alamat admin-dinas</label>
+                        <label for="alamat" class="w-72">Alamat Pemohon</label>
                         <input id="alamat" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
                             name="alamat">
                     </div>
                     <div class="flex items-center">
-                        <label for="alamatdomisili" class="w-72">Alamat Domisili admin-dinas</label>
+                        <label for="alamatdomisili" class="w-72">Alamat Domisili Pemohon</label>
                         <input id="alamatdomisili" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
                             name="alamatdomisili">
                     </div>
                     <div class="flex items-center">
-                        <label for="tempatlahir" class="w-72">Tempat Lahir admin-dinas</label>
+                        <label for="tempatlahir" class="w-72">Tempat Lahir Pemohon</label>
                         <input id="tempatlahir" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
                             name="tempatlahir">
                     </div>
                     <div class="flex items-center">
-                        <label for="tanggallahir" class="w-72">Tanggal Lahir admin-dinas</label>
+                        <label for="tanggallahir" class="w-72">Tanggal Lahir Pemohon</label>
                         <input id="tanggallahir" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
                             name="tanggallahir">
                     </div>
                     <div class="flex items-center">
-                        <label for="nohp" class="w-72">No. Handphone admin-dinas</label>
+                        <label for="nohp" class="w-72">No. Handphone Pemohon</label>
                         <input id="nohp" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
                             name="nohp">
                     </div>
                     <div class="flex items-center">
-                        <label for="pekerjaan" class="w-72">Pekerjaan admin-dinas</label>
+                        <label for="pekerjaan" class="w-72">Pekerjaan Pemohon</label>
                         <input id="pekerjaan" type="text" class="flex-grow text-edu-black border-abu-abu rounded"
                             name="pekerjaan">
                     </div>

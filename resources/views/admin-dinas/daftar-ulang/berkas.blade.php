@@ -19,19 +19,26 @@
                 </div>
 
                 <form action="{{ url('/dashboard-admin-dinas/daftar-ulang') }}" method="POST" class="w-full space-y-6"
-                    id="form">
+                    id="form" enctype="multipart/form-data">
+                    @method('POST')
+                    @csrf
                     @if (request('peruntukan') === 'tk')
+                        <input type="hidden" name="category" value="TK">
                         @include('admin-dinas.daftar-ulang.berkas-daftar-ulang.table-tk')
                     @elseif (request('peruntukan') === 'sd')
+                        <input type="hidden" name="category" value="SD">
+
                         @include('admin-dinas.daftar-ulang.berkas-daftar-ulang.table-sd')
                     @elseif (request('peruntukan') === 'smp')
+                        <input type="hidden" name="category" value="SMP">
+
                         @include('admin-dinas.daftar-ulang.berkas-daftar-ulang.table-sd')
                     @else
                         Berkas Sudah di submit
                     @endif
 
                     <div class="flex gap-x-12 justify-end items-center">
-                        <button id="simpan" data-modal-target="error-modal" data-modal-toggle="error-modal"
+                        <button id="simpan" data-modal-target="default-modal" data-modal-toggle="default-modal"
                             class="px-12 py-[5px] rounded-3xl font-semibold text-xl  hover:bg-primary-light bg-primary text-white">
                             Simpan Data
                         </button>

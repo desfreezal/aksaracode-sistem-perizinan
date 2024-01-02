@@ -142,7 +142,7 @@
 
 
                     <div class="flex gap-x-12 justify-end items-center">
-                        <button id="simpan" data-modal-target="error-modal" data-modal-toggle="error-modal"
+                        <button id="simpan" data-modal-target="default-modal" data-modal-toggle="default-modal"
                             class="px-12 py-[5px] rounded-3xl font-semibold text-xl  hover:bg-primary-light bg-primary text-white">
                             Simpan Data
                         </button>

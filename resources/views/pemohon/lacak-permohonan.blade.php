@@ -16,7 +16,7 @@
             </div>
         </div>
 
-        <form action="{{ url('/dashboard-pemohon/status-permohonan/{id}') }}" method="GET">
+        <form action="{{ url('/dashboard-pemohon/status-permohonan/{id}') }}" method="GET" id="form-submit">
             <div class="mt-16 mb-40 pt-20 pb-24 shadow-2xl rounded flex flex-col">
 
                 <div class="flex gap-8 items-center justify-center mb-14">
@@ -47,16 +47,23 @@
             window.location.href = '/dashboard-pemohon/status-permohonan/' + idPendaftaran; // Melakukan redirect
         }
 
-
         const submitbtn = document.getElementById('submitbtn');
         const id = document.getElementById('id');
+
+        // detect enter inside input
+        id.addEventListener('keyup', function(e) {
+            e.preventDefault();
+            if (e.key === 'Enter' || e.keyCode === 13) {
+                alert('lll')
+            }
+        });
 
         submitbtn.addEventListener('click', () => {
             if (id.value == '') {
                 alert('ID Pendaftaran tidak boleh kosong');
             } else {
                 window.location.href = '/dashboard-pemohon/status-permohonan/' +
-                id.value; // Melakukan redirect
+                    id.value; // Melakukan redirect
 
             }
         });

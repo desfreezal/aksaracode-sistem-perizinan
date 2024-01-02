@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminDinasController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DaftarUlangController;
 use App\Http\Controllers\OperasionalController;
@@ -61,6 +62,15 @@ Route::get('/izin-operasional', function () {
     return view('landing-page.izin-operasional.operasional');
 });
 
+Route::post('/update/pendirian/statusDokumen', [PendirianController::class, 'update_status_dokumen'])->name('statusPendirian.update');
+Route::post('/update/operasional/statusDokumen', [OperasionalController::class, 'update_status_dokumen'])->name('statusOperasional.update');
+Route::post('/update/daftarUlang/statusDokumen', [DaftarUlangController::class, 'update_status_dokumen'])->name('statusDaftarUlang.update');
+
+Route::post('/update/pendirian/permohonanSelesai', [PendirianController::class, 'permohonan_selesai'])->name('permohonanSelesaiPendirian.update');
+Route::post('/update/operasional/permohonanSelesai', [OperasionalController::class, 'permohonan_selesai'])->name('permohonanSelesaiOperasional.update');
+Route::post('/update/daftarUlang/permohonanSelesai', [DaftarUlangController::class, 'permohonan_selesai'])->name('permohonanSelesaiDaftarUlang.update');
+
+
 // STATISTIK
 Route::get('/data-statistik-daftarulang', [StatistikController::class, 'dataStatistikDaftarUlang']);
 Route::get('/data-statistik-izinoperasional', [StatistikController::class, 'dataStatistikIzinOperasional']);
@@ -74,7 +84,7 @@ Route::middleware(['role:pemohon', 'verified'])->prefix('/dashboard-pemohon')->g
 
     // Lacak Permohonan
     Route::get('/lacak-permohonan', [PemohonController::class, 'lacakPermohonan']);
-    Route::get('/status-permohonan', function(){
+    Route::get('/status-permohonan', function () {
         return redirect('dashboard-pemohon/lacak-permohonan');
     });
     Route::get('/status-permohonan/{id}', [PemohonController::class, 'statusPermohonan']);
@@ -82,7 +92,7 @@ Route::middleware(['role:pemohon', 'verified'])->prefix('/dashboard-pemohon')->g
 
     Route::get('/profile', [PemohonController::class, 'profile']);
     Route::post('/profile', [PemohonController::class, 'editProfile']);
-    
+
     Route::get('/riwayat', [PemohonController::class, 'riwayat']);
     Route::get('/notifikasi', [PemohonController::class, 'notifikasi']);
 
@@ -121,232 +131,77 @@ Route::middleware(['role:pemohon', 'verified'])->prefix('/dashboard-pemohon')->g
 
 // ADMIN DINAS
 Route::middleware(['role:admin-dinas', 'verified'])->prefix('/dashboard-admin-dinas')->group(function () {
-    Route::get('', function () {
-        return view('admin-dinas.dashboard');
-    })->name('admin-dinas-dashboard');
+    Route::get('/', [AdminDinasController::class, 'dashboard'])->name('admin-dinas-dashboard');
 
-    Route::get('/izin-pendirian/detail-yayasan', function () {
-        return view('admin-dinas.izin-pendirian.detail-yayasan');
-    })->name('admin-dinas-detail-yayasan');
-    
-    Route::get('/izin-pendirian/detail-pendirian', function () {
-        return view('admin-dinas.izin-pendirian.detail-pendirian');
-    })->name('admin-dinas-detail-pendirian');
-    // upload berkas
-    Route::get('/izin-pendirian/upload-berkas', function () {
-        return view('admin-dinas.izin-pendirian.upload-berkas');
-    })->name('admin-dinas-upload-berkas');
-
-    Route::get('/kelengkapan-data', function () {
-        return view('admin-dinas.kelengkapan-data.kelengkapan-data');
-    })->name('admin-dinas-lengkap-data');
-
-    Route::get('/kelengkapan-data/{id}', function ($id) {
-        return view('admin-dinas.kelengkapan-data.kelengkapan-detail', ['id' => $id]);
-    })->name('admin-dinas-kelengkapan-detail');
-
-    Route::get('/validasi-data', function () {
-        return view('admin-dinas.validasi-data.index');
-    })->name('admin-dinas-validasi-data');
-
-    Route::get('/detail-validasi/{id}', function ($id) {
-        return view('admin-dinas.validasi-data.validasi', ['id' => $id]);
-    })->name('admin-dinas-detail-validasi');
-
-    // jadwal-survey
-    Route::get('/jadwal-survey/{id}', function ($id) {
-        return view('admin-dinas.validasi-data.jadwal-survey', ['id' => $id]);
-    })->name('admin-dinas-jadwal-survey');
-
-    // validasi-survey/{id}
-    Route::get('/validasi-survey/{id}', function ($id) {
-        return view('admin-dinas.validasi-data.validasi-survey', ['id' => $id]);
-    })->name('admin-dinas-validasi-survey');
-
-    Route::get('/lacak-permohonan', function () {
-        return view('admin-dinas.lacak-permohonan');
-    })->name('admin-dinas-lacak-permohonan');
-
-    Route::get('/status-permohonan', function () {
-        return view('admin-dinas.status-permohonan');
-    })->name('admin-dinas-status-permohonan');
-
-    Route::get('/monitoring', function () {
-        return view('admin-dinas.monitoring');
-    })->name('admin-dinas-monitoring');
-
-    Route::get('/monitoring/{type}', function ($type) {
-        return view('admin-dinas.monitoring-detail', ['type' => $type]);
-    })->name('admin-dinas-monitoring-detail');
-
-    Route::get('/notifikasi', function () {
-        return view('admin-dinas.notifikasi');
-    })->name('admin-dinas-notifikasi');
-
-    Route::get('/panduan-perizinan', function () {
-        return view('admin-dinas.panduan-perizinan');
-    })->name('admin-dinas-panduan-perizinan');
-
-    Route::get('/panduan-perizinan/daftar-ulang', function () {
-        return view('admin-dinas.panduan-perizinan.daftar-ulang.daftar');
-    })->name('admin-dinas-panduan-daftar-ulang');
-
-    // panduan izin operasional
-    Route::get('/panduan-perizinan/izin-operasional', function () {
-        return view('admin-dinas.panduan-perizinan.izin-operasional.operasional');
-    })->name('admin-dinas-panduan-operasional');
-
-    // izin pendirian
-    Route::get('/panduan-perizinan/izin-pendirian', function () {
-        return view('admin-dinas.panduan-perizinan.izin-pendirian.izin');
-    })->name('admin-dinas-panduan-izin');
-
-    Route::get('/profile', function () {
-        return view('admin-dinas.profile');
-    })->name('admin-dinas-profile');
-
-    // pengesahan-dokumen
-    Route::get('/pengesahan-dokumen', function () {
-        return view('admin-dinas.pengesahan-dokumen.index');
-    })->name('admin-dinas-pengesahan-dokumen');
-
-    // jenis-pengesahan
-    Route::get('/pengesahan-dokumen/{jenis}', function ($jenis) {
-        return view(
-            'admin-dinas.pengesahan-dokumen.jenis-pengesahan',
-            ['jenis' => $jenis]
-        );
-    })->name('admin-dinas-jenis-pengesahan');
-
-    Route::get('/pengesahan-dokumen/{jenis}/{layanan}', function ($jenis, $layanan) {
-        return view(
-            'admin-dinas.pengesahan-dokumen.data-pengesahan',
-            [
-                'jenis' => $jenis,
-                'layanan' => $layanan
-            ]
-        );
-    })->name('admin-dinas-data-pengesahan');
-
-    // buat-surat/{id}
-    Route::get('/buat-surat/{jenis}/{layanan}/{id}', function ($jenis, $layanan, $id) {
-        return view('admin-dinas.pengesahan-dokumen.surat', [
-            'id' => $id,
-            'jenis' => $jenis,
-            'layanan' => $layanan
-        ]);
-    })->name('admin-dinas-buat-surat');
-
-    // RIWAYAT PERMOHONAN
-    Route::get('/riwayat', function () {
-        return view('admin-dinas.riwayat-permohonan');
-    })->name('admin-dinas-riwayat-permohonan');
-
-    // PENGAJUAN PERMOHONAN
-    Route::get('/pengajuan-permohonan', function () {
-        return view('admin-dinas.pengajuan-permohonan');
-    })->name('admin-dinas-pengajuan-permohonan');
-
-    Route::get('/daftar-ulang', function () {
-        return view('admin-dinas.daftar-ulang.daftar');
-    })->name('admin-dinas-daftar-ulang');
-
-    Route::get('/daftar-ulang/data', function () {
-        return view('admin-dinas.daftar-ulang.daftar');
+    Route::group(['prefix' => 'izin-pendirian'], function () {
+        Route::get('detail-yayasan', [AdminDinasController::class, 'detailYayasan'])->name('admin-dinas-detail-yayasan');
+        Route::get('detail-pendirian', [AdminDinasController::class, 'detailPendirian'])->name('admin-dinas-detail-pendirian');
+        Route::get('upload-berkas', [AdminDinasController::class, 'uploadBerkas'])->name('admin-dinas-upload-berkas');
     });
 
-    Route::get('/daftar-ulang/detail', function () {
-        return view('admin-dinas.daftar-ulang.detail');
-    })->name('admin-dinas-detail');
+    // Store Data
+    Route::post('/daftar-ulang', [DaftarUlangController::class, 'store']);
+    Route::post('/pendirian', [PendirianController::class, 'store']);
+    Route::post('/operasional', [OperasionalController::class, 'store']);
 
-    Route::get('/daftar-ulang/berkas', function () {
-        return view('admin-dinas.daftar-ulang.berkas');
-    })->name('admin-dinas-berkas');
+    // Update Data
+    Route::post('/daftar-ulang/{id}', [DaftarUlangController::class, 'update']);
+    Route::post('/pendirian/{id}', [PendirianController::class, 'update']);
+    Route::post('/operasional/{id}', [OperasionalController::class, 'update']);
 
-    Route::get('/izin-pendirian', function () {
-        return view('admin-dinas.izin-pendirian.data-pemohon');
-    })->name('admin-dinas-izin-pendirian');
+    Route::get('kelengkapan-data', [AdminDinasController::class, 'kelengkapanData'])->name('admin-dinas-lengkap-data');
+    Route::get('kelengkapan-data/{id}', [AdminDinasController::class, 'kelengkapanDetail'])->name('admin-dinas-kelengkapan-detail');
 
-    Route::get('/izin-pendirian/detail-yayasan', function () {
-        return view('admin-dinas.izin-pendirian.detail-yayasan');
-    })->name('admin-dinas-detail-yayasan');
+    Route::get('validasi-data', [AdminDinasController::class, 'validasiData'])->name('admin-dinas-validasi-data');
+    Route::get('detail-validasi/{id}', [AdminDinasController::class, 'detailValidasi'])->name('admin-dinas-detail-validasi');
+    Route::get('jadwal-survey/{id}', [AdminDinasController::class, 'jadwalSurvey'])->name('admin-dinas-jadwal-survey');
+    Route::get('validasi-survey/{id}', [AdminDinasController::class, 'validasiSurvey'])->name('admin-dinas-validasi-survey');
 
-    Route::get('/izin-pendirian/detail-pendirian', function () {
-        return view('admin-dinas.izin-pendirian.detail-pendirian');
-    })->name('admin-dinas-detail-pendirian');
-    // upload berkas
-    Route::get('/izin-pendirian/upload-berkas', function () {
-        return view('admin-dinas.izin-pendirian.upload-berkas');
-    })->name('admin-dinas-upload-berkas');
+    Route::get('lacak-permohonan', [AdminDinasController::class, 'lacakPermohonan'])->name('admin-dinas-lacak-permohonan');
+    Route::get('status-permohonan', [AdminDinasController::class, 'statusPermohonan'])->name('admin-dinas-status-permohonan');
+    Route::get('monitoring', [AdminDinasController::class, 'monitoring'])->name('admin-dinas-monitoring');
+    Route::get('monitoring/{type}', [AdminDinasController::class, 'monitoringDetail'])->name('admin-dinas-monitoring-detail');
+    Route::get('notifikasi', [AdminDinasController::class, 'notifikasi'])->name('admin-dinas-notifikasi');
+    Route::get('panduan-perizinan', [AdminDinasController::class, 'panduanPerizinan'])->name('admin-dinas-panduan-perizinan');
+    Route::get('panduan-perizinan/daftar-ulang', [AdminDinasController::class, 'panduanDaftarUlang'])->name('admin-dinas-panduan-daftar-ulang');
+    Route::get('panduan-perizinan/izin-operasional', [AdminDinasController::class, 'panduanIzinOperasional'])->name('admin-dinas-panduan-operasional');
+    Route::get('panduan-perizinan/izin-pendirian', [AdminDinasController::class, 'panduanIzinPendirian'])->name('admin-dinas-panduan-izin');
 
-    Route::get('/izin-operasional', function () {
-        return view('admin-dinas.izin-operasional.data-pemohon');
-    })->name('admin-dinas-izin-operasional');
+    Route::get('profile', [AdminDinasController::class, 'profile'])->name('admin-dinas-profile');
+    Route::get('pengesahan-dokumen', [AdminDinasController::class, 'pengesahanDokumen'])->name('admin-dinas-pengesahan-dokumen');
+    Route::get('pengesahan-dokumen/{jenis}', [AdminDinasController::class, 'jenisPengesahan'])->name('admin-dinas-jenis-pengesahan');
+    Route::get('pengesahan-dokumen/{jenis}/{layanan}', [AdminDinasController::class, 'dataPengesahan'])->name('admin-dinas-data-pengesahan');
+    Route::get('buat-surat/{jenis}/{layanan}/{id}', [AdminDinasController::class, 'buatSurat'])->name('admin-dinas-buat-surat');
 
-    Route::get('/izin-operasional/detail', function () {
-        return view('admin-dinas.izin-operasional.detail-operasional');
-    })->name('admin-dinas-detail-operasional');
+    Route::get('riwayat', [AdminDinasController::class, 'riwayatPermohonan'])->name('admin-dinas-riwayat-permohonan');
+    Route::get('pengajuan-permohonan', [AdminDinasController::class, 'pengajuanPermohonan'])->name('admin-dinas-pengajuan-permohonan');
+    Route::get('daftar-ulang', [AdminDinasController::class, 'daftarUlang'])->name('admin-dinas-daftar-ulang');
+    Route::get('daftar-ulang/data', [AdminDinasController::class, 'daftarUlangData']);
+    Route::get('daftar-ulang/detail', [AdminDinasController::class, 'daftarUlangDetail'])->name('admin-dinas-detail');
+    Route::get('daftar-ulang/berkas', [AdminDinasController::class, 'daftarUlangBerkas'])->name('admin-dinas-berkas');
 
-    Route::get('/izin-operasional/berkas', function () {
-        return view('admin-dinas.izin-operasional.upload-berkas');
-    })->name('admin-dinas-berkas-operasional');
+    Route::get('izin-pendirian', [AdminDinasController::class, 'izinPendirian'])->name('admin-dinas-izin-pendirian');
+    Route::get('izin-pendirian/detail-yayasan', [AdminDinasController::class, 'detailYayasan'])->name('admin-dinas-detail-yayasan');
+    Route::get('izin-pendirian/detail-pendirian', [AdminDinasController::class, 'detailPendirian'])->name('admin-dinas-detail-pendirian');
+    Route::get('izin-pendirian/upload-berkas', [AdminDinasController::class, 'uploadBerkas'])->name('admin-dinas-upload-berkas');
 
-    // survey
-    Route::get('/survey', function () {
-        return view('admin-dinas.survey.index');
-    })->name('admin-dinas-survey');
+    Route::get('izin-operasional', [AdminDinasController::class, 'izinOperasional'])->name('admin-dinas-izin-operasional');
+    Route::get('izin-operasional/detail', [AdminDinasController::class, 'detailOperasional'])->name('admin-dinas-detail-operasional');
+    Route::get('izin-operasional/berkas', [AdminDinasController::class, 'berkasOperasional'])->name('admin-dinas-berkas-operasional');
 
-    Route::get('/survey/{id}', function ($id) {
-        return view('admin-dinas.survey.isi-form', [
-            'id' => $id
-        ]);
-    })->name('admin-dinas-isi-survey');
+    Route::get('survey', [AdminDinasController::class, 'survey'])->name('admin-dinas-survey');
+    Route::get('survey/{id}', [AdminDinasController::class, 'isiSurvey'])->name('admin-dinas-isi-survey');
 
-    // pembaruan-data
-    Route::get('/pembaruan-data', function () {
-        return view('admin-dinas.pembaruan-data.index');
-    })->name('admin-dinas-pembaruan-data');
+    Route::get('pembaruan-data', [AdminDinasController::class, 'pembaruanData'])->name('admin-dinas-pembaruan-data');
+    Route::get('pembaruan-data/{id}', [AdminDinasController::class, 'detailPembaruanData'])->name('admin-dinas-detail-pembaruan-data');
 
-    // pembaruan-data/{id}
-    Route::get('/pembaruan-data/{id}', function ($id) {
-        return view('admin-dinas.pembaruan-data.detail', [
-            'id' => $id
-        ]);
-    })->name('admin-dinas-detail-pembaruan-data');
-
-    // kelola-sistem
-    Route::get('/kelola-sistem', function () {
-        return view('admin-dinas.kelola-sistem.index');
-    })->name('admin-dinas-kelola-sistem');
-
-    // kelola-sistem/daftar-user
-    Route::get('/kelola-sistem/daftar-user', function () {
-        return view('admin-dinas.kelola-sistem.daftar-user');
-    })->name('admin-dinas-daftar-user');
-
-    // kelola-sistem/daftar-user/{id}
-    Route::get('/kelola-sistem/daftar-user/{id}', function ($id) {
-        return view('admin-dinas.kelola-sistem.edit-user', [
-            'id' => $id
-        ]);
-    })->name('admin-dinas-edit-user');
-
-    // kelola-sistem/panduan-perizinan
-    Route::get('/kelola-sistem/panduan-perizinan', function () {
-        return view('admin-dinas.kelola-sistem.panduan-perizinan');
-    })->name('admin-dinas-kelola-panduan');
-
-    Route::get('/kelola-sistem/panduan-perizinan/daftar-ulang', function () {
-        return view('admin-dinas.kelola-sistem.jenis-panduan.daftar-ulang');
-    })->name('admin-dinas-kelola-daftar-ulang');
-
-    Route::get('/kelola-sistem/panduan-perizinan/izin-pendirian', function () {
-        return view('admin-dinas.kelola-sistem.jenis-panduan.izin-pendirian');
-    })->name('admin-dinas-kelola-izin-pendirian');
-
-    Route::get('/kelola-sistem/panduan-perizinan/izin-operasional', function () {
-        return view('admin-dinas.kelola-sistem.jenis-panduan.izin-operasional');
-    })->name('admin-dinas-kelola-izin-operasional');
+    Route::get('kelola-sistem', [AdminDinasController::class, 'kelolaSistem'])->name('admin-dinas-kelola-sistem');
+    Route::get('kelola-sistem/daftar-user', [AdminDinasController::class, 'daftarUser'])->name('admin-dinas-daftar-user');
+    Route::get('kelola-sistem/daftar-user/{id}', [AdminDinasController::class, 'editUser'])->name('admin-dinas-edit-user');
+    Route::get('kelola-sistem/panduan-perizinan', [AdminDinasController::class, 'panduanPerizinan'])->name('admin-dinas-kelola-panduan');
+    Route::get('kelola-sistem/panduan-perizinan/daftar-ulang', [AdminDinasController::class, 'panduanDaftarUlang'])->name('admin-dinas-kelola-daftar-ulang');
+    Route::get('kelola-sistem/panduan-perizinan/izin-pendirian', [AdminDinasController::class, 'panduanIzinPendirian'])->name('admin-dinas-kelola-izin-pendirian');
+    Route::get('kelola-sistem/panduan-perizinan/izin-operasional', [AdminDinasController::class, 'panduanIzinOperasional'])->name('admin-dinas-kelola-izin-operasional');
 });
 
 // ADMIN UTAMA

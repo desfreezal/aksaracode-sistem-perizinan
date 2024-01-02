@@ -26,7 +26,7 @@ Breadcrumbs::for('pemohon-berkas-daftar', function (Generator $trail, $peruntuka
 
 // for pemohon-izin-pendirian
 Breadcrumbs::for('pemohon-izin-pendirian', function (Generator $trail, $peruntukan) {
-    $trail->parent('pemohon-daftar-ulang')->push('Daftar Ulang ' . strtoupper($peruntukan), route('pemohon-izin-pendirian'));
+    $trail->parent('pemohon-daftar-ulang')->push('Daftar Ulang ' . strtoupper($peruntukan), route('izin-pendirian'));
 });
 
 // for pemohon-izin-pendirian

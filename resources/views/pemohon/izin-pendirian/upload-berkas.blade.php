@@ -18,15 +18,19 @@
                     </h1>
                 </div>
 
-                <form action="{{ url('/dashboard-pemohon/izin-pendirian/step5') }}" method="GET"
-                    class="w-full space-y-6">
+                <form action="{{ url('/dashboard-pemohon/pendirian') }}" method="POST" class="w-full space-y-6" id="form" enctype="multipart/form-data">
+                    @csrf
                     @if (request('peruntukan') === 'tk')
+                        <input type="hidden" name="category" value="TK">
                         @include('pemohon.izin-pendirian.berkas-izin-pendirian.table-tk')
                     @elseif (request('peruntukan') === 'sd')
+                        <input type="hidden" name="category" value="SD">
                         @include('pemohon.izin-pendirian.berkas-izin-pendirian.table-sd')
                     @elseif (request('peruntukan') === 'smp')
+                        <input type="hidden" name="category" value="SMP">
                         @include('pemohon.izin-pendirian.berkas-izin-pendirian.table-smp')
                     @else
+                        <input type="hidden" name="category" value="SD">
                         @include('pemohon.izin-pendirian.berkas-izin-pendirian.table-sd')
                     @endif
 
@@ -184,7 +188,7 @@
             // closemodal onclick or modal hidden send form
             const closeModal = document.getElementById('closeModal')
             // send form
-            const form = document.querySelector('form')
+            const form = document.getElementById('form')
             closeModal.addEventListener('click', () => {
                 form.submit()
             })

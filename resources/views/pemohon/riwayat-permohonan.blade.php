@@ -6,7 +6,7 @@
     <div class="min-h-screen h-full">
         <div class="flex">
             {{-- SIDEBAR --}}
-            {{-- @include('pemohon.sidebar') --}}
+            @include('pemohon.sidebar')
             {{-- SIDEBAR --}}
 
             <div class="flex-grow h-full pl-[34px] pr-[88px] py-7 box-border mb-10" id="content">

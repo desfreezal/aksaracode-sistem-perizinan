@@ -16,17 +16,17 @@
             </div>
         </div>
 
-        <form action="{{ url('/dashboard/status-permohonan', []) }}" method="get">
+        <form action="{{ url('/dashboard-pemohon/status-permohonan/{id}') }}" method="GET">
             <div class="mt-16 mb-40 pt-20 pb-24 shadow-2xl rounded flex flex-col">
 
                 <div class="flex gap-8 items-center justify-center mb-14">
                     <label for="id" class="text-base">Masukkan ID Pendaftaran</label>
-                    <input type="text" name="idpendaftaran" class="px-5 py-1 rounded-md border-opacity-70"
-                        id="id">
+                    <input type="text" class="px-5 py-1 rounded-md border-opacity-70" id="id">
                 </div>
 
-                <button type="submit"
-                    class="mx-auto px-7 py-3 rounded-xl bg-primary text-white font-bold text-xl hover:bg-primary-light">Cari
+                <button type="button" onclick="submitForm()"
+                    class="mx-auto px-7 py-3 rounded-xl bg-primary text-white font-bold text-xl hover:bg-primary-light"
+                    id="submitbtn">Cari
                     Permohonan</button>
             </div>
         </form>
@@ -38,3 +38,27 @@
         </a>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        function submitForm() {
+            // event.preventDefault(); // Mencegah default behavior dari tombol submit
+            let idPendaftaran = document.getElementById('idpendaftaran').value; // Mendapatkan nilai dari input field
+            window.location.href = '/dashboard-pemohon/status-permohonan/' + idPendaftaran; // Melakukan redirect
+        }
+
+
+        const submitbtn = document.getElementById('submitbtn');
+        const id = document.getElementById('id');
+
+        submitbtn.addEventListener('click', () => {
+            if (id.value == '') {
+                alert('ID Pendaftaran tidak boleh kosong');
+            } else {
+                window.location.href = '/dashboard-pemohon/status-permohonan/' +
+                id.value; // Melakukan redirect
+
+            }
+        });
+    </script>
+@endpush

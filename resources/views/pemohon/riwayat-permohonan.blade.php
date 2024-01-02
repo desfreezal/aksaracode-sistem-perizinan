@@ -1,6 +1,8 @@
 @extends('pemohon.layout')
 
 @section('content')
+    {{-- @dd($pendirian, $daftarUlang, $operasional) --}}
+
     <div class="min-h-screen h-full">
 
         <div class="flex">
@@ -26,7 +28,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        {{-- <tr>
                             <td>1</td>
                             <td>Oksana Khoirunnida</td>
                             <td>123456</td>
@@ -39,7 +41,44 @@
                             <td>123456789</td>
                             <td>12-12-2021</td>
                             <td>TES</td>
-                        </tr>
+                        </tr> --}}
+                        @forelse ($pendirian as $key => $value)
+                            <tr>
+                                <td> {{ $key + 1 }} </td>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $value->id }}</td>
+                                <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $value->created_at)->format('d-m-Y') }}
+                                </td>
+                                <td>Izin Pendirian</td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="5"></td>
+                            </tr>
+                        @endforelse
+
+                        @foreach ($daftarUlang as $keyDU => $valueDU)
+                            <tr>
+                                <td> {{ '-' }} </td>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $valueDU->id }}</td>
+                                <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $valueDU->created_at)->format('d-m-Y') }}
+                                </td>
+                                <td>Daftar Ulang</td>
+                            </tr>
+                        @endforeach
+
+                        @foreach ($operasional as $keyOP => $valueOP)
+                            <tr>
+                                <td> {{ '-' }} </td>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $valueOP->id }}</td>
+                                <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $valueOP->created_at)->format('d-m-Y') }}
+                                </td>
+                                <td>Daftar Ulang</td>
+                            </tr>
+                        @endforeach
+
                     </tbody>
                 </table>
 

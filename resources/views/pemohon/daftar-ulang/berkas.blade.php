@@ -18,13 +18,19 @@
                     </h1>
                 </div>
 
-                <form action="{{ url('/dashboard-pemohon/daftar-ulang/berkas') }}" method="GET" class="w-full space-y-6">
+                <form action="{{ url('/dashboard-pemohon/daftar-ulang') }}" method="POST" class="w-full space-y-6"
+                    enctype="multipart/form-data">
+                    @csrf
+                    @method('POST')
                     @if (request('peruntukan') === 'tk')
+                        <input type="hidden" name="category" value="TK">
                         @include('pemohon.daftar-ulang.berkas-daftar-ulang.table-tk')
                     @elseif (request('peruntukan') === 'sd')
+                        <input type="hidden" name="category" value="SD">
                         @include('pemohon.daftar-ulang.berkas-daftar-ulang.table-sd')
                     @elseif (request('peruntukan') === 'smp')
-                        @include('pemohon.daftar-ulang.berkas-daftar-ulang.table-smp')
+                        <input type="hidden" name="category" value="SMP">
+                        @include('pemohon.daftar-ulang.berkas-daftar-ulang.table-sd')
                     @else
                         Berkas Sudah di submit
                     @endif

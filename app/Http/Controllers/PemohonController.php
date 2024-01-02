@@ -64,8 +64,11 @@ class PemohonController extends Controller
             $tipe_dokumen = 'Operasional';
             $hasil = Operasional::findOrFail($id);
         }
+        
+        $user = Auth::user();
 
-        return view('pemohon.status-permohonan', compact('tipe_dokumen','hasil'));
+
+        return view('pemohon.status-permohonan', compact('tipe_dokumen','hasil', 'user'));
     }
 
     public function profile()
@@ -93,7 +96,7 @@ class PemohonController extends Controller
         $daftarUlang = DaftarUlang::where('user_id', $user->id)->get();
         $operasional = Operasional::where('user_id', $user->id)->get();
 
-        return view('pemohon.riwayat-permohonan', compact('pendirian', 'daftarUlang', 'operasional'));
+        return view('pemohon.riwayat-permohonan', compact('pendirian', 'daftarUlang', 'operasional', 'user'));
     }
 
     public function notifikasi()

@@ -10,7 +10,7 @@
             <div class="flex-grow h-full pl-[34px] pr-[88px] py-7 box-border mb-10" id="content">
                 {{-- CONTENT --}}
 
-                <form action="{{ url('/dashboard/profile') }}" method="GET" class="w-full space-y-6">
+                <form action="{{ url('/dashboard-pemohon/profile') }}" method="GET" class="w-full space-y-6">
                     <div class="flex items-center">
                         <label for="jenid" class="w-72">Jenis Identitas</label>
                         <input readonly id="jenid" type="text"

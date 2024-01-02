@@ -1,31 +1,31 @@
 @extends('pemohon.layout')
 
 @php
-    $data = [
-        [
-            'Nama Pemohon' => 'Jane ',
-            'Tanggal' => '06/11/2023',
-            'Status Dokumen' => 'Selesai',
-        ],
-        [
-            'Nama Pemohon' => 'Jauza',
-            'Tanggal' => '06/11/2023',
-            'Status Dokumen' => 'Diproses',
-        ],
-        [
-            'Nama Pemohon' => 'Akbar',
-            'Tanggal' => '06/11/2023',
-            'Status Dokumen' => 'Diproses',
-        ],
-        [
-            'Nama Pemohon' => 'Faiza',
-            'Tanggal' => '06/11/2023',
-            'Status Dokumen' => 'Diproses',
-        ],
-    ];
+    // $data = [
+    //     [
+    //         'Nama Pemohon' => 'Jane ',
+    //         'Tanggal' => '06/11/2023',
+    //         'Status Dokumen' => 'Selesai',
+    //     ],
+    //     [
+    //         'Nama Pemohon' => 'Jauza',
+    //         'Tanggal' => '06/11/2023',
+    //         'Status Dokumen' => 'Diproses',
+    //     ],
+    //     [
+    //         'Nama Pemohon' => 'Akbar',
+    //         'Tanggal' => '06/11/2023',
+    //         'Status Dokumen' => 'Diproses',
+    //     ],
+    //     [
+    //         'Nama Pemohon' => 'Faiza',
+    //         'Tanggal' => '06/11/2023',
+    //         'Status Dokumen' => 'Diproses',
+    //     ],
+    // ];
 @endphp
 
-{{-- @dd($type, $data) --}}
+@dd($type, $data)
 
 @section('content')
     <div class="min-h-screen h-full">

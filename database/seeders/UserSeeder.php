@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
             'email' => 'dinas@perizinan.com',
             'password' => bcrypt('dinas123'),
         ]);
-        $dinas->assignRole('dinas');
+        $dinas->assignRole('admin-dinas');
 
         $walikota = User::create([
             'name' => 'walikota Role',

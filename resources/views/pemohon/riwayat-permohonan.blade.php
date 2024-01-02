@@ -4,10 +4,9 @@
     {{-- @dd($pendirian, $daftarUlang, $operasional) --}}
 
     <div class="min-h-screen h-full">
-
         <div class="flex">
             {{-- SIDEBAR --}}
-            @include('pemohon.sidebar')
+            {{-- @include('pemohon.sidebar') --}}
             {{-- SIDEBAR --}}
 
             <div class="flex-grow h-full pl-[34px] pr-[88px] py-7 box-border mb-10" id="content">
@@ -42,20 +41,24 @@
                             <td>12-12-2021</td>
                             <td>TES</td>
                         </tr> --}}
-                        @forelse ($pendirian as $key => $value)
+                        @foreach ($pendirian as $key => $value)
                             <tr>
-                                <td> {{ $key + 1 }} </td>
+                                <td> {{ '-' }} </td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $value->id }}</td>
                                 <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $value->created_at)->format('d-m-Y') }}
                                 </td>
-                                <td>Izin Pendirian</td>
+                                <td>
+                                    @if ($value->category_id === 1)
+                                        Izin Pendirian TK
+                                    @elseif($value->category_id === 2)
+                                        Izin Pendirian SD
+                                    @else
+                                        Izin Pendirian SMP
+                                    @endif
+                                </td>
                             </tr>
-                        @empty
-                            <tr>
-                                <td colspan="5"></td>
-                            </tr>
-                        @endforelse
+                        @endforeach
 
                         @foreach ($daftarUlang as $keyDU => $valueDU)
                             <tr>
@@ -64,7 +67,15 @@
                                 <td>{{ $valueDU->id }}</td>
                                 <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $valueDU->created_at)->format('d-m-Y') }}
                                 </td>
-                                <td>Daftar Ulang</td>
+                                <td>
+                                    @if ($value->category_id === 1)
+                                        Daftar Ulang TK
+                                    @elseif($value->category_id === 2)
+                                        Daftar Ulang SD
+                                    @else
+                                        Daftar Ulang SMP
+                                    @endif
+                                </td>
                             </tr>
                         @endforeach
 
@@ -75,7 +86,15 @@
                                 <td>{{ $valueOP->id }}</td>
                                 <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $valueOP->created_at)->format('d-m-Y') }}
                                 </td>
-                                <td>Daftar Ulang</td>
+                                <td>
+                                    @if ($value->category_id === 1)
+                                        Operasional TK
+                                    @elseif($value->category_id === 2)
+                                        Operasional SD
+                                    @else
+                                        Operasional SMP
+                                    @endif
+                                </td>
                             </tr>
                         @endforeach
 

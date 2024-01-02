@@ -129,11 +129,11 @@ Breadcrumbs::for('operator-berkas-operasional', function (Generator $trail, $per
 
 // VERIFIKATOR //
 Breadcrumbs::for('verifikator-beranda', function (Generator $trail) {
-    $trail->push('Beranda', route('verifikator-dashboard'));
+    $trail->push('Beranda', route('penyelia-dashboard'));
 });
 
-Breadcrumbs::for('verifikator-dashboard', function (Generator $trail) {
-    $trail->parent('verifikator-beranda')->push('Ajukan Permohonan')->push('Ajukan Permohonan', route('verifikator-dashboard'));
+Breadcrumbs::for('penyelia-dashboard', function (Generator $trail) {
+    $trail->parent('verifikator-beranda')->push('Ajukan Permohonan')->push('Ajukan Permohonan', route('penyelia-dashboard'));
 });
 
 Breadcrumbs::for('verifikator-daftar-ulang', function (Generator $trail) {

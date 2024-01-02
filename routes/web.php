@@ -417,7 +417,7 @@ Route::prefix('/dashboard-operator')->group(function () {
 Route::prefix('/dashboard-auditor')->group(function () {
     Route::get('', function () {
         return view('auditor.dashboard');
-    });
+    })->name('auditor-dashboard');
 
     Route::get('/monitoring', function () {
         return view('auditor.monitoring');
@@ -595,7 +595,7 @@ Route::prefix('/dashboard-surveyor')->group(function () {
 Route::prefix('/dashboard-walikota')->group(function () {
     Route::get('', function () {
         return view('walikota.dashboard');
-    });
+    })->name('walikota-dashboard');
 
     Route::get('/monitoring', function () {
         return view('walikota.monitoring');
@@ -825,7 +825,7 @@ Route::prefix('/dashboard-kepala-dinas')->group(function () {
 Route::prefix('/dashboard-verifikator')->group(function () {
     Route::get('', function () {
         return view('verifikator.dashboard');
-    })->name('verifikator-dashboard');
+    })->name('penyelia-dashboard');
 
     Route::get('/kelengkapan-data', function () {
         return view('verifikator.kelengkapan-data');

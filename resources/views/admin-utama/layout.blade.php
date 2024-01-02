@@ -193,8 +193,9 @@
                             <button data-modal-hide="logout-modal" type="button" id="closeModal"
                                 class="py-1 px-12 rounded-3xl border border-edu-black text-primary hover:bg-abu-abu ">Kembali</button>
 
-                            <form action="{{ url('/landing-pages', []) }}" method="get">
-                                <button type="submit" data-modal-hide="logout-modal" type="button" id="closeModal"
+                            <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" data-modal-hide="logout-modal" type="button" id="closeModal"
                                     class="py-1 px-12 rounded-3xl bg-primary hover:bg-primary-light text-white ">Keluar</button>
                             </form>
                         </div>

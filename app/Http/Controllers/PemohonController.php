@@ -198,13 +198,13 @@ class PemohonController extends Controller
 
         switch ($type) {
             case 'daftar-ulang':
-                $data = DaftarUlang::where('user_id', $user->id);
+                $data = DaftarUlang::where('user_id', $user->id)->get();
                 break;
             case 'izin-pendirian':
-                $data = Pendirian::where('user_id', $user->id);
+                $data = Pendirian::where('user_id', $user->id)->get();
                 break;
             case 'izin-operasional':
-                $data = Operasional::where('user_id', $user->id);
+                $data = Operasional::where('user_id', $user->id)->get();
                 break;
             
             default:

@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\PendirianRequest;
+use App\Mail\ChangeStatusMail;
 use App\Models\Pendirian;
 use App\Models\StatusDokumen;
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use Dompdf\Dompdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class PendirianController extends Controller
@@ -30,10 +33,10 @@ class PendirianController extends Controller
             $pendirians = Pendirian::when($request->has('statusDokumen_id'), function ($query) use ($request) {
                 $query->where('statusDokumen_id', $request->statusDokumen_id);
             })
-            ->when($request->has('category_id'), function ($query) use ($request) {
-                $query->where('category_id', $request->category_id);
-            })
-            ->get();    
+                ->when($request->has('category_id'), function ($query) use ($request) {
+                    $query->where('category_id', $request->category_id);
+                })
+                ->get();
 
             $transformedData = $pendirians->map(function ($pendirian) {
                 $user = User::findOrFail($pendirian->user_id);
@@ -148,9 +151,52 @@ class PendirianController extends Controller
                 $this->handleFileUpload($request, $pendirian, $key);
             }
 
-             $pendirian->save();
+            $pendirian->save();
 
-             $data = collect($user->toArray())->merge($pendirian->toArray());
+            $targetStatuses = [3, 8, 11];
+            if (in_array($pendirian->statusDokumen_id, $targetStatuses)) {
+                $status = StatusDokumen::where('id', $pendirian->statusDokumen_id);
+                $pendirian->status_dokumen = $status->name;
+                Mail::to($pendirian->email)->send(new ChangeStatusMail($pendirian));
+
+            } elseif ($pendirian->statusDokumen_id == 10) {
+
+                $data = array('name' => 'jarwo');
+
+                $perizinan = $pendirian;
+                $imgGaruda = public_path('QRCode/garuda.jpg');
+                $jadiGaruda = base64_decode($imgGaruda);
+
+                $ttdKepalaDinas = public_path('QRCode/ttd-kepala-dinas.jpg');
+                $jadiTTD = base64_decode($ttdKepalaDinas);
+
+                $dompdf = new Dompdf();
+                $view = view('mail.izinTerbitPdf', compact('perizinan', 'jadiGaruda', 'jadiTTD'));
+                $dompdf->loadHTML($view);
+                $dompdf->render();
+                $output = $dompdf->output();
+
+                $filename = date('YmdHis') . '.' . "surat_izin_terbit.pdf";
+                Storage::put('public/perizinanPendirian/surat_terbit/' . $filename, $output);
+
+                // Save To Database
+                $perizinan->surat_terbit = $filename . $request->surat_terbit;
+                $perizinan->save();
+
+                $user = User::where('id', $perizinan->user_id);
+
+                $emailPemohon = $user->email;
+
+                Mail::send(['file' => 'mail'], $data, function ($message) use ($dompdf, $emailPemohon) {
+                    $message->to($emailPemohon)->subject('Surat Izin Terbit');
+
+                    $message->attachData($dompdf->output(), 'surat_izin_terbit.pdf');
+
+                    $message->from('AksaraCode@company.com', 'AksraCode');
+                });
+            }
+
+            $data = collect($user->toArray())->merge($pendirian->toArray());
 
 
             return response()->json(['data' => $data, 'message' => 'Data Updated Pendirian successfully'], 200);

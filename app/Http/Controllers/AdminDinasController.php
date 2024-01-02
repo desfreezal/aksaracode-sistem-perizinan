@@ -35,14 +35,15 @@ class AdminDinasController extends Controller
 
     public function kelengkapanData()
     {
-        $pendirian = Pendirian::whereIn('statusDokumen_id', [1,2,3])->get();
-        $daftarUlang = DaftarUlang::whereIn('statusDokumen_id', [1,2,3])->get();
-        $operasional = Operasional::whereIn('statusDokumen_id', [1,2,3])->get();
+        $pendirian = Pendirian::with('user')->whereIn('statusDokumen_id', [1, 2, 3])->get();
+        $daftarUlang = DaftarUlang::with('user')->whereIn('statusDokumen_id', [1, 2, 3])->get();
+        $operasional = Operasional::with('user')->whereIn('statusDokumen_id', [1, 2, 3])->get();
 
-        return view('admin-dinas.kelengkapan-data.kelengkapan-data', compact('pendirian','daftarUlang', 'operasional'));
+        return view('admin-dinas.kelengkapan-data.kelengkapan-data', compact('pendirian', 'daftarUlang', 'operasional'));
     }
 
-    public function deleteInvalidFile($type, $id, $field) {
+    public function deleteInvalidFile($type, $id, $field)
+    {
         try {
             $storagePath = [
                 'pendirian' => 'perizinanPendirian',
@@ -50,22 +51,21 @@ class AdminDinasController extends Controller
                 'daftarUlang' => 'daftarUlang'
             ];
 
-            if($type === "pendirian") {
+            if ($type === "pendirian") {
                 $pendirian = Pendirian::findOrFail($id);
 
                 Storage::delete('public/' . $storagePath[$type] . ' /' . $field . '/' . $pendirian->$field);
 
                 $pendirian->$field = null;
                 $pendirian->save();
-
-            }elseif($type === "operasional") {
+            } elseif ($type === "operasional") {
                 $operasional = Operasional::findOrFail($id);
 
                 Storage::delete('public/' . $storagePath[$type] . ' /' . $field . '/' . $operasional->$field);
 
                 $operasional->$field = null;
                 $operasional->save();
-            }else {
+            } else {
                 $daftarUlang = DaftarUlang::findOrFail($id);
 
                 Storage::delete('public/' . $storagePath[$type] . ' /' . $field . '/' . $daftarUlang->$field);
@@ -82,14 +82,14 @@ class AdminDinasController extends Controller
 
     public function kelengkapanDetail($id)
     {
-    $type = explode('-', $id);
+        $type = explode('-', $id);
 
-$data = [];
-        if($type === "A"){
+        $data = [];
+        if ($type[0] === "A") {
             $data = Pendirian::findOrFail($id);
-        }elseif($type === "B") {
+        } elseif ($type[0] === "B") {
             $data = DaftarUlang::findOrFail($id);
-        }else {
+        } else {
             $data = Operasional::findOrFail($id);
         }
 

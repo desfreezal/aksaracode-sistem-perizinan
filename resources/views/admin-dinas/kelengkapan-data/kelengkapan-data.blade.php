@@ -90,7 +90,9 @@
                                         <div
                                             class="flex-grow shadow-lg rounded-lg border border-[#E5DBDB] bg-[#FBFBFB] px-3 py-4 space-y-4">
                                             <div class="flex justify-between items-center text-primary">
-                                                <h1 class="font-semibold text-xl">Pemohon</h1>
+                                                <h1 class="font-semibold text-xl">
+                                                    {{ $item->user->name }}
+                                                </h1>
                                                 <h1 class="font-semibold text-base">{{ $item->id }}</h1>
                                             </div>
                                             <h1>Daftar Ulang Izin Operasional Satuan Pendidikan
@@ -131,7 +133,9 @@
                                         <div
                                             class="flex-grow shadow-lg rounded-lg border border-[#E5DBDB] bg-[#FBFBFB] px-3 py-4 space-y-4">
                                             <div class="flex justify-between items-center text-primary">
-                                                <h1 class="font-semibold text-xl">Pemohon</h1>
+                                                <h1 class="font-semibold text-xl">
+                                                    {{ $item->user->name }}
+                                                </h1>
                                                 <h1 class="font-semibold text-base">{{ $item->id }}</h1>
                                             </div>
                                             <h1>Izin Pendirian Satuan Pendidikan
@@ -173,7 +177,9 @@
                                         <div
                                             class="flex-grow shadow-lg rounded-lg border border-[#E5DBDB] bg-[#FBFBFB] px-3 py-4 space-y-4">
                                             <div class="flex justify-between items-center text-primary">
-                                                <h1 class="font-semibold text-xl">Pemohon</h1>
+                                                <h1 class="font-semibold text-xl">
+                                                    {{ $item->user->name }}
+                                                </h1>
                                                 <h1 class="font-semibold text-base">{{ $item->id }}</h1>
                                             </div>
                                             <h1> Izin Operasional Satuan Pendidikan

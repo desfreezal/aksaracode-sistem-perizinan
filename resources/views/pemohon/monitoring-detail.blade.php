@@ -25,6 +25,8 @@
     ];
 @endphp
 
+{{-- @dd($type, $data) --}}
+
 @section('content')
     <div class="min-h-screen h-full">
 

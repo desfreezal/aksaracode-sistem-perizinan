@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="min-h-screen h-full">
-
         <div class="flex">
             {{-- SIDEBAR --}}
             {{-- @include('pemohon.sidebar') --}}
@@ -80,6 +79,7 @@
 
 @push('scripts')
     <script>
+
         var xValues = ["Dokumen Diajukan", "Dokumen Diproses", "Dokumen Selesai"];
         var yValues = [55, 49, 44];
         var barColors = [

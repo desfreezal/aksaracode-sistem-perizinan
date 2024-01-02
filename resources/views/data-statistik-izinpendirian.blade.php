@@ -83,7 +83,9 @@
             labels: labels,
             datasets: [{
                     label: "Berhasil",
-                    data: [260, 390, 420],
+                    data: [
+                        {{ $SD['berhasil'] }}, {{ $SMP['berhasil'] }}, {{ $TK['berhasil'] }}
+                    ],
                     backgroundColor: "#B7605D",
                     barThickness: 20, //ukuran bar
                     barPercentage: 0.5,
@@ -93,7 +95,9 @@
                 },
                 {
                     label: "Tidak Berhasil",
-                    data: [205, 370, 270],
+                    data: [
+                        {{ $SD['tidak_berhasil'] }}, {{ $SMP['tidak_berhasil'] }}, {{ $TK['tidak_berhasil'] }}
+                    ],
                     backgroundColor: "#D9D9D9",
                     barThickness: 20, //ukuran bar
                     barPercentage: 0.5,

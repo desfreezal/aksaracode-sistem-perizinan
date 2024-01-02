@@ -162,7 +162,7 @@ Route::middleware(['role:admin-dinas', 'verified'])->prefix('/dashboard-admin-di
     Route::get('validasi-survey/{id}', [AdminDinasController::class, 'validasiSurvey'])->name('admin-dinas-validasi-survey');
 
     Route::get('lacak-permohonan', [AdminDinasController::class, 'lacakPermohonan'])->name('admin-dinas-lacak-permohonan');
-    Route::get('status-permohonan', [AdminDinasController::class, 'statusPermohonan'])->name('admin-dinas-status-permohonan');
+    Route::get('status-permohonan/{id}', [AdminDinasController::class, 'statusPermohonan'])->name('admin-dinas-status-permohonan');
     Route::get('monitoring', [AdminDinasController::class, 'monitoring'])->name('admin-dinas-monitoring');
     Route::get('monitoring/{type}', [AdminDinasController::class, 'monitoringDetail'])->name('admin-dinas-monitoring-detail');
     Route::get('notifikasi', [AdminDinasController::class, 'notifikasi'])->name('admin-dinas-notifikasi');

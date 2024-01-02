@@ -121,9 +121,31 @@ class AdminDinasController extends Controller
         return view('admin-dinas.lacak-permohonan');
     }
 
-    public function statusPermohonan()
+    public function statusPermohonan($id)
     {
-        return view('admin-dinas.status-permohonan');
+        $parts = explode('-', $id);
+
+        $tipe = $parts[0];
+
+        $hasil = [];
+
+        $tipe_dokumen = '';
+
+        if ($tipe === "A") {
+            $tipe_dokumen = 'Pendirian';
+            $hasil = Pendirian::findOrFail($id);
+        } elseif ($tipe === "B") {
+            $tipe_dokumen = 'Daftar Ulang';
+            $hasil = DaftarUlang::findOrFail($id);
+        } else {
+            $tipe_dokumen = 'Operasional';
+            $hasil = Operasional::findOrFail($id);
+        }
+
+        $user = Auth::user();
+
+
+        return view('admin-dinas.status-permohonan', compact('tipe_dokumen', 'hasil', 'user'));
     }
 
     public function monitoring()

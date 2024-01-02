@@ -98,10 +98,11 @@
     <!-- Panduan Perizinan -->
 
     <!-- Alur Perizinan -->
-    <div class="container-alur-perizinan" id="alur">
+    <div class="container-alur-perizinan" id="alur" style="text-align: center;">
         <div class="alur-perizinan">Alur Perizinan</div>
     </div>
-    <div class="gambar-alur-perizinan" style="width: 100%; text-align: center">
+    <div class="gambar-alur-perizinan"
+        style="width: 100%; text-align: center; display: flex; justify-content:center; align-items: center">
         <img src="{{ asset('home/img/Alur Perizinan.png') }}" alt="Alur Perizinan" />
     </div>
     <!-- Alur Perizinan -->

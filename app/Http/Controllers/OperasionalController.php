@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\OperasionalRequest;
 use App\Models\Operasional;
+use Dompdf\Dompdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class OperasionalController extends Controller
@@ -99,5 +101,55 @@ class OperasionalController extends Controller
         } catch (\Exception $e) {
             throw $e;
         }
+    }
+
+    public function update_status_dokumen(Request $req)
+    {
+        $permohonan = Operasional::find($req->id);
+
+        $permohonan->statusDokumen_id = $req->statusDokumen_id;
+        $permohonan->save();
+
+        return back()->with('sukses_dikirim','Status Dokumen Berhasil Diupdate');
+    }
+
+
+    public function permohonan_selesai(Request $req){
+        $permohonan = Operasional::find($req->id);
+
+        $imgGaruda = public_path('QRCode/garuda.jpg');
+        $jadiGaruda = base64_decode($imgGaruda);
+
+        $ttdKepalaDinas = public_path('QRCode/ttd-kepala-dinas.jpg');
+        $jadiTTD = base64_decode($ttdKepalaDinas);
+        $emailPemohon = $permohonan->email;
+
+
+        // Convert HTML TO PDF
+        $data = array('name' => 'jarwo');
+            $dompdf = new Dompdf();
+            $view = view('mail.izinTerbitPdf',compact('permohonan','jadiGaruda','jadiTTD'));
+            $dompdf->loadHTML($view);
+            $dompdf->render();
+            $output = $dompdf->output();
+        // Save To storage
+            $filename = date('YmdHis').'.'."surat_izin_terbit.pdf";
+            Storage::put('public/operasional/surat_terbit/'.$filename,$output);
+
+        // Save To Database
+            $permohonan->surat_terbit = $filename.$req->surat_terbit;
+            $permohonan->statusDokumen_id = 10;
+            $permohonan->save();
+
+            // Kirim Email Beserta file Attach
+        Mail::send(['file' => 'mail'], $data, function ($message)use($dompdf,$emailPemohon) {
+            $message->to($emailPemohon)->subject('Surat Izin Terbit');
+
+            $message->attachData($dompdf->output(),'surat_izin_terbit.pdf');
+
+            $message->from('AksaraCode@company.com','AksaraCode');
+        });
+
+        return redirect()->route('admin-dinas-pengesahan-dokumen')->with('sukses_dikirim','Permohonan Selesai, Surat Izin Terbit Telah DIkirim');
     }
 }

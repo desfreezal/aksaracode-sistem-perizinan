@@ -1,5 +1,18 @@
 @extends('pemohon.layout')
 
+@php
+    // $exploded = explode(' ', request('namasekolah'))
+    // $firstElement = $exploded[0];
+
+    // $jenis = strtolower($firstElement);
+
+    // if ($jenis) {
+    //     $jenis = $jenis;
+    // } else {
+    //     $jenis = 'sd';
+    // }
+@endphp
+
 @section('content')
     <div class="min-h-screen h-full">
 
@@ -28,7 +41,7 @@
                         @include('pemohon.izin-pendirian.berkas-izin-pendirian.table-sd')
                     @elseif (request('peruntukan') === 'smp')
                         <input type="hidden" name="category" value="SMP">
-                        @include('pemohon.izin-pendirian.berkas-izin-pendirian.table-smp')
+                        @include('pemohon.izin-pendirian.berkas-izin-pendirian.table-sd')
                     @else
                         <input type="hidden" name="category" value="SD">
                         @include('pemohon.izin-pendirian.berkas-izin-pendirian.table-sd')

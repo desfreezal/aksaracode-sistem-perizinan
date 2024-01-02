@@ -20,6 +20,8 @@
                 <form action="{{ url('/dashboard-pemohon/izin-pendirian/detail-pendirian') }}" method="get"
                     class="w-full space-y-6">
 
+                    <input type="hidden" name="peruntukan" value="{{request('peruntukan')}}">
+
                     <div class="flex items-center">
                         <label for="namasekolah" class="w-72">Nama Sekolah</label>
                         <input id="namasekolah" type="text" class="flex-grow text-edu-black border-abu-abu rounded"

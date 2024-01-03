@@ -64,8 +64,8 @@
 
                         </div>
                         <div class="space-y-1">
-                            <p class="text-font-kuning text-xs">Hari ini</p>
-                            <p class="text-primary font-semibold">06/11/2023</p>
+                            <p class="text-font-kuning text-xs">Hingga Hari ini</p>
+                            <p class="text-primary font-semibold">{{ \Carbon\Carbon::now()->format('d/m/Y') }}</p>
                         </div>
                     </div>
                 </div>

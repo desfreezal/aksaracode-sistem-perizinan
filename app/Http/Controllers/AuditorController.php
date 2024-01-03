@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Requests\UserRequest;
 use App\Models\DaftarUlang;
 use App\Models\Operasional;
@@ -53,21 +54,21 @@ class AuditorController extends Controller
 
         $tipe_dokumen = '';
 
-        if($tipe === "A") {
+        if ($tipe === "A") {
             $tipe_dokumen = 'Pendirian';
             $hasil = Pendirian::findOrFail($id);
-        }elseif ($tipe === "B") {
+        } elseif ($tipe === "B") {
             $tipe_dokumen = 'Daftar Ulang';
             $hasil = DaftarUlang::findOrFail($id);
-        }else {
+        } else {
             $tipe_dokumen = 'Operasional';
             $hasil = Operasional::findOrFail($id);
         }
-        
+
         $user = Auth::user();
 
 
-        return view('auditor.status-permohonan', compact('tipe_dokumen','hasil', 'user'));
+        return view('auditor.status-permohonan', compact('tipe_dokumen', 'hasil', 'user'));
     }
 
     public function profile()
@@ -99,19 +100,11 @@ class AuditorController extends Controller
 
     public function notifikasi()
     {
-        $user = Auth::user();
-        
-        $pendirian = Pendirian::where('user_id', $user->id)
-        ->whereDate('updated_at', Carbon::today())
-        ->get();
+        $pendirian = Pendirian::with('user')->whereDate('updated_at', Carbon::today())->get();
 
-        $daftarUlang = DaftarUlang::where('user_id', $user->id)
-        ->whereDate('updated_at', Carbon::today())
-        ->get();
+        $daftarUlang = DaftarUlang::with('user')->whereDate('updated_at', Carbon::today())->get();
 
-        $operasional = Operasional::where('user_id', $user->id)
-        ->whereDate('updated_at', Carbon::today())
-        ->get();
+        $operasional = Operasional::with('user')->whereDate('updated_at', Carbon::today())->get();
 
         return view('auditor.notifikasi', compact('pendirian', 'daftarUlang', 'operasional'));
     }
@@ -173,11 +166,9 @@ class AuditorController extends Controller
 
     public function monitoring()
     {
-        $user = Auth::user();
-
-        $pendirian = Pendirian::where('user_id', $user->id)->count();
-        $daftarUlang = DaftarUlang::where('user_id', $user->id)->count();
-        $operasional = Operasional::where('user_id', $user->id)->count();
+        $pendirian = Pendirian::count();
+        $daftarUlang = DaftarUlang::count();
+        $operasional = Operasional::count();
 
         $data = [
             'pendirian' => $pendirian,
@@ -190,21 +181,17 @@ class AuditorController extends Controller
 
     public function monitoringDetail($type)
     {
-        $data = [];
-        $user = Auth::user();
-
-
         switch ($type) {
             case 'daftar-ulang':
-                $data = DaftarUlang::where('user_id', $user->id)->get();
+                $data = DaftarUlang::with('user')->get();
                 break;
             case 'izin-pendirian':
-                $data = Pendirian::where('user_id', $user->id)->get();
+                $data = Pendirian::with('user')->get();
                 break;
             case 'izin-operasional':
-                $data = Operasional::where('user_id', $user->id)->get();
+                $data = Operasional::with('user')->get();
                 break;
-            
+
             default:
                 $data = [];
                 break;

@@ -23,10 +23,25 @@
     //         'Status Dokumen' => 'Diproses',
     //     ],
     // ];
+    $statusDok = [
+        1 => 'Checking Berkas Operator',
+        2 => 'Dokumen Valid',
+        3 => 'Dokumen Tidak Valid',
+        4 => 'Sedang Disurvey',
+        5 => 'Telah Disurvey',
+        6 => 'Checking Berkas Verifikator',
+        7 => 'Dokumen Sesuai',
+        8 => 'Dokumen Ditolak',
+        9 => 'Tanda Tangan Kepala Dinas',
+        10 => 'Permohonan Selesai',
+        11 => 'Permohonan Ditolak',
+    ];
 @endphp
 
 @section('content')
-    <div class="min-h-screen h-full">
+    <div class="h-full">
+
+        {{-- @dd($data[0]) --}}
 
         <div class="flex">
             {{-- SIDEBAR --}}
@@ -51,12 +66,12 @@
                         {{-- DATA --}}
                         @forelse ($data as $item)
                             <div class="flex items-center text-center gap-x-[6px] text-primary text-lg">
-                                <h1 class=" w-1/3  rounded-md py-2">{{ Auth::user()->name }}</h1>
+                                <h1 class=" w-1/3  rounded-md py-2">{{ $item->user->name }}</h1>
                                 <h1 class=" w-1/3 rounded-md py-2">
                                     {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $item->created_at)->format('d/m/Y') }}
                                 </h1>
                                 <h1 class=" w-1/3  rounded-md py-2">
-                                    Diproses
+                                    {{ $statusDok[$item->statusDokumen_id] }}
                                 </h1>
                             </div>
                         @empty
@@ -66,12 +81,12 @@
                         {{-- DATA --}}
                         @forelse ($data as $item)
                             <div class="flex items-center text-center gap-x-[6px] text-primary text-lg">
-                                <h1 class=" w-1/3  rounded-md py-2">{{ Auth::user()->name }}</h1>
+                                <h1 class=" w-1/3  rounded-md py-2">{{ $item->user->name }}</h1>
                                 <h1 class=" w-1/3 rounded-md py-2">
                                     {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $item->created_at)->format('d/m/Y') }}
                                 </h1>
                                 <h1 class=" w-1/3  rounded-md py-2">
-                                    Diproses
+                                    {{ $statusDok[$item->statusDokumen_id] }}
                                 </h1>
                             </div>
                         @empty
@@ -81,12 +96,12 @@
                         {{-- DATA --}}
                         @forelse ($data as $item)
                             <div class="flex items-center text-center gap-x-[6px] text-primary text-lg">
-                                <h1 class=" w-1/3  rounded-md py-2">{{ Auth::user()->name }}</h1>
+                                <h1 class=" w-1/3  rounded-md py-2">{{ $item->user->name }}</h1>
                                 <h1 class=" w-1/3 rounded-md py-2">
                                     {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $item->created_at)->format('d/m/Y') }}
                                 </h1>
                                 <h1 class=" w-1/3  rounded-md py-2">
-                                    Diproses
+                                    {{ $statusDok[$item->statusDokumen_id] }}
                                 </h1>
                             </div>
                         @empty

@@ -25,7 +25,7 @@
             class="cursor-pointer flex items-center pl-11 w-full {{ Route::currentRouteName() === 'admin-dinas-izin-operasional' ? 'bg-white shadow' : '' }} hover:bg-white gap-x-3 py-2">
             <img src="{{ asset('admin-dinas/img/Project.png') }}" class="object-contain" alt="1">
             <h1 class="text-base font-normal text-edu-black">
-                Data admin-dinas
+                Data Pemohon
             </h1>
         </a>
         <a href="#"

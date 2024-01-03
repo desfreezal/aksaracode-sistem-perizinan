@@ -20,6 +20,8 @@
                 <form action="{{ url('/dashboard-pemohon/izin-pendirian/upload-berkas') }}" method="GET"
                     class="w-full space-y-6">
 
+                    <input type="hidden" name="peruntukan" value="{{request('peruntukan')}}">
+
                     <div class="flex items-center">
                         <label for="namayayasan" class="w-72">Nama Yayasan / CV/ PT/ Perorangan</label>
                         <input id="namayayasan" type="text" class="flex-grow text-edu-black border-abu-abu rounded"

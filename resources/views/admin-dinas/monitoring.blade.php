@@ -14,7 +14,7 @@
 
                     <div id="container" class="flex items-center gap-x-5">
 
-                        <a href="{{ route('admin-dinas-monitoring-detail', ['type'=>'daftar-ulang']) }}">
+                        <a href="{{ route('admin-dinas-monitoring-detail', ['type' => 'daftar-ulang']) }}">
                             <div class="pl-8 pr-5 flex items-center max-w-[342px] rounded-lg bg-primary text-white">
                                 <h1 class="font-bold text-sm py-[22px] pr-1">Monitoring Permohonan Daftar Ulang Izin
                                     Operasional
@@ -26,7 +26,7 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="{{ route('admin-dinas-monitoring-detail', ['type'=>'izin-pendirian']) }}">
+                        <a href="{{ route('admin-dinas-monitoring-detail', ['type' => 'izin-pendirian']) }}">
                             <div class="pl-8 pr-5 flex items-center max-w-[342px] rounded-lg bg-primary text-white">
                                 <h1 class="font-bold text-sm py-[22px] pr-1">Monitoring Permohonan Izin Pendirian Satuan
                                     Pendidikan</h1>
@@ -36,7 +36,7 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="{{ route('admin-dinas-monitoring-detail', ['type'=>'izin-operasional']) }}">
+                        <a href="{{ route('admin-dinas-monitoring-detail', ['type' => 'izin-operasional']) }}">
                             <div class="pl-8 pr-5 flex items-center max-w-[342px] rounded-lg bg-primary text-white">
                                 <h1 class="font-bold text-sm py-[22px] pr-1">Monitoring Permohonan Izin Operasional Satuan
                                     Pendidikan</h1>
@@ -80,8 +80,8 @@
 
 @push('scripts')
     <script>
-        var xValues = ["Dokumen Diajukan", "Dokumen Diproses", "Dokumen Selesai"];
-        var yValues = [55, 49, 44];
+        var xValues = ["Izin Pendirian", "Daftar Ulang", "Izin Operasional"];
+        var yValues = [{{ $data['pendirian'] }}, {{ $data['daftarUlang'] }}, {{ $data['operasional'] }}];
         var barColors = [
             "#A155B9",
             "#F765A3",

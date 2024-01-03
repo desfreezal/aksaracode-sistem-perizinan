@@ -12,7 +12,7 @@
 @section('content')
     <div class="mx-36 mt-5 min-h-screen">
         <div class="mb-9">
-            {!! Breadcrumbs::render('verifikator-dashboard') !!}
+            {!! Breadcrumbs::render('penyelia-dashboard') !!}
         </div>
 
         <div id="card-container" class="flex items-center gap-x-6">

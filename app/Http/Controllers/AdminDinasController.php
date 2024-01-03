@@ -9,8 +9,9 @@ use App\Models\Pendirian;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+
 
 class AdminDinasController extends Controller
 {
@@ -36,9 +37,9 @@ class AdminDinasController extends Controller
 
     public function kelengkapanData()
     {
-        $pendirian = Pendirian::whereIn('statusDokumen_id', [1, 2, 3])->get();
-        $daftarUlang = DaftarUlang::whereIn('statusDokumen_id', [1, 2, 3])->get();
-        $operasional = Operasional::whereIn('statusDokumen_id', [1, 2, 3])->get();
+        $pendirian = Pendirian::with('user')->whereIn('statusDokumen_id', [1, 2, 3])->get();
+        $daftarUlang = DaftarUlang::with('user')->whereIn('statusDokumen_id', [1, 2, 3])->get();
+        $operasional = Operasional::with('user')->whereIn('statusDokumen_id', [1, 2, 3])->get();
 
         return view('admin-dinas.kelengkapan-data.kelengkapan-data', compact('pendirian', 'daftarUlang', 'operasional'));
     }
@@ -59,7 +60,6 @@ class AdminDinasController extends Controller
 
                 $pendirian->$field = null;
                 $pendirian->save();
-
             } elseif ($type === "operasional") {
                 $operasional = Operasional::findOrFail($id);
 
@@ -87,9 +87,9 @@ class AdminDinasController extends Controller
         $type = explode('-', $id);
 
         $data = [];
-        if ($type === "A") {
+        if ($type[0] === "A") {
             $data = Pendirian::findOrFail($id);
-        } elseif ($type === "B") {
+        } elseif ($type[0] === "B") {
             $data = DaftarUlang::findOrFail($id);
         } else {
             $data = Operasional::findOrFail($id);
@@ -159,7 +159,10 @@ class AdminDinasController extends Controller
             $hasil = Operasional::findOrFail($id);
         }
 
-        return view('admin-dinas.status-permohonan', compact('tipe_dokumen','hasil'));
+        $user = Auth::user();
+
+
+        return view('admin-dinas.status-permohonan', compact('tipe_dokumen', 'hasil', 'user'));
     }
 
     public function monitoring()

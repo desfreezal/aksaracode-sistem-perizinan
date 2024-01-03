@@ -18,15 +18,20 @@
                     </h1>
                 </div>
 
-                <form action="{{ route('admin-dinas-berkas-operasional') }}" method="GET"
-                    class="w-full space-y-6" id="form">
+                <form action="{{ url('/dashboard-admin-dinas/operasional') }}" method="POST" class="w-full space-y-6"
+                    id="form" enctype="multipart/form-data">
+                    @csrf
                     @if (request('peruntukan') === 'tk')
+                        <input type="hidden" name="category" value="TK">
                         @include('admin-dinas.izin-operasional.berkas-izin-operasional.table-tk')
                     @elseif (request('peruntukan') === 'sd')
+                        <input type="hidden" name="category" value="SD">
                         @include('admin-dinas.izin-operasional.berkas-izin-operasional.table-sd')
                     @elseif (request('peruntukan') === 'smp')
-                        @include('admin-dinas.izin-operasional.berkas-izin-operasional.table-smp')
+                        <input type="hidden" name="category" value="SMP">
+                        @include('admin-dinas.izin-operasional.berkas-izin-operasional.table-sd')
                     @else
+                        <input type="hidden" name="category" value="SD">
                         @include('admin-dinas.izin-operasional.berkas-izin-operasional.table-sd')
                     @endif
 

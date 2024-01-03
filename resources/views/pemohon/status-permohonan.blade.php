@@ -1,8 +1,12 @@
+@php
+    use Carbon\Carbon;
+    setlocale(LC_TIME, 'id_ID'); // Atur locale ke bahasa
+@endphp
+
 @extends('pemohon.layout')
 
-
-
 @section('content')
+
     <div class="text-edu-black my-8 mx-[50px]">
 
         <div class="py-3 pl-11 mb-5 bg-primary rounded-md">
@@ -12,27 +16,30 @@
         <form action="" class="space-y-3 mb-8">
             <div class="flex items-center w-[1008px]">
                 <label for="" class="pl-4 w-80">Sub Perizinan</label>
-                <input type="text" readonly class="flex-grow border border-abu-abu rounded" value="Daftar Ulang Izin Opersional Satuan Pendidikan SD">
+                <input type="text" readonly class="flex-grow border border-abu-abu rounded"
+                    value="{{ $tipe_dokumen }} Satuan Pendidikan {{ $hasil->category_id === 1 ? 'TK' : ($hasil->category_id === 2 ? 'SD' : 'SMP') }}">
             </div>
             <div class="flex items-center w-[1008px]">
                 <label for="" class="pl-4 w-80">Tanggal Pendaftaran</label>
-                <input type="text" readonly class="flex-grow border border-abu-abu rounded" value="10 Oktober 2023">
+                <input type="text" readonly class="flex-grow border border-abu-abu rounded"
+                    value="{{ Carbon::createFromFormat('Y-m-d H:i:s', $hasil->created_at)->translatedFormat('j F Y') }}">
             </div>
+
             <div class="flex items-center w-[1008px]">
                 <label for="" class="pl-4 w-80">NIK Pemohon</label>
-                <input type="text" readonly class="flex-grow border border-abu-abu rounded" value="1234567891012345">
+                <input type="text" readonly class="flex-grow border border-abu-abu rounded" value="-">
             </div>
             <div class="flex items-center w-[1008px]">
                 <label for="" class="pl-4 w-80">Nama Pemohon</label>
-                <input type="text" readonly class="flex-grow border border-abu-abu rounded" value="Putri Lestari">
+                <input type="text" readonly class="flex-grow border border-abu-abu rounded" value="{{ $user->name }}">
             </div>
             <div class="flex items-center w-[1008px]">
                 <label for="" class="pl-4 w-80">No. Handphone Pemohon</label>
-                <input type="text" readonly class="flex-grow border border-abu-abu rounded" value="081234567891">
+                <input type="text" readonly class="flex-grow border border-abu-abu rounded" value="-">
             </div>
             <div class="flex items-center w-[1008px]">
                 <label for="" class="pl-4 w-80">ID Pendaftaran</label>
-                <input type="text" readonly class="flex-grow border border-abu-abu rounded" value="10982734">
+                <input type="text" readonly class="flex-grow border border-abu-abu rounded" value="{{ $hasil->id }}">
             </div>
         </form>
 

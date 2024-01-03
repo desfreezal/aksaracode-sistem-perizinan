@@ -70,6 +70,9 @@
 </head>
 
 <body>
+
+    {{-- @dd($TK, $SD, $SMP) --}}
+
     <!-- Heading -->
     <div class="chart-heading">
         Data Statistik Daftar Ulang Izin Operasional
@@ -85,7 +88,9 @@
             labels: labels,
             datasets: [{
                     label: "Berhasil",
-                    data: [420, 330, 490],
+                    data: [
+                        {{ $SD['berhasil'] }}, {{ $SMP['berhasil'] }}, {{ $TK['berhasil'] }}
+                    ],
                     backgroundColor: "#B7605D",
                     barThickness: 20,
                     barPercentage: 0.5,
@@ -96,7 +101,9 @@
                 },
                 {
                     label: "Tidak Berhasil",
-                    data: [310, 250, 190],
+                    data: [
+                        {{ $SD['tidak_berhasil'] }}, {{ $SMP['tidak_berhasil'] }}, {{ $TK['tidak_berhasil'] }}
+                    ],
                     backgroundColor: "#D9D9D9",
                     barThickness: 20,
                     barPercentage: 0.5,

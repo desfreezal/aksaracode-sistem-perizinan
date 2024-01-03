@@ -156,7 +156,8 @@
                         </li>
                         <li>
                             <a href="{{ route('surveyor-riwayat-permohonan') }}"
-                                class="block text-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Riwayat Permohonan</a>
+                                class="block text-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Riwayat
+                                Permohonan</a>
                         </li>
                         <li>
                             <a href="#" data-modal-target="logout-modal" data-modal-toggle="logout-modal"
@@ -203,7 +204,8 @@
                             <button data-modal-hide="logout-modal" type="button" id="closeModal"
                                 class="py-1 px-12 rounded-3xl border border-edu-black text-primary hover:bg-abu-abu ">Kembali</button>
 
-                            <form action="{{ url('/landing-pages', []) }}" method="get">
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
                                 <button type="submit" data-modal-hide="logout-modal" type="button" id="closeModal"
                                     class="py-1 px-12 rounded-3xl bg-primary hover:bg-primary-light text-white ">Keluar</button>
                             </form>

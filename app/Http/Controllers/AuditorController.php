@@ -11,40 +11,36 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
-class PemohonController extends Controller
+class AuditorController extends Controller
 {
     public function dashboard()
     {
-        return view('pemohon.dashboard');
-    }
-    public function show($id)
-    {
-        
+        return view('auditor.dashboard');
     }
 
     public function izinPendirian()
     {
-        return view('pemohon.izin-pendirian.data-pemohon');
+        return view('auditor.izin-pendirian.data-pemohon');
     }
 
     public function detailYayasan()
     {
-        return view('pemohon.izin-pendirian.detail-yayasan');
+        return view('auditor.izin-pendirian.detail-yayasan');
     }
 
     public function detailPendirian()
     {
-        return view('pemohon.izin-pendirian.detail-pendirian');
+        return view('auditor.izin-pendirian.detail-pendirian');
     }
 
     public function uploadBerkasIzinPendirian()
     {
-        return view('pemohon.izin-pendirian.upload-berkas');
+        return view('auditor.izin-pendirian.upload-berkas');
     }
 
     public function lacakPermohonan()
     {
-        return view('pemohon.lacak-permohonan');
+        return view('auditor.lacak-permohonan');
     }
 
 
@@ -58,29 +54,28 @@ class PemohonController extends Controller
 
         $tipe_dokumen = '';
 
-        if($tipe === "A") {
+        if ($tipe === "A") {
             $tipe_dokumen = 'Pendirian';
             $hasil = Pendirian::findOrFail($id);
-        }elseif ($tipe === "B") {
+        } elseif ($tipe === "B") {
             $tipe_dokumen = 'Daftar Ulang';
             $hasil = DaftarUlang::findOrFail($id);
-        }else {
+        } else {
             $tipe_dokumen = 'Operasional';
             $hasil = Operasional::findOrFail($id);
         }
-        
+
         $user = Auth::user();
 
 
-        return view('pemohon.status-permohonan', compact('tipe_dokumen','hasil', 'user'));
+        return view('auditor.status-permohonan', compact('tipe_dokumen', 'hasil', 'user'));
     }
 
     public function profile()
     {
-
         $user = Auth::user();
 
-        return view('pemohon.profile', compact('user'));
+        return view('auditor.profile', compact('user'));
     }
 
     public function editProfile(UserRequest $request)
@@ -89,7 +84,7 @@ class PemohonController extends Controller
         $user = Auth::user();
         $user->update($request->validated());
 
-        return view('pemohon.profile', compact('user'));
+        return view('auditor.profile', compact('user'));
     }
 
     public function riwayat()
@@ -100,90 +95,80 @@ class PemohonController extends Controller
         $daftarUlang = DaftarUlang::where('user_id', $user->id)->get();
         $operasional = Operasional::where('user_id', $user->id)->get();
 
-        return view('pemohon.riwayat-permohonan', compact('pendirian', 'daftarUlang', 'operasional', 'user'));
+        return view('auditor.riwayat-permohonan', compact('pendirian', 'daftarUlang', 'operasional', 'user'));
     }
 
     public function notifikasi()
     {
-        $user = Auth::user();
-        
-        $pendirian = Pendirian::where('user_id', $user->id)
-        ->whereDate('updated_at', Carbon::today())
-        ->get();
+        $pendirian = Pendirian::with('user')->whereDate('updated_at', Carbon::today())->get();
 
-        $daftarUlang = DaftarUlang::where('user_id', $user->id)
-        ->whereDate('updated_at', Carbon::today())
-        ->get();
+        $daftarUlang = DaftarUlang::with('user')->whereDate('updated_at', Carbon::today())->get();
 
-        $operasional = Operasional::where('user_id', $user->id)
-        ->whereDate('updated_at', Carbon::today())
-        ->get();
+        $operasional = Operasional::with('user')->whereDate('updated_at', Carbon::today())->get();
 
-        return view('pemohon.notifikasi', compact('pendirian', 'daftarUlang', 'operasional'));
+        return view('auditor.notifikasi', compact('pendirian', 'daftarUlang', 'operasional'));
     }
 
     public function daftarUlang()
     {
-        return view('pemohon.daftar-ulang.daftar');
+        return view('auditor.daftar-ulang.daftar');
     }
 
     public function daftarUlangData()
     {
-        return view('pemohon.daftar-ulang.daftar');
+        return view('auditor.daftar-ulang.daftar');
     }
 
     public function daftarUlangDetail()
     {
-        return view('pemohon.daftar-ulang.detail');
+        return view('auditor.daftar-ulang.detail');
     }
 
     public function daftarUlangBerkas()
     {
-        return view('pemohon.daftar-ulang.berkas');
+        return view('auditor.daftar-ulang.berkas');
     }
 
     public function izinOperasional()
     {
-        return view('pemohon.izin-operasional.data-pemohon');
+        return view('auditor.izin-operasional.data-pemohon');
     }
 
     public function detailOperasional()
     {
-        return view('pemohon.izin-operasional.detail-operasional');
+        return view('auditor.izin-operasional.detail-operasional');
     }
 
     public function berkasOperasional()
     {
-        return view('pemohon.izin-operasional.upload-berkas');
+        return view('auditor.izin-operasional.upload-berkas');
     }
 
     public function panduanPerizinan()
     {
-        return view('pemohon.panduan-perizinan');
+        return view('auditor.panduan-perizinan');
     }
 
     public function panduanDaftarUlang()
     {
-        return view('pemohon.panduan-perizinan.daftar-ulang.daftar');
+        return view('auditor.panduan-perizinan.daftar-ulang.daftar');
     }
 
     public function panduanOperasional()
     {
-        return view('pemohon.panduan-perizinan.izin-operasional.operasional');
+        return view('auditor.panduan-perizinan.izin-operasional.operasional');
     }
 
     public function panduanIzinPendirian()
     {
-        return view('pemohon.panduan-perizinan.izin-pendirian.izin');
+        return view('auditor.panduan-perizinan.izin-pendirian.izin');
     }
 
     public function monitoring()
     {
-        $user = Auth::user();
-
-        $pendirian = Pendirian::where('user_id', $user->id)->count();
-        $daftarUlang = DaftarUlang::where('user_id', $user->id)->count();
-        $operasional = Operasional::where('user_id', $user->id)->count();
+        $pendirian = Pendirian::count();
+        $daftarUlang = DaftarUlang::count();
+        $operasional = Operasional::count();
 
         $data = [
             'pendirian' => $pendirian,
@@ -191,46 +176,42 @@ class PemohonController extends Controller
             'operasional' => $operasional,
         ];
 
-        return view('pemohon.monitoring', compact('data'));
+        return view('auditor.monitoring', compact('data'));
     }
 
     public function monitoringDetail($type)
     {
-        $data = [];
-        $user = Auth::user();
-
-
         switch ($type) {
             case 'daftar-ulang':
-                $data = DaftarUlang::where('user_id', $user->id)->get();
+                $data = DaftarUlang::with('user')->get();
                 break;
             case 'izin-pendirian':
-                $data = Pendirian::where('user_id', $user->id)->get();
+                $data = Pendirian::with('user')->get();
                 break;
             case 'izin-operasional':
-                $data = Operasional::where('user_id', $user->id)->get();
+                $data = Operasional::with('user')->get();
                 break;
-            
+
             default:
                 $data = [];
                 break;
         }
 
-        return view('pemohon.monitoring-detail', compact('type', 'data'));
+        return view('auditor.monitoring-detail', compact('type', 'data'));
     }
 
     public function pengajuanPermohonan()
     {
-        return view('pemohon.pengajuan-permohonan');
+        return view('auditor.pengajuan-permohonan');
     }
 
     public function pembaruanData()
     {
-        return view('pemohon.pembaruan-data.index');
+        return view('auditor.pembaruan-data.index');
     }
 
     public function detailPembaruanData($id)
     {
-        return view('pemohon.pembaruan-data.detail', ['id' => $id]);
+        return view('auditor.pembaruan-data.detail', ['id' => $id]);
     }
 }

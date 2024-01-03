@@ -50,6 +50,21 @@
                     </h1>
                 </a>
             </div>
+            <div class="w-[234px] min-h-[270px] pt-4 bg-primary rounded-[36px] box-border">
+                <a href="{{ route('pemohon-pembaruan-data') }}">
+                    <div class="mx-11 px-6 py-5 rounded-full bg-edu-bg">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10 text-primary mx-auto">
+                            <path fill-rule="evenodd"
+                                d="M4.755 10.059a7.5 7.5 0 0 1 12.548-3.364l1.903 1.903h-3.183a.75.75 0 1 0 0 1.5h4.992a.75.75 0 0 0 .75-.75V4.356a.75.75 0 0 0-1.5 0v3.18l-1.9-1.9A9 9 0 0 0 3.306 9.67a.75.75 0 1 0 1.45.388Zm15.408 3.352a.75.75 0 0 0-.919.53 7.5 7.5 0 0 1-12.548 3.364l-1.902-1.903h3.183a.75.75 0 0 0 0-1.5H2.984a.75.75 0 0 0-.75.75v4.992a.75.75 0 0 0 1.5 0v-3.18l1.9 1.9a9 9 0 0 0 15.059-4.035.75.75 0 0 0-.53-.918Z"
+                                clip-rule="evenodd" />
+                        </svg>
+
+                    </div>
+
+                    <h1 class="ml-4 mr-5 mt-3 mb-8 text-white font-bold text-lg text-center">Pembaruan Data
+                    </h1>
+                </a>
+            </div>
         </div>
     </div>
 

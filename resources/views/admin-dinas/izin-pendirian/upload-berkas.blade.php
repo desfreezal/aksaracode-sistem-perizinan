@@ -18,15 +18,20 @@
                     </h1>
                 </div>
 
-                <form action="{{ url('/dashboard-admin-dinas/izin-pendirian/upload-berkas') }}" method="GET"
-                    class="w-full space-y-6" id="form">
+                <form action="{{ url('/dashboard-admin-dinas/pendirian') }}" method="POST" class="w-full space-y-6" id="form"
+                    enctype="multipart/form-data">
+                    @csrf
                     @if (request('peruntukan') === 'tk')
+                        <input type="hidden" name="category" value="TK">
                         @include('admin-dinas.izin-pendirian.berkas-izin-pendirian.table-tk')
                     @elseif (request('peruntukan') === 'sd')
+                        <input type="hidden" name="category" value="SD">
                         @include('admin-dinas.izin-pendirian.berkas-izin-pendirian.table-sd')
                     @elseif (request('peruntukan') === 'smp')
-                        @include('admin-dinas.izin-pendirian.berkas-izin-pendirian.table-smp')
+                        <input type="hidden" name="category" value="SMP">
+                        @include('admin-dinas.izin-pendirian.berkas-izin-pendirian.table-sd')
                     @else
+                        <input type="hidden" name="category" value="SD">
                         @include('admin-dinas.izin-pendirian.berkas-izin-pendirian.table-sd')
                     @endif
 

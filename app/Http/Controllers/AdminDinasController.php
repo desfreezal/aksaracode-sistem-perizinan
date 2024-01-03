@@ -150,7 +150,19 @@ class AdminDinasController extends Controller
 
     public function monitoring()
     {
-        return view('admin-dinas.monitoring');
+        $user = Auth::user();
+
+        $pendirian = Pendirian::where('user_id', $user->id)->count();
+        $daftarUlang = DaftarUlang::where('user_id', $user->id)->count();
+        $operasional = Operasional::where('user_id', $user->id)->count();
+
+        $data = [
+            'pendirian' => $pendirian,
+            'daftarUlang' => $daftarUlang,
+            'operasional' => $operasional,
+        ];
+
+        return view('admin-dinas.monitoring', compact('data'));
     }
 
     public function monitoringDetail($type)

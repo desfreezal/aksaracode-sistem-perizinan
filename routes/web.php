@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminDinasController;
+use App\Http\Controllers\AuditorController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DaftarUlangController;
 use App\Http\Controllers\OperasionalController;
@@ -212,7 +213,7 @@ Route::middleware(['role:admin-dinas', 'verified'])->prefix('/dashboard-admin-di
 Route::prefix('/dashboard-admin-utama')->group(function () {
     Route::get('', function () {
         return view('admin-utama.dashboard');
-    });
+    })->name('admin-utama-dashboard');
 
     Route::get('/monitoring', function () {
         return view('admin-utama.monitoring');
@@ -419,39 +420,15 @@ Route::prefix('/dashboard-auditor')->group(function () {
         return view('auditor.dashboard');
     })->name('auditor-dashboard');
 
-    Route::get('/monitoring', function () {
-        return view('auditor.monitoring');
-    })->name('auditor-monitoring');
+    Route::get('monitoring', [AuditorController::class, 'monitoring'])->name('auditor-monitoring');
+    Route::get('monitoring/{type}', [AuditorController::class, 'monitoringDetail'])->name('auditor-monitoring-detail');
+    Route::get('notifikasi', [AuditorController::class, 'notifikasi'])->name('auditor-notifikasi');
+    Route::get('panduan-perizinan', [AuditorController::class, 'panduanPerizinan'])->name('auditor-panduan-perizinan');
+    Route::get('panduan-perizinan/daftar-ulang', [AuditorController::class, 'panduanDaftarUlang'])->name('auditor-panduan-daftar-ulang');
+    Route::get('panduan-perizinan/izin-operasional', [AuditorController::class, 'panduanIzinOperasional'])->name('auditor-panduan-operasional');
+    Route::get('panduan-perizinan/izin-pendirian', [AuditorController::class, 'panduanIzinPendirian'])->name('auditor-panduan-izin');
 
-    Route::get('/monitoring/{type}', function ($type) {
-        return view('auditor.monitoring-detail', ['type' => $type]);
-    })->name('auditor-monitoring-detail');
-
-    Route::get('/notifikasi', function () {
-        return view('auditor.notifikasi');
-    })->name('auditor-notifikasi');
-
-    Route::get('/panduan-perizinan', function () {
-        return view('auditor.panduan-perizinan');
-    })->name('auditor-panduan-perizinan');
-
-    Route::get('/panduan-perizinan/daftar-ulang', function () {
-        return view('auditor.panduan-perizinan.daftar-ulang.daftar');
-    })->name('auditor-panduan-daftar-ulang');
-
-    // panduan izin operasional
-    Route::get('/panduan-perizinan/izin-operasional', function () {
-        return view('auditor.panduan-perizinan.izin-operasional.operasional');
-    })->name('auditor-panduan-operasional');
-
-    // izin pendirian
-    Route::get('/panduan-perizinan/izin-pendirian', function () {
-        return view('auditor.panduan-perizinan.izin-pendirian.izin');
-    })->name('auditor-panduan-izin');
-
-    Route::get('/profile', function () {
-        return view('auditor.profile');
-    })->name('auditor-profile');
+    Route::get('profile', [AuditorController::class, 'profile'])->name('auditor-profile');
 });
 
 // SURVEYOR

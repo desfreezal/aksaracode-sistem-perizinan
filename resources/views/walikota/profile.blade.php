@@ -9,89 +9,103 @@
 
             <div class="flex-grow h-full pl-[34px] pr-[88px] py-7 box-border mb-10" id="content">
                 {{-- START KONTEN --}}
-                <form action="{{ route('walikota-profile') }}" method="GET" class="w-full space-y-6" id="form-walikota">
+                <form action="{{ url('/dashboard-walikota/profile') }}" method="POST" class="w-full space-y-6" id="form">
+                    @csrf
+                    @method('POST')
                     <div class="flex items-center">
                         <label for="jenid" class="w-72">Jenis Identitas</label>
                         <input readonly id="jenid" type="text"
-                            class="flex-grow text-edu-black border-abu-abu rounded">
+                            class="flex-grow text-edu-black border-abu-abu rounded" value="">
                     </div>
                     <div class="flex items-center">
                         <label for="noid" class="w-72">Nomor Identitas (NIK/PASSPORT)</label>
                         <input readonly id="noid" type="number"
-                            class="flex-grow text-edu-black border-abu-abu rounded">
+                            class="flex-grow text-edu-black border-abu-abu rounded" value="">
                     </div>
                     <div class="flex items-center">
                         <label for="username" class="w-72">Username</label>
                         <input readonly id="username" type="text"
-                            class="flex-grow text-edu-black border-abu-abu rounded">
+                            class="flex-grow text-edu-black border-abu-abu rounded" value="{{ $user->username }}"
+                            name="username">
                     </div>
                     <div class="flex items-center">
                         <label for="email" class="w-72">Alamat Email</label>
                         <input readonly id="email" type="text"
-                            class="flex-grow text-edu-black border-abu-abu rounded">
+                            class="flex-grow text-edu-black border-abu-abu rounded" value="{{ $user->email }}"
+                            name="email">
                     </div>
                     <div class="flex items-center">
                         <label for="nama" class="w-72">Nama Lengkap</label>
                         <input readonly id="nama" type="text"
-                            class="flex-grow text-edu-black border-abu-abu rounded">
+                            class="flex-grow text-edu-black border-abu-abu rounded" name="name"
+                            value="{{ $user->name }}">
                     </div>
                     <div class="flex items-center">
                         <label for="jenkel" class="w-72">Jenis Kelamin</label>
                         <input readonly id="jenkel" type="text"
-                            class="flex-grow text-edu-black border-abu-abu rounded">
+                            class="flex-grow text-edu-black border-abu-abu rounded" value="{{ $user->jenis_kelamin }}"
+                            name="jenis_kelamin">
                     </div>
                     <div class="flex items-center">
                         <label for="tempatlahir" class="w-72">Tempat Lahir</label>
                         <input readonly id="tempatlahir" type="text"
-                            class="flex-grow text-edu-black border-abu-abu rounded">
+                            class="flex-grow text-edu-black border-abu-abu rounded" value="{{ $user->tempat_lahir }}"
+                            name="tempat_lahir">
                     </div>
                     <div class="flex items-center">
                         <label for="tanggallahir" class="w-72">Tanggal Lahir</label>
                         <input readonly id="tanggallahir" type="text"
-                            class="flex-grow text-edu-black border-abu-abu rounded">
+                            class="flex-grow text-edu-black border-abu-abu rounded" value="{{ $user->tanggal_lahir }}"
+                            name="tanggal_lahir">
                     </div>
                     <div class="flex items-center">
                         <label for="provinsi" class="w-72">Provinsi</label>
                         <input readonly id="provinsi" type="text"
-                            class="flex-grow text-edu-black border-abu-abu rounded">
+                            class="flex-grow text-edu-black border-abu-abu rounded" value="{{ $user->provinsi }}"
+                            name="provinsi">
                     </div>
                     <div class="flex items-center">
                         <label for="kabkota" class="w-72">Kabupaten/ Kota</label>
                         <input readonly id="kabkota" type="text"
-                            class="flex-grow text-edu-black border-abu-abu rounded">
+                            class="flex-grow text-edu-black border-abu-abu rounded" value="{{ $user->kabupaten }}"
+                            name="kabupaten">
                     </div>
                     <div class="flex items-center">
                         <label for="kecamatan" class="w-72">Kecamatan</label>
                         <input readonly id="kecamatan" type="text"
-                            class="flex-grow text-edu-black border-abu-abu rounded">
+                            class="flex-grow text-edu-black border-abu-abu rounded" value="{{ $user->kecamatan }}"
+                            name="kecamatan">
                     </div>
                     <div class="flex items-center">
                         <label for="kelurahan" class="w-72">Kelurahan</label>
                         <input readonly id="kelurahan" type="text"
-                            class="flex-grow text-edu-black border-abu-abu rounded">
+                            class="flex-grow text-edu-black border-abu-abu rounded" value="{{ $user->kelurahan }}"
+                            name="kelurahan">
                     </div>
                     <div class="flex items-center">
                         <label for="alamat" class="w-72">Alamat</label>
                         <input readonly id="alamat" type="text"
-                            class="flex-grow text-edu-black border-abu-abu rounded">
+                            class="flex-grow text-edu-black border-abu-abu rounded" value="{{ $user->alamat }}"
+                            name="alamat">
                     </div>
                     <div class="flex items-center">
                         <label for="nohp" class="w-72">No HP Aktif</label>
                         <input readonly id="nohp" type="text"
-                            class="flex-grow text-edu-black border-abu-abu rounded">
+                            class="flex-grow text-edu-black border-abu-abu rounded" value="" name="telepon">
                     </div>
                     <div class="flex items-center">
                         <label for="pekerjaan" class="w-72">Pekerjaan</label>
                         <input readonly id="pekerjaan" type="text"
-                            class="flex-grow text-edu-black border-abu-abu rounded">
+                            class="flex-grow text-edu-black border-abu-abu rounded" value="{{ $user->pekerjaan }}"
+                            name="pekerjaan">
                     </div>
 
                     <div class="flex gap-x-12 justify-end items-center">
-                        <button id="edit"
+                        <button id="edit" type="button"
                             class="px-12 py-[5px] rounded-3xl border border-edu-black font-semibold text-xl text-primary hover:bg-primary hover:text-white hover:border-0">
                             Edit Data
                         </button>
-                        <button id="simpan" data-modal-target="default-modal" data-modal-toggle="default-modal"
+                        <button type="submit"
                             class="px-12 py-[5px] rounded-3xl font-semibold text-xl  hover:bg-primary-light bg-primary text-white">
                             Simpan Data
                         </button>
@@ -172,7 +186,7 @@
             // closemodal onclick or modal hidden send form
             const closeModal = document.getElementById('closeModal')
             // send form
-            const form = document.querySelector('#form-walikota')
+            const form = document.querySelector('form')
             closeModal.addEventListener('click', () => {
                 form.submit()
             })

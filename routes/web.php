@@ -9,6 +9,7 @@ use App\Http\Controllers\PemohonController;
 use App\Http\Controllers\PendirianController;
 use App\Http\Controllers\StatistikController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WalikotaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -177,7 +178,7 @@ Route::middleware(['role:admin-dinas', 'verified'])->prefix('/dashboard-admin-di
     Route::get('notifikasi', [AdminDinasController::class, 'notifikasi'])->name('admin-dinas-notifikasi');
     Route::get('panduan-perizinan', [AdminDinasController::class, 'panduanPerizinan'])->name('admin-dinas-panduan-perizinan');
     Route::get('panduan-perizinan/daftar-ulang', [AdminDinasController::class, 'panduanDaftarUlang'])->name('admin-dinas-panduan-daftar-ulang');
-    Route::get('panduan-perizinan/izin-operasional', [AdminDinasController::class, 'panduanIzinOperasional'])->name('admin-dinas-panduan-operasional');
+    Route::get('panduan-perizinan/izin-operasional', [AdminDinasController::class, 'panduanOperasional'])->name('admin-dinas-panduan-operasional');
     Route::get('panduan-perizinan/izin-pendirian', [AdminDinasController::class, 'panduanIzinPendirian'])->name('admin-dinas-panduan-izin');
 
     Route::get('profile', [AdminDinasController::class, 'profile'])->name('admin-dinas-profile');
@@ -211,7 +212,7 @@ Route::middleware(['role:admin-dinas', 'verified'])->prefix('/dashboard-admin-di
     Route::get('kelola-sistem', [AdminDinasController::class, 'kelolaSistem'])->name('admin-dinas-kelola-sistem');
     Route::get('kelola-sistem/daftar-user', [AdminDinasController::class, 'daftarUser'])->name('admin-dinas-daftar-user');
     Route::get('kelola-sistem/daftar-user/{id}', [AdminDinasController::class, 'editUser'])->name('admin-dinas-edit-user');
-    
+
     Route::get('kelola-sistem/panduan-perizinan', [AdminDinasController::class, 'panduanPerizinan'])->name('admin-dinas-kelola-panduan');
     Route::get('kelola-sistem/panduan-perizinan/daftar-ulang', [AdminDinasController::class, 'panduanDaftarUlang'])->name('admin-dinas-kelola-daftar-ulang');
     Route::get('kelola-sistem/panduan-perizinan/izin-pendirian', [AdminDinasController::class, 'panduanIzinPendirian'])->name('admin-dinas-kelola-izin-pendirian');
@@ -434,7 +435,7 @@ Route::prefix('/dashboard-auditor')->group(function () {
     Route::get('notifikasi', [AuditorController::class, 'notifikasi'])->name('auditor-notifikasi');
     Route::get('panduan-perizinan', [AuditorController::class, 'panduanPerizinan'])->name('auditor-panduan-perizinan');
     Route::get('panduan-perizinan/daftar-ulang', [AuditorController::class, 'panduanDaftarUlang'])->name('auditor-panduan-daftar-ulang');
-    Route::get('panduan-perizinan/izin-operasional', [AuditorController::class, 'panduanIzinOperasional'])->name('auditor-panduan-operasional');
+    Route::get('panduan-perizinan/izin-operasional', [AuditorController::class, 'panduanOperasional'])->name('auditor-panduan-operasional');
     Route::get('panduan-perizinan/izin-pendirian', [AuditorController::class, 'panduanIzinPendirian'])->name('auditor-panduan-izin');
 
     Route::get('profile', [AuditorController::class, 'profile'])->name('auditor-profile');
@@ -583,39 +584,15 @@ Route::prefix('/dashboard-walikota')->group(function () {
         return view('walikota.dashboard');
     })->name('walikota-dashboard');
 
-    Route::get('/monitoring', function () {
-        return view('walikota.monitoring');
-    })->name('walikota-monitoring');
+    Route::get('monitoring', [WalikotaController::class, 'monitoring'])->name('walikota-monitoring');
+    Route::get('monitoring/{type}', [WalikotaController::class, 'monitoringDetail'])->name('walikota-monitoring-detail');
+    Route::get('notifikasi', [WalikotaController::class, 'notifikasi'])->name('walikota-notifikasi');
+    Route::get('panduan-perizinan', [WalikotaController::class, 'panduanPerizinan'])->name('walikota-panduan-perizinan');
+    Route::get('panduan-perizinan/daftar-ulang', [WalikotaController::class, 'panduanDaftarUlang'])->name('walikota-panduan-daftar-ulang');
+    Route::get('panduan-perizinan/izin-operasional', [WalikotaController::class, 'panduanOperasional'])->name('walikota-panduan-operasional');
+    Route::get('panduan-perizinan/izin-pendirian', [WalikotaController::class, 'panduanIzinPendirian'])->name('walikota-panduan-izin');
 
-    Route::get('/monitoring/{type}', function ($type) {
-        return view('walikota.monitoring-detail', ['type' => $type]);
-    })->name('walikota-monitoring-detail');
-
-    Route::get('/notifikasi', function () {
-        return view('walikota.notifikasi');
-    })->name('walikota-notifikasi');
-
-    Route::get('/panduan-perizinan', function () {
-        return view('walikota.panduan-perizinan');
-    })->name('walikota-panduan-perizinan');
-
-    Route::get('/panduan-perizinan/daftar-ulang', function () {
-        return view('walikota.panduan-perizinan.daftar-ulang.daftar');
-    })->name('walikota-panduan-daftar-ulang');
-
-    // panduan izin operasional
-    Route::get('/panduan-perizinan/izin-operasional', function () {
-        return view('walikota.panduan-perizinan.izin-operasional.operasional');
-    })->name('walikota-panduan-operasional');
-
-    // izin pendirian
-    Route::get('/panduan-perizinan/izin-pendirian', function () {
-        return view('walikota.panduan-perizinan.izin-pendirian.izin');
-    })->name('walikota-panduan-izin');
-
-    Route::get('/profile', function () {
-        return view('walikota.profile');
-    })->name('walikota-profile');
+    Route::get('profile', [WalikotaController::class, 'profile'])->name('walikota-profile');
 });
 
 // KEPALA DINAS
@@ -970,5 +947,3 @@ Route::prefix('/dashboard-verifikator')->group(function () {
         ]);
     })->name('verifikator-detail-pembaruan-data');
 });
-
-
